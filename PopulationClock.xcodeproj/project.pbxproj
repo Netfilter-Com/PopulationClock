@@ -10,14 +10,19 @@
 		EDA0C3A5167BAF1400CBECC4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA0C3A4167BAF1400CBECC4 /* UIKit.framework */; };
 		EDA0C3A7167BAF1400CBECC4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA0C3A6167BAF1400CBECC4 /* Foundation.framework */; };
 		EDA0C3A9167BAF1400CBECC4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA0C3A8167BAF1400CBECC4 /* CoreGraphics.framework */; };
-		EDA0C3AF167BAF1400CBECC4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EDA0C3AD167BAF1400CBECC4 /* InfoPlist.strings */; };
 		EDA0C3B1167BAF1400CBECC4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA0C3B0167BAF1400CBECC4 /* main.m */; };
 		EDA0C3B5167BAF1400CBECC4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA0C3B4167BAF1400CBECC4 /* AppDelegate.m */; };
-		EDA0C3B7167BAF1400CBECC4 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA0C3B6167BAF1400CBECC4 /* Default.png */; };
-		EDA0C3B9167BAF1400CBECC4 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA0C3B8167BAF1400CBECC4 /* Default@2x.png */; };
-		EDA0C3BB167BAF1400CBECC4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA0C3BA167BAF1400CBECC4 /* Default-568h@2x.png */; };
 		EDA0C3BE167BAF1400CBECC4 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDA0C3BC167BAF1400CBECC4 /* MainStoryboard.storyboard */; };
-		EDA0C3C1167BAF1400CBECC4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA0C3C0167BAF1400CBECC4 /* ViewController.m */; };
+		EDA0C3D6167BB23800CBECC4 /* CountryCoordinates.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA0C3CD167BB23800CBECC4 /* CountryCoordinates.m */; };
+		EDA0C3D7167BB23800CBECC4 /* CountryDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA0C3CF167BB23800CBECC4 /* CountryDetector.m */; };
+		EDA0C3D8167BB23800CBECC4 /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA0C3D1167BB23800CBECC4 /* MainView.m */; };
+		EDA0C3D9167BB23800CBECC4 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA0C3D3167BB23800CBECC4 /* MainViewController.m */; };
+		EDA0C3DA167BB23800CBECC4 /* MapImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA0C3D5167BB23800CBECC4 /* MapImageView.m */; };
+		EDA0C3E0167BB2F800CBECC4 /* colormap.plist in Resources */ = {isa = PBXBuildFile; fileRef = EDA0C3DC167BB2F800CBECC4 /* colormap.plist */; };
+		EDA0C3E1167BB2F800CBECC4 /* colormap.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA0C3DD167BB2F800CBECC4 /* colormap.png */; };
+		EDA0C3E2167BB2F800CBECC4 /* coords.plist in Resources */ = {isa = PBXBuildFile; fileRef = EDA0C3DE167BB2F800CBECC4 /* coords.plist */; };
+		EDA0C3E3167BB2F800CBECC4 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA0C3DF167BB2F800CBECC4 /* map.png */; };
+		EDA0C3E5167BB39F00CBECC4 /* map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA0C3E4167BB39F00CBECC4 /* map@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,17 +31,26 @@
 		EDA0C3A6167BAF1400CBECC4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EDA0C3A8167BAF1400CBECC4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		EDA0C3AC167BAF1400CBECC4 /* PopulationClock-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PopulationClock-Info.plist"; sourceTree = "<group>"; };
-		EDA0C3AE167BAF1400CBECC4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EDA0C3B0167BAF1400CBECC4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EDA0C3B2167BAF1400CBECC4 /* PopulationClock-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PopulationClock-Prefix.pch"; sourceTree = "<group>"; };
 		EDA0C3B3167BAF1400CBECC4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		EDA0C3B4167BAF1400CBECC4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		EDA0C3B6167BAF1400CBECC4 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		EDA0C3B8167BAF1400CBECC4 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		EDA0C3BA167BAF1400CBECC4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		EDA0C3BD167BAF1400CBECC4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		EDA0C3BF167BAF1400CBECC4 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		EDA0C3C0167BAF1400CBECC4 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		EDA0C3CC167BB23800CBECC4 /* CountryCoordinates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryCoordinates.h; sourceTree = "<group>"; };
+		EDA0C3CD167BB23800CBECC4 /* CountryCoordinates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryCoordinates.m; sourceTree = "<group>"; };
+		EDA0C3CE167BB23800CBECC4 /* CountryDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryDetector.h; sourceTree = "<group>"; };
+		EDA0C3CF167BB23800CBECC4 /* CountryDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryDetector.m; sourceTree = "<group>"; };
+		EDA0C3D0167BB23800CBECC4 /* MainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainView.h; sourceTree = "<group>"; };
+		EDA0C3D1167BB23800CBECC4 /* MainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainView.m; sourceTree = "<group>"; };
+		EDA0C3D2167BB23800CBECC4 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		EDA0C3D3167BB23800CBECC4 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		EDA0C3D4167BB23800CBECC4 /* MapImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapImageView.h; sourceTree = "<group>"; };
+		EDA0C3D5167BB23800CBECC4 /* MapImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapImageView.m; sourceTree = "<group>"; };
+		EDA0C3DC167BB2F800CBECC4 /* colormap.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = colormap.plist; sourceTree = "<group>"; };
+		EDA0C3DD167BB2F800CBECC4 /* colormap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = colormap.png; sourceTree = "<group>"; };
+		EDA0C3DE167BB2F800CBECC4 /* coords.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = coords.plist; sourceTree = "<group>"; };
+		EDA0C3DF167BB2F800CBECC4 /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
+		EDA0C3E4167BB39F00CBECC4 /* map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +71,8 @@
 			isa = PBXGroup;
 			children = (
 				EDA0C3AA167BAF1400CBECC4 /* PopulationClock */,
+				EDA0C3DB167BB2F800CBECC4 /* Resources */,
+				EDA0C3AB167BAF1400CBECC4 /* Supporting Files */,
 				EDA0C3A3167BAF1400CBECC4 /* Frameworks */,
 				EDA0C3A1167BAF1400CBECC4 /* Products */,
 			);
@@ -85,10 +101,17 @@
 			children = (
 				EDA0C3B3167BAF1400CBECC4 /* AppDelegate.h */,
 				EDA0C3B4167BAF1400CBECC4 /* AppDelegate.m */,
+				EDA0C3CC167BB23800CBECC4 /* CountryCoordinates.h */,
+				EDA0C3CD167BB23800CBECC4 /* CountryCoordinates.m */,
+				EDA0C3CE167BB23800CBECC4 /* CountryDetector.h */,
+				EDA0C3CF167BB23800CBECC4 /* CountryDetector.m */,
 				EDA0C3BC167BAF1400CBECC4 /* MainStoryboard.storyboard */,
-				EDA0C3BF167BAF1400CBECC4 /* ViewController.h */,
-				EDA0C3C0167BAF1400CBECC4 /* ViewController.m */,
-				EDA0C3AB167BAF1400CBECC4 /* Supporting Files */,
+				EDA0C3D0167BB23800CBECC4 /* MainView.h */,
+				EDA0C3D1167BB23800CBECC4 /* MainView.m */,
+				EDA0C3D2167BB23800CBECC4 /* MainViewController.h */,
+				EDA0C3D3167BB23800CBECC4 /* MainViewController.m */,
+				EDA0C3D4167BB23800CBECC4 /* MapImageView.h */,
+				EDA0C3D5167BB23800CBECC4 /* MapImageView.m */,
 			);
 			path = PopulationClock;
 			sourceTree = "<group>";
@@ -97,14 +120,23 @@
 			isa = PBXGroup;
 			children = (
 				EDA0C3AC167BAF1400CBECC4 /* PopulationClock-Info.plist */,
-				EDA0C3AD167BAF1400CBECC4 /* InfoPlist.strings */,
 				EDA0C3B0167BAF1400CBECC4 /* main.m */,
 				EDA0C3B2167BAF1400CBECC4 /* PopulationClock-Prefix.pch */,
-				EDA0C3B6167BAF1400CBECC4 /* Default.png */,
-				EDA0C3B8167BAF1400CBECC4 /* Default@2x.png */,
-				EDA0C3BA167BAF1400CBECC4 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			path = PopulationClock;
+			sourceTree = "<group>";
+		};
+		EDA0C3DB167BB2F800CBECC4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EDA0C3DC167BB2F800CBECC4 /* colormap.plist */,
+				EDA0C3DD167BB2F800CBECC4 /* colormap.png */,
+				EDA0C3DE167BB2F800CBECC4 /* coords.plist */,
+				EDA0C3DF167BB2F800CBECC4 /* map.png */,
+				EDA0C3E4167BB39F00CBECC4 /* map@2x.png */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,11 +190,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDA0C3AF167BAF1400CBECC4 /* InfoPlist.strings in Resources */,
-				EDA0C3B7167BAF1400CBECC4 /* Default.png in Resources */,
-				EDA0C3B9167BAF1400CBECC4 /* Default@2x.png in Resources */,
-				EDA0C3BB167BAF1400CBECC4 /* Default-568h@2x.png in Resources */,
 				EDA0C3BE167BAF1400CBECC4 /* MainStoryboard.storyboard in Resources */,
+				EDA0C3E0167BB2F800CBECC4 /* colormap.plist in Resources */,
+				EDA0C3E1167BB2F800CBECC4 /* colormap.png in Resources */,
+				EDA0C3E2167BB2F800CBECC4 /* coords.plist in Resources */,
+				EDA0C3E3167BB2F800CBECC4 /* map.png in Resources */,
+				EDA0C3E5167BB39F00CBECC4 /* map@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,21 +208,17 @@
 			files = (
 				EDA0C3B1167BAF1400CBECC4 /* main.m in Sources */,
 				EDA0C3B5167BAF1400CBECC4 /* AppDelegate.m in Sources */,
-				EDA0C3C1167BAF1400CBECC4 /* ViewController.m in Sources */,
+				EDA0C3D6167BB23800CBECC4 /* CountryCoordinates.m in Sources */,
+				EDA0C3D7167BB23800CBECC4 /* CountryDetector.m in Sources */,
+				EDA0C3D8167BB23800CBECC4 /* MainView.m in Sources */,
+				EDA0C3D9167BB23800CBECC4 /* MainViewController.m in Sources */,
+				EDA0C3DA167BB23800CBECC4 /* MapImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		EDA0C3AD167BAF1400CBECC4 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EDA0C3AE167BAF1400CBECC4 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		EDA0C3BC167BAF1400CBECC4 /* MainStoryboard.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -298,6 +327,7 @@
 				EDA0C3C6167BAF1400CBECC4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
