@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		ED597E8A167F988000038B75 /* CountryListPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED597E89167F988000038B75 /* CountryListPanelView.m */; };
+		ED597E8E167FA55600038B75 /* TopBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED597E8D167FA55600038B75 /* TopBarView.m */; };
 		EDA0C3A5167BAF1400CBECC4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA0C3A4167BAF1400CBECC4 /* UIKit.framework */; };
 		EDA0C3A7167BAF1400CBECC4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA0C3A6167BAF1400CBECC4 /* Foundation.framework */; };
 		EDA0C3A9167BAF1400CBECC4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA0C3A8167BAF1400CBECC4 /* CoreGraphics.framework */; };
@@ -29,6 +30,8 @@
 /* Begin PBXFileReference section */
 		ED597E88167F988000038B75 /* CountryListPanelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryListPanelView.h; sourceTree = "<group>"; };
 		ED597E89167F988000038B75 /* CountryListPanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryListPanelView.m; sourceTree = "<group>"; };
+		ED597E8C167FA55600038B75 /* TopBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopBarView.h; sourceTree = "<group>"; };
+		ED597E8D167FA55600038B75 /* TopBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopBarView.m; sourceTree = "<group>"; };
 		EDA0C3A0167BAF1400CBECC4 /* PopulationClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopulationClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDA0C3A4167BAF1400CBECC4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EDA0C3A6167BAF1400CBECC4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -117,6 +120,8 @@
 				EDA0C3D3167BB23800CBECC4 /* MainViewController.m */,
 				EDA0C3D4167BB23800CBECC4 /* MapImageView.h */,
 				EDA0C3D5167BB23800CBECC4 /* MapImageView.m */,
+				ED597E8C167FA55600038B75 /* TopBarView.h */,
+				ED597E8D167FA55600038B75 /* TopBarView.m */,
 			);
 			path = PopulationClock;
 			sourceTree = "<group>";
@@ -219,6 +224,7 @@
 				EDA0C3D9167BB23800CBECC4 /* MainViewController.m in Sources */,
 				EDA0C3DA167BB23800CBECC4 /* MapImageView.m in Sources */,
 				ED597E8A167F988000038B75 /* CountryListPanelView.m in Sources */,
+				ED597E8E167FA55600038B75 /* TopBarView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

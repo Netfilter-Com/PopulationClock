@@ -25,10 +25,48 @@
                                     <outlet property="delegate" destination="2" id="m3l-yp-bi0"/>
                                 </connections>
                             </scrollView>
-                            <view contentMode="scaleToFill" id="P7i-wZ-xLP">
+                            <view contentMode="scaleToFill" id="P7i-wZ-xLP" customClass="TopBarView">
                                 <rect key="frame" x="0.0" y="400" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Population Clock" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QhB-k2-gBU">
+                                        <rect key="frame" x="295" y="6" width="213" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                        <color key="textColor" red="0.98039215686274506" green="0.76862745098039209" blue="0.16470588235294117" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Rotate for + info" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vKf-ds-QRv">
+                                        <rect key="frame" x="631" y="12" width="117" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <color key="textColor" red="0.98039215690000003" green="0.76862745099999996" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    </label>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="36a-fu-HGC">
+                                        <rect key="frame" x="29" y="7" width="201" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <segments>
+                                            <segment title="World"/>
+                                            <segment title="Country"/>
+                                        </segments>
+                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    </segmentedControl>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="uQc-2f-nf5">
+                                        <rect key="frame" x="593" y="7" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" red="0.80000001192092896" green="0.40000000596046448" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="_modeSegmentedControl" destination="36a-fu-HGC" id="kdu-GP-KGC"/>
+                                    <outlet property="_rotateImageView" destination="uQc-2f-nf5" id="3mV-sn-tD2"/>
+                                    <outlet property="_rotateLabel" destination="vKf-ds-QRv" id="kfL-gT-dCV"/>
+                                    <outlet property="_titleLabel" destination="QhB-k2-gBU" id="bLg-Su-zZe"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" id="dcz-Qe-vLN">
                                 <rect key="frame" x="0.0" y="444" width="384" height="137"/>
@@ -75,7 +113,7 @@
                                 <items/>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <connections>
                             <outlet property="_map" destination="uWc-dp-F9S" id="A57-rc-8aM"/>
                             <outlet property="_navigationBar" destination="P7i-wZ-xLP" id="Hsh-YJ-0Xl"/>
@@ -110,6 +148,9 @@
         </class>
         <class className="MapImageView" superclassName="UIImageView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MapImageView.h"/>
+        </class>
+        <class className="TopBarView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TopBarView.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
