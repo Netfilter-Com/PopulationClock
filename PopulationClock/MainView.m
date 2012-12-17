@@ -143,8 +143,8 @@
         _panel1.frame = frame;
         
         // The second panel goes below the first one
-        frame.size.height = self.bounds.size.height - frame.origin.y - _toolbar.frame.size.height;
         frame.origin.y += _panel1.frame.size.height;
+        frame.size.height = self.bounds.size.height - frame.origin.y - _toolbar.frame.size.height;
         _panel2.frame = frame;
         
         // The third panel consumes the remaining space to the right
