@@ -11,6 +11,11 @@
 @implementation MainView {
     IBOutlet __weak UIScrollView *_scrollView;
     IBOutlet __weak UIImageView *_map;
+    IBOutlet __weak UIView *_navigationBar;
+    IBOutlet __weak UIView *_panel1;
+    IBOutlet __weak UIView *_panel2;
+    IBOutlet __weak UIView *_panel3;
+    IBOutlet __weak UIToolbar *_toolbar;
 }
 
 - (void)layoutSubviews {
@@ -49,7 +54,52 @@
     CGFloat scaleScale = previousScale == 0 ? 1 : scale / previousScale;
     _scrollView.contentOffset = CGPointMake(contentOffset.x * scaleScale, contentOffset.y * scaleScale);
     
-    // TODO: Resize other views
+    // Position the navigation bar
+    frame = _navigationBar.frame;
+    frame.size.width = self.bounds.size.width;
+    frame.origin.x = 0;
+    frame.origin.y = mapSize.height;
+    _navigationBar.frame = frame;
+    
+    // We have a different layout depending on the orientation
+    BOOL landscape = self.bounds.size.width > self.bounds.size.height;
+    if (landscape) {
+        // The toolbar is hidden
+        _toolbar.hidden = YES;
+        
+        // The first panel is 320px wide
+        frame = CGRectMake(0, _navigationBar.frame.origin.y + _navigationBar.frame.size.height, 320, 0);
+        frame.size.height = self.bounds.size.height - frame.origin.y;
+        _panel1.frame = frame;
+        
+        // The second panel is also 320px wide
+        frame.origin.x += 320;
+        _panel2.frame = frame;
+        
+        // The third panel consumes the remaining space
+        frame.origin.x += 320;
+        frame.size.width = self.bounds.size.width - frame.origin.x;
+        _panel3.frame = frame;
+    }
+    else {
+        // The toolbar is visible
+        _toolbar.hidden = NO;
+        
+        // The first panel consumes half the horizontal space
+        frame = CGRectMake(0, _navigationBar.frame.origin.y + _navigationBar.frame.size.height, self.bounds.size.width / 2, 0);
+        frame.size.height = 116;
+        _panel1.frame = frame;
+        
+        // The second panel goes below the first one
+        frame.size.height = self.bounds.size.height - frame.origin.y - _toolbar.frame.size.height;
+        frame.origin.y += _panel1.frame.size.height;
+        _panel2.frame = frame;
+        
+        // The third panel consumes the remaining space to the right
+        frame = CGRectMake(_panel1.frame.size.width, _panel1.frame.origin.y, _panel1.frame.size.width, 0);
+        frame.size.height = self.bounds.size.height - frame.origin.y - _toolbar.frame.size.height;
+        _panel3.frame = frame;
+    }
 }
 
 @end

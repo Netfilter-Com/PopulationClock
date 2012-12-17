@@ -25,11 +25,41 @@
                                     <outlet property="delegate" destination="2" id="m3l-yp-bi0"/>
                                 </connections>
                             </scrollView>
+                            <view contentMode="scaleToFill" id="P7i-wZ-xLP">
+                                <rect key="frame" x="0.0" y="400" width="768" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.80000001192092896" green="0.40000000596046448" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="dcz-Qe-vLN">
+                                <rect key="frame" x="0.0" y="444" width="384" height="137"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.50196081399917603" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="5UU-Nt-6Z6">
+                                <rect key="frame" x="0.0" y="581" width="384" height="379"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="ol5-nt-F4E">
+                                <rect key="frame" x="384" y="444" width="384" height="516"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.50196081399917603" green="0.0" blue="0.25098040699958801" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" id="Clf-1b-KYv">
+                                <rect key="frame" x="0.0" y="960" width="768" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items/>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <connections>
                             <outlet property="_map" destination="uWc-dp-F9S" id="A57-rc-8aM"/>
+                            <outlet property="_navigationBar" destination="P7i-wZ-xLP" id="Hsh-YJ-0Xl"/>
+                            <outlet property="_panel1" destination="dcz-Qe-vLN" id="nO5-Cv-spi"/>
+                            <outlet property="_panel2" destination="5UU-Nt-6Z6" id="kA9-xK-Jfq"/>
+                            <outlet property="_panel3" destination="ol5-nt-F4E" id="Fgz-iC-7lY"/>
                             <outlet property="_scrollView" destination="wmV-Tx-Q6q" id="AKo-or-CBF"/>
+                            <outlet property="_toolbar" destination="Clf-1b-KYv" id="aE9-mF-qn7"/>
                         </connections>
                     </view>
                     <connections>
