@@ -75,7 +75,7 @@
         <image name="map.png" width="1188" height="601"/>
     </resources>
     <classes>
-        <class className="MainView" superclassName="UIView">
+        <class className="MainView" superclassName="UIScrollView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MainView.h"/>
         </class>
         <class className="MainViewController" superclassName="UIViewController">

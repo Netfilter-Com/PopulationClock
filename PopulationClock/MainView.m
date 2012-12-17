@@ -18,6 +18,58 @@
     IBOutlet __weak UIToolbar *_toolbar;
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        // Configure the scroll view properties
+        self.scrollEnabled = NO;
+        self.showsHorizontalScrollIndicator = NO;
+        self.showsVerticalScrollIndicator = 0;
+        
+        // Add observers to the keyboard
+        NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+        [nc addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+        [nc addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    }
+    return self;
+}
+
+- (void)dealloc {
+    // Remove the observers
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)keyboardWillShow:(NSNotification *)notification {
+    // Get the keyboard size
+    CGSize kbSize = [notification.userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    // The keyboard size doesn't follow the orientation
+    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+    if (UIInterfaceOrientationIsLandscape(orientation)) {
+        CGFloat tmp = kbSize.width;
+        kbSize.width = kbSize.height;
+        kbSize.height = tmp;
+    }
+    
+    // Adjust the content
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationCurve:[notification.userInfo[UIKeyboardAnimationCurveUserInfoKey] intValue]];
+    [UIView setAnimationDuration:[notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] floatValue]];
+    self.contentInset = UIEdgeInsetsMake(0, 0, kbSize.height, 0);
+    self.contentOffset = CGPointMake(0, kbSize.height);
+    [UIView commitAnimations];
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification {
+    // Adjust the content
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationCurve:[notification.userInfo[UIKeyboardAnimationCurveUserInfoKey] intValue]];
+    [UIView setAnimationDuration:[notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] floatValue]];
+    self.contentInset = UIEdgeInsetsZero;
+    self.contentOffset = CGPointZero;
+    [UIView commitAnimations];
+}
+
 - (void)layoutSubviews {
     // The first time the view is laid out, we don't have metrics
     if (self.bounds.size.width == 0 || self.bounds.size.height == 0)

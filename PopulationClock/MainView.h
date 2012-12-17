@@ -6,6 +6,6 @@
 //  Copyright (c) 2012 NetFilter. All rights reserved.
 //
 
-@interface MainView : UIView
+@interface MainView : UIScrollView
 
 @end
