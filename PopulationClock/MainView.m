@@ -117,7 +117,7 @@
     BOOL landscape = self.bounds.size.width > self.bounds.size.height;
     if (landscape) {
         // The toolbar is hidden
-        _toolbar.hidden = YES;
+        _toolbar.alpha = 0;
         
         // The first panel is 320px wide
         frame = CGRectMake(0, _navigationBar.frame.origin.y + _navigationBar.frame.size.height, 320, 0);
@@ -135,7 +135,7 @@
     }
     else {
         // The toolbar is visible
-        _toolbar.hidden = NO;
+        _toolbar.alpha = 1;
         
         // The first panel consumes half the horizontal space
         frame = CGRectMake(0, _navigationBar.frame.origin.y + _navigationBar.frame.size.height, self.bounds.size.width / 2, 0);
