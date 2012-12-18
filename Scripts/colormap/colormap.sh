@@ -2,7 +2,7 @@
 
 set -e
 
-python colormap.py
+PYTHONPATH=../shared python colormap.py
 convert \
     -background black \
     -separate -average \

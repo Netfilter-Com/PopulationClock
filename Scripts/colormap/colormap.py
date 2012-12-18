@@ -24,7 +24,7 @@ def applyColor(el, color):
 
 def main():
     # Open the base doc and get the root
-    base_doc = minidom.parse("map.svg")
+    base_doc = minidom.parse("../shared/map.svg")
     root = base_doc.getElementsByTagName("svg")[0]
 
     # Clone the root to get a clean XML

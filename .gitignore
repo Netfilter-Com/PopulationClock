@@ -2,4 +2,4 @@
 *.xcodeproj/xcuserdata
 .DS_Store
 *.swp
-*.py
+*.pyc
