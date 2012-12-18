@@ -18,20 +18,22 @@
     IBOutlet __weak UIToolbar *_toolbar;
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        // Configure the scroll view properties
-        self.scrollEnabled = NO;
-        self.showsHorizontalScrollIndicator = NO;
-        self.showsVerticalScrollIndicator = 0;
-        
-        // Add observers to the keyboard
-        NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-        [nc addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-        [nc addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-    }
-    return self;
+- (void)awakeFromNib {
+    // Configure the scroll view properties
+    self.scrollEnabled = NO;
+    self.showsHorizontalScrollIndicator = NO;
+    self.showsVerticalScrollIndicator = 0;
+    
+    // Style the toolbar
+    [_toolbar setBackgroundImage:[UIImage imageNamed:@"boxRodapeVert"] forToolbarPosition:UIToolbarPositionBottom barMetrics:UIBarMetricsDefault];
+    [[UIBarButtonItem appearance] setBackgroundImage:[UIImage imageNamed:@"barBtn.png"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    NSDictionary *attrs = @{UITextAttributeTextColor : [UIColor colorWithRed:0xfa/255.0 green:0xc4/255.0 blue:0x2a/255.0 alpha:1]};
+    [[UIBarButtonItem appearance] setTitleTextAttributes:attrs forState:UIControlStateNormal];
+    
+    // Add observers to the keyboard events
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [nc addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)dealloc {

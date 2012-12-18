@@ -17,10 +17,17 @@
 }
 
 - (void)awakeFromNib {
-    // Set the label colors in the segmented control
+    // Set the label colors for the segmented control
     NSDictionary *attrs = @{UITextAttributeTextColor : [UIColor colorWithRed:0xfa/255.0 green:0xc4/255.0 blue:0x2a/255.0 alpha:1]};
     [_modeSegmentedControl setTitleTextAttributes:attrs forState:UIControlStateNormal];
     [_modeSegmentedControl setTitleTextAttributes:attrs forState:UIControlStateHighlighted];
+    
+    // Style the segmented control
+    UIImage *separator = [UIImage imageNamed:@"separadorAtiveInactive"];
+    [_modeSegmentedControl setBackgroundImage:[UIImage imageNamed:@"bgBtHeadInactive"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    [_modeSegmentedControl setBackgroundImage:[UIImage imageNamed:@"bgBtHeadActive"] forState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
+    [_modeSegmentedControl setDividerImage:separator forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
+    [_modeSegmentedControl setDividerImage:separator forLeftSegmentState:UIControlStateSelected rightSegmentState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
 }
 
 - (void)layoutSubviews {
