@@ -9,6 +9,7 @@
 #import "CountryListPanelView.h"
 
 @implementation CountryListPanelView {
+    IBOutlet __weak UIImageView *_backgroundImageView;
     IBOutlet __weak UIView *_searchBackground;
     IBOutlet __weak UITextField *_searchTextField;
     IBOutlet __weak UITableView *_tableView;
@@ -47,6 +48,13 @@
     // The first time the view is laid out, we don't have metrics
     if (self.bounds.size.width == 0 || self.bounds.size.height == 0)
         return;
+    
+    // We have a different background image depending on the orientation
+    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+    if (UIInterfaceOrientationIsLandscape(orientation))
+        _backgroundImageView.image = [UIImage imageNamed:@"bgListaHoriz"];
+    else
+        _backgroundImageView.image = [UIImage imageNamed:@"bgListaVert"];
     
     // Position the search background
     CGRect frame = _searchBackground.frame;

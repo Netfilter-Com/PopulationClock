@@ -41,11 +41,11 @@
         _modeSegmentedControl.center = CGPointMake(160, self.bounds.size.height / 2);
         
         // Resize the title label
-        _titleLabel.font = [UIFont boldSystemFontOfSize:26];
+        _titleLabel.font = [UIFont boldSystemFontOfSize:24];
         [_titleLabel sizeToFit];
         
         // Position it
-        _titleLabel.center = CGPointMake(320 + (self.bounds.size.width - 320) / 2, self.bounds.size.height / 2);
+        _titleLabel.center = CGPointMake(320 + 1 + 320, self.bounds.size.height / 2);
         
         // The rotate label and image view are visible
         _rotateLabel.alpha = 1;
@@ -64,7 +64,7 @@
         _modeSegmentedControl.center = CGPointMake(self.bounds.size.width / 4, self.bounds.size.height / 2);
         
         // Resize the title label
-        _titleLabel.font = [UIFont boldSystemFontOfSize:22];
+        _titleLabel.font = [UIFont boldSystemFontOfSize:20];
         [_titleLabel sizeToFit];
         
         // Position it
