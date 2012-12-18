@@ -110,7 +110,7 @@
     frame = _navigationBar.frame;
     frame.size.width = self.bounds.size.width;
     frame.origin.x = 0;
-    frame.origin.y = mapSize.height;
+    frame.origin.y = mapSize.height - 4;
     _navigationBar.frame = frame;
     
     // We have a different layout depending on the orientation
@@ -124,8 +124,8 @@
         frame.size.height = self.bounds.size.height - frame.origin.y;
         _panel1.frame = frame;
         
-        // The second panel is also 320px wide
-        frame.origin.x += 320;
+        // The second panel is also 320px wide, with a 1px space in between
+        frame.origin.x += 320 + 1;
         _panel2.frame = frame;
         
         // The third panel consumes the remaining space

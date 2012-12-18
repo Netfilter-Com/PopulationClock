@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED23C56F1680A01700005C5F /* barraHoriz.png in Resources */ = {isa = PBXBuildFile; fileRef = ED23C56D1680A01700005C5F /* barraHoriz.png */; };
+		ED23C5701680A01700005C5F /* barraVert.png in Resources */ = {isa = PBXBuildFile; fileRef = ED23C56E1680A01700005C5F /* barraVert.png */; };
+		ED23C5741680A0A600005C5F /* barraHoriz@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED23C5721680A0A600005C5F /* barraHoriz@2x.png */; };
+		ED23C5751680A0A600005C5F /* barraVert2@x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED23C5731680A0A600005C5F /* barraVert2@x.png */; };
 		ED597E8A167F988000038B75 /* CountryListPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED597E89167F988000038B75 /* CountryListPanelView.m */; };
 		ED597E8E167FA55600038B75 /* TopBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED597E8D167FA55600038B75 /* TopBarView.m */; };
 		EDA0C3A5167BAF1400CBECC4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA0C3A4167BAF1400CBECC4 /* UIKit.framework */; };
@@ -28,6 +32,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ED23C56D1680A01700005C5F /* barraHoriz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barraHoriz.png; sourceTree = "<group>"; };
+		ED23C56E1680A01700005C5F /* barraVert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barraVert.png; sourceTree = "<group>"; };
+		ED23C5721680A0A600005C5F /* barraHoriz@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barraHoriz@2x.png"; sourceTree = "<group>"; };
+		ED23C5731680A0A600005C5F /* barraVert2@x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barraVert2@x.png"; sourceTree = "<group>"; };
 		ED597E88167F988000038B75 /* CountryListPanelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryListPanelView.h; sourceTree = "<group>"; };
 		ED597E89167F988000038B75 /* CountryListPanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryListPanelView.m; sourceTree = "<group>"; };
 		ED597E8C167FA55600038B75 /* TopBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopBarView.h; sourceTree = "<group>"; };
@@ -140,6 +148,10 @@
 		EDA0C3DB167BB2F800CBECC4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				ED23C56D1680A01700005C5F /* barraHoriz.png */,
+				ED23C5721680A0A600005C5F /* barraHoriz@2x.png */,
+				ED23C56E1680A01700005C5F /* barraVert.png */,
+				ED23C5731680A0A600005C5F /* barraVert2@x.png */,
 				EDA0C3DC167BB2F800CBECC4 /* colormap.plist */,
 				EDA0C3DD167BB2F800CBECC4 /* colormap.png */,
 				EDA0C3DE167BB2F800CBECC4 /* coords.plist */,
@@ -206,6 +218,10 @@
 				EDA0C3E2167BB2F800CBECC4 /* coords.plist in Resources */,
 				EDA0C3E3167BB2F800CBECC4 /* map.png in Resources */,
 				EDA0C3E5167BB39F00CBECC4 /* map@2x.png in Resources */,
+				ED23C56F1680A01700005C5F /* barraHoriz.png in Resources */,
+				ED23C5701680A01700005C5F /* barraVert.png in Resources */,
+				ED23C5741680A0A600005C5F /* barraHoriz@2x.png in Resources */,
+				ED23C5751680A0A600005C5F /* barraVert2@x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

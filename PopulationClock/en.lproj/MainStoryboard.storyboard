@@ -25,10 +25,14 @@
                                     <outlet property="delegate" destination="2" id="m3l-yp-bi0"/>
                                 </connections>
                             </scrollView>
-                            <view contentMode="scaleToFill" id="P7i-wZ-xLP" customClass="TopBarView">
+                            <view opaque="NO" contentMode="scaleToFill" id="P7i-wZ-xLP" customClass="TopBarView">
                                 <rect key="frame" x="0.0" y="400" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="barraVert.png" id="kbC-qC-oyu">
+                                        <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                    </imageView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Population Clock" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QhB-k2-gBU">
                                         <rect key="frame" x="295" y="6" width="213" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -60,8 +64,9 @@
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.80000001192092896" green="0.40000000596046448" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
+                                    <outlet property="_backgroundImageView" destination="kbC-qC-oyu" id="LI2-um-Rjm"/>
                                     <outlet property="_modeSegmentedControl" destination="36a-fu-HGC" id="kdu-GP-KGC"/>
                                     <outlet property="_rotateImageView" destination="uQc-2f-nf5" id="3mV-sn-tD2"/>
                                     <outlet property="_rotateLabel" destination="vKf-ds-QRv" id="kfL-gT-dCV"/>
@@ -142,6 +147,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="barraVert.png" width="779" height="45"/>
         <image name="map.png" width="1188" height="601"/>
     </resources>
     <classes>

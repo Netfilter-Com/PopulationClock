@@ -9,6 +9,7 @@
 #import "TopBarView.h"
 
 @implementation TopBarView {
+    IBOutlet __weak UIImageView *_backgroundImageView;
     IBOutlet __weak UILabel *_titleLabel;
     IBOutlet __weak UISegmentedControl *_modeSegmentedControl;
     IBOutlet __weak UIImageView *_rotateImageView;
@@ -30,6 +31,9 @@
     // We have a different layout depending on the orientation
     UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
     if (UIInterfaceOrientationIsLandscape(orientation)) {
+        // Set the background image
+        _backgroundImageView.image = [UIImage imageNamed:@"barraHoriz"];
+        
         // Resize the mode segmented control
         [_modeSegmentedControl sizeToFit];
         
@@ -48,6 +52,9 @@
         _rotateImageView.alpha = 1;
     }
     else {
+        // Set the background image
+        _backgroundImageView.image = [UIImage imageNamed:@"barraVert"];
+        
         // Resize the mode segmented control
         CGRect frame = _modeSegmentedControl.frame;
         frame.size.width = 320;
