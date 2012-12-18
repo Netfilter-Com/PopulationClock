@@ -81,6 +81,10 @@
                                         <rect key="frame" x="20" y="58" width="344" height="301"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="5UU-Nt-6Z6" id="WRm-mx-ZHs"/>
+                                            <outlet property="delegate" destination="5UU-Nt-6Z6" id="jGA-Up-kqX"/>
+                                        </connections>
                                     </tableView>
                                     <view contentMode="scaleToFill" id="1uF-Qb-vVi">
                                         <rect key="frame" x="20" y="20" width="344" height="38"/>
@@ -91,6 +95,9 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="5UU-Nt-6Z6" id="Cjw-O3-TpF"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -99,6 +106,7 @@
                                 <color key="backgroundColor" red="1" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="_searchBackground" destination="1uF-Qb-vVi" id="kAk-1u-PHS"/>
+                                    <outlet property="_searchTextField" destination="3yQ-Lt-BSI" id="vZu-BR-HtZ"/>
                                     <outlet property="_tableView" destination="NBB-oD-oAx" id="HKH-Sr-Tlo"/>
                                 </connections>
                             </view>
