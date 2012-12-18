@@ -21,6 +21,9 @@
 		ED0108BC1680D1540067F88D /* separadorAtiveInactive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0108BA1680D1540067F88D /* separadorAtiveInactive@2x.png */; };
 		ED0108BF1680D25C0067F88D /* barBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0108BD1680D25C0067F88D /* barBtn.png */; };
 		ED0108C01680D25C0067F88D /* barBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0108BE1680D25C0067F88D /* barBtn@2x.png */; };
+		ED0108C21680DB350067F88D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED0108C11680DB350067F88D /* QuartzCore.framework */; };
+		ED0108C51680E3E90067F88D /* debut_light@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0108C31680E3E90067F88D /* debut_light@2x.png */; };
+		ED0108C61680E3E90067F88D /* debut_light.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0108C41680E3E90067F88D /* debut_light.png */; };
 		ED23C56F1680A01700005C5F /* barraHoriz.png in Resources */ = {isa = PBXBuildFile; fileRef = ED23C56D1680A01700005C5F /* barraHoriz.png */; };
 		ED23C5701680A01700005C5F /* barraVert.png in Resources */ = {isa = PBXBuildFile; fileRef = ED23C56E1680A01700005C5F /* barraVert.png */; };
 		ED23C5741680A0A600005C5F /* barraHoriz@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED23C5721680A0A600005C5F /* barraHoriz@2x.png */; };
@@ -74,6 +77,9 @@
 		ED0108BA1680D1540067F88D /* separadorAtiveInactive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "separadorAtiveInactive@2x.png"; sourceTree = "<group>"; };
 		ED0108BD1680D25C0067F88D /* barBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barBtn.png; sourceTree = "<group>"; };
 		ED0108BE1680D25C0067F88D /* barBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barBtn@2x.png"; sourceTree = "<group>"; };
+		ED0108C11680DB350067F88D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		ED0108C31680E3E90067F88D /* debut_light@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "debut_light@2x.png"; sourceTree = "<group>"; };
+		ED0108C41680E3E90067F88D /* debut_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = debut_light.png; sourceTree = "<group>"; };
 		ED23C56D1680A01700005C5F /* barraHoriz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barraHoriz.png; sourceTree = "<group>"; };
 		ED23C56E1680A01700005C5F /* barraVert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barraVert.png; sourceTree = "<group>"; };
 		ED23C5721680A0A600005C5F /* barraHoriz@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barraHoriz@2x.png"; sourceTree = "<group>"; };
@@ -130,6 +136,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED0108C21680DB350067F88D /* QuartzCore.framework in Frameworks */,
 				EDA0C3A5167BAF1400CBECC4 /* UIKit.framework in Frameworks */,
 				EDA0C3A7167BAF1400CBECC4 /* Foundation.framework in Frameworks */,
 				EDA0C3A9167BAF1400CBECC4 /* CoreGraphics.framework in Frameworks */,
@@ -161,9 +168,10 @@
 		EDA0C3A3167BAF1400CBECC4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EDA0C3A4167BAF1400CBECC4 /* UIKit.framework */,
-				EDA0C3A6167BAF1400CBECC4 /* Foundation.framework */,
 				EDA0C3A8167BAF1400CBECC4 /* CoreGraphics.framework */,
+				EDA0C3A6167BAF1400CBECC4 /* Foundation.framework */,
+				ED0108C11680DB350067F88D /* QuartzCore.framework */,
+				EDA0C3A4167BAF1400CBECC4 /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -210,6 +218,8 @@
 		EDA0C3DB167BB2F800CBECC4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				ED0108C31680E3E90067F88D /* debut_light@2x.png */,
+				ED0108C41680E3E90067F88D /* debut_light.png */,
 				ED0108BD1680D25C0067F88D /* barBtn.png */,
 				ED0108BE1680D25C0067F88D /* barBtn@2x.png */,
 				ED23C56D1680A01700005C5F /* barraHoriz.png */,
@@ -336,6 +346,8 @@
 				ED0108BC1680D1540067F88D /* separadorAtiveInactive@2x.png in Resources */,
 				ED0108BF1680D25C0067F88D /* barBtn.png in Resources */,
 				ED0108C01680D25C0067F88D /* barBtn@2x.png in Resources */,
+				ED0108C51680E3E90067F88D /* debut_light@2x.png in Resources */,
+				ED0108C61680E3E90067F88D /* debut_light.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

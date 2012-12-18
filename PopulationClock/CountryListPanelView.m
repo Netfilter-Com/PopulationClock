@@ -6,6 +6,8 @@
 //  Copyright (c) 2012 NetFilter. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
+
 #import "CountryListPanelView.h"
 
 @implementation CountryListPanelView {
@@ -38,6 +40,9 @@
         NSString *name2 = [obj2 objectForKey:@"name"];
         return [name1 compare:name2 options:NSCaseInsensitiveSearch];
     }];
+    
+    // Set the table view background
+    _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"debut_light"]];
     
     // Set up to receive text change notifications in
     // the search text field
@@ -75,8 +80,23 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     // Get a new table view cell
     UITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:@"country"];
-    if (!cell)
+    if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"country"];
+        
+        // Set the text color and font size
+        cell.textLabel.textColor = [UIColor colorWithRed:0x58/255.0 green:0x59/255.0 blue:0x5b/255.0 alpha:1];
+        cell.textLabel.font = [UIFont boldSystemFontOfSize:17];
+        
+        // Style the selected view
+        CAGradientLayer *gradient = [CAGradientLayer layer];
+        gradient.colors = @[
+            (id)[UIColor colorWithRed:0xfa/255.0 green:0xc4/255.0 blue:0x2a/255.0 alpha:1].CGColor,
+            (id)[UIColor colorWithRed:195/255.0 green:141/255.0 blue:18/255.0 alpha:1].CGColor
+        ];
+        gradient.locations = @[@0.0f, @1.0f];
+        gradient.frame = CGRectMake(0, 0, 400, 44);
+        [cell.selectedBackgroundView.layer insertSublayer:gradient atIndex:0];
+    }
     
     // Get the country info
     NSDictionary *info = _searchResult ? _searchResult[indexPath.row] : _countries[indexPath.row];
