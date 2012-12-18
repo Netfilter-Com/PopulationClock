@@ -44,6 +44,14 @@
     // Set the table view background
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"debut_light"]];
     
+    // Style the search background
+    _searchBackground.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"debut_light"]];
+    UIView *mask = [[UIView alloc] initWithFrame:_searchBackground.bounds];
+    mask.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    mask.backgroundColor = [UIColor colorWithRed:0xa3/255.0 green:0xa3/255.0 blue:0xa3/255.0 alpha:1];
+    mask.alpha = 0.5;
+    [_searchBackground insertSubview:mask atIndex:0];
+    
     // Set up to receive text change notifications in
     // the search text field
     [_searchTextField addTarget:self action:@selector(searchTextFieldChanged) forControlEvents:UIControlEventEditingChanged];
