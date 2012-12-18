@@ -52,9 +52,10 @@
     mask.alpha = 0.5;
     [_searchBackground insertSubview:mask atIndex:0];
     
-    // Set up to receive text change notifications in
-    // the search text field
+    // Set up to receive text change notifications about changes to the search text field
     [_searchTextField addTarget:self action:@selector(searchTextFieldChanged) forControlEvents:UIControlEventEditingChanged];
+    
+    // TODO: Observe for changes to the country selection
 }
 
 - (void)layoutSubviews {
@@ -79,6 +80,11 @@
     frame.size.height = self.bounds.size.height - frame.size.height - 40;
     frame.origin.y += _searchBackground.frame.size.height;
     _tableView.frame = frame;
+    
+    // If we had a selection, center on it
+    NSIndexPath *selection = [_tableView indexPathForSelectedRow];
+    if (selection)
+        [_tableView scrollToRowAtIndexPath:selection atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
