@@ -2,12 +2,11 @@
 
 set -e
 
-#python colormap.py
-python colormapGrowth.py
+python colormap.py
 convert \
     -background black \
     -separate -average \
-    -flatten -depth 32 \
+    -flatten -depth 8 \
     +dither +antialias \
     -density 100 \
     colormap.svg colormap.png
