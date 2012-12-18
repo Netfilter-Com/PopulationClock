@@ -125,7 +125,8 @@
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-    // Done with the filter result array
+    // Done with the filter results
+    _searchTextField.text = @"";
     _searchResult = nil;
     
     // Reload the table
@@ -147,6 +148,28 @@
     
     // Reload the table
     [_tableView reloadData];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // If we were filtering the list, stop filtering and
+    // select the item we had selected in the filtered list
+    if (_searchResult) {
+        // Get the selected item
+        NSDictionary *item = _searchResult[indexPath.row];
+        
+        // Stop filtering
+        [_searchTextField resignFirstResponder];
+        
+        // Find the selected item in the new list
+        NSInteger pos = [_countries indexOfObject:item];
+        assert(pos != NSNotFound);
+        
+        // Select it
+        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:pos inSection:0];
+        [_tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionMiddle];
+    }
+    
+    // TODO: Notify the observers about the selection
 }
 
 @end
