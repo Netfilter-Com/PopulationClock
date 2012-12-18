@@ -1,6 +1,27 @@
 from constants import *
 from xml.dom import minidom
 
+def applyColorToPath(path, color):
+    path.setAttribute("fill", color)
+    if path.hasAttribute("stroke"):
+        path.removeAttribute("stroke")
+    if path.hasAttribute("stroke-width"):
+        path.removeAttribute("stroke-width")
+    if path.hasAttribute("stroke-miterlimit"):
+        path.removeAttribute("stroke-miterlimit")
+
+def applyColor(el, color):
+    # If this is a path, simply apply the color to it
+    if el.tagName == "path":
+        applyColorToPath(el, color)
+
+    # Otherwise it must be a group, find the paths
+    # and apply the color to them
+    else:
+        for child in el.childNodes:
+            if isinstance(child, minidom.Element) and child.tagName == "path":
+                applyColorToPath(child, color)
+
 def main():
     # Open the base doc and get the root
     base_doc = minidom.parse("map.svg")
@@ -15,16 +36,23 @@ def main():
     # A dictionary associating colors to countries
     colors = {}
 
-    # Enumerate the groups
-    groups = base_doc.getElementsByTagName("g")
-    for group in groups:
+    # Enumerate the paths and groups
+    for child in root.childNodes:
+        # Nothing to do if this isn't even an element
+        if not isinstance(child, minidom.Element):
+            continue
+
+        # Nothing to do if it isn't a path or group
+        if child.tagName != "path" and child.tagName != "g":
+            continue
+
         # Find the country
-        country = group.getAttribute("id")
+        country = child.getAttribute("id")
         if country not in COUNTRY_CODES:
             continue
 
-        # Clone the group
-        new_group = group.cloneNode(True)
+        # Clone this element
+        new_el = child.cloneNode(True)
 
         # Format the color as an hex string
         colorStr = hex(color + color * 256 + color * 256 * 256)[2:]
@@ -32,52 +60,11 @@ def main():
             colorStr = "0" + colorStr
         colorStr = "#" + colorStr
 
-        # Find the path elements and adjust their color
-        paths = new_group.getElementsByTagName("path")
-        for path in paths:
-            path.setAttribute("fill", colorStr)
-            if path.hasAttribute("stroke"):
-                path.removeAttribute("stroke")
-            if path.hasAttribute("stroke-width"):
-                path.removeAttribute("stroke-width")
-            if path.hasAttribute("stroke-miterlimit"):
-                path.removeAttribute("stroke-miterlimit")
+        # Apply the color
+        applyColor(new_el, colorStr)
 
         # Add to the new root
-        new_root.appendChild(new_group)
-
-        # Add the color to the dictionary
-        colors[color] = country
-        color += 1
-
-    # Same thing for standalone paths
-    paths = base_doc.getElementsByTagName("path")
-    for path in paths:
-        # Find the country
-        country = path.getAttribute("id")
-        if country not in COUNTRY_CODES:
-            continue
-
-        # Clone the path
-        new_path = path.cloneNode(True)
-
-        # Format the color as an hex string
-        colorStr = hex(color + color * 256 + color * 256 * 256)[2:]
-        if len(colorStr) == 5:
-            colorStr = "0" + colorStr
-        colorStr = "#" + colorStr
-
-        # Adjust the color
-        new_path.setAttribute("fill", colorStr)
-        if new_path.hasAttribute("stroke"):
-            new_path.removeAttribute("stroke")
-        if new_path.hasAttribute("stroke-width"):
-            new_path.removeAttribute("stroke-width")
-        if new_path.hasAttribute("stroke-miterlimit"):
-            new_path.removeAttribute("stroke-miterlimit")
-
-        # Add to the new root
-        new_root.appendChild(new_path)
+        new_root.appendChild(new_el)
 
         # Add the color to the dictionary
         colors[color] = country
