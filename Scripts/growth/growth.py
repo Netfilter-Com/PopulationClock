@@ -22,9 +22,8 @@ def applyColor(el, color):
     # Otherwise it must be a group, find the paths
     # and apply the color to them
     else:
-        for child in el.childNodes:
-            if isinstance(child, minidom.Element) and child.tagName == "path":
-                applyColorToPath(child, color)
+        for path in el.getElementsByTagName("path"):
+            applyColorToPath(path, color)
 
 def main():
     # Read the input from the CSV to get the colors
