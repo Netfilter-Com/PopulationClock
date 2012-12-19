@@ -100,17 +100,18 @@ def main():
         # Find the country
         country = child.getAttribute("id")
         if country not in COUNTRY_CODES:
-            continue
+            country = None
 
         # Clone this element
         new_el = child.cloneNode(True)
 
         # Apply the color, if possible
-        country = country.upper()
-        if country in colors_per_country:
-            applyColor(new_el, colors_per_country[country])
-        else:
-            print ">>> Country without color: " + country
+        if country != None:
+            country = country.upper()
+            if country in colors_per_country:
+                applyColor(new_el, colors_per_country[country])
+            else:
+                print ">>> Country without color: " + country
 
         # Add to the new root
         new_root.appendChild(new_el)
