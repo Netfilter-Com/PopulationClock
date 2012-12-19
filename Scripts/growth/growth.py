@@ -109,6 +109,8 @@ def main():
         country = country.upper()
         if country in colors_per_country:
             applyColor(new_el, colors_per_country[country])
+        else:
+            print ">>> Country without color: " + country
 
         # Add to the new root
         new_root.appendChild(new_el)
