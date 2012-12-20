@@ -48,6 +48,13 @@
 		ED23C58D1680A41200005C5F /* bgListaVert@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED23C5811680A41200005C5F /* bgListaVert@2x.png */; };
 		ED23C5901680A43F00005C5F /* ClockPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED23C58F1680A43E00005C5F /* ClockPanelView.m */; };
 		ED23C5931680A46000005C5F /* CountryInfoPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED23C5921680A46000005C5F /* CountryInfoPanelView.m */; };
+		ED247EAF168385660092E185 /* CountryInfoWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED247EAE168385660092E185 /* CountryInfoWebView.m */; };
+		ED247EB5168387000092E185 /* boxInfoPais.png in Resources */ = {isa = PBXBuildFile; fileRef = ED247EB1168387000092E185 /* boxInfoPais.png */; };
+		ED247EB6168387000092E185 /* boxInfoPais@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED247EB2168387000092E185 /* boxInfoPais@2x.png */; };
+		ED247EB7168387000092E185 /* info_template_landscape.html in Resources */ = {isa = PBXBuildFile; fileRef = ED247EB3168387000092E185 /* info_template_landscape.html */; };
+		ED247EB8168387000092E185 /* info_template_portrait.html in Resources */ = {isa = PBXBuildFile; fileRef = ED247EB4168387000092E185 /* info_template_portrait.html */; };
+		ED247EBB16839DCC0092E185 /* infoPaisNome.png in Resources */ = {isa = PBXBuildFile; fileRef = ED247EB916839DCC0092E185 /* infoPaisNome.png */; };
+		ED247EBC16839DCC0092E185 /* infoPaisNome@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED247EBA16839DCC0092E185 /* infoPaisNome@2x.png */; };
 		ED597E8A167F988000038B75 /* CountryListPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED597E89167F988000038B75 /* CountryListPanelView.m */; };
 		ED597E8E167FA55600038B75 /* TopBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED597E8D167FA55600038B75 /* TopBarView.m */; };
 		ED882BDB168256D00084522F /* country_flag_ad.png in Resources */ = {isa = PBXBuildFile; fileRef = ED882A23168256D00084522F /* country_flag_ad.png */; };
@@ -552,6 +559,14 @@
 		ED23C58F1680A43E00005C5F /* ClockPanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClockPanelView.m; sourceTree = "<group>"; };
 		ED23C5911680A46000005C5F /* CountryInfoPanelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryInfoPanelView.h; sourceTree = "<group>"; };
 		ED23C5921680A46000005C5F /* CountryInfoPanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryInfoPanelView.m; sourceTree = "<group>"; };
+		ED247EAD168385660092E185 /* CountryInfoWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryInfoWebView.h; sourceTree = "<group>"; };
+		ED247EAE168385660092E185 /* CountryInfoWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryInfoWebView.m; sourceTree = "<group>"; };
+		ED247EB1168387000092E185 /* boxInfoPais.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boxInfoPais.png; sourceTree = "<group>"; };
+		ED247EB2168387000092E185 /* boxInfoPais@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "boxInfoPais@2x.png"; sourceTree = "<group>"; };
+		ED247EB3168387000092E185 /* info_template_landscape.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = info_template_landscape.html; sourceTree = "<group>"; };
+		ED247EB4168387000092E185 /* info_template_portrait.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = info_template_portrait.html; sourceTree = "<group>"; };
+		ED247EB916839DCC0092E185 /* infoPaisNome.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = infoPaisNome.png; sourceTree = "<group>"; };
+		ED247EBA16839DCC0092E185 /* infoPaisNome@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "infoPaisNome@2x.png"; sourceTree = "<group>"; };
 		ED597E88167F988000038B75 /* CountryListPanelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryListPanelView.h; sourceTree = "<group>"; };
 		ED597E89167F988000038B75 /* CountryListPanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryListPanelView.m; sourceTree = "<group>"; };
 		ED597E8C167FA55600038B75 /* TopBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopBarView.h; sourceTree = "<group>"; };
@@ -1529,6 +1544,8 @@
 				EDA0C3CF167BB23800CBECC4 /* CountryDetector.m */,
 				ED23C5911680A46000005C5F /* CountryInfoPanelView.h */,
 				ED23C5921680A46000005C5F /* CountryInfoPanelView.m */,
+				ED247EAD168385660092E185 /* CountryInfoWebView.h */,
+				ED247EAE168385660092E185 /* CountryInfoWebView.m */,
 				ED597E88167F988000038B75 /* CountryListPanelView.h */,
 				ED597E89167F988000038B75 /* CountryListPanelView.m */,
 				EDA0C3BC167BAF1400CBECC4 /* MainStoryboard.storyboard */,
@@ -1580,6 +1597,8 @@
 				ED23C57F1680A41200005C5F /* bgListaHoriz@2x.png */,
 				ED23C5801680A41200005C5F /* bgListaVert.png */,
 				ED23C5811680A41200005C5F /* bgListaVert@2x.png */,
+				ED247EB1168387000092E185 /* boxInfoPais.png */,
+				ED247EB2168387000092E185 /* boxInfoPais@2x.png */,
 				ED0108A51680CADD0067F88D /* boxRodapeVert.png */,
 				ED0108A61680CADD0067F88D /* boxRodapeVert@2x.png */,
 				EDA0C3DC167BB2F800CBECC4 /* colormap.plist */,
@@ -1595,6 +1614,10 @@
 				ED0108D11680F6230067F88D /* Icon-72@2x.png */,
 				ED0108B51680CDD10067F88D /* inativoAtivo.png */,
 				ED0108B61680CDD10067F88D /* inativoAtivo@2x.png */,
+				ED247EB3168387000092E185 /* info_template_landscape.html */,
+				ED247EB4168387000092E185 /* info_template_portrait.html */,
+				ED247EB916839DCC0092E185 /* infoPaisNome.png */,
+				ED247EBA16839DCC0092E185 /* infoPaisNome@2x.png */,
 				EDA0C3DF167BB2F800CBECC4 /* map.png */,
 				EDA0C3E4167BB39F00CBECC4 /* map@2x.png */,
 				ED0108A01680AC110067F88D /* rotate.png */,
@@ -2140,6 +2163,12 @@
 				ED882D90168256D10084522F /* country_flag_zm@2x.png in Resources */,
 				ED882D91168256D10084522F /* country_flag_zw.png in Resources */,
 				ED882D92168256D10084522F /* country_flag_zw@2x.png in Resources */,
+				ED247EB5168387000092E185 /* boxInfoPais.png in Resources */,
+				ED247EB6168387000092E185 /* boxInfoPais@2x.png in Resources */,
+				ED247EB7168387000092E185 /* info_template_landscape.html in Resources */,
+				ED247EB8168387000092E185 /* info_template_portrait.html in Resources */,
+				ED247EBB16839DCC0092E185 /* infoPaisNome.png in Resources */,
+				ED247EBC16839DCC0092E185 /* infoPaisNome@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2161,6 +2190,7 @@
 				ED597E8E167FA55600038B75 /* TopBarView.m in Sources */,
 				ED23C5901680A43F00005C5F /* ClockPanelView.m in Sources */,
 				ED23C5931680A46000005C5F /* CountryInfoPanelView.m in Sources */,
+				ED247EAF168385660092E185 /* CountryInfoWebView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

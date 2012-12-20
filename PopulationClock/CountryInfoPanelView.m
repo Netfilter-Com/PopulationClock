@@ -13,6 +13,7 @@
 @implementation CountryInfoPanelView {
     IBOutlet __weak UIImageView *_backgroundImageView;
     IBOutlet __weak UIScrollView *_portraitScrollView;
+    IBOutlet __weak UIImageView *_portraitWebViewBackground;
     IBOutlet __weak UIImageView *_landscapeFlag;
     IBOutlet __weak UILabel *_landscapeCountryName;
     IBOutlet __weak UIWebView *_webView;
@@ -57,6 +58,7 @@
     
     // Set them for the views
     _portraitScrollView.alpha = portraitAlpha;
+    _portraitWebViewBackground.alpha = portraitAlpha;
     _landscapeFlag.alpha = landscapeAlpha;
     _landscapeCountryName.alpha = landscapeAlpha;
 }
@@ -114,10 +116,11 @@
             flag.center = CGPointMake(self.bounds.size.width * (i + 0.5), _portraitScrollView.frame.size.height / 2);
         }
         
-        // Position the web view
+        // Position the web view and its background
         CGRect frame = CGRectMake(20, 0, self.bounds.size.width - 40, 367);
         frame.origin.y = self.bounds.size.height - 20 - frame.size.height;
         _webView.frame = frame;
+        _portraitWebViewBackground.frame = frame;
     }
 }
 
