@@ -186,6 +186,7 @@
                                 <rect key="frame" x="0.0" y="960" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
+                                    <barButtonItem title="Remove ads" id="Ax7-ql-JHu"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="FAT-88-anJ"/>
                                     <barButtonItem title="Share" id="SJI-Nc-UrH"/>
                                     <barButtonItem title="About" id="kvI-HI-BWZ"/>
