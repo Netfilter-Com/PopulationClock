@@ -140,9 +140,33 @@
                                         <rect key="frame" x="0.0" y="0.0" width="384" height="516"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
+                                    <webView contentMode="scaleToFill" id="KQe-4j-zZ6">
+                                        <rect key="frame" x="20" y="129" width="344" height="367"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </webView>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="iYz-tK-Chl">
+                                        <rect key="frame" x="0.0" y="0.0" width="384" height="160"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    </scrollView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="country_flag_br.png" id="vVZ-Jk-WQy">
+                                        <rect key="frame" x="20" y="177" width="79" height="54"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="United States of Bananaland" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IBg-fZ-8Xk">
+                                        <rect key="frame" x="107" y="190" width="237" height="27"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="21"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <connections>
                                     <outlet property="_backgroundImageView" destination="wuw-H0-RN1" id="rwe-xs-Xtt"/>
+                                    <outlet property="_landscapeCountryName" destination="IBg-fZ-8Xk" id="nHJ-xk-gcD"/>
+                                    <outlet property="_landscapeFlag" destination="vVZ-Jk-WQy" id="5Ew-jy-3Fz"/>
+                                    <outlet property="_portraitScrollView" destination="iYz-tK-Chl" id="bTh-TN-YTf"/>
+                                    <outlet property="_webView" destination="KQe-4j-zZ6" id="nAK-yT-wlR"/>
                                 </connections>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" id="Clf-1b-KYv">
@@ -180,6 +204,7 @@
         <image name="bgClockVert.png" width="386" height="117"/>
         <image name="bgInfoPaisVert.png" width="387" height="577"/>
         <image name="bgListaVert.png" width="386" height="461"/>
+        <image name="country_flag_br.png" width="236" height="162"/>
         <image name="map.png" width="1188" height="601"/>
         <image name="rotate.png" width="18" height="21"/>
     </resources>
