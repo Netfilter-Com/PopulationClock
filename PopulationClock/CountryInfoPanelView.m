@@ -13,6 +13,8 @@
 @implementation CountryInfoPanelView {
     IBOutlet __weak UIImageView *_backgroundImageView;
     IBOutlet __weak UIScrollView *_portraitScrollView;
+    IBOutlet __weak UIImageView *_portraitArrowLeft;
+    IBOutlet __weak UIImageView *_portraitArrowRight;
     IBOutlet __weak UIImageView *_portraitWebViewBackground;
     IBOutlet __weak UIImageView *_landscapeFlag;
     IBOutlet __weak UILabel *_landscapeCountryName;
@@ -58,6 +60,8 @@
     
     // Set them for the views
     _portraitScrollView.alpha = portraitAlpha;
+    _portraitArrowLeft.alpha = portraitAlpha;
+    _portraitArrowRight.alpha = portraitAlpha;
     _portraitWebViewBackground.alpha = portraitAlpha;
     _landscapeFlag.alpha = landscapeAlpha;
     _landscapeCountryName.alpha = landscapeAlpha;
@@ -106,6 +110,10 @@
         _portraitScrollView.frame = CGRectMake(0, 20, self.bounds.size.width, 140);
         _portraitScrollView.contentSize = CGSizeMake(self.bounds.size.width * 3, _portraitScrollView.frame.size.height);
         _portraitScrollView.contentOffset = CGPointMake(self.bounds.size.width, 0);
+        
+        // Position the arrows
+        _portraitArrowLeft.center = CGPointMake(20 + _portraitArrowLeft.frame.size.width / 2, _portraitScrollView.center.y);
+        _portraitArrowRight.center = CGPointMake(self.bounds.size.width -  20 - _portraitArrowRight.frame.size.width / 2, _portraitScrollView.center.y);
         
         // Resize and position the flags in the scroll view
         for (int i = 0; i < 3; ++i) {
