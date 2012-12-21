@@ -4,12 +4,20 @@ import csv
 
 DATA = [
     {
+        "filename" : "BirthRate",
+        "key" : "birthRate"
+    },
+    {
         "filename" : "BirthsPerWoman",
         "key" : "birthsPerWoman"
     },
     {
         "filename" : "CO2E.KT",
         "key" : "co2Emissions"
+    },
+    {
+        "filename" : "DeathRate",
+        "key" : "deathRate"
     },
     {
         "filename" : "ElectricityAccess",
@@ -50,6 +58,11 @@ DATA = [
     {
         "filename" : "PercentInternetUsers",
         "key" : "internetUsers"
+    },
+    {
+        "filename" : "TotalPopulation",
+        "key" : "population",
+        "needsYear" : True
     }
 ]
 
@@ -154,8 +167,9 @@ def main():
             v = ind[k]
             outd.appendChild(doc.createElementNS(None, "key"))
             outd.lastChild.appendChild(doc.createTextNode(k))
-            typestr = "number" if k == "Population" or k.endswith("Year") else "real"
-            v = v if typestr == "real" else round(v)
+            typestr = "integer" if k == "Population" or k.endswith("Year") else "real"
+            if typestr == "integer":
+                v = int(v)
             outd.appendChild(doc.createElementNS(None, typestr))
             outd.lastChild.appendChild(doc.createTextNode(str(v)))
 
