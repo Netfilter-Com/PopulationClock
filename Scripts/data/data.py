@@ -154,6 +154,20 @@ def main():
     for d in DATA:
         readCSV(d)
 
+    # Warn if there's any country without total population,
+    # birth or death rate
+    for country in processed.keys():
+        ind = processed[country]
+        missing = []
+        if not "birthRate" in ind:
+            missing.append("birth rate")
+        if not "deathRate" in ind:
+            missing.append("death rate")
+        if not "population" in ind:
+            missing.append("population")
+        if len(missing) > 0:
+            print "Country with missing " + ", ".join(missing) + ": " + country
+
     # Create the plist
     doc = minidom.parseString("<plist><dict></dict></plist>")
     mydict = doc.getElementsByTagName("dict")[0]
