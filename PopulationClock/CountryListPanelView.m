@@ -24,7 +24,7 @@
 - (void)awakeFromNib {
     // Load the list of countries by removing the entry
     // for the entire world
-    _countries = [DataManager.sharedDataManager.orderedCountryData mutableCopy];
+    _countries = [[DataManager sharedDataManager].orderedCountryData mutableCopy];
     NSUInteger worldIndex = NSNotFound;
     for (int i = 0; i < _countries.count; ++i) {
         NSDictionary *info = _countries[i];
@@ -54,7 +54,38 @@
     // Set up to receive text change notifications about changes to the search text field
     [_searchTextField addTarget:self action:@selector(searchTextFieldChanged) forControlEvents:UIControlEventEditingChanged];
     
-    // TODO: Observe for changes to the country selection
+    // Observe changes to the country selection
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(countrySelectionChanged:) name:CountrySelectionNotification object:nil];
+}
+
+- (void)countrySelectionChanged:(NSNotification *)notification {
+    // Ignore this if we're the source of the notification
+    if (notification.object == self)
+        return;
+    
+    // Get the selection
+    NSString *selection = notification.userInfo[SelectedCountryKey];
+    
+    // Deselect if the world is selected
+    if ([selection isEqualToString:@"world"]) {
+        NSIndexPath *indexPath = _tableView.indexPathForSelectedRow;
+        if (indexPath)
+            [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
+    
+    // Otherwise select and scroll to the country
+    else {
+        NSUInteger index = NSNotFound;
+        for (int i = 0; i < _countries.count; ++i) {
+            NSDictionary *info = _countries[i];
+            if ([info[@"code"] isEqualToString:selection]) {
+                index = i;
+                break;
+            }
+        }
+        assert(index != NSNotFound);
+        [_tableView selectRowAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+    }
 }
 
 - (void)layoutSubviews {
@@ -167,11 +198,13 @@
         assert(pos != NSNotFound);
         
         // Select it
-        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:pos inSection:0];
+        indexPath = [NSIndexPath indexPathForItem:pos inSection:0];
         [_tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionMiddle];
     }
     
-    // TODO: Notify the observers about the selection
+    // Let others know about this selection
+    NSDictionary *info = _countries[indexPath.row];
+    [[NSNotificationCenter defaultCenter] postNotificationName:CountrySelectionNotification object:self userInfo:@{SelectedCountryKey : info[@"code"]}];
 }
 
 @end

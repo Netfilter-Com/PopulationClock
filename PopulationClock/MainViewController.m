@@ -34,11 +34,36 @@
     // Make the single tap recognizer require the double tap
     // recognizer to fail, so it doesn't get called too
     [singleTap requireGestureRecognizerToFail:doubleTap];
+    
+    // Observe changes to the country selection
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(countrySelectionChanged:) name:CountrySelectionNotification object:nil];
+    
+    // Load the selected country from the saved state
+    NSString *savedSelection = [[NSUserDefaults standardUserDefaults] stringForKey:SelectedCountryKey];
+    if (!savedSelection)
+        savedSelection = @"world";
+    
+    // Let others know about this selection
+    [[NSNotificationCenter defaultCenter] postNotificationName:CountrySelectionNotification object:self userInfo:@{SelectedCountryKey : savedSelection}];
 }
 
 - (void)viewDidUnload {
+    // We're no longer observers
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
     // Get rid of the country detector
     _countryDetector = nil;
+}
+
+- (void)countrySelectionChanged:(NSNotification *)notification {
+    // Ignore this if we're the source of the notification
+    if (notification.object == self)
+        return;
+    
+    // Save the new selection
+    NSString *selection = notification.userInfo[SelectedCountryKey];
+    [[NSUserDefaults standardUserDefaults] setObject:selection forKey:SelectedCountryKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {

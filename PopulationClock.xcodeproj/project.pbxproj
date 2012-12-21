@@ -519,6 +519,7 @@
 		EDA0C3E5167BB39F00CBECC4 /* map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA0C3E4167BB39F00CBECC4 /* map@2x.png */; };
 		EDADD7F91684B2B9007E8BD5 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EDADD7F81684B2B9007E8BD5 /* DataManager.m */; };
 		EDADD7FC1684C9A7007E8BD5 /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = EDADD7FB1684C9A7007E8BD5 /* data.plist */; };
+		EDADD8021684D3E1007E8BD5 /* globals.m in Sources */ = {isa = PBXBuildFile; fileRef = EDADD8011684D3E1007E8BD5 /* globals.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1049,6 +1050,8 @@
 		EDADD7F71684B2B9007E8BD5 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		EDADD7F81684B2B9007E8BD5 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		EDADD7FB1684C9A7007E8BD5 /* data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = data.plist; sourceTree = "<group>"; };
+		EDADD8001684D3D6007E8BD5 /* globals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = globals.h; sourceTree = "<group>"; };
+		EDADD8011684D3E1007E8BD5 /* globals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = globals.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1563,6 +1566,8 @@
 				ED597E89167F988000038B75 /* CountryListPanelView.m */,
 				EDADD7F71684B2B9007E8BD5 /* DataManager.h */,
 				EDADD7F81684B2B9007E8BD5 /* DataManager.m */,
+				EDADD8011684D3E1007E8BD5 /* globals.m */,
+				EDADD8001684D3D6007E8BD5 /* globals.h */,
 				EDA0C3BC167BAF1400CBECC4 /* MainStoryboard.storyboard */,
 				EDA0C3D0167BB23800CBECC4 /* MainView.h */,
 				EDA0C3D1167BB23800CBECC4 /* MainView.m */,
@@ -2217,6 +2222,7 @@
 				ED23C5931680A46000005C5F /* CountryInfoPanelView.m in Sources */,
 				ED247EAF168385660092E185 /* CountryInfoWebView.m in Sources */,
 				EDADD7F91684B2B9007E8BD5 /* DataManager.m in Sources */,
+				EDADD8021684D3E1007E8BD5 /* globals.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
