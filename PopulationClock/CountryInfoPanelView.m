@@ -44,6 +44,30 @@
         flag.layer.shadowOpacity = 0.6;
         [_portraitScrollView addSubview:flag];
     }
+    
+    // Set up the gesture recognizer for the arrows
+    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollViewTouched:)];
+    recognizer.numberOfTapsRequired = 1;
+    [_portraitScrollView addGestureRecognizer:recognizer];
+}
+
+- (void)scrollViewTouched:(UIGestureRecognizer *)recognizer {
+    // Nothing to do if the scroll view is still animating
+    if (_portraitScrollView.layer.animationKeys.count)
+        return;
+    
+    // Nothing to do if the middle flag isn't the one that is
+    // currently shown, in case we haven't swapped the flags yet
+    if (_portraitScrollView.contentOffset.x != _portraitScrollView.frame.size.width)
+        return;
+    
+    // Check if the left arrow was touched
+    if (CGRectContainsPoint(_portraitArrowLeft.bounds, [recognizer locationInView:_portraitArrowLeft]))
+        [_portraitScrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+    
+    // Check if the right arrow was touched
+    else if (CGRectContainsPoint(_portraitArrowRight.bounds, [recognizer locationInView:_portraitArrowRight]))
+        [_portraitScrollView setContentOffset:CGPointMake(_portraitScrollView .frame.size.width * 2, 0) animated:YES];
 }
 
 - (void)enableOrDisableViews:(BOOL)portrait {
