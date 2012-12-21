@@ -112,12 +112,14 @@ def readCSV(d):
             country3 = row[0].lower()
             if country3 in COUNTRIES_3TO2:
                 country = COUNTRIES_3TO2[country3]
+            elif country3 == "wld":
+                country = "world"
             else:
                 print ">>> Unknown country: " + country3
                 continue
 
             # Ignore countries that are not in the map
-            if country not in mapCountries:
+            if country != "world" and country not in mapCountries:
                 print ">>> Ignoring country " + country + " (not in the map)"
                 continue
 
