@@ -58,6 +58,11 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(countrySelectionChanged:) name:CountrySelectionNotification object:nil];
 }
 
+- (void)dealloc {
+    // We are no longer observers
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)countrySelectionChanged:(NSNotification *)notification {
     // Ignore this if we're the source of the notification
     if (notification.object == self)
