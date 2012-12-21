@@ -9,6 +9,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "CountryInfoPanelView.h"
+#import "DataManager.h"
 
 @implementation CountryInfoPanelView {
     IBOutlet __weak UIImageView *_backgroundImageView;
@@ -20,6 +21,7 @@
     IBOutlet __weak UILabel *_landscapeCountryName;
     IBOutlet __weak UIWebView *_webView;
     UIImageView *_portraitFlags[3];
+    NSString *_portraitCountryCodes[3];
 }
 
 - (void)awakeFromNib {
@@ -27,28 +29,91 @@
     _landscapeFlag.layer.borderColor = [UIColor whiteColor].CGColor;
     _landscapeFlag.layer.borderWidth = 2;
     
-    // TODO: This is currently hardcoded
-    _portraitFlags[0] = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"country_flag_ar"]];
-    _portraitFlags[1] = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"country_flag_br"]];
-    _portraitFlags[2] = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"country_flag_co"]];
-    
-    // Apply a border and shadow to the portrait flags,
-    // then add them to the scrollview
-    // TODO: This will be moved to where we load the flags
-    for (int i = 0; i < 3; ++i) {
-        UIImageView *flag = _portraitFlags[i];
-        flag.layer.borderColor = [UIColor whiteColor].CGColor;
-        flag.layer.borderWidth = 4;
-        flag.layer.shadowOffset = CGSizeMake(2, 2);
-        flag.layer.shadowColor = [UIColor blackColor].CGColor;
-        flag.layer.shadowOpacity = 0.6;
-        [_portraitScrollView addSubview:flag];
-    }
-    
     // Set up the gesture recognizer for the arrows
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollViewTouched:)];
     recognizer.numberOfTapsRequired = 1;
     [_portraitScrollView addGestureRecognizer:recognizer];
+    
+    // Observe changes to the country selection
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(countrySelectionChanged:) name:CountrySelectionNotification object:nil];
+}
+
+- (void)dealloc {
+    // We are no longer observers
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)countrySelectionChanged:(NSNotification *)notification {
+    // Note that we don't ignore notifications coming from ourselves
+    // because even in that case we still have to change the flags
+    // and other info.
+    
+    // Get the selection
+    NSString *selection = notification.userInfo[SelectedCountryKey];
+    
+    // Find the index of the selection
+    NSArray *countries = [DataManager sharedDataManager].orderedCountryData;
+    NSUInteger index = NSNotFound;
+    for (int i = 0; i < countries.count; ++i) {
+        NSDictionary *info = countries[i];
+        if ([info[@"code"] isEqualToString:selection]) {
+            index = i;
+            break;
+        }
+    }
+    assert(index != NSNotFound);
+    
+    // Remove all of the scrollview's subviews
+    for (UIView *subview in _portraitScrollView.subviews)
+        [subview removeFromSuperview];
+    
+    // Change the portrait flags
+    int indices[3] = { index == 0 ? countries.count - 1 : index - 1, index, (index + 1) % countries.count };
+    for (int i = 0; i < 3; ++i) {
+        // Get the country info and country code
+        NSDictionary *info = countries[indices[i]];
+        NSString *countryCode = info[@"code"];
+        
+        // Get the flag into an image view and apply a border and shadow
+        // unless we're showing the globe
+        UIImageView *flag;
+        if ([countryCode isEqualToString:@"world"]) {
+            flag = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"globeVertical"]];
+        }
+        else {
+            NSString *flagName = [NSString stringWithFormat:@"country_flag_%@", countryCode];
+            flag = [[UIImageView alloc] initWithImage:[UIImage imageNamed:flagName]];
+            flag.layer.borderColor = [UIColor whiteColor].CGColor;
+            flag.layer.borderWidth = 4;
+            flag.layer.shadowOffset = CGSizeMake(2, 2);
+            flag.layer.shadowColor = [UIColor blackColor].CGColor;
+            flag.layer.shadowOpacity = 0.6;
+        }
+        
+        // Save the flag and country ocde
+        _portraitFlags[i] = flag;
+        _portraitCountryCodes[i] = countryCode;
+        
+        // Add it to the scrollview
+        [_portraitScrollView addSubview:flag];
+    }
+    
+    // Change the landscape flag and apply a border unless we're showing the globe
+    NSDictionary *info = countries[index];
+    NSString *countryCode = info[@"code"];
+    if ([countryCode isEqualToString:@"world"]) {
+        _landscapeFlag.image = [UIImage imageNamed:@"globeHoriz"];
+    }
+    else {
+        NSString *flagName = [NSString stringWithFormat:@"country_flag_%@", countryCode];
+        _landscapeFlag.image = [UIImage imageNamed:flagName];
+    }
+    
+    // Change the landscape country name
+    _landscapeCountryName.text = info[@"name"];
+    
+    // Force a layout
+    [self setNeedsLayout];
 }
 
 - (void)scrollViewTouched:(UIGestureRecognizer *)recognizer {
@@ -169,7 +234,17 @@
 }
 
 - (void)checkSelectedCountry {
-    // TODO: Let the observers know if the selection changed
+    // Find the selected page, accounting for any rounding errors
+    int page = (_portraitScrollView.contentOffset.x + 0.1) / _portraitScrollView.frame.size.width;
+    assert(page == 0 || page == 1 || page == 2);
+    
+    // If it's the middle page, the selection hasn't changed
+    if (page == 1)
+        return;
+    
+    // Let others know about this selection
+    NSString *selection = _portraitCountryCodes[page];
+    [[NSNotificationCenter defaultCenter] postNotificationName:CountrySelectionNotification object:self userInfo:@{SelectedCountryKey : selection}];
 }
 
 @end

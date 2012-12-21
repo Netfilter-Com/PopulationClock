@@ -299,11 +299,16 @@
         [_countryData setObject:info forKey:countryCode];
     }
     
-    // Create an ordered array with the country data
+    // Create an ordered array with the country data (the whole world comes before the first country)
     _orderedCountryData = [_countryData.allValues sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
         NSDictionary *info1 = (NSDictionary *)obj1;
         NSDictionary *info2 = (NSDictionary *)obj2;
-        return [info1[@"name"] compare:info2[@"name"] options:NSCaseInsensitiveSearch];
+        if ([info1[@"code"] isEqualToString:@"world"])
+            return NSOrderedAscending;
+        else if ([info2[@"code"] isEqualToString:@"world"])
+            return NSOrderedDescending;
+        else
+            return [info1[@"name"] compare:info2[@"name"] options:NSCaseInsensitiveSearch];
     }];
     
     return self;

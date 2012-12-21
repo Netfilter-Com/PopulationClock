@@ -520,6 +520,10 @@
 		EDADD7F91684B2B9007E8BD5 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EDADD7F81684B2B9007E8BD5 /* DataManager.m */; };
 		EDADD7FC1684C9A7007E8BD5 /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = EDADD7FB1684C9A7007E8BD5 /* data.plist */; };
 		EDADD8021684D3E1007E8BD5 /* globals.m in Sources */ = {isa = PBXBuildFile; fileRef = EDADD8011684D3E1007E8BD5 /* globals.m */; };
+		EDADD8071684DAA1007E8BD5 /* globeHoriz.png in Resources */ = {isa = PBXBuildFile; fileRef = EDADD8031684DAA1007E8BD5 /* globeHoriz.png */; };
+		EDADD8081684DAA1007E8BD5 /* globeHoriz@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EDADD8041684DAA1007E8BD5 /* globeHoriz@2x.png */; };
+		EDADD8091684DAA1007E8BD5 /* globeVertical.png in Resources */ = {isa = PBXBuildFile; fileRef = EDADD8051684DAA1007E8BD5 /* globeVertical.png */; };
+		EDADD80A1684DAA1007E8BD5 /* globeVertical@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EDADD8061684DAA1007E8BD5 /* globeVertical@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1052,6 +1056,10 @@
 		EDADD7FB1684C9A7007E8BD5 /* data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = data.plist; sourceTree = "<group>"; };
 		EDADD8001684D3D6007E8BD5 /* globals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = globals.h; sourceTree = "<group>"; };
 		EDADD8011684D3E1007E8BD5 /* globals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = globals.m; sourceTree = "<group>"; };
+		EDADD8031684DAA1007E8BD5 /* globeHoriz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = globeHoriz.png; sourceTree = "<group>"; };
+		EDADD8041684DAA1007E8BD5 /* globeHoriz@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "globeHoriz@2x.png"; sourceTree = "<group>"; };
+		EDADD8051684DAA1007E8BD5 /* globeVertical.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = globeVertical.png; sourceTree = "<group>"; };
+		EDADD8061684DAA1007E8BD5 /* globeVertical@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "globeVertical@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1631,6 +1639,10 @@
 				ED0108CB1680F54B0067F88D /* Default-Landscape~ipad.png */,
 				ED0108C91680F5430067F88D /* Default-Portrait@2x~ipad.png */,
 				ED0108C71680F5380067F88D /* Default-Portrait~ipad.png */,
+				EDADD8031684DAA1007E8BD5 /* globeHoriz.png */,
+				EDADD8041684DAA1007E8BD5 /* globeHoriz@2x.png */,
+				EDADD8051684DAA1007E8BD5 /* globeVertical.png */,
+				EDADD8061684DAA1007E8BD5 /* globeVertical@2x.png */,
 				ED0108CF1680F61D0067F88D /* Icon-72.png */,
 				ED0108D11680F6230067F88D /* Icon-72@2x.png */,
 				ED0108B51680CDD10067F88D /* inativoAtivo.png */,
@@ -2199,6 +2211,10 @@
 				ED247ECB1683ABC90092E185 /* setaNavEsq.png in Resources */,
 				ED247ECC1683ABC90092E185 /* setaNavEsq@2x.png in Resources */,
 				EDADD7FC1684C9A7007E8BD5 /* data.plist in Resources */,
+				EDADD8071684DAA1007E8BD5 /* globeHoriz.png in Resources */,
+				EDADD8081684DAA1007E8BD5 /* globeHoriz@2x.png in Resources */,
+				EDADD8091684DAA1007E8BD5 /* globeVertical.png in Resources */,
+				EDADD80A1684DAA1007E8BD5 /* globeVertical@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
