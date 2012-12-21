@@ -57,6 +57,9 @@
                                             <segment title="Country"/>
                                         </segments>
                                         <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="segmentedControlSelectionChanged:" destination="P7i-wZ-xLP" eventType="valueChanged" id="NfT-rv-ndk"/>
+                                        </connections>
                                     </segmentedControl>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="rotate.png" id="uQc-2f-nf5">
                                         <rect key="frame" x="621" y="11" width="18" height="21"/>
@@ -262,6 +265,9 @@
         </class>
         <class className="TopBarView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TopBarView.h"/>
+            <relationships>
+                <relationship kind="action" name="segmentedControlSelectionChanged:"/>
+            </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

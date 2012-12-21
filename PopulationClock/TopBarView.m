@@ -6,6 +6,8 @@
 //  Copyright (c) 2012 NetFilter. All rights reserved.
 //
 
+NSString * const selectedCountryNoWorldKey = @"selectedCountryNoWorld";
+
 #import "TopBarView.h"
 
 @implementation TopBarView {
@@ -28,6 +30,33 @@
     [_modeSegmentedControl setBackgroundImage:[UIImage imageNamed:@"bgBtHeadActive"] forState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
     [_modeSegmentedControl setDividerImage:separator forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
     [_modeSegmentedControl setDividerImage:separator forLeftSegmentState:UIControlStateSelected rightSegmentState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    
+    // Observe changes to the country selection
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(countrySelectionChanged:) name:CountrySelectionNotification object:nil];
+}
+
+- (void)dealloc {
+    // We are no longer observers
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)countrySelectionChanged:(NSNotification *)notification {
+    // Ignore this if we're the source of the notification
+    if (notification.object == self)
+        return;
+    
+    // Get the selection
+    NSString *selection = notification.userInfo[SelectedCountryKey];
+    
+    // If a real country was selected, save that
+    BOOL isWorld = [selection isEqualToString:@"world"];
+    if (!isWorld) {
+        [[NSUserDefaults standardUserDefaults] setObject:selection forKey:selectedCountryNoWorldKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
+    // Change the value of the segmented control
+    _modeSegmentedControl.selectedSegmentIndex = isWorld ? 0 : 1;
 }
 
 - (void)layoutSubviews {
@@ -81,6 +110,23 @@
         _rotateLabel.alpha = 0;
         _rotateImageView.alpha = 0;
     }
+}
+
+- (IBAction)segmentedControlSelectionChanged:(id)sender {
+    // Find the selection
+    NSString *selection;
+    if (_modeSegmentedControl.selectedSegmentIndex == 0) {
+        selection = @"world";
+    }
+    else {
+        // Look at the last country selection, default to Brazil
+        selection = [[NSUserDefaults standardUserDefaults] stringForKey:selectedCountryNoWorldKey];
+        if (!selection)
+            selection = @"br";
+    }
+    
+    // Let others know about this selection
+    [[NSNotificationCenter defaultCenter] postNotificationName:CountrySelectionNotification object:self userInfo:@{SelectedCountryKey : selection}];
 }
 
 @end
