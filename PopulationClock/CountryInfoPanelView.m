@@ -156,4 +156,20 @@
     }
 }
 
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
+    // This is called after the animation triggered
+    // by setting the content offset programatically
+    [self checkSelectedCountry];
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    // This is called after the decelerating animation
+    // when the user releases the dragged scrollview
+    [self checkSelectedCountry];
+}
+
+- (void)checkSelectedCountry {
+    // TODO: Let the observers know if the selection changed
+}
+
 @end

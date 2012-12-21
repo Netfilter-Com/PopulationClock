@@ -168,6 +168,9 @@
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="iYz-tK-Chl">
                                         <rect key="frame" x="0.0" y="0.0" width="384" height="160"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="ol5-nt-F4E" id="EG5-PM-h6n"/>
+                                        </connections>
                                     </scrollView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="country_flag_br.png" id="vVZ-Jk-WQy">
                                         <rect key="frame" x="20" y="177" width="79" height="54"/>

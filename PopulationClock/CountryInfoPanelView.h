@@ -6,6 +6,6 @@
 //  Copyright (c) 2012 NetFilter. All rights reserved.
 //
 
-@interface CountryInfoPanelView : UIView
+@interface CountryInfoPanelView : UIView <UIScrollViewDelegate>
 
 @end
