@@ -11,6 +11,8 @@
 #import "MainViewController.h"
 #import "MapImageView.h"
 
+#define MAP_MASK_COLOR [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.5]
+
 @implementation MainViewController {
     CountryDetector *_countryDetector;
     IBOutlet __weak UIScrollView *_scrollView;
@@ -64,6 +66,11 @@
     NSString *selection = notification.userInfo[SelectedCountryKey];
     [[NSUserDefaults standardUserDefaults] setObject:selection forKey:SelectedCountryKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    // Select it on the map
+    [_map deselectCurrentCountry];
+    if (![selection isEqualToString:@"world"])
+        [_map selectCountry:selection maskColor:MAP_MASK_COLOR];
 }
 
 - (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
@@ -76,9 +83,13 @@
     // Find the country
     NSString *country = [_countryDetector countryAtNormalizedPoint:center];
     if (country)
-        [_map selectCountry:country maskColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.5]];
+        [_map selectCountry:country maskColor:MAP_MASK_COLOR];
     else
         [_map deselectCurrentCountry];
+    
+    // Let others know about this selection
+    NSString *selection = country ? country : @"world";
+    [[NSNotificationCenter defaultCenter] postNotificationName:CountrySelectionNotification object:self userInfo:@{SelectedCountryKey : selection}];
 }
 
 - (void)handleDoubleTap:(UITapGestureRecognizer *)recognizer {
