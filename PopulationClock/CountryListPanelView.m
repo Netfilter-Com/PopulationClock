@@ -12,6 +12,7 @@
 
 @implementation CountryListPanelView {
     IBOutlet __weak UIImageView *_backgroundImageView;
+    IBOutlet __weak UIView *_containerView;
     IBOutlet __weak UIView *_searchBackground;
     IBOutlet __weak UITextField *_searchTextField;
     IBOutlet __weak UITableView *_tableView;
@@ -40,6 +41,10 @@
         NSString *name2 = [obj2 objectForKey:@"name"];
         return [name1 compare:name2 options:NSCaseInsensitiveSearch];
     }];
+    
+    // Set up the container view rounded corners
+    _containerView.layer.cornerRadius = 2;
+    _containerView.layer.masksToBounds = YES;
     
     // Set the table view background
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"debut_light"]];
@@ -70,15 +75,12 @@
     else
         _backgroundImageView.image = [UIImage imageNamed:@"bgListaVert"];
     
-    // Position the search background
-    CGRect frame = _searchBackground.frame;
-    frame.origin = CGPointMake(20, 20);
-    frame.size.width = self.bounds.size.width - 40;
-    _searchBackground.frame = frame;
-    
-    // Position the table view
-    frame.size.height = self.bounds.size.height - frame.size.height - 40;
-    frame.origin.y += _searchBackground.frame.size.height;
+    // Position the container view and the table view inside it (the
+    // autoresizing hints for the search background are good enough)
+    _containerView.frame = CGRectInset(self.bounds, 20, 20);
+    CGRect frame = _containerView.bounds;
+    frame.origin.y = _searchBackground.frame.size.height;
+    frame.size.height -= frame.origin.y;
     _tableView.frame = frame;
     
     // If we had a selection, center on it

@@ -13,6 +13,9 @@
 @implementation CountryInfoPanelView {
     IBOutlet __weak UIImageView *_backgroundImageView;
     IBOutlet __weak UIScrollView *_portraitScrollView;
+    IBOutlet __weak UIImageView *_portraitArrowLeft;
+    IBOutlet __weak UIImageView *_portraitArrowRight;
+    IBOutlet __weak UIImageView *_portraitWebViewBackground;
     IBOutlet __weak UIImageView *_landscapeFlag;
     IBOutlet __weak UILabel *_landscapeCountryName;
     IBOutlet __weak UIWebView *_webView;
@@ -41,6 +44,30 @@
         flag.layer.shadowOpacity = 0.6;
         [_portraitScrollView addSubview:flag];
     }
+    
+    // Set up the gesture recognizer for the arrows
+    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollViewTouched:)];
+    recognizer.numberOfTapsRequired = 1;
+    [_portraitScrollView addGestureRecognizer:recognizer];
+}
+
+- (void)scrollViewTouched:(UIGestureRecognizer *)recognizer {
+    // Nothing to do if the scroll view is still animating
+    if (_portraitScrollView.layer.animationKeys.count)
+        return;
+    
+    // Nothing to do if the middle flag isn't the one that is
+    // currently shown, in case we haven't swapped the flags yet
+    if (_portraitScrollView.contentOffset.x != _portraitScrollView.frame.size.width)
+        return;
+    
+    // Check if the left arrow was touched
+    if (CGRectContainsPoint(_portraitArrowLeft.bounds, [recognizer locationInView:_portraitArrowLeft]))
+        [_portraitScrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+    
+    // Check if the right arrow was touched
+    else if (CGRectContainsPoint(_portraitArrowRight.bounds, [recognizer locationInView:_portraitArrowRight]))
+        [_portraitScrollView setContentOffset:CGPointMake(_portraitScrollView .frame.size.width * 2, 0) animated:YES];
 }
 
 - (void)enableOrDisableViews:(BOOL)portrait {
@@ -57,6 +84,9 @@
     
     // Set them for the views
     _portraitScrollView.alpha = portraitAlpha;
+    _portraitArrowLeft.alpha = portraitAlpha;
+    _portraitArrowRight.alpha = portraitAlpha;
+    _portraitWebViewBackground.alpha = portraitAlpha;
     _landscapeFlag.alpha = landscapeAlpha;
     _landscapeCountryName.alpha = landscapeAlpha;
 }
@@ -105,6 +135,10 @@
         _portraitScrollView.contentSize = CGSizeMake(self.bounds.size.width * 3, _portraitScrollView.frame.size.height);
         _portraitScrollView.contentOffset = CGPointMake(self.bounds.size.width, 0);
         
+        // Position the arrows
+        _portraitArrowLeft.center = CGPointMake(20 + _portraitArrowLeft.frame.size.width / 2, _portraitScrollView.center.y);
+        _portraitArrowRight.center = CGPointMake(self.bounds.size.width -  20 - _portraitArrowRight.frame.size.width / 2, _portraitScrollView.center.y);
+        
         // Resize and position the flags in the scroll view
         for (int i = 0; i < 3; ++i) {
             UIImageView *flag = _portraitFlags[i];
@@ -114,11 +148,28 @@
             flag.center = CGPointMake(self.bounds.size.width * (i + 0.5), _portraitScrollView.frame.size.height / 2);
         }
         
-        // Position the web view
+        // Position the web view and its background
         CGRect frame = CGRectMake(20, 0, self.bounds.size.width - 40, 367);
         frame.origin.y = self.bounds.size.height - 20 - frame.size.height;
         _webView.frame = frame;
+        _portraitWebViewBackground.frame = frame;
     }
+}
+
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
+    // This is called after the animation triggered
+    // by setting the content offset programatically
+    [self checkSelectedCountry];
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    // This is called after the decelerating animation
+    // when the user releases the dragged scrollview
+    [self checkSelectedCountry];
+}
+
+- (void)checkSelectedCountry {
+    // TODO: Let the observers know if the selection changed
 }
 
 @end

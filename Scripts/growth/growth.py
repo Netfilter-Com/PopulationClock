@@ -47,7 +47,7 @@ def main():
                 continue
 
             # Make sure we got the country
-            country3 = match.groups()[0].upper()
+            country3 = match.groups()[0].lower()
             if country3 in COUNTRIES_3TO2:
                 country = COUNTRIES_3TO2[country3]
             else:
@@ -107,7 +107,6 @@ def main():
 
         # Apply the color, if possible
         if country != None:
-            country = country.upper()
             if country in colors_per_country:
                 applyColor(new_el, colors_per_country[country])
             else:
