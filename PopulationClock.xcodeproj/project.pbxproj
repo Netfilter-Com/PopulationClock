@@ -517,6 +517,8 @@
 		EDA0C3E2167BB2F800CBECC4 /* coords.plist in Resources */ = {isa = PBXBuildFile; fileRef = EDA0C3DE167BB2F800CBECC4 /* coords.plist */; };
 		EDA0C3E3167BB2F800CBECC4 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA0C3DF167BB2F800CBECC4 /* map.png */; };
 		EDA0C3E5167BB39F00CBECC4 /* map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA0C3E4167BB39F00CBECC4 /* map@2x.png */; };
+		EDADD7F91684B2B9007E8BD5 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EDADD7F81684B2B9007E8BD5 /* DataManager.m */; };
+		EDADD7FC1684C9A7007E8BD5 /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = EDADD7FB1684C9A7007E8BD5 /* data.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1044,6 +1046,9 @@
 		EDA0C3DE167BB2F800CBECC4 /* coords.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = coords.plist; sourceTree = "<group>"; };
 		EDA0C3DF167BB2F800CBECC4 /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		EDA0C3E4167BB39F00CBECC4 /* map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map@2x.png"; sourceTree = "<group>"; };
+		EDADD7F71684B2B9007E8BD5 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
+		EDADD7F81684B2B9007E8BD5 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
+		EDADD7FB1684C9A7007E8BD5 /* data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = data.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1556,6 +1561,8 @@
 				ED247EAE168385660092E185 /* CountryInfoWebView.m */,
 				ED597E88167F988000038B75 /* CountryListPanelView.h */,
 				ED597E89167F988000038B75 /* CountryListPanelView.m */,
+				EDADD7F71684B2B9007E8BD5 /* DataManager.h */,
+				EDADD7F81684B2B9007E8BD5 /* DataManager.m */,
 				EDA0C3BC167BAF1400CBECC4 /* MainStoryboard.storyboard */,
 				EDA0C3D0167BB23800CBECC4 /* MainView.h */,
 				EDA0C3D1167BB23800CBECC4 /* MainView.m */,
@@ -1612,6 +1619,7 @@
 				EDA0C3DC167BB2F800CBECC4 /* colormap.plist */,
 				EDA0C3DD167BB2F800CBECC4 /* colormap.png */,
 				EDA0C3DE167BB2F800CBECC4 /* coords.plist */,
+				EDADD7FB1684C9A7007E8BD5 /* data.plist */,
 				ED0108C41680E3E90067F88D /* debut_light.png */,
 				ED0108C31680E3E90067F88D /* debut_light@2x.png */,
 				ED0108CD1680F5520067F88D /* Default-Landscape@2x~ipad.png */,
@@ -2185,6 +2193,7 @@
 				ED247ECA1683ABC90092E185 /* setaNavDir@2x.png in Resources */,
 				ED247ECB1683ABC90092E185 /* setaNavEsq.png in Resources */,
 				ED247ECC1683ABC90092E185 /* setaNavEsq@2x.png in Resources */,
+				EDADD7FC1684C9A7007E8BD5 /* data.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2207,6 +2216,7 @@
 				ED23C5901680A43F00005C5F /* ClockPanelView.m in Sources */,
 				ED23C5931680A46000005C5F /* CountryInfoPanelView.m in Sources */,
 				ED247EAF168385660092E185 /* CountryInfoWebView.m in Sources */,
+				EDADD7F91684B2B9007E8BD5 /* DataManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

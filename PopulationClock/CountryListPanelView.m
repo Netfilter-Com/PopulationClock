@@ -9,6 +9,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "CountryListPanelView.h"
+#import "DataManager.h"
 
 @implementation CountryListPanelView {
     IBOutlet __weak UIImageView *_backgroundImageView;
@@ -21,26 +22,19 @@
 }
 
 - (void)awakeFromNib {
-    // TODO: Actually load this from somewhere
-    _countries = [@[
-        @{ @"code" : @"br", @"name" : @"Brazil" },
-        @{ @"code" : @"us", @"name" : @"United States" },
-        @{ @"code" : @"jp", @"name" : @"Japan" },
-        @{ @"code" : @"it", @"name" : @"Italy" },
-        @{ @"code" : @"es", @"name" : @"Spain" },
-        @{ @"code" : @"pt", @"name" : @"Portugal" },
-        @{ @"code" : @"au", @"name" : @"Australia" },
-        @{ @"code" : @"cn", @"name" : @"China" },
-        @{ @"code" : @"ca", @"name" : @"Canada" },
-        @{ @"code" : @"mx", @"name" : @"Mexico" }
-    ] mutableCopy];
-    
-    // Sort the list of countries
-    [_countries sortUsingComparator:^(id obj1, id obj2) {
-        NSString *name1 = [obj1 objectForKey:@"name"];
-        NSString *name2 = [obj2 objectForKey:@"name"];
-        return [name1 compare:name2 options:NSCaseInsensitiveSearch];
-    }];
+    // Load the list of countries by removing the entry
+    // for the entire world
+    _countries = [DataManager.sharedDataManager.orderedCountryData mutableCopy];
+    NSUInteger worldIndex = NSNotFound;
+    for (int i = 0; i < _countries.count; ++i) {
+        NSDictionary *info = _countries[i];
+        if ([info[@"code"] isEqualToString:@"world"]) {
+            worldIndex = i;
+            break;
+        }
+    }
+    assert(worldIndex != NSNotFound);
+    [_countries removeObjectAtIndex:worldIndex];
     
     // Set up the container view rounded corners
     _containerView.layer.cornerRadius = 2;
