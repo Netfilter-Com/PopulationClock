@@ -204,7 +204,11 @@
                                 <items>
                                     <barButtonItem title="Remove ads" id="Ax7-ql-JHu"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="FAT-88-anJ"/>
-                                    <barButtonItem title="Share" id="SJI-Nc-UrH"/>
+                                    <barButtonItem title="Share" id="SJI-Nc-UrH">
+                                        <connections>
+                                            <action selector="ShareApp:" destination="2" id="j8t-al-Fpt"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem title="About" id="kvI-HI-BWZ"/>
                                 </items>
                             </toolbar>
@@ -265,9 +269,6 @@
         </class>
         <class className="TopBarView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TopBarView.h"/>
-            <relationships>
-                <relationship kind="action" name="segmentedControlSelectionChanged:"/>
-            </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

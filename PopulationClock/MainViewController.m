@@ -6,17 +6,22 @@
 //  Copyright (c) 2012 NetFilter. All rights reserved.
 //
 
+#import <Twitter/Twitter.h>
+
 #import "CountryDetector.h"
 #import "MainView.h"
 #import "MainViewController.h"
 #import "MapImageView.h"
+#import "GADBannerView.h"
 
 #define MAP_MASK_COLOR [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.5]
+#define GAME_SHORT_URL @"http://bit.ly/populationclock"
 
 @implementation MainViewController {
     CountryDetector *_countryDetector;
     IBOutlet __weak UIScrollView *_scrollView;
     IBOutlet __weak MapImageView *_map;
+    GADBannerView *_adView;
 }
 
 - (void)viewDidLoad {
@@ -47,6 +52,16 @@
     
     // Let others know about this selection
     [[NSNotificationCenter defaultCenter] postNotificationName:CountrySelectionNotification object:self userInfo:@{SelectedCountryKey : savedSelection}];
+    
+    // Set Ads
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"removeAds"] != YES) {
+        _adView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner origin:CGPointMake(448.0, 335.0)];
+        _adView.adUnitID = @"a150db06a46d404";
+        _adView.tag = 123456;
+        [self.view addSubview:_adView];
+        _adView.rootViewController = self;
+        [_adView loadRequest:[GADRequest request]];
+    }
 }
 
 - (void)viewDidUnload {
@@ -111,6 +126,42 @@
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
     return _map;
+}
+
+- (IBAction)ShareApp:(id)sender {
+    // Compose the message
+    NSString *message = NSLocalizedString(@"I loved %@, awesome app for iPad! %@", @"");
+    NSString *gameName = [[[NSBundle mainBundle] localizedInfoDictionary] objectForKey:(NSString *)kCFBundleNameKey];
+    if (!gameName)
+        gameName = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleNameKey];
+    message = [NSString stringWithFormat:message, gameName, GAME_SHORT_URL];
+    
+    // If we have the activity view controller, use it
+    if (NSClassFromString(@"UIActivityViewController")) {
+        NSArray *items = @[ message, [UIImage imageNamed:@"Icon-72"] ];
+        NSArray *exclude = @[
+        UIActivityTypeAssignToContact,
+        UIActivityTypeSaveToCameraRoll,
+        UIActivityTypePrint,
+        UIActivityTypeCopyToPasteboard
+        ];
+        UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:items applicationActivities:nil];
+        controller.excludedActivityTypes = exclude;
+        [self presentModalViewController:controller animated:YES];
+        return;
+    }
+    
+    // If we have Twitter support, use that
+    if (NSClassFromString(@"TWTweetComposeViewController")) {
+        TWTweetComposeViewController *controller = [[TWTweetComposeViewController alloc] init];
+        [controller setInitialText:message];
+        [controller addImage:[UIImage imageNamed:@"Icon"]];
+        [self presentModalViewController:controller animated:YES];
+        return;
+    }
+    
+    // No deal, this shouldn't normally happen
+    assert(NO);
 }
 
 @end

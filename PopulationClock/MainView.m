@@ -115,6 +115,10 @@
     frame.origin.y = mapSize.height - 4;
     _navigationBar.frame = frame;
     
+    // Reposition the Ad
+    UIView * ad = [self viewWithTag:123456];
+    ad.frame = CGRectMake(_map.frame.size.width - 320.0, _map.frame.size.height - 50.0, 320.0,50.0);
+    
     // We have a different layout depending on the orientation
     BOOL landscape = self.bounds.size.width > self.bounds.size.height;
     if (landscape) {
