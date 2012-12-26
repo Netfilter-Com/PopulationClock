@@ -114,6 +114,8 @@ def readCSV(d):
                 country = COUNTRIES_3TO2[country3]
             elif country3 == "wld":
                 country = "world"
+            elif len(country3)==2:
+                country = country3
             else:
                 print ">>> Unknown country: " + country3
                 continue
