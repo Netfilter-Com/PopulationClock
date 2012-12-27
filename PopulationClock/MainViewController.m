@@ -55,7 +55,7 @@
     
     // Set Ads
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"removeAds"] != YES) {
-        _adView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner origin:CGPointMake(448.0, 335.0)];
+        _adView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner origin:CGPointMake(448.0, 320.0)];
         _adView.adUnitID = @"a150db06a46d404";
         _adView.tag = 123456;
         [self.view addSubview:_adView];
