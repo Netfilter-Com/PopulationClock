@@ -209,7 +209,13 @@
                                             <action selector="ShareApp:" destination="2" id="j8t-al-Fpt"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="About" id="kvI-HI-BWZ"/>
+                                    <barButtonItem title="About" id="kvI-HI-BWZ">
+                                        <connections>
+                                            <segue destination="eXI-ip-C12" kind="popover" popoverAnchorBarButtonItem="kvI-HI-BWZ" id="Qck-Xs-HLA">
+                                                <popoverArrowDirection key="popoverArrowDirection"/>
+                                            </segue>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -232,19 +238,85 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
+        <!--About View Controller-->
+        <scene sceneID="BJb-Q1-kKA">
+            <objects>
+                <viewController id="eXI-ip-C12" customClass="AboutViewController" sceneMemberID="viewController">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="C2p-yb-mRg">
+                        <rect key="frame" x="0.0" y="20" width="540" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="boxAbout.png" id="kyP-Ni-Lvk">
+                                <rect key="frame" x="0.0" y="0.0" width="540" height="600"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <textView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" usesAttributedText="YES" id="vp5-bd-rib">
+                                <rect key="frame" x="109" y="150" width="326" height="274"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <attributes>
+                                            <font key="NSFont" size="16" name="HelveticaNeue-Medium"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="2" lineHeightMultiple="1"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                    <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R1t-qe-3Nz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1191" y="-36"/>
+        </scene>
     </scenes>
     <resources>
         <image name="barraVert.png" width="779" height="45"/>
         <image name="bgClockVert.png" width="386" height="117"/>
         <image name="bgInfoPaisVert.png" width="387" height="577"/>
         <image name="bgListaVert.png" width="386" height="461"/>
+        <image name="boxAbout.png" width="418" height="500"/>
         <image name="boxInfoPais.png" width="333" height="367"/>
         <image name="country_flag_br.png" width="236" height="162"/>
-        <image name="map.png" width="1188" height="601"/>
+        <image name="map.png" width="1783" height="902"/>
         <image name="rotate.png" width="18" height="21"/>
         <image name="setaNavDir.png" width="30" height="47"/>
         <image name="setaNavEsq.png" width="30" height="47"/>
     </resources>
+    <classes>
+        <class className="AboutViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AboutViewController.h"/>
+        </class>
+        <class className="ClockPanelView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ClockPanelView.h"/>
+        </class>
+        <class className="CountryInfoPanelView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CountryInfoPanelView.h"/>
+        </class>
+        <class className="CountryInfoWebView" superclassName="UIWebView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CountryInfoWebView.h"/>
+        </class>
+        <class className="CountryListPanelView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CountryListPanelView.h"/>
+        </class>
+        <class className="MainView" superclassName="UIScrollView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainView.h"/>
+        </class>
+        <class className="MainViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainViewController.h"/>
+        </class>
+        <class className="MapImageView" superclassName="UIImageView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapImageView.h"/>
+        </class>
+        <class className="TopBarView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TopBarView.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
