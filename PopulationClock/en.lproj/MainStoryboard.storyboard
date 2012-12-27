@@ -245,32 +245,6 @@
         <image name="setaNavDir.png" width="30" height="47"/>
         <image name="setaNavEsq.png" width="30" height="47"/>
     </resources>
-    <classes>
-        <class className="ClockPanelView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ClockPanelView.h"/>
-        </class>
-        <class className="CountryInfoPanelView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CountryInfoPanelView.h"/>
-        </class>
-        <class className="CountryInfoWebView" superclassName="UIWebView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CountryInfoWebView.h"/>
-        </class>
-        <class className="CountryListPanelView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CountryListPanelView.h"/>
-        </class>
-        <class className="MainView" superclassName="UIScrollView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainView.h"/>
-        </class>
-        <class className="MainViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainViewController.h"/>
-        </class>
-        <class className="MapImageView" superclassName="UIImageView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapImageView.h"/>
-        </class>
-        <class className="TopBarView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TopBarView.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

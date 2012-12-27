@@ -65,7 +65,7 @@ def main():
 
             # Save in the dictionary
             rates_per_country[country] = rate
-
+    print max_rate,min_rate
     # Interpolate the colors
     colors_per_country = {}
     for country in rates_per_country:
