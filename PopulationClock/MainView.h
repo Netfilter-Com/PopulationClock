@@ -8,4 +8,6 @@
 
 @interface MainView : UIScrollView
 
+@property (nonatomic, weak) UIView *adView;
+
 @end

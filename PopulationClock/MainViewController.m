@@ -45,8 +45,6 @@
     // Observe changes to the country selection
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(countrySelectionChanged:) name:CountrySelectionNotification object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(purchaseDone:) name:PurchaseNotification object:nil];
-    
     // Load the selected country from the saved state
     NSString *savedSelection = [[NSUserDefaults standardUserDefaults] stringForKey:SelectedCountryKey];
     if (!savedSelection)
@@ -55,14 +53,24 @@
     // Let others know about this selection
     [[NSNotificationCenter defaultCenter] postNotificationName:CountrySelectionNotification object:self userInfo:@{SelectedCountryKey : savedSelection}];
     
-    // Set Ads
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"removeAds"] != YES) {
-        _adView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner origin:CGPointMake(448.0, 320.0)];
+    // Check if the user has purchased the option to remove ads
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"removeAds"]) {
+        // Create the banner view
+        _adView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
         _adView.adUnitID = @"a150db06a46d404";
-        _adView.tag = 123456;
-        [self.view addSubview:_adView];
         _adView.rootViewController = self;
-        [_adView loadRequest:[GADRequest request]];
+        [(MainView *)self.view setAdView:_adView];
+        [self.view addSubview:_adView];
+        
+        // Create and load the request
+        GADRequest *request = [GADRequest request];
+#ifdef DEBUG
+        request.testing = YES;
+#endif
+        [_adView loadRequest:request];
+        
+        // Be notified of purchase notifications so we can get rid of the ad
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(purchaseDone:) name:PurchaseNotification object:nil];
     }
 }
 
@@ -166,9 +174,9 @@
     assert(NO);
 }
 
-- (void) purchaseDone:(id)sender {
-    UIView * v1 = [self.view viewWithTag:123456];
-    [v1 removeFromSuperview];
+- (void)purchaseDone:(id)sender {
+    // Get rid of the ads once the user has purchased this option
+    [_adView removeFromSuperview];
 }
 
 @end

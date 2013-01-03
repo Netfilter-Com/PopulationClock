@@ -1699,8 +1699,8 @@
 				ED597E89167F988000038B75 /* CountryListPanelView.m */,
 				EDADD7F71684B2B9007E8BD5 /* DataManager.h */,
 				EDADD7F81684B2B9007E8BD5 /* DataManager.m */,
-				EDADD8011684D3E1007E8BD5 /* globals.m */,
 				EDADD8001684D3D6007E8BD5 /* globals.h */,
+				EDADD8011684D3E1007E8BD5 /* globals.m */,
 				EDA0C3BC167BAF1400CBECC4 /* MainStoryboard.storyboard */,
 				EDA0C3D0167BB23800CBECC4 /* MainView.h */,
 				EDA0C3D1167BB23800CBECC4 /* MainView.m */,
@@ -1708,10 +1708,10 @@
 				EDA0C3D3167BB23800CBECC4 /* MainViewController.m */,
 				EDA0C3D4167BB23800CBECC4 /* MapImageView.h */,
 				EDA0C3D5167BB23800CBECC4 /* MapImageView.m */,
-				ED597E8C167FA55600038B75 /* TopBarView.h */,
-				ED597E8D167FA55600038B75 /* TopBarView.m */,
 				826A9EFA1694656F005B6B8D /* PurchaseViewController.h */,
 				826A9EFB1694656F005B6B8D /* PurchaseViewController.m */,
+				ED597E8C167FA55600038B75 /* TopBarView.h */,
+				ED597E8D167FA55600038B75 /* TopBarView.m */,
 			);
 			path = PopulationClock;
 			sourceTree = "<group>";
@@ -1730,8 +1730,6 @@
 		EDA0C3DB167BB2F800CBECC4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8248F1BC168CC13700717BA7 /* boxAbout.png */,
-				8248F1BD168CC13700717BA7 /* boxAbout@2x.png */,
 				ED0108BD1680D25C0067F88D /* barBtn.png */,
 				ED0108BE1680D25C0067F88D /* barBtn@2x.png */,
 				ED23C56D1680A01700005C5F /* barraHoriz.png */,
@@ -1754,6 +1752,8 @@
 				ED23C57F1680A41200005C5F /* bgListaHoriz@2x.png */,
 				ED23C5801680A41200005C5F /* bgListaVert.png */,
 				ED23C5811680A41200005C5F /* bgListaVert@2x.png */,
+				8248F1BC168CC13700717BA7 /* boxAbout.png */,
+				8248F1BD168CC13700717BA7 /* boxAbout@2x.png */,
 				ED247EB1168387000092E185 /* boxInfoPais.png */,
 				ED247EB2168387000092E185 /* boxInfoPais@2x.png */,
 				ED0108A51680CADD0067F88D /* boxRodapeVert.png */,
