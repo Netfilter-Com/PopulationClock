@@ -19,8 +19,8 @@ def applyColor(el, color):
     # and apply the color to them
     else:
         for child in el.childNodes:
-            if isinstance(child, minidom.Element) and child.tagName == "path":
-                applyColorToPath(child, color)
+            for path in el.getElementsByTagName("path"):
+                applyColorToPath(path, color)
 
 def main():
     # Open the base doc and get the root
