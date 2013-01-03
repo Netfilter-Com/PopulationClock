@@ -42,6 +42,7 @@
 		825C8BD3168B44EF009D357D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 825C8BD2168B44EF009D357D /* StoreKit.framework */; };
 		825C8BD6168B4C9D009D357D /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 825C8BD4168B4C9D009D357D /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		825C8BD7168B4C9D009D357D /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 825C8BD5168B4C9D009D357D /* Twitter.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		826A9EFC1694656F005B6B8D /* PurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 826A9EFB1694656F005B6B8D /* PurchaseViewController.m */; };
 		ED0108A21680AC110067F88D /* rotate.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0108A01680AC110067F88D /* rotate.png */; };
 		ED0108A31680AC110067F88D /* rotate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0108A11680AC110067F88D /* rotate@2x.png */; };
 		ED0108A71680CADD0067F88D /* boxRodapeVert.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0108A51680CADD0067F88D /* boxRodapeVert.png */; };
@@ -613,6 +614,8 @@
 		825C8BD2168B44EF009D357D /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		825C8BD4168B4C9D009D357D /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		825C8BD5168B4C9D009D357D /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		826A9EFA1694656F005B6B8D /* PurchaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseViewController.h; sourceTree = "<group>"; };
+		826A9EFB1694656F005B6B8D /* PurchaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseViewController.m; sourceTree = "<group>"; };
 		ED0108A01680AC110067F88D /* rotate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rotate.png; sourceTree = "<group>"; };
 		ED0108A11680AC110067F88D /* rotate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rotate@2x.png"; sourceTree = "<group>"; };
 		ED0108A51680CADD0067F88D /* boxRodapeVert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boxRodapeVert.png; sourceTree = "<group>"; };
@@ -1760,6 +1763,8 @@
 				EDA0C3D5167BB23800CBECC4 /* MapImageView.m */,
 				ED597E8C167FA55600038B75 /* TopBarView.h */,
 				ED597E8D167FA55600038B75 /* TopBarView.m */,
+				826A9EFA1694656F005B6B8D /* PurchaseViewController.h */,
+				826A9EFB1694656F005B6B8D /* PurchaseViewController.m */,
 			);
 			path = PopulationClock;
 			sourceTree = "<group>";
@@ -2443,6 +2448,7 @@
 				EDADD7F91684B2B9007E8BD5 /* DataManager.m in Sources */,
 				EDADD8021684D3E1007E8BD5 /* globals.m in Sources */,
 				8248F1CE168CC6BC00717BA7 /* AboutViewController.m in Sources */,
+				826A9EFC1694656F005B6B8D /* PurchaseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

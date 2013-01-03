@@ -45,6 +45,8 @@
     // Observe changes to the country selection
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(countrySelectionChanged:) name:CountrySelectionNotification object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(purchaseDone:) name:PurchaseNotification object:nil];
+    
     // Load the selected country from the saved state
     NSString *savedSelection = [[NSUserDefaults standardUserDefaults] stringForKey:SelectedCountryKey];
     if (!savedSelection)
@@ -162,6 +164,11 @@
     
     // No deal, this shouldn't normally happen
     assert(NO);
+}
+
+- (void) purchaseDone:(id)sender {
+    UIView * v1 = [self.view viewWithTag:123456];
+    [v1 removeFromSuperview];
 }
 
 @end

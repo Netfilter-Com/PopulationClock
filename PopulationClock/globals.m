@@ -8,3 +8,4 @@
 
 NSString * const CountrySelectionNotification = @"CountrySelectionNotification";
 NSString * const SelectedCountryKey = @"selectedCountry";
+NSString * const PurchaseNotification = @"PurchaseNotification";
