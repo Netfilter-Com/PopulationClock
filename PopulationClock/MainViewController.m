@@ -9,9 +9,11 @@
 #import <Twitter/Twitter.h>
 
 #import "CountryDetector.h"
+#import "InAppPurchaseManager.h"
 #import "MainView.h"
 #import "MainViewController.h"
 #import "MapImageView.h"
+#import "MBProgressHUD.h"
 #import "GADBannerView.h"
 
 #define MAP_MASK_COLOR [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.5]
@@ -55,14 +57,18 @@
     // Let others know about this selection
     [[NSNotificationCenter defaultCenter] postNotificationName:CountrySelectionNotification object:self userInfo:@{SelectedCountryKey : savedSelection}];
     
-    // Check if the user has purchased the option to remove ads
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"removeAds"]) {
+    // If the user has purchased the option to remove ads or if he is
+    // not able to purchase this option, get rid of the button
+    InAppPurchaseManager *iapmgr = [InAppPurchaseManager sharedInstance];
+    if (iapmgr.adsRemoved || !iapmgr.canMakePayments) {
         // Get rid of the button
         NSMutableArray *toolbarButtons = [_toolbar.items mutableCopy];
         [toolbarButtons removeObject:_removeAdsButton];
         _toolbar.items = toolbarButtons;
     }
-    else {
+    
+    // If the user has not purchased the option, show the ads
+    if (!iapmgr.adsRemoved) {
         // Create the banner view
         _adView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
         _adView.adUnitID = @"a150db06a46d404";
@@ -78,7 +84,7 @@
         [_adView loadRequest:request];
         
         // Be notified of purchase notifications so we can get rid of the ad
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(purchaseDone:) name:PurchaseNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(purchaseDone:) name:InAppPurchasePurchasedRemoveAds object:nil];
     }
 }
 
@@ -182,7 +188,23 @@
     assert(NO);
 }
 
-- (void)purchaseDone:(id)sender {
+- (IBAction)purchaseButtonTouched:(id)sender {
+    // Show the HUD
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = NSLocalizedString(@"Contacting the App Store", @"");
+    
+    // Purchase the option to remove ads
+    [[InAppPurchaseManager sharedInstance] purchaseRemoveAdsWithCallback:^(BOOL purchased) {
+        // Hide the HUD
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        // Check if the purchase is complete
+        if (purchased)
+            [self purchaseDone:nil];
+    }];
+}
+
+- (void)purchaseDone:(NSNotification *)notification {
     // Get rid of the ads once the user has purchased this option
     [_adView removeFromSuperview];
     
