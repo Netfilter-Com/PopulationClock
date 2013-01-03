@@ -25,9 +25,8 @@
 }
 
 - (void)awakeFromNib {
-    // Add a border to the landscape flag
+    // Set the border color for the landscape flag
     _landscapeFlag.layer.borderColor = [UIColor whiteColor].CGColor;
-    _landscapeFlag.layer.borderWidth = 2;
     
     // Set up the gesture recognizer for the arrows
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollViewTouched:)];
@@ -103,10 +102,12 @@
     NSString *countryCode = info[@"code"];
     if ([countryCode isEqualToString:@"world"]) {
         _landscapeFlag.image = [UIImage imageNamed:@"globeHoriz"];
+        _landscapeFlag.layer.borderWidth = 0;
     }
     else {
         NSString *flagName = [NSString stringWithFormat:@"country_flag_%@", countryCode];
         _landscapeFlag.image = [UIImage imageNamed:flagName];
+        _landscapeFlag.layer.borderWidth = 2;
     }
     
     // Change the landscape country name
