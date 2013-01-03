@@ -21,6 +21,8 @@
     CountryDetector *_countryDetector;
     IBOutlet __weak UIScrollView *_scrollView;
     IBOutlet __weak MapImageView *_map;
+    IBOutlet __weak UIToolbar *_toolbar;
+    IBOutlet __weak UIBarButtonItem *_removeAdsButton;
     GADBannerView *_adView;
 }
 
@@ -54,7 +56,13 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:CountrySelectionNotification object:self userInfo:@{SelectedCountryKey : savedSelection}];
     
     // Check if the user has purchased the option to remove ads
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"removeAds"]) {
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"removeAds"]) {
+        // Get rid of the button
+        NSMutableArray *toolbarButtons = [_toolbar.items mutableCopy];
+        [toolbarButtons removeObject:_removeAdsButton];
+        _toolbar.items = toolbarButtons;
+    }
+    else {
         // Create the banner view
         _adView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
         _adView.adUnitID = @"a150db06a46d404";
@@ -177,6 +185,11 @@
 - (void)purchaseDone:(id)sender {
     // Get rid of the ads once the user has purchased this option
     [_adView removeFromSuperview];
+    
+    // Get rid of the button too
+    NSMutableArray *toolbarButtons = [_toolbar.items mutableCopy];
+    [toolbarButtons removeObject:_removeAdsButton];
+    _toolbar.items = toolbarButtons;
 }
 
 @end

@@ -236,7 +236,9 @@
                     </view>
                     <connections>
                         <outlet property="_map" destination="uWc-dp-F9S" id="cG3-Ng-MhF"/>
+                        <outlet property="_removeAdsButton" destination="Ax7-ql-JHu" id="lPx-EE-xyF"/>
                         <outlet property="_scrollView" destination="wmV-Tx-Q6q" id="xbu-xm-Wo9"/>
+                        <outlet property="_toolbar" destination="Clf-1b-KYv" id="toJ-rV-sep"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3" sceneMemberID="firstResponder"/>
@@ -353,7 +355,6 @@
         <class className="PurchaseViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PurchaseViewController.h"/>
             <relationships>
-                <relationship kind="action" name="StopPurchaseEvent:"/>
                 <relationship kind="outlet" name="activity" candidateClass="UIActivityIndicatorView"/>
             </relationships>
         </class>
