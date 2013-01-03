@@ -10,6 +10,7 @@
 
 #import "CountryInfoPanelView.h"
 #import "DataManager.h"
+#import "UIImage+Resizable.h"
 
 @implementation CountryInfoPanelView {
     IBOutlet __weak UIImageView *_backgroundImageView;
@@ -25,9 +26,6 @@
 }
 
 - (void)awakeFromNib {
-    // Set the border color for the landscape flag
-    _landscapeFlag.layer.borderColor = [UIColor whiteColor].CGColor;
-    
     // Set up the gesture recognizer for the arrows
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollViewTouched:)];
     recognizer.numberOfTapsRequired = 1;
@@ -66,6 +64,14 @@
     for (UIView *subview in _portraitScrollView.subviews)
         [subview removeFromSuperview];
     
+    /*
+     * Note that the way we implemented borders really sucks. The reason we're doing
+     * this is that CALayer borders overlap the content. I couldn't get alternatives
+     * like drawing a new image with the borders to work as they all got ridiculously
+     * blurry. This should be possible, though, so if you can figure out, please
+     * replace this crap with something that doesn't suck as much.
+     */
+    
     // Change the portrait flags
     int indices[3] = { index == 0 ? countries.count - 1 : index - 1, index, (index + 1) % countries.count };
     for (int i = 0; i < 3; ++i) {
@@ -80,10 +86,27 @@
             flag = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"globeVertical"]];
         }
         else {
+            // Get the right flag
             NSString *flagName = [NSString stringWithFormat:@"country_flag_%@", countryCode];
-            flag = [[UIImageView alloc] initWithImage:[UIImage imageNamed:flagName]];
-            flag.layer.borderColor = [UIColor whiteColor].CGColor;
-            flag.layer.borderWidth = 4;
+            UIImage *image = [UIImage imageNamed:flagName];
+            
+            // Calculate its new size, including borders
+            CGFloat scale = 126 / image.size.height;
+            CGSize newSize = CGSizeMake(floorf(image.size.width * scale), floorf(image.size.height * scale));
+            
+            // Calculate the size of the image centered in the
+            // image view by insetting the border width
+            CGSize innerSize = newSize;
+            innerSize.width -= 8;
+            innerSize.height -= 8;
+            
+            // Create the image view and configure it
+            flag = [[UIImageView alloc] initWithImage:[image resizedImageWithSize:innerSize]];
+            flag.frame = CGRectMake(0, 0, newSize.width, newSize.height);
+            flag.contentMode = UIViewContentModeCenter;
+            flag.backgroundColor = [UIColor whiteColor];
+            
+            // Add the shadow effect
             flag.layer.shadowOffset = CGSizeMake(2, 2);
             flag.layer.shadowColor = [UIColor blackColor].CGColor;
             flag.layer.shadowOpacity = 0.6;
@@ -101,13 +124,32 @@
     NSDictionary *info = countries[index];
     NSString *countryCode = info[@"code"];
     if ([countryCode isEqualToString:@"world"]) {
+        // Set the globe image
         _landscapeFlag.image = [UIImage imageNamed:@"globeHoriz"];
-        _landscapeFlag.layer.borderWidth = 0;
+        
+        // Unset the background color
+        _landscapeFlag.backgroundColor = [UIColor clearColor];
     }
     else {
+        // Get the right flag
         NSString *flagName = [NSString stringWithFormat:@"country_flag_%@", countryCode];
-        _landscapeFlag.image = [UIImage imageNamed:flagName];
-        _landscapeFlag.layer.borderWidth = 2;
+        UIImage *image = [UIImage imageNamed:flagName];
+        
+        // Calculate its new size, including borders
+        CGFloat scale = 31 / image.size.height;
+        CGSize newSize = CGSizeMake(floorf(image.size.width * scale), floorf(image.size.height * scale));
+        
+        // Calculate the size of the image centered in the
+        // image view by insetting the border width
+        CGSize innerSize = newSize;
+        innerSize.width -= 4;
+        innerSize.height -= 4;
+        
+        // Assign the image to the image view and configure it
+        _landscapeFlag.image = [image resizedImageWithSize:innerSize];
+        _landscapeFlag.frame = CGRectMake(0, 0, newSize.width, newSize.height);
+        _landscapeFlag.contentMode = UIViewContentModeCenter;
+        _landscapeFlag.backgroundColor = [UIColor whiteColor];
     }
     
     // Change the landscape country name
@@ -171,10 +213,8 @@
         // Hide or show the views
         [self enableOrDisableViews:NO];
         
-        // Resize and position the flag
-        CGSize flagSize = _landscapeFlag.image.size;
-        CGFloat scale = 31 / flagSize.height;
-        _landscapeFlag.frame = CGRectMake(20, 20, flagSize.width * scale, flagSize.height * scale);
+        // Position the flag
+        _landscapeFlag.frame = CGRectMake(20, 20, _landscapeFlag.frame.size.width, _landscapeFlag.frame.size.height);
         
         // Position the country label
         [_landscapeCountryName sizeToFit];
@@ -205,12 +245,9 @@
         _portraitArrowLeft.center = CGPointMake(20 + _portraitArrowLeft.frame.size.width / 2, _portraitScrollView.center.y);
         _portraitArrowRight.center = CGPointMake(self.bounds.size.width -  20 - _portraitArrowRight.frame.size.width / 2, _portraitScrollView.center.y);
         
-        // Resize and position the flags in the scroll view
+        // Position the flags in the scroll view
         for (int i = 0; i < 3; ++i) {
             UIImageView *flag = _portraitFlags[i];
-            CGSize flagSize = flag.image.size;
-            CGFloat scale = 126 / flagSize.height;
-            flag.frame = CGRectMake(0, 0, flagSize.width * scale, flagSize.height * scale);
             flag.center = CGPointMake(self.bounds.size.width * (i + 0.5), _portraitScrollView.frame.size.height / 2);
         }
         
