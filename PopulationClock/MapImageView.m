@@ -74,7 +74,9 @@
     CGColorSpaceRelease(colorspace);
     
     // Create and return an image from this context
-    UIImage *image = [UIImage imageWithCGImage:CGBitmapContextCreateImage(context)];
+    CGImageRef imageRef = CGBitmapContextCreateImage(context);
+    UIImage *image = [UIImage imageWithCGImage:imageRef];
+    CGImageRelease(imageRef);
     CGContextRelease(context);
     return image;
 }
