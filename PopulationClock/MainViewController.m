@@ -192,6 +192,7 @@
     // Show the HUD
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = NSLocalizedString(@"Contacting the App Store", @"");
+    hud.dimBackground = YES;
     
     // Purchase the option to remove ads
     [[InAppPurchaseManager sharedInstance] purchaseRemoveAdsWithCallback:^(BOOL purchased) {
