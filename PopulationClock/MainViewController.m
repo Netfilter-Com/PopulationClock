@@ -165,7 +165,7 @@
     if (NSClassFromString(@"TWTweetComposeViewController")) {
         TWTweetComposeViewController *controller = [[TWTweetComposeViewController alloc] init];
         [controller setInitialText:message];
-        [controller addImage:[UIImage imageNamed:@"Icon"]];
+        [controller addImage:[UIImage imageNamed:@"Icon-72"]];
         [self presentModalViewController:controller animated:YES];
         return;
     }
