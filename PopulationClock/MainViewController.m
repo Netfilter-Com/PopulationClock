@@ -32,9 +32,9 @@
 
 - (void)viewDidLoad {
     // Create the colors
-    _birthBlinkColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.2];
-    _deathBlinkColor = [UIColor colorWithRed:0 green:0 blue:0.5 alpha:0.2];
-    _bothBlinkColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.75 alpha:0.2];
+    _birthBlinkColor = [UIColor colorWithRed:1 green:1 blue:0 alpha:0.3];
+    _deathBlinkColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:0.5];
+    _bothBlinkColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
     
     // Load the country detector
     _countryDetector = [[CountryDetector alloc] init];
@@ -138,12 +138,20 @@
     }
     
     // Highlight them individually
-    if (births.count)
+    if (births.count) {
         [_map blinkCountries:births.allObjects color:_birthBlinkColor];
-    if (deaths.count)
+        for (NSString *countryCode in births)
+            [_map flashIcon:[UIImage imageNamed:@"birth.png"] atCountry:countryCode];
+    }
+    if (deaths.count) {
         [_map blinkCountries:deaths.allObjects color:_deathBlinkColor];
-    if (both.count)
-        [_map blinkCountries:both.allObjects color:_bothBlinkColor];
+        for (NSString *countryCode in deaths)
+            [_map flashIcon:[UIImage imageNamed:@"death.png"] atCountry:countryCode];
+    }
+    if (both.count) {
+        for (NSString *countryCode in both)
+            [_map flashIcon:[UIImage imageNamed:@"birth+death.png"] atCountry:countryCode];
+    }
 }
 
 - (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
