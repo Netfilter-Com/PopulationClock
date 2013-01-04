@@ -19,6 +19,7 @@
     UIImageView *_selectedMask;
     NSMutableData *_bitmap;
     CGSize _bitmapSize;
+    CGFloat _bitmapScale;
     dispatch_queue_t _backgroundQueue;
 }
 
@@ -38,6 +39,11 @@
         // Load the image
         UIImage *image = [UIImage imageNamed:@"colormap"];
         _bitmapSize = image.size;
+        
+        // Correct the bitmap size according to the scale
+        _bitmapScale = image.scale;
+        _bitmapSize.width *= _bitmapScale;
+        _bitmapSize.height *= _bitmapScale;
         
         // Create the context
         _bitmap = [[NSMutableData alloc] initWithLength:_bitmapSize.width * _bitmapSize.height];
@@ -75,7 +81,7 @@
     
     // Create and return an image from this context
     CGImageRef imageRef = CGBitmapContextCreateImage(context);
-    UIImage *image = [UIImage imageWithCGImage:imageRef];
+    UIImage *image = [UIImage imageWithCGImage:imageRef scale:_bitmapScale orientation:UIImageOrientationUp];
     CGImageRelease(imageRef);
     CGContextRelease(context);
     return image;

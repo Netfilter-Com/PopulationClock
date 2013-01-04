@@ -24,6 +24,10 @@
         UIImage *image = [UIImage imageNamed:@"colormap"];
         _bitmapSize = image.size;
         
+        // Correct the bitmap size according to the scale
+        _bitmapSize.width *= image.scale;
+        _bitmapSize.height *= image.scale;
+        
         // Create the context
         _bitmap = [[NSMutableData alloc] initWithLength:_bitmapSize.width * _bitmapSize.height];
         CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceGray();
