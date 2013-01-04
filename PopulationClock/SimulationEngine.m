@@ -82,10 +82,16 @@ NSString *SimulationEngineDeathsKey = @"SimulationEngineDeathsKey";
     // Let the observers know that we're starting
     [[NSNotificationCenter defaultCenter] postNotificationName:SimulationEngineResetNotification object:self];
     
-    // Schedule the timer
-    _lastStep = referenceDate;
+    // Create a new timer
     [_timer invalidate];
-    _timer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
+    _timer = [NSTimer timerWithTimeInterval:0.5 target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
+    
+    // Schedule it in the common run loop modes so that it has the
+    // same precedence as a user input operation. This way the timer
+    // will fire even though the user might be dragging the scroll
+    // view that displays these events
+    _lastStep = referenceDate;
+    [[NSRunLoop mainRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
 }
 
 static inline BOOL check_probability(float prob) {
