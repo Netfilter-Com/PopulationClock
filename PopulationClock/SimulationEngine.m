@@ -51,7 +51,7 @@ NSString *SimulationEngineDeathsKey = @"SimulationEngineDeathsKey";
             
             // Get an estimated growth rate per second (note that this
             // doesn't take immigration into account)
-            int population = [(NSNumber *)info[@"population"] intValue];
+            long long population = [(NSNumber *)info[@"population"] intValue];
             float growthRate = population * birthProb - population * deathProb;
             
             // Figure out when the population data was retrieved
@@ -109,7 +109,7 @@ static inline BOOL check_probability(float prob) {
     NSMutableSet *births = [[NSMutableSet alloc] initWithCapacity:10];
     NSArray *countryCodes = _birthProbs.allKeys;
     for (NSString *countryCode in countryCodes) {
-        int population = [(NSNumber *)_population[countryCode] intValue];
+        long long population = [(NSNumber *)_population[countryCode] longLongValue];
         float prob = [(NSNumber *)_birthProbs[countryCode] floatValue] * population * scale;
 #ifdef DEBUG
         if (prob > 1)
@@ -124,7 +124,7 @@ static inline BOOL check_probability(float prob) {
     // Same thing for deaths
     NSMutableSet *deaths = [[NSMutableSet alloc] initWithCapacity:10];
     for (NSString *countryCode in countryCodes) {
-        int population = [(NSNumber *)_population[countryCode] intValue];
+        long long population = [(NSNumber *)_population[countryCode] longLongValue];
         float prob = [(NSNumber *)_deathProbs[countryCode] floatValue] * population * scale;
 #ifdef DEBUG
         if (prob > 1)
