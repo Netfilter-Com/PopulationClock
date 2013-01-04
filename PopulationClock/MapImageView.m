@@ -68,9 +68,10 @@
 }
 
 - (uint32_t)RGBAColorValueForColor:(UIColor *)color {
-    assert(CGColorGetNumberOfComponents(color.CGColor) == 4);
-    const CGFloat *cmp = CGColorGetComponents(color.CGColor);
-    return ((int)(cmp[0] * 0xff) << 24) | ((int)(cmp[1] * 0xff) << 16) | ((int)(cmp[2] * 0xff) << 8) | (int)(cmp[3] * 0xff);
+    CGFloat r, g, b, a;
+    BOOL res = [color getRed:&r green:&g blue:&b alpha:&a];
+    assert(res);
+    return ((int)(r * 0xff) << 24) | ((int)(g * 0xff) << 16) | ((int)(b * 0xff) << 8) | (int)(a * 0xff);
 }
 
 - (UIImage *)imageFromBitmapData:(void *)data {
@@ -155,7 +156,7 @@
         [self insertSubview:imageView atIndex:0];
         
         // Extract the alpha component
-        float colorAlpha;
+        CGFloat colorAlpha;
         [color getRed:NULL green:NULL blue:NULL alpha:&colorAlpha];
         
         // Animate the image view alpha
