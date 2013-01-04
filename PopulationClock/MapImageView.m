@@ -271,8 +271,8 @@
     [self insertSubview:imageView atIndex:index];
     
     // Get absolute coordinates and apply them to the image view
-    coords.x *= self.frame.size.width;
-    coords.y *= self.frame.size.height;
+    coords.x *= self.bounds.size.width;
+    coords.y *= self.bounds.size.height;
     imageView.center = coords;
     
     // Animate it
