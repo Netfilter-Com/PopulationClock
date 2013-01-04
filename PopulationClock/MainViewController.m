@@ -97,19 +97,19 @@
 }
 
 - (void)countrySelectionChanged:(NSNotification *)notification {
-    // Ignore this if we're the source of the notification
-    if (notification.object == self)
-        return;
-    
-    // Save the new selection
+    // If we aren't the source of the notification, save the new selection
     NSString *selection = notification.userInfo[SelectedCountryKey];
-    [[NSUserDefaults standardUserDefaults] setObject:selection forKey:SelectedCountryKey];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    if (notification.object != self) {
+        [[NSUserDefaults standardUserDefaults] setObject:selection forKey:SelectedCountryKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
     
-    // Select it on the map
-    [_map deselectCurrentCountry];
-    if (![selection isEqualToString:@"world"])
-        [_map selectCountry:selection maskColor:MAP_MASK_COLOR];
+    // If the map isn't the source of the notification, perform the selection)
+    if (notification.object != _map) {
+        [_map deselectCurrentCountry];
+        if (![selection isEqualToString:@"world"])
+            [_map selectCountry:selection maskColor:MAP_MASK_COLOR];
+    }
 }
 
 - (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
@@ -128,7 +128,7 @@
     
     // Let others know about this selection
     NSString *selection = country ? country : @"world";
-    [[NSNotificationCenter defaultCenter] postNotificationName:CountrySelectionNotification object:self userInfo:@{SelectedCountryKey : selection}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:CountrySelectionNotification object:_map userInfo:@{SelectedCountryKey : selection}];
 }
 
 - (void)handleDoubleTap:(UITapGestureRecognizer *)recognizer {
