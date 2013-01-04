@@ -13,7 +13,7 @@ NSString *SimulationEngineDeathsKey;
 
 @interface SimulationEngine : NSObject
 
-@property (nonatomic, readonly) NSDictionary *population;
+@property (nonatomic, readonly) NSDictionary *populationPerCountry;
 
 + (instancetype)sharedInstance;
 

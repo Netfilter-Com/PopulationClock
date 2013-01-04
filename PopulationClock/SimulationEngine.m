@@ -10,6 +10,7 @@
 #import "SimulationEngine.h"
 
 #define SECONDS_PER_YEAR (60 * 60 * 24 * 365)
+#define SIMULATION_STEP 1.5
 #define SIMULATION_INTERVAL 0.2
 
 NSString *SimulationEngineResetNotification = @"SimulationEngineResetNotification";
@@ -21,6 +22,7 @@ NSString *SimulationEngineDeathsKey = @"SimulationEngineDeathsKey";
     NSMutableDictionary *_birthProbs, *_deathProbs, *_population;
     NSTimer *_timer;
     NSDate *_lastStep;
+    dispatch_queue_t _backgroundQueue;
 }
 
 + (instancetype)sharedInstance {
@@ -30,6 +32,21 @@ NSString *SimulationEngineDeathsKey = @"SimulationEngineDeathsKey";
         instance = [SimulationEngine new];
     });
     return instance;
+}
+
+- (id)init {
+    self = [super init];
+    if (self) {
+        // Create the background queue
+        _backgroundQueue = dispatch_queue_create("br.com.netfilter.SimulationEngineBackgroundQueue", NULL);
+    }
+    return self;
+}
+
+- (void)dealloc {
+    // Release the background queue
+    if (_backgroundQueue)
+        dispatch_release(_backgroundQueue);
 }
 
 - (void)reset {
@@ -83,16 +100,15 @@ NSString *SimulationEngineDeathsKey = @"SimulationEngineDeathsKey";
     // Let the observers know that we're starting
     [[NSNotificationCenter defaultCenter] postNotificationName:SimulationEngineResetNotification object:self];
     
-    // Create a new timer
-    [_timer invalidate];
-    _timer = [NSTimer timerWithTimeInterval:1.5 target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
-    
-    // Schedule it in the common run loop modes so that it has the
-    // same precedence as a user input operation. This way the timer
-    // will fire even though the user might be dragging the scroll
-    // view that displays these events
-    _lastStep = referenceDate;
-    [[NSRunLoop mainRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
+    // Dispatch the "timer" in a background thread
+    [self dispatchTimerFiredInBackgroundQueue];
+}
+
+- (void)dispatchTimerFiredInBackgroundQueue {
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, SIMULATION_STEP * NSEC_PER_SEC);
+    dispatch_after(popTime, _backgroundQueue, ^{
+        [self timerFired];
+    });
 }
 
 static inline BOOL check_probability(float prob) {
@@ -148,11 +164,24 @@ static inline BOOL check_probability(float prob) {
         [self simulateDeaths:deaths withScale:scale];
     }
     
-    // Publish the notification
-    [[NSNotificationCenter defaultCenter] postNotificationName:SimulationEngineStepTakenNotification object:self userInfo:@{
-        SimulationEngineBirthsKey : births,
-        SimulationEngineDeathsKey : deaths
-     }];
+    // Do the rest SYNCHRONOUSLY in the main thread
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        // Copy the population dictionary so the main thread
+        // will be able to safely access this. This is only safe
+        // because we use dispatch_SYNC, so we don't end messing
+        // with _population until this block is done
+        _populationPerCountry = [_population copy];
+        
+        // Post the notification here so observers will also
+        // receive it in the main thread
+        [[NSNotificationCenter defaultCenter] postNotificationName:SimulationEngineStepTakenNotification object:self userInfo:@{
+            SimulationEngineBirthsKey : births,
+            SimulationEngineDeathsKey : deaths
+         }];
+    });
+    
+    // Schedule the next run
+    [self dispatchTimerFiredInBackgroundQueue];
 }
 
 @end
