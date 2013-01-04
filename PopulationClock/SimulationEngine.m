@@ -10,6 +10,7 @@
 #import "SimulationEngine.h"
 
 #define SECONDS_PER_YEAR (60 * 60 * 24 * 365)
+#define SIMULATION_INTERVAL 0.2
 
 NSString *SimulationEngineResetNotification = @"SimulationEngineResetNotification";
 NSString *SimulationEngineStepTakenNotification = @"SimulationEngineStepTakenNotification";
@@ -51,7 +52,7 @@ NSString *SimulationEngineDeathsKey = @"SimulationEngineDeathsKey";
             
             // Get an estimated growth rate per second (note that this
             // doesn't take immigration into account)
-            long long population = [(NSNumber *)info[@"population"] intValue];
+            long long population = [(NSNumber *)info[@"population"] longLongValue];
             float growthRate = population * birthProb - population * deathProb;
             
             // Figure out when the population data was retrieved
@@ -84,7 +85,7 @@ NSString *SimulationEngineDeathsKey = @"SimulationEngineDeathsKey";
     
     // Create a new timer
     [_timer invalidate];
-    _timer = [NSTimer timerWithTimeInterval:0.5 target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
+    _timer = [NSTimer timerWithTimeInterval:1.5 target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
     
     // Schedule it in the common run loop modes so that it has the
     // same precedence as a user input operation. This way the timer
@@ -98,6 +99,34 @@ static inline BOOL check_probability(float prob) {
     return ((float)arc4random() / UINT32_MAX) < prob;
 }
 
+- (void)simulateBirths:(NSMutableSet *)births withScale:(NSTimeInterval)scale {
+    for (NSString *countryCode in _birthProbs.allKeys) {
+        long long population = [(NSNumber *)_population[countryCode] longLongValue];
+        float prob = [(NSNumber *)_birthProbs[countryCode] floatValue] * population * scale;
+#ifdef DEBUG
+        assert(prob >= 0 && prob <= 1);
+#endif
+        if (check_probability(prob)) {
+            [births addObject:countryCode];
+            _population[countryCode] = @(population + 1);
+        }
+    }
+}
+
+- (void)simulateDeaths:(NSMutableSet *)deaths withScale:(NSTimeInterval)scale {
+    for (NSString *countryCode in _deathProbs.allKeys) {
+        long long population = [(NSNumber *)_population[countryCode] longLongValue];
+        float prob = [(NSNumber *)_deathProbs[countryCode] floatValue] * population * scale;
+#ifdef DEBUG
+        assert(prob >= 0 && prob <= 1);
+#endif
+        if (check_probability(prob)) {
+            [deaths addObject:countryCode];
+            _population[countryCode] = @(population - 1);
+        }
+    }
+}
+
 - (void)timerFired {
     // Check the interval between the last time we ran
     // so we can adjust the probabilities
@@ -105,35 +134,18 @@ static inline BOOL check_probability(float prob) {
     NSTimeInterval scale = [now timeIntervalSinceDate:_lastStep];
     _lastStep = now;
     
-    // Check the birth probability for each country
+    // Simulate births and deaths in increments of a small value, so that
+    // the probability pretty much never goes beyond 1
     NSMutableSet *births = [[NSMutableSet alloc] initWithCapacity:10];
-    NSArray *countryCodes = _birthProbs.allKeys;
-    for (NSString *countryCode in countryCodes) {
-        long long population = [(NSNumber *)_population[countryCode] longLongValue];
-        float prob = [(NSNumber *)_birthProbs[countryCode] floatValue] * population * scale;
-#ifdef DEBUG
-        if (prob > 1)
-            NSLog(@"Probability > 1, consider reducing the interval");
-#endif
-        if (prob >= 1 || check_probability(prob)) {
-            [births addObject:countryCode];
-            _population[countryCode] = @(population + 1);
-        }
-    }
-    
-    // Same thing for deaths
     NSMutableSet *deaths = [[NSMutableSet alloc] initWithCapacity:10];
-    for (NSString *countryCode in countryCodes) {
-        long long population = [(NSNumber *)_population[countryCode] longLongValue];
-        float prob = [(NSNumber *)_deathProbs[countryCode] floatValue] * population * scale;
-#ifdef DEBUG
-        if (prob > 1)
-            NSLog(@"Probability > 1, consider reducing the interval");
-#endif
-        if (prob >= 1 || check_probability(prob)) {
-            [deaths addObject:countryCode];
-            _population[countryCode] = @(population - 1);
-        }
+    while (scale > SIMULATION_INTERVAL) {
+        scale -= SIMULATION_INTERVAL;
+        [self simulateBirths:births withScale:SIMULATION_INTERVAL];
+        [self simulateDeaths:deaths withScale:SIMULATION_INTERVAL];
+    }
+    if (scale > 0) {
+        [self simulateBirths:births withScale:scale];
+        [self simulateDeaths:deaths withScale:scale];
     }
     
     // Publish the notification
