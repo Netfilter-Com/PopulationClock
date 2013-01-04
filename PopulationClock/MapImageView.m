@@ -154,10 +154,14 @@
         imageView.tag = TAG_BLINK_LAYER;
         [self insertSubview:imageView atIndex:0];
         
-        // Animate it
+        // Extract the alpha component
+        float colorAlpha;
+        [color getRed:NULL green:NULL blue:NULL alpha:&colorAlpha];
+        
+        // Animate the image view alpha
         imageView.alpha = 0;
         [UIView animateWithDuration:0.2 animations:^{
-            imageView.alpha = 1;
+            imageView.alpha = colorAlpha;
         } completion:^(BOOL finished) {
             if (finished) {
                 [UIView animateWithDuration:0.4 delay:0.3 options:UIViewAnimationOptionCurveEaseIn animations:^{
