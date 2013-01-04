@@ -49,33 +49,39 @@ static NSString * const StatFormat = @"<div class=\"metric\"><span class=\"key\"
     [self setNeedsLayout];
 }
 
-- (NSString *)formatBigMoney:(NSNumber *)number {
+- (void)adjustBigNumber:(NSNumber **)number suffix:(NSString **)suffix {
     // We want to divide into millions, billions and trillions
-    float money = number.floatValue;
-    NSString *suffix;
-    if (money >= 10e12) {
-        money /= 10e12;
-        suffix = NSLocalizedString(@" trillion", @"");
+    float val = (*number).floatValue;
+    if (val >= 1e12) {
+        val /= 1e12;
+        *suffix = NSLocalizedString(@" trillion", @"");
     }
-    if (money >= 10e9) {
-        money /= 10e9;
-        suffix = NSLocalizedString(@" billion", @"");
+    else if (val >= 1e9) {
+        val /= 1e9;
+        *suffix = NSLocalizedString(@" billion", @"");
     }
-    else if (money >= 10e6) {
-        money /= 10e6;
-        suffix = NSLocalizedString(@" million", @"");
+    else if (val >= 1e6) {
+        val /= 1e6;
+        *suffix = NSLocalizedString(@" million", @"");
     }
     else {
-        suffix = @"";
+        *suffix = @"";
     }
+    *number = @(val);
+}
+
+- (NSString *)formatBigMoney:(NSNumber *)number {
+    // Adjust the big number and get a suffix
+    NSString *suffix;
+    [self adjustBigNumber:&number suffix:&suffix];
     
     // Apply the number formatter
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     formatter.numberStyle = NSNumberFormatterCurrencyStyle;
     formatter.minimumFractionDigits = 0;
-    formatter.maximumFractionDigits = 3;
+    formatter.maximumFractionDigits = number.floatValue > 10 ? 1 : 2;
     formatter.currencyCode = @"USD";
-    NSString *formatted = [formatter stringFromNumber:@(money)];
+    NSString *formatted = [formatter stringFromNumber:number];
     
     // Append the suffix and return
     return [formatted stringByAppendingString:suffix];
@@ -104,11 +110,34 @@ static NSString * const StatFormat = @"<div class=\"metric\"><span class=\"key\"
     return [[formatter stringFromNumber:number] stringByAppendingString:NSLocalizedString(@" years", @"")];
 }
 
+- (NSString *)formatBigNumber:(NSNumber *)number {
+    // Adjust the big number and get a suffix
+    NSString *suffix;
+    [self adjustBigNumber:&number suffix:&suffix];
+    
+    // Apply the number formatter
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    formatter.minimumFractionDigits = 0;
+    formatter.maximumFractionDigits = 1;
+    NSString *formatted = [formatter stringFromNumber:number];
+    
+    // Append the suffix and return
+    return [formatted stringByAppendingString:suffix];
+}
+
 - (NSString *)formatSmallNumber:(NSNumber *)number {
     // Use a simple formatter
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-    formatter.maximumFractionDigits = 2;
+    formatter.maximumFractionDigits = number.floatValue > 10 ? 1 : 2;
     return [formatter stringFromNumber:number];
+}
+
+- (NSString *)formatCO2Emissions:(NSNumber *)number {
+    return [self formatBigNumber:@(number.floatValue * 1e3)];
+}
+
+- (NSString *)formatEnergyProduction:(NSNumber *)number {
+    return [self formatBigNumber:@(number.floatValue * 1e3)];
 }
 
 - (void)layoutSubviews {
@@ -156,12 +185,12 @@ static NSString * const StatFormat = @"<div class=\"metric\"><span class=\"key\"
         ADD_STAT(@"govtEducationExpensePercentGDP", NSLocalizedString(@"Govt. education expenditure % GDP", @""), formatPercentage);
         ADD_STAT(@"unemploymentRate", NSLocalizedString(@"Unenmployment rate", @""), formatPercentage);
         ADD_STAT(@"electricityAccess", NSLocalizedString(@"Access to electricity", @""), formatPercentage);
-        // TODO: ADD_STAT(@"CO2 emission", NSLocalizedString(@"Access to electricity", @""), formatPercentage);
+        ADD_STAT(@"co2Emissions", NSLocalizedString(@"CO2 emissions (kg/yr)", @""), formatCO2Emissions);
         ADD_STAT(@"forestArea", NSLocalizedString(@"Forest area", @""), formatPercentage);
-        // TODO: ADD_STAT(@"energyProduction", NSLocalizedString(@"Access to electricity", @""), formatPercentage);
+        ADD_STAT(@"energyProduction", NSLocalizedString(@"Energy production (kg of oil equiv.)", @""), formatEnergyProduction);
         ADD_STAT(@"internetUsers", NSLocalizedString(@"Internet users", @""), formatPercentage);
-        ADD_STAT(@"mobileUsersPer100", NSLocalizedString(@"Mobile phones per each 1000 inhabitants", @""), formatSmallNumber);
-        ADD_STAT(@"passengerCarPer1000", NSLocalizedString(@"Passenger cars per each 1000 inhabitants", @""), formatSmallNumber);
+        ADD_STAT(@"mobileUsersPer100", NSLocalizedString(@"Mobile phones per 100 people", @""), formatSmallNumber);
+        ADD_STAT(@"passengerCarPer1000", NSLocalizedString(@"Passenger cars per 1,000 people", @""), formatSmallNumber);
         ADD_STAT(@"roadsPaved", NSLocalizedString(@"Roads paved", @""), formatPercentage);
 #undef ADD_STAT
         

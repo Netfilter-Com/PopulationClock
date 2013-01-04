@@ -24,6 +24,10 @@ DATA = [
         "key" : "electricityAccess"
     },
     {
+        "filename" : "EnergyProductionKT",
+        "key" : "energyProduction"
+    },
+    {
         "filename" : "ForestAreaPercent",
         "key" : "forestArea"
     },

@@ -159,6 +159,7 @@
                                         <rect key="frame" x="20" y="129" width="344" height="367"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <dataDetectorType key="dataDetectorTypes"/>
                                     </webView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="setaNavEsq.png" id="qvL-67-WgR">
                                         <rect key="frame" x="20" y="56" width="30" height="47"/>
