@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "InAppPurchaseManager.h"
+#import "SimulationEngine.h"
 
 @implementation AppDelegate
 
@@ -15,7 +16,15 @@
     // Pre-load the IAP products
     [InAppPurchaseManager sharedInstance];
     
+    // Reset the simulation
+    [[SimulationEngine sharedInstance] reset];
+    
     return YES;
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+    // Reset the simulation
+    [[SimulationEngine sharedInstance] reset];
 }
 
 @end

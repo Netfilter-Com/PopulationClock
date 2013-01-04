@@ -65,6 +65,7 @@
 		ED0108D01680F61D0067F88D /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0108CF1680F61D0067F88D /* Icon-72.png */; };
 		ED0108D21680F6230067F88D /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0108D11680F6230067F88D /* Icon-72@2x.png */; };
 		ED0E20A216970AE3005445B7 /* colormap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0E20A116970AE3005445B7 /* colormap@2x.png */; };
+		ED0E20AD169719AD005445B7 /* SimulationEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0E20AC169719AD005445B7 /* SimulationEngine.m */; };
 		ED23C56F1680A01700005C5F /* barraHoriz.png in Resources */ = {isa = PBXBuildFile; fileRef = ED23C56D1680A01700005C5F /* barraHoriz.png */; };
 		ED23C5701680A01700005C5F /* barraVert.png in Resources */ = {isa = PBXBuildFile; fileRef = ED23C56E1680A01700005C5F /* barraVert.png */; };
 		ED23C5741680A0A600005C5F /* barraHoriz@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED23C5721680A0A600005C5F /* barraHoriz@2x.png */; };
@@ -625,6 +626,8 @@
 		ED0108CF1680F61D0067F88D /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "../Icon-72.png"; sourceTree = "<group>"; };
 		ED0108D11680F6230067F88D /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72@2x.png"; path = "../Icon-72@2x.png"; sourceTree = "<group>"; };
 		ED0E20A116970AE3005445B7 /* colormap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "colormap@2x.png"; sourceTree = "<group>"; };
+		ED0E20AB169719AD005445B7 /* SimulationEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimulationEngine.h; sourceTree = "<group>"; };
+		ED0E20AC169719AD005445B7 /* SimulationEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimulationEngine.m; sourceTree = "<group>"; };
 		ED23C56D1680A01700005C5F /* barraHoriz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barraHoriz.png; sourceTree = "<group>"; };
 		ED23C56E1680A01700005C5F /* barraVert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barraVert.png; sourceTree = "<group>"; };
 		ED23C5721680A0A600005C5F /* barraHoriz@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barraHoriz@2x.png"; sourceTree = "<group>"; };
@@ -1718,6 +1721,8 @@
 				EDA0C3D3167BB23800CBECC4 /* MainViewController.m */,
 				EDA0C3D4167BB23800CBECC4 /* MapImageView.h */,
 				EDA0C3D5167BB23800CBECC4 /* MapImageView.m */,
+				ED0E20AB169719AD005445B7 /* SimulationEngine.h */,
+				ED0E20AC169719AD005445B7 /* SimulationEngine.m */,
 				ED597E8C167FA55600038B75 /* TopBarView.h */,
 				ED597E8D167FA55600038B75 /* TopBarView.m */,
 				ED3A9BDF16961A3E007D19DB /* UIImage+Resizable.h */,
@@ -2446,6 +2451,7 @@
 				EDF8D0821695BF3500FE02B1 /* InAppPurchaseManager.m in Sources */,
 				EDF8D0861695DAAE00FE02B1 /* MBProgressHUD.m in Sources */,
 				ED3A9BE116961A3E007D19DB /* UIImage+Resizable.m in Sources */,
+				ED0E20AD169719AD005445B7 /* SimulationEngine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,12 +9,13 @@
 #import <Twitter/Twitter.h>
 
 #import "CountryDetector.h"
+#import "GADBannerView.h"
 #import "InAppPurchaseManager.h"
 #import "MainView.h"
 #import "MainViewController.h"
 #import "MapImageView.h"
 #import "MBProgressHUD.h"
-#import "GADBannerView.h"
+#import "SimulationEngine.h"
 
 #define MAP_MASK_COLOR [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.5]
 #define GAME_SHORT_URL @"http://bit.ly/populationclock"
@@ -25,10 +26,16 @@
     IBOutlet __weak MapImageView *_map;
     IBOutlet __weak UIToolbar *_toolbar;
     IBOutlet __weak UIBarButtonItem *_removeAdsButton;
+    UIColor *_birthBlinkColor, *_deathBlinkColor, *_bothBlinkColor;
     GADBannerView *_adView;
 }
 
 - (void)viewDidLoad {
+    // Create the colors
+    _birthBlinkColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.2];
+    _deathBlinkColor = [UIColor colorWithRed:0 green:0 blue:0.5 alpha:0.2];
+    _bothBlinkColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.75 alpha:0.2];
+    
     // Load the country detector
     _countryDetector = [[CountryDetector alloc] init];
     
@@ -48,6 +55,9 @@
     
     // Observe changes to the country selection
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(countrySelectionChanged:) name:CountrySelectionNotification object:nil];
+    
+    // Observe steps taken by the simulator
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(simulationEngineStepTaken:) name:SimulationEngineStepTakenNotification object:nil];
     
     // Load the selected country from the saved state
     NSString *savedSelection = [[NSUserDefaults standardUserDefaults] stringForKey:SelectedCountryKey];
@@ -110,6 +120,30 @@
         if (![selection isEqualToString:@"world"])
             [_map selectCountry:selection maskColor:MAP_MASK_COLOR];
     }
+}
+
+- (void)simulationEngineStepTaken:(NSNotification *)notification {
+    // Get the sets of births and deaths
+    NSMutableSet *births = [notification.userInfo[SimulationEngineBirthsKey] mutableCopy];
+    NSMutableSet *deaths = [notification.userInfo[SimulationEngineDeathsKey] mutableCopy];
+    
+    // Get their intersection
+    NSMutableSet *both = [births mutableCopy];
+    [both intersectSet:deaths];
+    
+    // Remove their intersection from the individual sets
+    for (NSString *countryCode in both) {
+        [births removeObject:countryCode];
+        [deaths removeObject:countryCode];
+    }
+    
+    // Highlight them individually
+    if (births.count)
+        [_map blinkCountries:births.allObjects color:_birthBlinkColor];
+    if (deaths.count)
+        [_map blinkCountries:deaths.allObjects color:_deathBlinkColor];
+    if (both.count)
+        [_map blinkCountries:both.allObjects color:_bothBlinkColor];
 }
 
 - (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
