@@ -139,6 +139,10 @@
                                         <rect key="frame" x="0.0" y="0.0" width="384" height="137"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="clock_background.png" id="Xcl-AC-G2O" customClass="PopulationClockView">
+                                        <rect key="frame" x="82" y="41" width="221" height="56"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
                                 <connections>
                                     <outlet property="_backgroundImageView" destination="KXl-G9-zaH" id="Ykn-xs-Adh"/>
@@ -295,6 +299,7 @@
                     <connections>
                         <outlet property="_legend" destination="f4I-fl-wvI" id="GF6-Rb-fJV"/>
                         <outlet property="_map" destination="uWc-dp-F9S" id="cG3-Ng-MhF"/>
+                        <outlet property="_populationClock" destination="Xcl-AC-G2O" id="Kfp-vU-KAd"/>
                         <outlet property="_removeAdsButton" destination="Ax7-ql-JHu" id="lPx-EE-xyF"/>
                         <outlet property="_scrollView" destination="wmV-Tx-Q6q" id="xbu-xm-Wo9"/>
                         <outlet property="_toolbar" destination="Clf-1b-KYv" id="toJ-rV-sep"/>
@@ -349,6 +354,7 @@
         <image name="birth.png" width="13" height="13"/>
         <image name="boxAbout.png" width="418" height="500"/>
         <image name="boxInfoPais.png" width="333" height="367"/>
+        <image name="clock_background.png" width="221" height="56"/>
         <image name="country_flag_br.png" width="236" height="162"/>
         <image name="death.png" width="13" height="13"/>
         <image name="map.png" width="1783" height="902"/>
@@ -383,6 +389,9 @@
         </class>
         <class className="MapLegendView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MapLegendView.h"/>
+        </class>
+        <class className="PopulationClockView" superclassName="UIImageView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PopulationClockView.h"/>
         </class>
         <class className="TopBarView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TopBarView.h"/>

@@ -15,20 +15,27 @@
 #import "MainViewController.h"
 #import "MapImageView.h"
 #import "MBProgressHUD.h"
+#import "PopulationClockView.h"
 #import "SimulationEngine.h"
 
 #define MAP_MASK_COLOR [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.5]
 #define GAME_SHORT_URL @"http://bit.ly/populationclock"
 
 @implementation MainViewController {
-    CountryDetector *_countryDetector;
     IBOutlet __weak UIScrollView *_scrollView;
     IBOutlet __weak UIView *_legend;
-    CGPoint _legendOrigin;
     IBOutlet __weak MapImageView *_map;
+    IBOutlet __weak PopulationClockView *_populationClock;
     IBOutlet __weak UIToolbar *_toolbar;
     IBOutlet __weak UIBarButtonItem *_removeAdsButton;
+    
+    CGPoint _legendOrigin;
+    
     UIColor *_birthBlinkColor, *_deathBlinkColor, *_bothBlinkColor;
+    
+    NSString *_selectedCountry;
+    CountryDetector *_countryDetector;
+    
     GADBannerView *_adView;
 }
 
@@ -58,19 +65,24 @@
     // Set up pan gesture recognizers for the legend
     [_legend addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(legendPanningGestureRecognized:)]];
     
-    // Observe changes to the country selection
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(countrySelectionChanged:) name:CountrySelectionNotification object:nil];
-    
-    // Observe steps taken by the simulator
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(simulationEngineStepTaken:) name:SimulationEngineStepTakenNotification object:nil];
-    
     // Load the selected country from the saved state
-    NSString *savedSelection = [[NSUserDefaults standardUserDefaults] stringForKey:SelectedCountryKey];
-    if (!savedSelection)
-        savedSelection = @"world";
+    _selectedCountry = [[NSUserDefaults standardUserDefaults] stringForKey:SelectedCountryKey];
+    if (!_selectedCountry)
+        _selectedCountry = @"world";
     
-    // Let others know about this selection
-    [[NSNotificationCenter defaultCenter] postNotificationName:CountrySelectionNotification object:self userInfo:@{SelectedCountryKey : savedSelection}];
+    // Observe changes to the country selection
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc addObserver:self selector:@selector(countrySelectionChanged:) name:CountrySelectionNotification object:nil];
+    
+    // Observe resets and steps taken by the simulator
+    [nc addObserver:self selector:@selector(simulationEngineReset:) name:SimulationEngineResetNotification object:nil];
+    [nc addObserver:self selector:@selector(simulationEngineStepTaken:) name:SimulationEngineStepTakenNotification object:nil];
+    
+    // Let others know about the current selection
+    [nc postNotificationName:CountrySelectionNotification object:self userInfo:@{SelectedCountryKey : _selectedCountry}];
+    
+    // Update the population clock
+    [self updatePopulationClockAnimated:NO];
     
     // If the user has purchased the option to remove ads or if he is
     // not able to purchase this option, get rid of the button
@@ -119,15 +131,24 @@
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
     
-    // If the map isn't the source of the notification, perform the selection)
+    // If the map isn't the source of the notification, perform the selection
     if (notification.object != _map) {
+        _selectedCountry = [selection copy];
         [_map deselectCurrentCountry];
         if (![selection isEqualToString:@"world"])
             [_map selectCountry:selection maskColor:MAP_MASK_COLOR];
     }
 }
 
+- (void)simulationEngineReset:(NSNotification *)notification {
+    // Update the population clock with no animation
+    [self updatePopulationClockAnimated:NO];
+}
+
 - (void)simulationEngineStepTaken:(NSNotification *)notification {
+    // Update the population clock
+    [self updatePopulationClockAnimated:YES];
+    
     // Get the sets of births and deaths
     NSMutableSet *births = [notification.userInfo[SimulationEngineBirthsKey] mutableCopy];
     NSMutableSet *deaths = [notification.userInfo[SimulationEngineDeathsKey] mutableCopy];
@@ -159,6 +180,11 @@
     }
 }
 
+- (void)updatePopulationClockAnimated:(BOOL)animated {
+    NSNumber *number = [SimulationEngine sharedInstance].populationPerCountry[_selectedCountry];
+    [_populationClock setPopulation:number.longLongValue animated:animated];
+}
+
 - (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
     // Find the touch center
     CGPoint center = [recognizer locationInView:_map];
@@ -173,8 +199,12 @@
     else
         [_map deselectCurrentCountry];
     
-    // Let others know about this selection
+    // Save the selection and update the population clock
     NSString *selection = country ? country : @"world";
+    _selectedCountry = selection;
+    [self updatePopulationClockAnimated:YES];
+    
+    // Let others know about this selection
     [[NSNotificationCenter defaultCenter] postNotificationName:CountrySelectionNotification object:_map userInfo:@{SelectedCountryKey : selection}];
 }
 

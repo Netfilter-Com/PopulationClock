@@ -105,6 +105,15 @@
 		ED597E8A167F988000038B75 /* CountryListPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED597E89167F988000038B75 /* CountryListPanelView.m */; };
 		ED597E8E167FA55600038B75 /* TopBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED597E8D167FA55600038B75 /* TopBarView.m */; };
 		ED7FF18C169B1FD800123037 /* MapLegendView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7FF18B169B1FD800123037 /* MapLegendView.m */; };
+		ED7FF1A9169B34F400123037 /* clock_background.png in Resources */ = {isa = PBXBuildFile; fileRef = ED7FF1A3169B34F400123037 /* clock_background.png */; };
+		ED7FF1AA169B34F400123037 /* clock_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED7FF1A4169B34F400123037 /* clock_background@2x.png */; };
+		ED7FF1AD169B34F500123037 /* flap_full.png in Resources */ = {isa = PBXBuildFile; fileRef = ED7FF1A7169B34F400123037 /* flap_full.png */; };
+		ED7FF1AE169B34F500123037 /* flap_full@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED7FF1A8169B34F400123037 /* flap_full@2x.png */; };
+		ED7FF1B1169B3E1600123037 /* PopulationClockView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7FF1B0169B3E1600123037 /* PopulationClockView.m */; };
+		ED7FF1BB169B461D00123037 /* SBDoubleSidedLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7FF1B4169B461D00123037 /* SBDoubleSidedLayer.m */; };
+		ED7FF1BC169B461D00123037 /* SBGradientOverlayLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7FF1B6169B461D00123037 /* SBGradientOverlayLayer.m */; };
+		ED7FF1BD169B461D00123037 /* SBTickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7FF1B8169B461D00123037 /* SBTickerView.m */; };
+		ED7FF1BE169B461D00123037 /* UIView+SBExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7FF1BA169B461D00123037 /* UIView+SBExtras.m */; };
 		ED882BDB168256D00084522F /* country_flag_ad.png in Resources */ = {isa = PBXBuildFile; fileRef = ED882A23168256D00084522F /* country_flag_ad.png */; };
 		ED882BDC168256D00084522F /* country_flag_ad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED882A24168256D00084522F /* country_flag_ad@2x.png */; };
 		ED882BDD168256D00084522F /* country_flag_ae.png in Resources */ = {isa = PBXBuildFile; fileRef = ED882A25168256D00084522F /* country_flag_ae.png */; };
@@ -681,6 +690,20 @@
 		ED597E8D167FA55600038B75 /* TopBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopBarView.m; sourceTree = "<group>"; };
 		ED7FF18A169B1FD800123037 /* MapLegendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapLegendView.h; sourceTree = "<group>"; };
 		ED7FF18B169B1FD800123037 /* MapLegendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapLegendView.m; sourceTree = "<group>"; };
+		ED7FF1A3169B34F400123037 /* clock_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock_background.png; sourceTree = "<group>"; };
+		ED7FF1A4169B34F400123037 /* clock_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock_background@2x.png"; sourceTree = "<group>"; };
+		ED7FF1A7169B34F400123037 /* flap_full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flap_full.png; sourceTree = "<group>"; };
+		ED7FF1A8169B34F400123037 /* flap_full@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flap_full@2x.png"; sourceTree = "<group>"; };
+		ED7FF1AF169B3E1600123037 /* PopulationClockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopulationClockView.h; sourceTree = "<group>"; };
+		ED7FF1B0169B3E1600123037 /* PopulationClockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopulationClockView.m; sourceTree = "<group>"; };
+		ED7FF1B3169B461D00123037 /* SBDoubleSidedLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBDoubleSidedLayer.h; sourceTree = "<group>"; };
+		ED7FF1B4169B461D00123037 /* SBDoubleSidedLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBDoubleSidedLayer.m; sourceTree = "<group>"; };
+		ED7FF1B5169B461D00123037 /* SBGradientOverlayLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBGradientOverlayLayer.h; sourceTree = "<group>"; };
+		ED7FF1B6169B461D00123037 /* SBGradientOverlayLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBGradientOverlayLayer.m; sourceTree = "<group>"; };
+		ED7FF1B7169B461D00123037 /* SBTickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBTickerView.h; sourceTree = "<group>"; };
+		ED7FF1B8169B461D00123037 /* SBTickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBTickerView.m; sourceTree = "<group>"; };
+		ED7FF1B9169B461D00123037 /* UIView+SBExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SBExtras.h"; sourceTree = "<group>"; };
+		ED7FF1BA169B461D00123037 /* UIView+SBExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SBExtras.m"; sourceTree = "<group>"; };
 		ED882A23168256D00084522F /* country_flag_ad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = country_flag_ad.png; sourceTree = "<group>"; };
 		ED882A24168256D00084522F /* country_flag_ad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "country_flag_ad@2x.png"; sourceTree = "<group>"; };
 		ED882A25168256D00084522F /* country_flag_ae.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = country_flag_ae.png; sourceTree = "<group>"; };
@@ -1194,6 +1217,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED7FF1B2169B461D00123037 /* SBTickerView */ = {
+			isa = PBXGroup;
+			children = (
+				ED7FF1B3169B461D00123037 /* SBDoubleSidedLayer.h */,
+				ED7FF1B4169B461D00123037 /* SBDoubleSidedLayer.m */,
+				ED7FF1B5169B461D00123037 /* SBGradientOverlayLayer.h */,
+				ED7FF1B6169B461D00123037 /* SBGradientOverlayLayer.m */,
+				ED7FF1B7169B461D00123037 /* SBTickerView.h */,
+				ED7FF1B8169B461D00123037 /* SBTickerView.m */,
+				ED7FF1B9169B461D00123037 /* UIView+SBExtras.h */,
+				ED7FF1BA169B461D00123037 /* UIView+SBExtras.m */,
+			);
+			path = SBTickerView;
+			sourceTree = "<group>";
+		};
 		ED882A22168256D00084522F /* Flags */ = {
 			isa = PBXGroup;
 			children = (
@@ -1738,6 +1776,8 @@
 				EDA0C3D5167BB23800CBECC4 /* MapImageView.m */,
 				ED7FF18A169B1FD800123037 /* MapLegendView.h */,
 				ED7FF18B169B1FD800123037 /* MapLegendView.m */,
+				ED7FF1AF169B3E1600123037 /* PopulationClockView.h */,
+				ED7FF1B0169B3E1600123037 /* PopulationClockView.m */,
 				ED0E20AB169719AD005445B7 /* SimulationEngine.h */,
 				ED0E20AC169719AD005445B7 /* SimulationEngine.m */,
 				ED597E8C167FA55600038B75 /* TopBarView.h */,
@@ -1794,6 +1834,8 @@
 				ED247EB2168387000092E185 /* boxInfoPais@2x.png */,
 				ED0108A51680CADD0067F88D /* boxRodapeVert.png */,
 				ED0108A61680CADD0067F88D /* boxRodapeVert@2x.png */,
+				ED7FF1A3169B34F400123037 /* clock_background.png */,
+				ED7FF1A4169B34F400123037 /* clock_background@2x.png */,
 				EDA0C3DC167BB2F800CBECC4 /* colormap.plist */,
 				EDA0C3DD167BB2F800CBECC4 /* colormap.png */,
 				ED0E20A116970AE3005445B7 /* colormap@2x.png */,
@@ -1807,6 +1849,8 @@
 				ED0108CB1680F54B0067F88D /* Default-Landscape~ipad.png */,
 				ED0108C91680F5430067F88D /* Default-Portrait@2x~ipad.png */,
 				ED0108C71680F5380067F88D /* Default-Portrait~ipad.png */,
+				ED7FF1A7169B34F400123037 /* flap_full.png */,
+				ED7FF1A8169B34F400123037 /* flap_full@2x.png */,
 				EDADD8031684DAA1007E8BD5 /* globeHoriz.png */,
 				EDADD8041684DAA1007E8BD5 /* globeHoriz@2x.png */,
 				EDADD8051684DAA1007E8BD5 /* globeVertical.png */,
@@ -1838,6 +1882,7 @@
 			children = (
 				EDF8D0741695B81600FE02B1 /* AdMob */,
 				EDF8D0831695DAAE00FE02B1 /* MBProgressHUD */,
+				ED7FF1B2169B461D00123037 /* SBTickerView */,
 			);
 			name = "Third-party libraries";
 			path = Libs;
@@ -2452,6 +2497,10 @@
 				ED0E20BF16975751005445B7 /* death@2x.png in Resources */,
 				ED0E20C216975A04005445B7 /* birth+death.png in Resources */,
 				ED0E20C316975A04005445B7 /* birth+death@2x.png in Resources */,
+				ED7FF1A9169B34F400123037 /* clock_background.png in Resources */,
+				ED7FF1AA169B34F400123037 /* clock_background@2x.png in Resources */,
+				ED7FF1AD169B34F500123037 /* flap_full.png in Resources */,
+				ED7FF1AE169B34F500123037 /* flap_full@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2482,6 +2531,11 @@
 				ED3A9BE116961A3E007D19DB /* UIImage+Resizable.m in Sources */,
 				ED0E20AD169719AD005445B7 /* SimulationEngine.m in Sources */,
 				ED7FF18C169B1FD800123037 /* MapLegendView.m in Sources */,
+				ED7FF1B1169B3E1600123037 /* PopulationClockView.m in Sources */,
+				ED7FF1BB169B461D00123037 /* SBDoubleSidedLayer.m in Sources */,
+				ED7FF1BC169B461D00123037 /* SBGradientOverlayLayer.m in Sources */,
+				ED7FF1BD169B461D00123037 /* SBTickerView.m in Sources */,
+				ED7FF1BE169B461D00123037 /* UIView+SBExtras.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
