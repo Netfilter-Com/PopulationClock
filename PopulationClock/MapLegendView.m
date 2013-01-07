@@ -19,8 +19,8 @@
 
 - (void)awakeFromNib {
     // Add rounded corners
-    self.layer.cornerRadius = 12;
-    self.layer.borderColor = [UIColor colorWithRed:193/255.0 green:193/255.0 blue:193/255.0 alpha:0.5].CGColor;
+    self.layer.cornerRadius = 8;
+    self.layer.borderColor = [UIColor colorWithRed:0x65/255.0 green:0x65/255.0 blue:0x62/255.0 alpha:1].CGColor;
     self.layer.borderWidth = 1;
     self.layer.masksToBounds = YES;
     

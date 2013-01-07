@@ -39,29 +39,33 @@
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="-3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IDq-xd-SFW">
                                         <rect key="frame" x="12" y="51" width="12" height="15"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                                        <color key="textColor" red="0.44705882349999998" green="0.47058823529999999" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.44313725490196076" green="0.47058823529411764" blue="0.47843137254901957" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Births" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CkP-CZ-nZJ">
                                         <rect key="frame" x="27" y="74" width="50" height="15"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                                        <color key="textColor" red="0.44705882349999998" green="0.47058823529999999" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.44313725490196076" green="0.47058823529411764" blue="0.47843137254901957" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Deaths" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IF4-rp-dJY">
                                         <rect key="frame" x="107" y="75" width="41" height="15"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                                        <color key="textColor" red="0.44705882349999998" green="0.47058823529999999" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.44313725490196076" green="0.47058823529411764" blue="0.47843137254901957" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="6" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PgX-I1-ktX">
                                         <rect key="frame" x="141" y="51" width="7" height="15"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                                        <color key="textColor" red="0.44705882349999998" green="0.47058823529999999" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.44313725490196076" green="0.47058823529411764" blue="0.47843137254901957" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="birth.png" id="GVm-IB-G1q">
@@ -73,7 +77,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.40000000000000002" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="_birthsLabel" destination="CkP-CZ-nZJ" id="UTG-R4-b3e"/>
                                     <outlet property="_deathsIcon" destination="MDT-0g-MQ8" id="oci-SF-6U4"/>
