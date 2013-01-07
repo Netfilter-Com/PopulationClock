@@ -164,14 +164,11 @@
         [UIView animateWithDuration:0.2 animations:^{
             imageView.alpha = colorAlpha;
         } completion:^(BOOL finished) {
-            if (finished) {
-                [UIView animateWithDuration:0.4 delay:0.3 options:UIViewAnimationOptionCurveEaseIn animations:^{
-                    imageView.alpha = 0;
-                } completion:^(BOOL finished) {
-                    if (finished)
-                        [imageView removeFromSuperview];
-                }];
-            }
+            [UIView animateWithDuration:0.4 delay:0.3 options:UIViewAnimationOptionCurveEaseIn animations:^{
+                imageView.alpha = 0;
+            } completion:^(BOOL finished) {
+                [imageView removeFromSuperview];
+            }];
         }];
     }];
 }
@@ -245,8 +242,7 @@
         [UIView animateWithDuration:0.3 animations:^{
             mask.alpha = 0;
         } completion:^(BOOL finished) {
-            if (finished)
-                [mask removeFromSuperview];
+            [mask removeFromSuperview];
         }];
     }
 }
@@ -280,14 +276,11 @@
     [UIView animateWithDuration:0.25 delay:0 options:0 animations:^{
         imageView.alpha = 1;
     } completion:^(BOOL finished) {
-        if (finished) {
-            [UIView animateWithDuration:0.25 delay:0.4 options:0 animations:^{
-                imageView.alpha = 0;
-            } completion:^(BOOL finished) {
-                if (finished)
-                    [imageView removeFromSuperview];
-            }];
-        }
+        [UIView animateWithDuration:0.25 delay:0.4 options:0 animations:^{
+            imageView.alpha = 0;
+        } completion:^(BOOL finished) {
+            [imageView removeFromSuperview];
+        }];
     }];
 }
 
