@@ -126,6 +126,7 @@
     if ([countryCode isEqualToString:@"world"]) {
         // Set the globe image
         _landscapeFlag.image = [UIImage imageNamed:@"globeHoriz"];
+        [_landscapeFlag sizeToFit];
         
         // Unset the background color
         _landscapeFlag.backgroundColor = [UIColor clearColor];
