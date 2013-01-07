@@ -104,6 +104,7 @@
 		ED3A9BE116961A3E007D19DB /* UIImage+Resizable.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3A9BE016961A3E007D19DB /* UIImage+Resizable.m */; };
 		ED597E8A167F988000038B75 /* CountryListPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED597E89167F988000038B75 /* CountryListPanelView.m */; };
 		ED597E8E167FA55600038B75 /* TopBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED597E8D167FA55600038B75 /* TopBarView.m */; };
+		ED7FF18C169B1FD800123037 /* MapLegendView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7FF18B169B1FD800123037 /* MapLegendView.m */; };
 		ED882BDB168256D00084522F /* country_flag_ad.png in Resources */ = {isa = PBXBuildFile; fileRef = ED882A23168256D00084522F /* country_flag_ad.png */; };
 		ED882BDC168256D00084522F /* country_flag_ad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED882A24168256D00084522F /* country_flag_ad@2x.png */; };
 		ED882BDD168256D00084522F /* country_flag_ae.png in Resources */ = {isa = PBXBuildFile; fileRef = ED882A25168256D00084522F /* country_flag_ae.png */; };
@@ -678,6 +679,8 @@
 		ED597E89167F988000038B75 /* CountryListPanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryListPanelView.m; sourceTree = "<group>"; };
 		ED597E8C167FA55600038B75 /* TopBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopBarView.h; sourceTree = "<group>"; };
 		ED597E8D167FA55600038B75 /* TopBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopBarView.m; sourceTree = "<group>"; };
+		ED7FF18A169B1FD800123037 /* MapLegendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapLegendView.h; sourceTree = "<group>"; };
+		ED7FF18B169B1FD800123037 /* MapLegendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapLegendView.m; sourceTree = "<group>"; };
 		ED882A23168256D00084522F /* country_flag_ad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = country_flag_ad.png; sourceTree = "<group>"; };
 		ED882A24168256D00084522F /* country_flag_ad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "country_flag_ad@2x.png"; sourceTree = "<group>"; };
 		ED882A25168256D00084522F /* country_flag_ae.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = country_flag_ae.png; sourceTree = "<group>"; };
@@ -1733,6 +1736,8 @@
 				EDA0C3D3167BB23800CBECC4 /* MainViewController.m */,
 				EDA0C3D4167BB23800CBECC4 /* MapImageView.h */,
 				EDA0C3D5167BB23800CBECC4 /* MapImageView.m */,
+				ED7FF18A169B1FD800123037 /* MapLegendView.h */,
+				ED7FF18B169B1FD800123037 /* MapLegendView.m */,
 				ED0E20AB169719AD005445B7 /* SimulationEngine.h */,
 				ED0E20AC169719AD005445B7 /* SimulationEngine.m */,
 				ED597E8C167FA55600038B75 /* TopBarView.h */,
@@ -2476,6 +2481,7 @@
 				EDF8D0861695DAAE00FE02B1 /* MBProgressHUD.m in Sources */,
 				ED3A9BE116961A3E007D19DB /* UIImage+Resizable.m in Sources */,
 				ED0E20AD169719AD005445B7 /* SimulationEngine.m in Sources */,
+				ED7FF18C169B1FD800123037 /* MapLegendView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
