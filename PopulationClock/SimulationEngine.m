@@ -51,8 +51,7 @@ NSString *SimulationEngineDeathsKey = @"SimulationEngineDeathsKey";
 }
 
 - (void)reset {
-    // Perform the reset in a background thread so
-    // we don't have to synchronize anything
+    // Perform the reset in a background thread so we don't have to synchronize anything
     dispatch_async(_backgroundQueue, ^{
         [self resetBackground];
     });
@@ -106,8 +105,13 @@ NSString *SimulationEngineDeathsKey = @"SimulationEngineDeathsKey";
         }
     }
     
-    // Let the observers know that we were reset
-    [[NSNotificationCenter defaultCenter] postNotificationName:SimulationEngineResetNotification object:self];
+    // Let the observers know that we were reset, but do it in the
+    // main thread and synchronously, so we can update the population
+    // array without risking a race
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        _populationPerCountry = [_population copy];
+        [[NSNotificationCenter defaultCenter] postNotificationName:SimulationEngineResetNotification object:self];
+    });
     
     // Since we messed with the estimated stats, this is the time
     // since the "last step"
