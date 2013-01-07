@@ -30,13 +30,20 @@ CGPoint CountryCoordinatesNotFound = { .x = -1, .y = -1 };
     if (!coords)
         return CountryCoordinatesNotFound;
     
-    // Normalize and return them
+    // Get the latitude and longitude
     CGPoint res;
-    res.x = [coords[@"longitude"] floatValue] - 10;
-    if (res.x > 180)
-        res.x = 360 - res.x;
+    res.x = [coords[@"longitude"] floatValue];
+    res.y = [coords[@"latitude"] floatValue];
+    
+    // In our map, the longitude is a bit offset, so adjust
+    // for it and possibly wrap
+    res.x -= 10;
+    if (res.x < -180)
+        res.x = 360 + res.x;
+    
+    // Normalize and return the coordinates
     res.x = res.x / 360 + 0.5;
-    res.y = [coords[@"latitude"] floatValue] / -180 + 0.5;
+    res.y = res.y / -180 + 0.5;
     assert(res.x >= 0 && res.x <= 1 && res.y >= 0 && res.y <= 1);
     return res;
 }
