@@ -23,6 +23,7 @@ NSString *SimulationEngineDeathsKey = @"SimulationEngineDeathsKey";
     NSTimer *_timer;
     NSDate *_lastStep;
     dispatch_queue_t _backgroundQueue;
+    BOOL _launchedTimer;
 }
 
 + (instancetype)sharedInstance {
@@ -50,6 +51,14 @@ NSString *SimulationEngineDeathsKey = @"SimulationEngineDeathsKey";
 }
 
 - (void)reset {
+    // Perform the reset in a background thread so
+    // we don't have to synchronize anything
+    dispatch_async(_backgroundQueue, ^{
+        [self resetBackground];
+    });
+}
+
+- (void)resetBackground {
     // Reset the arrays
     NSArray *countryInfo = [DataManager sharedDataManager].orderedCountryData;
     _birthProbs = [NSMutableDictionary dictionaryWithCapacity:countryInfo.count];
@@ -60,7 +69,7 @@ NSString *SimulationEngineDeathsKey = @"SimulationEngineDeathsKey";
     NSMutableDictionary *yearCache = [NSMutableDictionary dictionaryWithCapacity:5];
     
     NSDate *referenceDate = [NSDate date];
-    for (NSDictionary *info in [DataManager sharedDataManager].orderedCountryData) {
+    for (NSDictionary *info in countryInfo) {
         @autoreleasepool {
             // Get the birth and death probabilities
             NSString *countryCode = info[@"code"];
@@ -97,11 +106,19 @@ NSString *SimulationEngineDeathsKey = @"SimulationEngineDeathsKey";
         }
     }
     
-    // Let the observers know that we're starting
+    // Let the observers know that we were reset
     [[NSNotificationCenter defaultCenter] postNotificationName:SimulationEngineResetNotification object:self];
     
-    // Dispatch the "timer" in a background thread
-    [self dispatchTimerFiredInBackgroundQueue];
+    // Since we messed with the estimated stats, this is the time
+    // since the "last step"
+    _lastStep = [NSDate date];
+    
+    // Dispatch the "timer" in a background thread, but do it only once,
+    // even if reset is called multiple times
+    if (!_launchedTimer) {
+        [self dispatchTimerFiredInBackgroundQueue];
+        _launchedTimer = YES;
+    }
 }
 
 - (void)dispatchTimerFiredInBackgroundQueue {
