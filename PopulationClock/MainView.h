@@ -10,4 +10,6 @@
 
 @property (nonatomic, weak) UIView *adView;
 
+- (void)adjustMapLegendFrameToBounds:(CGRect *)frame;
+
 @end

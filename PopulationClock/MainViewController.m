@@ -23,6 +23,8 @@
 @implementation MainViewController {
     CountryDetector *_countryDetector;
     IBOutlet __weak UIScrollView *_scrollView;
+    IBOutlet __weak UIView *_legend;
+    CGPoint _legendOrigin;
     IBOutlet __weak MapImageView *_map;
     IBOutlet __weak UIToolbar *_toolbar;
     IBOutlet __weak UIBarButtonItem *_removeAdsButton;
@@ -52,6 +54,9 @@
     // Make the single tap recognizer require the double tap
     // recognizer to fail, so it doesn't get called too
     [singleTap requireGestureRecognizerToFail:doubleTap];
+    
+    // Set up pan gesture recognizers for the legend
+    [_legend addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(legendPanningGestureRecognized:)]];
     
     // Observe changes to the country selection
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(countrySelectionChanged:) name:CountrySelectionNotification object:nil];
@@ -192,6 +197,25 @@
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
     return _map;
+}
+
+- (void)legendPanningGestureRecognized:(UIPanGestureRecognizer *)recognizer {
+    // If this is the first time the pan gesture is being recognized,
+    // record the origin of the legend
+    if (recognizer.state == UIGestureRecognizerStateBegan)
+        _legendOrigin = _legend.frame.origin;
+    
+    // Adjust the frame with the translation
+    CGPoint translation = [recognizer translationInView:self.view];
+    CGRect frame = CGRectMake(_legendOrigin.x, _legendOrigin.y, _legend.frame.size.width, _legend.frame.size.height);
+    frame.origin.x += translation.x;
+    frame.origin.y += translation.y;
+    
+    // Make sure it won't go out of bounds
+    [(MainView *)self.view adjustMapLegendFrameToBounds:&frame];
+    
+    // Set the frame
+    _legend.frame = frame;
 }
 
 - (IBAction)ShareApp:(id)sender {

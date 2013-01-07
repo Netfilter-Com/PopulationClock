@@ -11,6 +11,7 @@
 @implementation MainView {
     IBOutlet __weak UIScrollView *_scrollView;
     IBOutlet __weak UIImageView *_map;
+    IBOutlet __weak UIView *_legend;
     IBOutlet __weak UIView *_navigationBar;
     IBOutlet __weak UIView *_panel1;
     IBOutlet __weak UIView *_panel2;
@@ -121,6 +122,11 @@
     frame.origin.y = _navigationBar.frame.origin.y - _adView.frame.size.height;
     _adView.frame = frame;
     
+    // Make sure the legend is within bounds
+    frame = _legend.frame;
+    [self adjustMapLegendFrameToBounds:&frame];
+    _legend.frame = frame;
+    
     // We have a different layout depending on the orientation
     BOOL landscape = self.bounds.size.width > self.bounds.size.height;
     if (landscape) {
@@ -160,6 +166,22 @@
         frame.size.height = self.bounds.size.height - frame.origin.y - _toolbar.frame.size.height;
         _panel3.frame = frame;
     }
+}
+
+- (void)adjustMapLegendFrameToBounds:(CGRect *)frame {
+    // The X coordinates are easy
+    CGFloat maxX = self.bounds.size.width - _legend.frame.size.width;
+    if (frame->origin.x < 0)
+        frame->origin.x = 0;
+    else if (frame->origin.x > maxX)
+        frame->origin.x = maxX;
+    
+    // For the Y coordinates, we need to take the top bar into account
+    CGFloat maxY = _navigationBar.frame.origin.y - _legend.frame.size.height;
+    if (frame->origin.y < 0)
+        frame->origin.y = 0;
+    else if (frame->origin.y > maxY)
+        frame->origin.y = maxY;
 }
 
 @end
