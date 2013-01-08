@@ -553,6 +553,12 @@
 		ED882D91168256D10084522F /* country_flag_zw.png in Resources */ = {isa = PBXBuildFile; fileRef = ED882BD9168256D00084522F /* country_flag_zw.png */; };
 		ED882D92168256D10084522F /* country_flag_zw@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED882BDA168256D00084522F /* country_flag_zw@2x.png */; };
 		ED993BA5169C8BE1001B2F13 /* ModalDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED993BA4169C8BE1001B2F13 /* ModalDialogViewController.m */; };
+		ED993BB1169CA10F001B2F13 /* aboutBox.png in Resources */ = {isa = PBXBuildFile; fileRef = ED993BAF169CA10F001B2F13 /* aboutBox.png */; };
+		ED993BB2169CA10F001B2F13 /* aboutBox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED993BB0169CA10F001B2F13 /* aboutBox@2x.png */; };
+		ED993BC0169CAA47001B2F13 /* aboutLogoMaquinario.png in Resources */ = {isa = PBXBuildFile; fileRef = ED993BBC169CAA47001B2F13 /* aboutLogoMaquinario.png */; };
+		ED993BC1169CAA47001B2F13 /* aboutLogoMaquinario@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED993BBD169CAA47001B2F13 /* aboutLogoMaquinario@2x.png */; };
+		ED993BC2169CAA47001B2F13 /* aboutLogoNetfilter.png in Resources */ = {isa = PBXBuildFile; fileRef = ED993BBE169CAA47001B2F13 /* aboutLogoNetfilter.png */; };
+		ED993BC3169CAA47001B2F13 /* aboutLogoNetfilter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED993BBF169CAA47001B2F13 /* aboutLogoNetfilter@2x.png */; };
 		EDA0C3A5167BAF1400CBECC4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA0C3A4167BAF1400CBECC4 /* UIKit.framework */; };
 		EDA0C3A7167BAF1400CBECC4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA0C3A6167BAF1400CBECC4 /* Foundation.framework */; };
 		EDA0C3A9167BAF1400CBECC4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA0C3A8167BAF1400CBECC4 /* CoreGraphics.framework */; };
@@ -1143,6 +1149,12 @@
 		ED882BDA168256D00084522F /* country_flag_zw@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "country_flag_zw@2x.png"; sourceTree = "<group>"; };
 		ED993BA3169C8BE1001B2F13 /* ModalDialogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalDialogViewController.h; sourceTree = "<group>"; };
 		ED993BA4169C8BE1001B2F13 /* ModalDialogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalDialogViewController.m; sourceTree = "<group>"; };
+		ED993BAF169CA10F001B2F13 /* aboutBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aboutBox.png; sourceTree = "<group>"; };
+		ED993BB0169CA10F001B2F13 /* aboutBox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "aboutBox@2x.png"; sourceTree = "<group>"; };
+		ED993BBC169CAA47001B2F13 /* aboutLogoMaquinario.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aboutLogoMaquinario.png; sourceTree = "<group>"; };
+		ED993BBD169CAA47001B2F13 /* aboutLogoMaquinario@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "aboutLogoMaquinario@2x.png"; sourceTree = "<group>"; };
+		ED993BBE169CAA47001B2F13 /* aboutLogoNetfilter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aboutLogoNetfilter.png; sourceTree = "<group>"; };
+		ED993BBF169CAA47001B2F13 /* aboutLogoNetfilter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "aboutLogoNetfilter@2x.png"; sourceTree = "<group>"; };
 		EDA0C3A0167BAF1400CBECC4 /* PopulationClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopulationClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDA0C3A4167BAF1400CBECC4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EDA0C3A6167BAF1400CBECC4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -1803,6 +1815,12 @@
 		EDA0C3DB167BB2F800CBECC4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				ED993BAF169CA10F001B2F13 /* aboutBox.png */,
+				ED993BB0169CA10F001B2F13 /* aboutBox@2x.png */,
+				ED993BBC169CAA47001B2F13 /* aboutLogoMaquinario.png */,
+				ED993BBD169CAA47001B2F13 /* aboutLogoMaquinario@2x.png */,
+				ED993BBE169CAA47001B2F13 /* aboutLogoNetfilter.png */,
+				ED993BBF169CAA47001B2F13 /* aboutLogoNetfilter@2x.png */,
 				ED0108BD1680D25C0067F88D /* barBtn.png */,
 				ED0108BE1680D25C0067F88D /* barBtn@2x.png */,
 				ED23C56D1680A01700005C5F /* barraHoriz.png */,
@@ -2498,6 +2516,12 @@
 				ED7FF1AA169B34F400123037 /* clock_background@2x.png in Resources */,
 				ED7FF1AD169B34F500123037 /* flap_full.png in Resources */,
 				ED7FF1AE169B34F500123037 /* flap_full@2x.png in Resources */,
+				ED993BB1169CA10F001B2F13 /* aboutBox.png in Resources */,
+				ED993BB2169CA10F001B2F13 /* aboutBox@2x.png in Resources */,
+				ED993BC0169CAA47001B2F13 /* aboutLogoMaquinario.png in Resources */,
+				ED993BC1169CAA47001B2F13 /* aboutLogoMaquinario@2x.png in Resources */,
+				ED993BC2169CAA47001B2F13 /* aboutLogoNetfilter.png in Resources */,
+				ED993BC3169CAA47001B2F13 /* aboutLogoNetfilter@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
