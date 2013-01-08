@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8248F1BE168CC13700717BA7 /* boxAbout.png in Resources */ = {isa = PBXBuildFile; fileRef = 8248F1BC168CC13700717BA7 /* boxAbout.png */; };
-		8248F1BF168CC13700717BA7 /* boxAbout@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8248F1BD168CC13700717BA7 /* boxAbout@2x.png */; };
 		8248F1CE168CC6BC00717BA7 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8248F1CD168CC6BC00717BA7 /* AboutViewController.m */; };
 		825C8B8F168B3B53009D357D /* country_flag_bl.png in Resources */ = {isa = PBXBuildFile; fileRef = 825C8B77168B3B52009D357D /* country_flag_bl.png */; };
 		825C8B90168B3B53009D357D /* country_flag_bl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 825C8B78168B3B52009D357D /* country_flag_bl@2x.png */; };
@@ -583,8 +581,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8248F1BC168CC13700717BA7 /* boxAbout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boxAbout.png; sourceTree = "<group>"; };
-		8248F1BD168CC13700717BA7 /* boxAbout@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "boxAbout@2x.png"; sourceTree = "<group>"; };
 		8248F1CC168CC6BC00717BA7 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		8248F1CD168CC6BC00717BA7 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		825C8B77168B3B52009D357D /* country_flag_bl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = country_flag_bl.png; sourceTree = "<group>"; };
@@ -1828,8 +1824,6 @@
 				ED0E20C116975A04005445B7 /* birth+death@2x.png */,
 				ED0E20B71697570F005445B7 /* birth.png */,
 				ED0E20B81697570F005445B7 /* birth@2x.png */,
-				8248F1BC168CC13700717BA7 /* boxAbout.png */,
-				8248F1BD168CC13700717BA7 /* boxAbout@2x.png */,
 				ED247EB1168387000092E185 /* boxInfoPais.png */,
 				ED247EB2168387000092E185 /* boxInfoPais@2x.png */,
 				ED0108A51680CADD0067F88D /* boxRodapeVert.png */,
@@ -2488,8 +2482,6 @@
 				825C8BA4168B3B53009D357D /* country_flag_ss@2x.png in Resources */,
 				825C8BA5168B3B53009D357D /* country_flag_yt.png in Resources */,
 				825C8BA6168B3B53009D357D /* country_flag_yt@2x.png in Resources */,
-				8248F1BE168CC13700717BA7 /* boxAbout.png in Resources */,
-				8248F1BF168CC13700717BA7 /* boxAbout@2x.png in Resources */,
 				ED0E20A216970AE3005445B7 /* colormap@2x.png in Resources */,
 				ED0E20B91697570F005445B7 /* birth.png in Resources */,
 				ED0E20BA1697570F005445B7 /* birth@2x.png in Resources */,

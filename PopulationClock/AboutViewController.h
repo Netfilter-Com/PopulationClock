@@ -6,8 +6,6 @@
 //  Copyright (c) 2012 NetFilter. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 @interface AboutViewController : UIViewController
 
 @end

@@ -289,9 +289,7 @@
                                     </barButtonItem>
                                     <barButtonItem title="About" id="kvI-HI-BWZ">
                                         <connections>
-                                            <segue destination="eXI-ip-C12" kind="popover" popoverAnchorBarButtonItem="kvI-HI-BWZ" id="Qck-Xs-HLA">
-                                                <popoverArrowDirection key="popoverArrowDirection"/>
-                                            </segue>
+                                            <segue destination="Wa7-NC-Jj4" kind="modal" modalPresentationStyle="formSheet" id="vUA-b4-kpe"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -323,40 +321,45 @@
             <point key="canvasLocation" x="-787" y="-498"/>
         </scene>
         <!--About View Controller-->
-        <scene sceneID="BJb-Q1-kKA">
+        <scene sceneID="6qw-99-V8K">
             <objects>
-                <viewController id="eXI-ip-C12" customClass="AboutViewController" sceneMemberID="viewController">
-                    <view key="view" opaque="NO" contentMode="scaleToFill" id="C2p-yb-mRg">
-                        <rect key="frame" x="0.0" y="20" width="540" height="600"/>
+                <viewController id="Wa7-NC-Jj4" customClass="AboutViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="z73-2u-6Tf">
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="boxAbout.png" id="kyP-Ni-Lvk">
-                                <rect key="frame" x="0.0" y="0.0" width="540" height="600"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
-                            <textView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" usesAttributedText="YES" id="vp5-bd-rib">
-                                <rect key="frame" x="109" y="150" width="326" height="274"/>
+                            <navigationBar contentMode="scaleToFill" barStyle="blackOpaque" id="yo6-Sl-dfB">
+                                <rect key="frame" x="0.0" y="0.0" width="540" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="About" id="um6-iV-axj">
+                                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="L3s-u7-ttP">
+                                            <connections>
+                                                <action selector="doneButtonTouched:" destination="Wa7-NC-Jj4" id="Yv8-Db-owI"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="g5c-Q7-D3f">
+                                <rect key="frame" x="20" y="64" width="500" height="176"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
-                                <attributedString key="attributedText">
-                                    <fragment>
-                                        <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                        <attributes>
-                                            <font key="NSFont" size="16" name="HelveticaNeue-Medium"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="2" lineHeightMultiple="1"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" red="0.27058823529411763" green="0.27058823529411763" blue="0.27058823529411763" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="_navigationBar" destination="yo6-Sl-dfB" id="JWN-Pk-BvH"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="R1t-qe-3Nz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AWf-OK-TVU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="247" y="-612"/>
+            <point key="canvasLocation" x="218" y="-296"/>
         </scene>
     </scenes>
     <resources>
@@ -365,7 +368,6 @@
         <image name="bgInfoPaisVert.png" width="387" height="577"/>
         <image name="bgListaVert.png" width="386" height="461"/>
         <image name="birth.png" width="13" height="13"/>
-        <image name="boxAbout.png" width="418" height="500"/>
         <image name="boxInfoPais.png" width="333" height="367"/>
         <image name="clock_background.png" width="221" height="56"/>
         <image name="country_flag_br.png" width="236" height="162"/>
@@ -378,6 +380,9 @@
     <classes>
         <class className="AboutViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AboutViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="doneButtonTouched:"/>
+            </relationships>
         </class>
         <class className="ClockPanelView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ClockPanelView.h"/>
