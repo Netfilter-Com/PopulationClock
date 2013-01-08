@@ -44,7 +44,7 @@
     // controller's view to it
     UIView *shadowView = [[UIView alloc] initWithFrame:frame];
     shadowView.layer.shadowRadius = 10;
-    shadowView.layer.shadowOpacity = 0.5;
+    shadowView.layer.shadowOpacity = 1;
     [shadowView addSubview:cview];
     
     // Set its autoresizing masks so it goes to landscape properly
@@ -66,8 +66,8 @@
     
     // Animate everything
     shadowView.center = CGPointMake(self.view.center.x, self.view.center.y + self.view.bounds.size.height);
-    [UIView animateWithDuration:0.3 animations:^{
-        _dimmedView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];
+    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        _dimmedView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.6];
         shadowView.center = CGPointMake(self.view.center.x, self.view.center.y);
     } completion:^(BOOL finished) {
         block();
@@ -86,7 +86,7 @@
 }
 
 - (void)removeViewFromHierarchyAndRun:(void (^)())block {
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
         // Make the dimmed view transparent again
         _dimmedView.backgroundColor = [UIColor clearColor];
         
