@@ -89,7 +89,7 @@
             }
         }
         assert(index != NSNotFound);
-        [_tableView selectRowAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+        [_tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] animated:YES scrollPosition:UITableViewScrollPositionMiddle];
     }
 }
 
