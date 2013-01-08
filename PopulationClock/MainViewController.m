@@ -284,6 +284,20 @@
     assert(NO);
 }
 
+- (IBAction)aboutButtonTouched:(id)sender {
+    // Instantiate the about view controller manually
+    AboutViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"aboutViewController"];
+    controller.delegate = self;
+    
+    // Present it as a modal dialog
+    [self presentModalDialogViewController:controller];
+}
+
+- (void)aboutViewControllerDone:(AboutViewController *)controller {
+    // Dismiss the current modal dialog
+    [self dismissCurrentModalDialogViewController];
+}
+
 - (IBAction)purchaseButtonTouched:(id)sender {
     // Show the HUD
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];

@@ -289,7 +289,7 @@
                                     </barButtonItem>
                                     <barButtonItem title="About" id="kvI-HI-BWZ">
                                         <connections>
-                                            <segue destination="Wa7-NC-Jj4" kind="modal" modalPresentationStyle="formSheet" id="vUA-b4-kpe"/>
+                                            <action selector="aboutButtonTouched:" destination="2" id="nxH-dz-cye"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -323,13 +323,13 @@
         <!--About View Controller-->
         <scene sceneID="6qw-99-V8K">
             <objects>
-                <viewController id="Wa7-NC-Jj4" customClass="AboutViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="aboutViewController" id="Wa7-NC-Jj4" customClass="AboutViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="z73-2u-6Tf">
-                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                        <rect key="frame" x="0.0" y="20" width="360" height="440"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" barStyle="blackOpaque" id="yo6-Sl-dfB">
-                                <rect key="frame" x="0.0" y="0.0" width="540" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="360" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="About" id="um6-iV-axj">
@@ -342,24 +342,24 @@
                                 </items>
                             </navigationBar>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="g5c-Q7-D3f">
-                                <rect key="frame" x="20" y="64" width="500" height="176"/>
+                                <rect key="frame" x="20" y="64" width="320" height="198"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.27058823529411763" green="0.27058823529411763" blue="0.27058823529411763" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="_navigationBar" destination="yo6-Sl-dfB" id="JWN-Pk-BvH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AWf-OK-TVU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="218" y="-296"/>
+            <point key="canvasLocation" x="222" y="-206"/>
         </scene>
     </scenes>
     <resources>
@@ -401,6 +401,11 @@
         </class>
         <class className="MainViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MainViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="ShareApp:"/>
+                <relationship kind="action" name="aboutButtonTouched:"/>
+                <relationship kind="action" name="purchaseButtonTouched:"/>
+            </relationships>
         </class>
         <class className="MapImageView" superclassName="UIImageView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MapImageView.h"/>

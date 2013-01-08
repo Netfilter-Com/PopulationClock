@@ -6,6 +6,9 @@
 //  Copyright (c) 2012 NetFilter. All rights reserved.
 //
 
-@interface MainViewController : UIViewController <UIScrollViewDelegate>
+#import "AboutViewController.h"
+#import "ModalDialogViewController.h"
+
+@interface MainViewController : ModalDialogViewController <AboutViewControllerDelegate, UIScrollViewDelegate>
 
 @end

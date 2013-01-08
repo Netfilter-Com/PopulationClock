@@ -552,6 +552,7 @@
 		ED882D90168256D10084522F /* country_flag_zm@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED882BD8168256D00084522F /* country_flag_zm@2x.png */; };
 		ED882D91168256D10084522F /* country_flag_zw.png in Resources */ = {isa = PBXBuildFile; fileRef = ED882BD9168256D00084522F /* country_flag_zw.png */; };
 		ED882D92168256D10084522F /* country_flag_zw@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED882BDA168256D00084522F /* country_flag_zw@2x.png */; };
+		ED993BA5169C8BE1001B2F13 /* ModalDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED993BA4169C8BE1001B2F13 /* ModalDialogViewController.m */; };
 		EDA0C3A5167BAF1400CBECC4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA0C3A4167BAF1400CBECC4 /* UIKit.framework */; };
 		EDA0C3A7167BAF1400CBECC4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA0C3A6167BAF1400CBECC4 /* Foundation.framework */; };
 		EDA0C3A9167BAF1400CBECC4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA0C3A8167BAF1400CBECC4 /* CoreGraphics.framework */; };
@@ -1140,6 +1141,8 @@
 		ED882BD8168256D00084522F /* country_flag_zm@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "country_flag_zm@2x.png"; sourceTree = "<group>"; };
 		ED882BD9168256D00084522F /* country_flag_zw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = country_flag_zw.png; sourceTree = "<group>"; };
 		ED882BDA168256D00084522F /* country_flag_zw@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "country_flag_zw@2x.png"; sourceTree = "<group>"; };
+		ED993BA3169C8BE1001B2F13 /* ModalDialogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalDialogViewController.h; sourceTree = "<group>"; };
+		ED993BA4169C8BE1001B2F13 /* ModalDialogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalDialogViewController.m; sourceTree = "<group>"; };
 		EDA0C3A0167BAF1400CBECC4 /* PopulationClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopulationClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDA0C3A4167BAF1400CBECC4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EDA0C3A6167BAF1400CBECC4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -1772,6 +1775,8 @@
 				EDA0C3D5167BB23800CBECC4 /* MapImageView.m */,
 				ED7FF18A169B1FD800123037 /* MapLegendView.h */,
 				ED7FF18B169B1FD800123037 /* MapLegendView.m */,
+				ED993BA3169C8BE1001B2F13 /* ModalDialogViewController.h */,
+				ED993BA4169C8BE1001B2F13 /* ModalDialogViewController.m */,
 				ED7FF1AF169B3E1600123037 /* PopulationClockView.h */,
 				ED7FF1B0169B3E1600123037 /* PopulationClockView.m */,
 				ED0E20AB169719AD005445B7 /* SimulationEngine.h */,
@@ -2528,6 +2533,7 @@
 				ED7FF1BC169B461D00123037 /* SBGradientOverlayLayer.m in Sources */,
 				ED7FF1BD169B461D00123037 /* SBTickerView.m in Sources */,
 				ED7FF1BE169B461D00123037 /* UIView+SBExtras.m in Sources */,
+				ED993BA5169C8BE1001B2F13 /* ModalDialogViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

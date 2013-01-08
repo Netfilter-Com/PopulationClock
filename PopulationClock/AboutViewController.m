@@ -14,6 +14,15 @@
     IBOutlet __weak UINavigationBar *_navigationBar;
 }
 
+- (void)loadView {
+    [super loadView];
+    
+    // For whatever reason, [UIViewController loadView] resets the
+    // view size, overriding the free form in the storyboard
+    if (self.isViewLoaded)
+        self.view.bounds = CGRectMake(0, 0, 360, 440);
+}
+
 - (void)viewDidLoad {
     // Set text here so we don't have to translate the storyboard
     _navigationBar.topItem.title = NSLocalizedString(@"About Population Clock", @"");
@@ -36,7 +45,7 @@
 }
 
 - (IBAction)doneButtonTouched:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
+    [_delegate aboutViewControllerDone:self];
 }
 
 @end
