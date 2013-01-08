@@ -15,6 +15,7 @@ static NSString * const StatFormat = @"<div class=\"metric\"><span class=\"key\"
     BOOL _didLayout;
     UIInterfaceOrientation _interfaceOrientationForLayout;
     NSDictionary *_selectedInfo;
+    NSString * _selectedCountry;
 }
 
 - (void)awakeFromNib {
@@ -36,12 +37,18 @@ static NSString * const StatFormat = @"<div class=\"metric\"><span class=\"key\"
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+- (NSString *) getDescription {
+    NSBundle * bundle = [NSBundle bundleForClass:[self class]];
+    NSString *locString =  [bundle localizedStringForKey:_selectedCountry value:_selectedCountry table:@"Description"];
+    return locString;
+}
+
 - (void)countrySelectionChanged:(NSNotification *)notification {
     // Get the selection
-    NSString *selection = notification.userInfo[SelectedCountryKey];
+    _selectedCountry = notification.userInfo[SelectedCountryKey];
     
     // Save the information for this selection
-    _selectedInfo = [DataManager sharedDataManager].countryData[selection];
+    _selectedInfo = [DataManager sharedDataManager].countryData[_selectedCountry];
     assert(_selectedInfo);
     
     // Force a layout
@@ -162,7 +169,7 @@ static NSString * const StatFormat = @"<div class=\"metric\"><span class=\"key\"
     
     // Get the short paragraph about the country
     // TODO: This is currently hardcoded
-    NSString *description = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nunc nulla, facilisis id adipiscing id, egestas quis arcu. Fusce ut justo at lorem dapibus vulputate. Maecenas in est non erat molestie lacinia ac vitae sem. Nulla lobortis imperdiet nibh id dictum. Maecenas sit amet orci ipsum, vitae vestibulum lectus. Suspendisse tellus ligula, ultricies ut vulputate vel, fermentum eget enim. Suspendisse a neque lectus.\n    Nunc mollis condimentum mattis. Nam eros quam, tristique in semper non, ultricies tincidunt dui. Quisque risus felis, dictum id pulvinar blandit, consequat eu lorem. Pellentesque ullamcorper, mi eu tincidunt placerat, orci justo vulputate est, sodales tristique velit nibh eget tellus. Donec at elementum arcu. Etiam vel lectus ac libero mattis ullamcorper. Morbi feugiat dolor a eros varius id scelerisque augue feugiat. Duis sit amet metus id tellus facilisis aliquet vitae in justo.";
+    NSString *description = [self getDescription];
     
     // Create the substitution dictionary
     NSDictionary *substitutions;
