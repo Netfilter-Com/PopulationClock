@@ -1,11 +1,21 @@
 import urllib
 import constants
 from bs4 import BeautifulSoup
+import re
 from constants import *
 
 url = "https://www.cia.gov/library/publications/the-world-factbook/geos/"
 
 country_table = [i.rstrip().split(";") for i in open("ciaCountryCode.txt").readlines()]
+
+def escape ( text, characters ):
+    for character in characters:
+        text = text.replace( character, '\\' + character )
+    return text
+
+def quot(st):
+        return '"'+ st.replace("\n","\\n").replace("\r","\\r") + '"'
+
 def main():
 	for i in COUNTRY_CODES:
 		country_code = "error"
@@ -19,7 +29,7 @@ def main():
 		soup = BeautifulSoup(data)
 		desc = soup.find("div", { "class" : "category_data" })
 		try:
-			print i,desc.text
+			print "%s = %s;"%(quot(i),quot(escape(desc.text,"\"")))
 		except:
 		    print i
 
