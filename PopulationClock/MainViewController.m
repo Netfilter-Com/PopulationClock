@@ -311,4 +311,8 @@
     _toolbar.items = toolbarButtons;
 }
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
+    return YES;
+}
+
 @end
