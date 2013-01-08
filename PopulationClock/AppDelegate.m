@@ -13,6 +13,11 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // Style all toolbar buttons
+    [[UIBarButtonItem appearance] setBackgroundImage:[UIImage imageNamed:@"barBtn.png"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    NSDictionary *attrs = @{UITextAttributeTextColor : [UIColor colorWithRed:0xfa/255.0 green:0xc4/255.0 blue:0x2a/255.0 alpha:1]};
+    [[UIBarButtonItem appearance] setTitleTextAttributes:attrs forState:UIControlStateNormal];
+    
     // Pre-load the IAP products
     [InAppPurchaseManager sharedInstance];
     

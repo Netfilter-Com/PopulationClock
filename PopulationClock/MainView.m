@@ -27,9 +27,6 @@
     
     // Style the toolbar
     [_toolbar setBackgroundImage:[UIImage imageNamed:@"boxRodapeVert"] forToolbarPosition:UIToolbarPositionBottom barMetrics:UIBarMetricsDefault];
-    [[UIBarButtonItem appearance] setBackgroundImage:[UIImage imageNamed:@"barBtn.png"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    NSDictionary *attrs = @{UITextAttributeTextColor : [UIColor colorWithRed:0xfa/255.0 green:0xc4/255.0 blue:0x2a/255.0 alpha:1]};
-    [[UIBarButtonItem appearance] setTitleTextAttributes:attrs forState:UIControlStateNormal];
     
     // Add observers to the keyboard events
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];

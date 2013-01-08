@@ -32,7 +32,7 @@
     
     // Set the navigation bar theme
     NSDictionary *attrs = @{UITextAttributeTextColor : [UIColor colorWithRed:0xfa/255.0 green:0xc4/255.0 blue:0x2a/255.0 alpha:1]};
-    [[UINavigationBar appearance] setTitleTextAttributes:attrs];
+    [_navigationBar setTitleTextAttributes:attrs];
     
     // Set the background color
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"debut_light"]];
