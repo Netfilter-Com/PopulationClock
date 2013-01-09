@@ -19,6 +19,8 @@
     IBOutlet __weak UIView *_panel2;
     IBOutlet __weak UIView *_panel3;
     IBOutlet __weak UIToolbar *_toolbar;
+    IBOutlet __weak UIView *_dimmedView;
+    int _numKeyboardsShowing;
 }
 
 - (void)awakeFromNib {
@@ -41,7 +43,23 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+static inline UIViewAnimationOptions animationOptionsWithCurve(UIViewAnimationCurve curve) {
+    switch (curve) {
+        case UIViewAnimationCurveEaseInOut:
+            return UIViewAnimationOptionCurveEaseInOut;
+        case UIViewAnimationCurveEaseIn:
+            return UIViewAnimationOptionCurveEaseIn;
+        case UIViewAnimationCurveEaseOut:
+            return UIViewAnimationOptionCurveEaseOut;
+        case UIViewAnimationCurveLinear:
+            return UIViewAnimationOptionCurveLinear;
+    }
+}
+
 - (void)keyboardWillShow:(NSNotification *)notification {
+    // Increment the number of keyboards showing
+    ++_numKeyboardsShowing;
+    
     // Get the keyboard size
     CGSize kbSize = [notification.userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     
@@ -53,23 +71,60 @@
         kbSize.height = tmp;
     }
     
-    // Adjust the content
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationCurve:[notification.userInfo[UIKeyboardAnimationCurveUserInfoKey] intValue]];
-    [UIView setAnimationDuration:[notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] floatValue]];
-    self.contentInset = UIEdgeInsetsMake(0, 0, kbSize.height, 0);
-    self.contentOffset = CGPointMake(0, kbSize.height);
-    [UIView commitAnimations];
+    // Animate with the keyboard
+    CGFloat duration = [notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] floatValue];
+    UIViewAnimationOptions options = animationOptionsWithCurve([notification.userInfo[UIKeyboardAnimationCurveUserInfoKey] intValue]);
+    [UIView animateWithDuration:duration delay:0 options:options animations:^{
+        // Actually dim the dimmed view
+        _dimmedView.hidden = NO;
+        _dimmedView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.6];
+        
+        // Offset the content
+        self.contentInset = UIEdgeInsetsMake(0, 0, kbSize.height, 0);
+        self.contentOffset = CGPointMake(0, kbSize.height);
+    } completion:nil];
 }
 
 - (void)keyboardWillHide:(NSNotification *)notification {
-    // Adjust the content
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationCurve:[notification.userInfo[UIKeyboardAnimationCurveUserInfoKey] intValue]];
-    [UIView setAnimationDuration:[notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] floatValue]];
-    self.contentInset = UIEdgeInsetsZero;
-    self.contentOffset = CGPointZero;
-    [UIView commitAnimations];
+    // Decrement the number of keyboards showing
+    _numKeyboardsShowing = 0;
+    
+    // Adjust the content and get rid of the dimmed view
+    CGFloat duration = [notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] floatValue];
+    UIViewAnimationOptions options = animationOptionsWithCurve([notification.userInfo[UIKeyboardAnimationCurveUserInfoKey] intValue]);
+    [UIView animateWithDuration:duration delay:0 options:options animations:^{
+        // Make the dimmed view transparent
+        if (!_numKeyboardsShowing)
+            _dimmedView.backgroundColor = [UIColor clearColor];
+        
+        // Offset the content back into place
+        self.contentInset = UIEdgeInsetsZero;
+        self.contentOffset = CGPointZero;
+    } completion:^(BOOL finished) {
+        // Make the dimmed view hidden again
+        if (!_numKeyboardsShowing)
+            _dimmedView.hidden = YES;
+    }];
+}
+
+- (BOOL)findAndResignFirstResponder:(UIView *)view {
+    if (view.isFirstResponder) {
+        [view resignFirstResponder];
+        return YES;
+    }
+    for (UIView *subview in view.subviews) {
+        if ([self findAndResignFirstResponder:subview])
+            return YES;
+    }
+    return NO;
+}
+
+- (IBAction)dimmedViewButtonTouched:(id)sender {
+    // Find and resign the first responder. This is ugly but,
+    // alternatives would be either having to keep track of
+    // the search UITextField or telling the view controller
+    // to end editing
+    [self findAndResignFirstResponder:self];
 }
 
 - (void)layoutSubviews {
