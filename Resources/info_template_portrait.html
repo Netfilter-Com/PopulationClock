@@ -47,8 +47,12 @@ body {
     margin-bottom: 20px;
 }
 
-#description a:link {text-decoration:none;}
-
+#description a:link {
+    font-family: "HelveticaNeue-Medium";
+    font-size: 12px;
+    text-decoration: none;
+    color: #e8aa1d;
+}
 #ruler {
     width: 100%;
     border-bottom: 1px solid #9a9a9a;
@@ -74,8 +78,8 @@ body {
   $(document).ready(function() {
     $("#description").shorten({
     "showChars" : 150,
-    "moreText"  : "(+)",
-    "lessText"  : "(-)",
+    "moreText"  : "[Read more]",
+    "lessText"  : "<<",
     });
   });
 </script>

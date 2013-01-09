@@ -41,8 +41,8 @@
     CAGradientLayer *gradient = [CAGradientLayer layer];
     gradient.frame = self.view.bounds;
     gradient.colors = @[
-        (id)[UIColor colorWithRed:1 green:1 blue:1 alpha:0.5].CGColor,
-        (id)[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5].CGColor
+        (id)[UIColor colorWithRed:1 green:1 blue:1 alpha:0.2].CGColor,
+        (id)[UIColor colorWithRed:0 green:0 blue:0 alpha:0.2].CGColor
     ];
     [self.view.layer insertSublayer:gradient atIndex:0];
     
