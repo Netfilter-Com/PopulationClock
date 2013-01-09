@@ -6,6 +6,8 @@
 //  Copyright (c) 2012 NetFilter. All rights reserved.
 //
 
+#import <Accelerate/Accelerate.h>
+
 #import "CountryCoordinates.h"
 #import "MapImageView.h"
 
@@ -177,14 +179,22 @@
     // Create a new bitmap
     NSMutableData *newBitmap = [NSMutableData dataWithLength:_bitmapSize.width * _bitmapSize.height * 4];
     
-    // Turn the replacement color into an RGBA color value
-    register uint32_t replacement = [self RGBAColorValueForColor:color];
+    // Turn the replacement color into an RGBA color value that
+    // we can use with the Accelerate framework
+    CGFloat r, g, b, a;
+    BOOL convertionRes = [color getRed:&r green:&g blue:&b alpha:&a];
+    assert(convertionRes);
+    Pixel_8888 replacementColor = { a * 0xff, r * 0xff, g * 0xff, b * 0xff };
     
-    // Fill the bitmap with the replacement color
-    register int len32 = newBitmap.length / sizeof(uint32_t);
-    uint32_t *mem32 = (uint32_t *)newBitmap.mutableBytes;
-    while (len32--)
-        *mem32++ = replacement;
+    // Fill the memory with the replacement color using the
+    // Accelerate framework
+    vImage_Buffer buffer;
+    buffer.data = newBitmap.mutableBytes;
+    buffer.width = _bitmapSize.width;
+    buffer.height = _bitmapSize.height;
+    buffer.rowBytes = _bitmapSize.width * 4;
+    vImage_Error error = vImageBufferFill_ARGB8888(&buffer, replacementColor, kvImageNoFlags);
+    assert(error == kvImageNoError);
     
     NSString *colorStr = _countryColors[countryCode];
     if (colorStr) {
