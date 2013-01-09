@@ -149,7 +149,7 @@
         @"kr" : NSLocalizedString(@"Korea, Republic of", @""),
         @"kw" : NSLocalizedString(@"Kuwait", @""),
         @"kg" : NSLocalizedString(@"Kyrgyzstan", @""),
-        @"la" : NSLocalizedString(@"Lao PDR", @""),
+        @"la" : NSLocalizedString(@"Lao, PDR", @""),
         @"lv" : NSLocalizedString(@"Latvia", @""),
         @"lb" : NSLocalizedString(@"Lebanon", @""),
         @"ls" : NSLocalizedString(@"Lesotho", @""),
