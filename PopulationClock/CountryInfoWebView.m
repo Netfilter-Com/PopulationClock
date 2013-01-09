@@ -207,6 +207,7 @@ static NSString * const StatFormat = @"<div class=\"metric\"><span class=\"key\"
         substitutions = @{
             @"%%NAME%%" : _selectedInfo[@"name"],
             @"%%DESCRIPTION%%" : description,
+            @"%%READ_MORE_LINK%%" : NSLocalizedString(@"[Read more]", @""),
             @"%%STATS%%" : stats
         };
     }

@@ -78,14 +78,13 @@ body {
   $(document).ready(function() {
     $("#description").shorten({
     "showChars" : 150,
-    "moreText"  : "[Read more]",
+    "moreText"  : "%%READ_MORE_LINK%%",
     "lessText"  : "<<",
     });
   });
 </script>
 </head>
 <body>
-    <!-- TODO: This will become a template -->
     <div id="name">%%NAME%%</div>
     <div id="description">%%DESCRIPTION%%</div>
     <div id="ruler"></div>
