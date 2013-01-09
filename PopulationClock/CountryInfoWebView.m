@@ -162,6 +162,22 @@ static NSString * const StatFormat = @"<div class=\"metric\"><span class=\"key\"
     if (_didLayout && isPortrait == UIInterfaceOrientationIsPortrait(_interfaceOrientationForLayout))
         return;
     
+    // Change the scroll bar behavior depending whether we're
+    // in portrait or landscape
+    UIScrollView *scrollView;
+    for (UIView *view in self.subviews) {
+        if ([view isKindOfClass:[UIScrollView class]]) {
+            scrollView = (UIScrollView *)view;
+            break;
+        }
+    }
+    @try {
+        scrollView.indicatorStyle = isPortrait ? UIScrollViewIndicatorStyleBlack : UIScrollViewIndicatorStyleWhite;
+    }
+    @catch (NSException *exception) {
+        NSLog(@"Failed to set web view indicator style: %@", exception);
+    }
+    
     // Load the right template depending on the orientation
     NSString *templateName = isPortrait ? @"info_template_portrait" : @"info_template_landscape";
     NSString *path = [[NSBundle mainBundle] pathForResource:templateName ofType:@"html"];
