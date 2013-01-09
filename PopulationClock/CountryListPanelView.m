@@ -207,7 +207,7 @@
         assert(pos != NSNotFound);
         
         // Select it
-        indexPath = [NSIndexPath indexPathForItem:pos inSection:0];
+        indexPath = [NSIndexPath indexPathForRow:pos inSection:0];
         [_tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionMiddle];
     }
     
