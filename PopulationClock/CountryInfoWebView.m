@@ -196,7 +196,7 @@ static NSString * const StatFormat = @"<div class=\"metric\"><span class=\"key\"
         ADD_STAT(@"electricityAccess", NSLocalizedString(@"Access to electricity", @""), formatPercentage);
         ADD_STAT(@"co2Emissions", NSLocalizedString(@"CO2 emissions (kg/yr)", @""), formatCO2Emissions);
         ADD_STAT(@"forestArea", NSLocalizedString(@"Forest area", @""), formatPercentage);
-        ADD_STAT(@"energyProduction", NSLocalizedString(@"Energy production (kg of oil equiv.)", @""), formatEnergyProduction);
+        ADD_STAT(@"energyProduction", NSLocalizedString(@"Energy prod. (kg of oil equiv.)", @""), formatEnergyProduction);
         ADD_STAT(@"internetUsers", NSLocalizedString(@"Internet users", @""), formatPercentage);
         ADD_STAT(@"mobileUsersPer100", NSLocalizedString(@"Mobile phones per 100 people", @""), formatSmallNumber);
         ADD_STAT(@"passengerCarPer1000", NSLocalizedString(@"Passenger cars per 1,000 people", @""), formatSmallNumber);

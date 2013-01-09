@@ -15,8 +15,7 @@ jQuery.fn.shorten=function(e){var t={showChars:100,ellipsesText:"…",moreText:"
 }
 body {
     background-color: transparent;
-    margin: 15px;
-    margin-top: 27px;
+    margin-top: 30px; /* this is 35px - #name's padding-top / 2 */
     margin-bottom: 80px;
 }
 #name {
@@ -29,8 +28,7 @@ body {
     text-align: center;
     color: #fff;
     text-shadow: 0 1px 1px #9a9a9a;
-    padding-top: 9px;
-    margin-bottom: 17px;
+    padding-top: 10px; /* this centers the text in the box, but offsets the body and the div below it */
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
     #name {
@@ -42,8 +40,9 @@ body {
     font-size: 15px;
     line-height: 150%;
     color: #040404;
-    margin-left: 5px;
-    margin-right: 5px;
+    width: 280px;
+    margin: 0 auto;
+    margin-top: 20px; /* this is 25px - #name's padding-top / 2 */
     margin-bottom: 20px;
 }
 #description a {
@@ -54,16 +53,17 @@ body {
     color: #e8aa1d;
 }
 #ruler {
-    width: 100%;
+    width: 294px;
     border-bottom: 1px solid #9a9a9a;
     box-shadow: 0 1px 1px #9a9a9a;
+    margin: 0 auto;
     margin-bottom: 22px;
 }
 .metric {
     font-size: 14px;
     color: #4c4c4c;
-    margin-left: 5px;
-    margin-right: 5px;
+    width: 280px;
+    margin: 0 auto;
     margin-bottom: 5px;
 }
 .metric .key {
@@ -77,7 +77,7 @@ body {
 <script type="text/javascript">
   $(document).ready(function() {
     $("#description").shorten({
-    "showChars" : 150,
+    "showChars" : 135,
     "moreText"  : "%%READ_MORE_LINK%%",
     "lessText"  : "<<",
     });
