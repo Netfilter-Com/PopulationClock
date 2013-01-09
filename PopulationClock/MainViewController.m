@@ -193,6 +193,12 @@
     // Normalize the point
     center = CGPointMake(center.x / _scrollView.frame.size.width, center.y / _scrollView.frame.size.height);
     
+    // If the view controller was autorotating, the scroll view we're using to normalize the
+    // center of the touch may have a different size already. If that's the case, we'll get
+    // a normalized point out of bounds, so we skip this touch
+    if (center.x > 1 || center.y > 1)
+        return;
+    
     // Find the country
     NSString *country = [_countryDetector countryAtNormalizedPoint:center];
     if (country)
