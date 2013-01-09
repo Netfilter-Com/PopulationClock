@@ -257,6 +257,15 @@
     UIImageView *imageView = [[UIImageView alloc] initWithImage:icon];
     imageView.tag = TAG_ICON_LAYER;
     
+    // Resize it
+    CGRect frame = imageView.frame;
+    frame.size.height = self.bounds.size.height * (20 / 768.0);
+    frame.size.width = icon.size.width * frame.size.height / icon.size.height;
+    imageView.frame = frame;
+    
+    // Set the autoresizing masks
+    imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
+    
     // Insert it between the blink layer and the mask layer
     int index = 0;
     for (UIView *subview in self.subviews) {
