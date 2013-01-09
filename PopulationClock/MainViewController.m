@@ -28,6 +28,7 @@
     IBOutlet __weak PopulationClockView *_populationClock;
     IBOutlet __weak UIToolbar *_toolbar;
     IBOutlet __weak UIBarButtonItem *_removeAdsButton;
+    IBOutlet __weak UIView *_dimmedView;
     
     CGPoint _legendOrigin;
     
@@ -101,7 +102,7 @@
         _adView.adUnitID = @"a150db06a46d404";
         _adView.rootViewController = self;
         [(MainView *)self.view setAdView:_adView];
-        [self.view addSubview:_adView];
+        [self.view insertSubview:_adView belowSubview:_dimmedView];
         
         // Create and load the request
         GADRequest *request = [GADRequest request];

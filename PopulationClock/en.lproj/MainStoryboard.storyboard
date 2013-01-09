@@ -325,6 +325,7 @@
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="_dimmedView" destination="rB6-lo-KOg" id="gvY-gx-ZRV"/>
                         <outlet property="_legend" destination="f4I-fl-wvI" id="GF6-Rb-fJV"/>
                         <outlet property="_map" destination="uWc-dp-F9S" id="cG3-Ng-MhF"/>
                         <outlet property="_populationClock" destination="Xcl-AC-G2O" id="Kfp-vU-KAd"/>
@@ -435,10 +436,6 @@
     <classes>
         <class className="AboutViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AboutViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="doneButtonTouched:"/>
-                <relationship kind="action" name="maquinarioLogoTouched:"/>
-            </relationships>
         </class>
         <class className="ClockPanelView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ClockPanelView.h"/>
@@ -454,12 +451,14 @@
         </class>
         <class className="MainView" superclassName="UIScrollView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MainView.h"/>
-            <relationships>
-                <relationship kind="action" name="dimmedViewButtonTouched:"/>
-            </relationships>
         </class>
         <class className="MainViewController" superclassName="ModalDialogViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MainViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="ShareApp:"/>
+                <relationship kind="action" name="aboutButtonTouched:"/>
+                <relationship kind="action" name="purchaseButtonTouched:"/>
+            </relationships>
         </class>
         <class className="MapImageView" superclassName="UIImageView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MapImageView.h"/>
