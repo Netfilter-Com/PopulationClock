@@ -71,7 +71,7 @@
     CGFloat r, g, b, a;
     BOOL res = [color getRed:&r green:&g blue:&b alpha:&a];
     assert(res);
-    return ((int)(r * 0xff) << 24) | ((int)(g * 0xff) << 16) | ((int)(b * 0xff) << 8) | (int)(a * 0xff);
+    return ((uint32_t)(r * 0xff) << 24) | ((uint32_t)(g * 0xff) << 16) | ((uint32_t)(b * 0xff) << 8) | (uint32_t)(a * 0xff);
 }
 
 - (UIImage *)imageFromBitmapData:(void *)data {
@@ -178,11 +178,13 @@
     NSMutableData *newBitmap = [NSMutableData dataWithLength:_bitmapSize.width * _bitmapSize.height * 4];
     
     // Turn the replacement color into an RGBA color value
-    uint32_t replacement = [self RGBAColorValueForColor:color];
+    register uint32_t replacement = [self RGBAColorValueForColor:color];
     
     // Fill the bitmap with the replacement color
-    assert(sizeof(int) == sizeof(uint32_t));
-    memset(newBitmap.mutableBytes, replacement, newBitmap.length);
+    register int len32 = newBitmap.length / sizeof(uint32_t);
+    uint32_t *mem32 = (uint32_t *)newBitmap.mutableBytes;
+    while (len32--)
+        *mem32++ = replacement;
     
     NSString *colorStr = _countryColors[countryCode];
     if (colorStr) {
