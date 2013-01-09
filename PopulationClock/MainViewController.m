@@ -201,10 +201,13 @@
     
     // Find the country
     NSString *country = [_countryDetector countryAtNormalizedPoint:center];
-    if (country)
+    if (country && ![country isEqualToString:_selectedCountry]) {
         [_map selectCountry:country maskColor:MAP_MASK_COLOR];
-    else
+    }
+    else {
         [_map deselectCurrentCountry];
+        country = nil;
+    }
     
     // Save the selection and update the population clock
     NSString *selection = country ? country : @"world";
