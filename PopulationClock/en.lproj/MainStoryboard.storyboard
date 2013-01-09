@@ -26,8 +26,8 @@
                                 </connections>
                             </scrollView>
                             <view contentMode="scaleToFill" id="f4I-fl-wvI" customClass="MapLegendView">
-                                <rect key="frame" x="20" y="227" width="160" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="20" y="237" width="160" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Population growth" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DVg-o2-duc">
                                         <rect key="frame" x="0.0" y="10" width="160" height="16"/>

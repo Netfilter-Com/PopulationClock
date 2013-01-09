@@ -8,6 +8,8 @@
 
 #import "MainView.h"
 
+#define MAP_NAVIGATION_BAR_OVERLAP_PIXELS 4
+
 @implementation MainView {
     IBOutlet __weak UIScrollView *_scrollView;
     IBOutlet __weak UIImageView *_map;
@@ -86,6 +88,7 @@
     _scrollView.zoomScale = 1;
     
     // Find an appropriate size for the map
+    CGSize prevMapSize = _scrollView.frame.size;
     CGFloat scaleX = self.bounds.size.width / _map.image.size.width;
     CGFloat scaleY = self.bounds.size.height / _map.image.size.height;
     CGFloat scale = MIN(scaleX, scaleY);
@@ -110,7 +113,7 @@
     frame = _navigationBar.frame;
     frame.size.width = self.bounds.size.width;
     frame.origin.x = 0;
-    frame.origin.y = mapSize.height - 4;
+    frame.origin.y = mapSize.height - MAP_NAVIGATION_BAR_OVERLAP_PIXELS;
     _navigationBar.frame = frame;
     
     // Position the ad banner view
@@ -119,7 +122,14 @@
     frame.origin.y = _navigationBar.frame.origin.y - _adView.frame.size.height;
     _adView.frame = frame;
     
-    // Make sure the legend is within bounds
+    // Position the legend
+    CGSize newMapSize = _scrollView.frame.size;
+    CGFloat orientationScaleX = newMapSize.width / prevMapSize.width;
+    CGFloat orientationScaleY = newMapSize.height / prevMapSize.height;
+    CGPoint center = _legend.center;
+    _legend.center = CGPointMake(center.x * orientationScaleX, center.y * orientationScaleY);
+    
+    // Make sure it's still within bounds
     frame = _legend.frame;
     [self adjustMapLegendFrameToBounds:&frame];
     _legend.frame = frame;
