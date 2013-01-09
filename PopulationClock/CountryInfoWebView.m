@@ -37,12 +37,6 @@ static NSString * const StatFormat = @"<div class=\"metric\"><span class=\"key\"
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (NSString *) getDescription {
-    NSBundle * bundle = [NSBundle bundleForClass:[self class]];
-    NSString *locString =  [bundle localizedStringForKey:_selectedCountry value:_selectedCountry table:@"Description"];
-    return locString;
-}
-
 - (void)countrySelectionChanged:(NSNotification *)notification {
     // Get the selection
     _selectedCountry = notification.userInfo[SelectedCountryKey];
@@ -184,8 +178,7 @@ static NSString * const StatFormat = @"<div class=\"metric\"><span class=\"key\"
     NSString *template = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:NULL];
     
     // Get the short paragraph about the country
-    // TODO: This is currently hardcoded
-    NSString *description = [self getDescription];
+    NSString *description = [[NSBundle mainBundle] localizedStringForKey:_selectedCountry value:_selectedCountry table:@"Description"];
     
     // Create the substitution dictionary
     NSDictionary *substitutions;
