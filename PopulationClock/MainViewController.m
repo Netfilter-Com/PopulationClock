@@ -18,7 +18,7 @@
 #import "PopulationClockView.h"
 #import "SimulationEngine.h"
 
-#define MAP_MASK_COLOR [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.5]
+#define MAP_MASK_COLOR [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5]
 #define GAME_SHORT_URL @"http://bit.ly/populationclock"
 
 @implementation MainViewController {
