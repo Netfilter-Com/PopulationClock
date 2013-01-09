@@ -68,6 +68,10 @@
     if (notification.object == self)
         return;
     
+    // Nothing to do if we're searching for a country
+    if (_searchResult)
+        return;
+    
     // Get the selection
     NSString *selection = notification.userInfo[SelectedCountryKey];
     
