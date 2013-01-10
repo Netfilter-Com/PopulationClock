@@ -198,6 +198,7 @@ static NSString * const StatFormat = @"<div class=\"metric\"><span class=\"key\"
         ADD_STAT(@"birthsPerWoman", NSLocalizedString(@"Births per woman", @""), formatSmallNumber);
         ADD_STAT(@"birthRate", NSLocalizedString(@"Crude birth rate per 1,000 people", @""), formatSmallNumber);
         ADD_STAT(@"deathRate", NSLocalizedString(@"Crude death rate per 1,000 people", @""), formatSmallNumber);
+        ADD_STAT(@"growthRate", NSLocalizedString(@"Annual population growth", @""), formatPercentage);
         ADD_STAT(@"healthExpensePercentGDP", NSLocalizedString(@"Health expenditure % GDP", @""), formatPercentage);
         ADD_STAT(@"literacyRate", NSLocalizedString(@"Literacy rate", @""), formatPercentage);
         ADD_STAT(@"govtEducationExpensePercentGDP", NSLocalizedString(@"Govt. education expenditure % GDP", @""), formatPercentage);
