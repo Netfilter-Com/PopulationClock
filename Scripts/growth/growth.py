@@ -70,6 +70,10 @@ def main():
             # Save in the dictionary
             rates_per_country[country] = val
 
+    # Print the minimum and maximum growth rate
+    print "Lowest growth rate: " + str(min_rate)
+    print "Highest growth rate: " + str(max_rate)
+
     # Interpolate the colors
     colors_per_country = {}
     for country in rates_per_country:
