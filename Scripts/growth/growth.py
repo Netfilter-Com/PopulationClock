@@ -30,14 +30,20 @@ def main():
     min_rate = 9999
     max_rate = -9999
     rates_per_country = {}
-    with open("growth_2011.csv", "r") as f:
+    lineNumber = 0
+    with open("../shared/growth_2011.csv", "r") as f:
         while True:
             # Read a line
             line = f.readline()
             if line == "":
                 break
+            lineNumber += 1
             line = line.strip()
             if line == "":
+                continue
+
+            # The first line is a header
+            if lineNumber == 1:
                 continue
 
             # Parse it

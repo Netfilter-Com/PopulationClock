@@ -20,6 +20,10 @@ DATA = [
         "key" : "deathRate"
     },
     {
+        "filename" : "GrowthRate",
+        "key" : "growthRate"
+    },
+    {
         "filename" : "ElectricityAccess",
         "key" : "electricityAccess"
     },
@@ -173,6 +177,8 @@ def main():
             missing.append("death rate")
         if not "population" in ind:
             missing.append("population")
+        if not "growthRate" in ind:
+            missing.append("growth rate")
         if len(missing) > 0:
             print "Country with missing " + ", ".join(missing) + ": " + country
 
