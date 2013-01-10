@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Appirater.h"
 #import "InAppPurchaseManager.h"
 #import "SimulationEngine.h"
 
@@ -23,6 +24,13 @@
     
     // Reset the simulation
     [[SimulationEngine sharedInstance] reset];
+    
+    // Set up appirater
+    [Appirater setAppId:@"590689957"];
+    [Appirater setDaysUntilPrompt:5];
+    [Appirater setUsesUntilPrompt:7];
+    [Appirater setTimeBeforeReminding:20];
+    [Appirater appEnteredForeground:YES];
     
     return YES;
 }
