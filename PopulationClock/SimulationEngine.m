@@ -70,15 +70,10 @@ NSString *SimulationEngineDeathsKey = @"SimulationEngineDeathsKey";
     NSDate *referenceDate = [NSDate date];
     for (NSDictionary *info in countryInfo) {
         @autoreleasepool {
-            // Get the birth and death probabilities
+            // Get the growth rate per second
             NSString *countryCode = info[@"code"];
-            float birthProb = [(NSNumber *)info[@"birthRate"] floatValue] / 1000 / SECONDS_PER_YEAR;
-            float deathProb = [(NSNumber *)info[@"deathRate"] floatValue] / 1000 / SECONDS_PER_YEAR;
-            
-            // Get an estimated growth rate per second (note that this
-            // doesn't take immigration into account)
-            long long population = [(NSNumber *)info[@"population"] longLongValue];
-            float growthRate = population * birthProb - population * deathProb;
+            long long population = [info[@"population"] longLongValue];
+            float growthRate = [info[@"growthRate"] floatValue] / 100 * population / SECONDS_PER_YEAR;
             
             // Figure out when the population data was retrieved
             NSNumber *year = info[@"populationYear"];
@@ -99,8 +94,8 @@ NSString *SimulationEngineDeathsKey = @"SimulationEngineDeathsKey";
             population += toAdvance * growthRate;
             
             // Save this country's data
-            _birthProbs[countryCode] = @(birthProb);
-            _deathProbs[countryCode] = @(deathProb);
+            _birthProbs[countryCode] = @([info[@"birthRate"] floatValue] / 1000 / SECONDS_PER_YEAR);
+            _deathProbs[countryCode] = @([info[@"deathRate"] floatValue] / 1000 / SECONDS_PER_YEAR);
             _population[countryCode] = @(population);
         }
     }
