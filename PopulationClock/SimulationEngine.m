@@ -166,6 +166,13 @@ static inline BOOL check_probability(float prob) {
     NSTimeInterval scale = [now timeIntervalSinceDate:_lastStep];
     _lastStep = now;
     
+    // If the scale is too big, that means a reset is about to
+    // happen any time soon
+    if (scale > SIMULATION_STEP * 1.2) {
+        [self dispatchTimerFiredInBackgroundQueue];
+        return;
+    }
+    
     // Simulate births and deaths in increments of a small value, so that
     // the probability pretty much never goes beyond 1
     NSMutableSet *births = [[NSMutableSet alloc] initWithCapacity:10];
