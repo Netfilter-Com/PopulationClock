@@ -1,6 +1,6 @@
 from constants import *
 from xml.dom import minidom
-import re
+import csv
 
 MIN_COLOR = (0xff, 0x32, 0x00)
 MAX_COLOR = (0xff, 0xe1, 0x00)
@@ -30,47 +30,45 @@ def main():
     min_rate = 9999
     max_rate = -9999
     rates_per_country = {}
-    lineNumber = 0
     with open("../shared/growth_2011.csv", "r") as f:
-        while True:
-            # Read a line
-            line = f.readline()
-            if line == "":
-                break
-            lineNumber += 1
-            line = line.strip()
-            if line == "":
+        reader = csv.reader(f, delimiter=';')
+        for row in reader:
+            # Handle the header row
+            if row[0] == "Country Code":
                 continue
 
-            # The first line is a header
-            if lineNumber == 1:
-                continue
-
-            # Parse it
-            match = re.match("(\w\w\w);(-{0,1}\d+),(\d+)", line)
-            if match == None:
-                print ">>> Error parsing line: " + line
-                continue
-
-            # Make sure we got the country
-            country3 = match.groups()[0].lower()
+            # Get the country code
+            country3 = row[0].lower()
             if country3 in COUNTRIES_3TO2:
                 country = COUNTRIES_3TO2[country3]
+            elif country3 == "wld":
+                continue
             else:
                 print ">>> Unknown country: " + country3
                 continue
 
-            # Turn the growth rate into a floating point number
-            rate = float(match.groups()[1] + "." + match.groups()[2])
+            # Get the most recent data
+            val = None
+            for idx in range(len(row) - 1, 0, -1):
+                validx = row[idx]
+                if validx != "":
+                    validx = validx.replace(",", ".", 1)
+                    val = float(validx)
+                    break
+
+            # Skip countries for which we don't have data
+            if val == None:
+                print ">>> Country with no data: " + country
+                continue
 
             # Check if it's the minimum or maximum rate
-            if rate < min_rate:
-                min_rate = rate
-            elif rate > max_rate:
-                max_rate = rate
+            if val < min_rate:
+                min_rate = val
+            elif val > max_rate:
+                max_rate = val
 
             # Save in the dictionary
-            rates_per_country[country] = rate
+            rates_per_country[country] = val
 
     # Interpolate the colors
     colors_per_country = {}
