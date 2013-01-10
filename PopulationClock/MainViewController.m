@@ -9,6 +9,7 @@
 #import <Twitter/Twitter.h>
 
 #import "CountryDetector.h"
+#import "DataManager.h"
 #import "GADBannerView.h"
 #import "InAppPurchaseManager.h"
 #import "MainView.h"
@@ -201,13 +202,23 @@
     
     // Find the country
     NSString *country = [_countryDetector countryAtNormalizedPoint:center];
-    if (country && ![country isEqualToString:_selectedCountry]) {
-        [_map selectCountry:country maskColor:MAP_MASK_COLOR];
-    }
-    else {
-        [_map deselectCurrentCountry];
+    
+    // If it's the same as the selected country, handle this as if
+    // the ocean had been touched
+    if (country && [country isEqualToString:_selectedCountry])
         country = nil;
-    }
+    
+    // If it's a country for which we don't have any info, also handle
+    // it that same way
+    if (country && ![DataManager sharedDataManager].countryData[country])
+        country = nil;
+    
+    // Either select the country or deselect the current
+    // selection in the map
+    if (country)
+        [_map selectCountry:country maskColor:MAP_MASK_COLOR];
+    else
+        [_map deselectCurrentCountry];
     
     // Save the selection and update the population clock
     NSString *selection = country ? country : @"world";
