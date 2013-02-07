@@ -98,22 +98,13 @@
     
     // If the user has not purchased the option, show the ads
     if (!iapmgr.adsRemoved) {
-        // Create the banner view
-        _adView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
-        _adView.adUnitID = @"a150db06a46d404";
+        AdManager *adManager = [AdManager sharedInstance];
+        adManager.delegate = self;
+        _adView = [adManager adBannerViewWithSize:kGADAdSizeBanner];
         _adView.rootViewController = self;
         [(MainView *)self.view setAdView:_adView];
         [self.view insertSubview:_adView belowSubview:_dimmedView];
-        
-        // Create and load the request
-        GADRequest *request = [GADRequest request];
-#ifdef DEBUG
-        request.testing = YES;
-#endif
-        [_adView loadRequest:request];
-        
-        // Be notified of purchase notifications so we can get rid of the ad
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(purchaseDone:) name:InAppPurchasePurchasedRemoveAds object:nil];
+        [adManager doneConfiguringAdBannerView:_adView];
     }
 }
 
@@ -327,16 +318,11 @@
     
     // Purchase the option to remove ads
     [[InAppPurchaseManager sharedInstance] purchaseRemoveAdsWithCallback:^(BOOL purchased) {
-        // Hide the HUD
         [MBProgressHUD hideHUDForView:self.view animated:YES];
-        
-        // Check if the purchase is complete
-        if (purchased)
-            [self purchaseDone:nil];
     }];
 }
 
-- (void)purchaseDone:(NSNotification *)notification {
+- (void)adManagerShouldHideAdView:(AdManager *)manager {
     // Get rid of the ads once the user has purchased this option
     [_adView removeFromSuperview];
     

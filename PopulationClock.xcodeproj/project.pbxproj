@@ -114,6 +114,7 @@
 		ED7769D916C41D9F00BC486F /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = ED7769D816C41D9F00BC486F /* Icon.png */; };
 		ED7769DB16C41DA600BC486F /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED7769DA16C41DA600BC486F /* Icon@2x.png */; };
 		ED7769DE16C4232900BC486F /* StatsBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7769DD16C4232900BC486F /* StatsBuilder.m */; };
+		ED7769E116C429AE00BC486F /* AdManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7769E016C429AE00BC486F /* AdManager.m */; };
 		ED7FF18C169B1FD800123037 /* MapLegendView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7FF18B169B1FD800123037 /* MapLegendView.m */; };
 		ED7FF1A9169B34F400123037 /* clock_background.png in Resources */ = {isa = PBXBuildFile; fileRef = ED7FF1A3169B34F400123037 /* clock_background.png */; };
 		ED7FF1AA169B34F400123037 /* clock_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED7FF1A4169B34F400123037 /* clock_background@2x.png */; };
@@ -739,6 +740,8 @@
 		ED7769DA16C41DA600BC486F /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "../Icon@2x.png"; sourceTree = "<group>"; };
 		ED7769DC16C4232900BC486F /* StatsBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsBuilder.h; sourceTree = "<group>"; };
 		ED7769DD16C4232900BC486F /* StatsBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsBuilder.m; sourceTree = "<group>"; };
+		ED7769DF16C429AD00BC486F /* AdManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdManager.h; sourceTree = "<group>"; };
+		ED7769E016C429AE00BC486F /* AdManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdManager.m; sourceTree = "<group>"; };
 		ED7FF18A169B1FD800123037 /* MapLegendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapLegendView.h; sourceTree = "<group>"; };
 		ED7FF18B169B1FD800123037 /* MapLegendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapLegendView.m; sourceTree = "<group>"; };
 		ED7FF1A3169B34F400123037 /* clock_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock_background.png; sourceTree = "<group>"; };
@@ -1821,6 +1824,8 @@
 			children = (
 				8248F1CC168CC6BC00717BA7 /* AboutViewController.h */,
 				8248F1CD168CC6BC00717BA7 /* AboutViewController.m */,
+				ED7769DF16C429AD00BC486F /* AdManager.h */,
+				ED7769E016C429AE00BC486F /* AdManager.m */,
 				EDA0C3B3167BAF1400CBECC4 /* AppDelegate.h */,
 				EDA0C3B4167BAF1400CBECC4 /* AppDelegate.m */,
 				ED23C58E1680A43E00005C5F /* ClockPanelView.h */,
@@ -2662,6 +2667,7 @@
 				ED993BA5169C8BE1001B2F13 /* ModalDialogViewController.m in Sources */,
 				ED05A4D8169F246600916AB1 /* Appirater.m in Sources */,
 				ED7769DE16C4232900BC486F /* StatsBuilder.m in Sources */,
+				ED7769E116C429AE00BC486F /* AdManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
