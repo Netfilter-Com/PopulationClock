@@ -110,6 +110,9 @@
 		ED3A9BE116961A3E007D19DB /* UIImage+Resizable.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3A9BE016961A3E007D19DB /* UIImage+Resizable.m */; };
 		ED597E8A167F988000038B75 /* CountryListPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED597E89167F988000038B75 /* CountryListPanelView.m */; };
 		ED597E8E167FA55600038B75 /* TopBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED597E8D167FA55600038B75 /* TopBarView.m */; };
+		ED7769D716C41D0B00BC486F /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED7769D616C41D0B00BC486F /* MainStoryboard_iPhone.storyboard */; };
+		ED7769D916C41D9F00BC486F /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = ED7769D816C41D9F00BC486F /* Icon.png */; };
+		ED7769DB16C41DA600BC486F /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED7769DA16C41DA600BC486F /* Icon@2x.png */; };
 		ED7FF18C169B1FD800123037 /* MapLegendView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7FF18B169B1FD800123037 /* MapLegendView.m */; };
 		ED7FF1A9169B34F400123037 /* clock_background.png in Resources */ = {isa = PBXBuildFile; fileRef = ED7FF1A3169B34F400123037 /* clock_background.png */; };
 		ED7FF1AA169B34F400123037 /* clock_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED7FF1A4169B34F400123037 /* clock_background@2x.png */; };
@@ -572,7 +575,7 @@
 		EDA0C3A9167BAF1400CBECC4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA0C3A8167BAF1400CBECC4 /* CoreGraphics.framework */; };
 		EDA0C3B1167BAF1400CBECC4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA0C3B0167BAF1400CBECC4 /* main.m */; };
 		EDA0C3B5167BAF1400CBECC4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA0C3B4167BAF1400CBECC4 /* AppDelegate.m */; };
-		EDA0C3BE167BAF1400CBECC4 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDA0C3BC167BAF1400CBECC4 /* MainStoryboard.storyboard */; };
+		EDA0C3BE167BAF1400CBECC4 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDA0C3BC167BAF1400CBECC4 /* MainStoryboard_iPad.storyboard */; };
 		EDA0C3D6167BB23800CBECC4 /* CountryCoordinates.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA0C3CD167BB23800CBECC4 /* CountryCoordinates.m */; };
 		EDA0C3D7167BB23800CBECC4 /* CountryDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA0C3CF167BB23800CBECC4 /* CountryDetector.m */; };
 		EDA0C3D8167BB23800CBECC4 /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA0C3D1167BB23800CBECC4 /* MainView.m */; };
@@ -730,6 +733,9 @@
 		ED597E89167F988000038B75 /* CountryListPanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryListPanelView.m; sourceTree = "<group>"; };
 		ED597E8C167FA55600038B75 /* TopBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopBarView.h; sourceTree = "<group>"; };
 		ED597E8D167FA55600038B75 /* TopBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopBarView.m; sourceTree = "<group>"; };
+		ED7769D616C41D0B00BC486F /* MainStoryboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		ED7769D816C41D9F00BC486F /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../Icon.png; sourceTree = "<group>"; };
+		ED7769DA16C41DA600BC486F /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "../Icon@2x.png"; sourceTree = "<group>"; };
 		ED7FF18A169B1FD800123037 /* MapLegendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapLegendView.h; sourceTree = "<group>"; };
 		ED7FF18B169B1FD800123037 /* MapLegendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapLegendView.m; sourceTree = "<group>"; };
 		ED7FF1A3169B34F400123037 /* clock_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock_background.png; sourceTree = "<group>"; };
@@ -1203,7 +1209,7 @@
 		EDA0C3B2167BAF1400CBECC4 /* PopulationClock-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PopulationClock-Prefix.pch"; sourceTree = "<group>"; };
 		EDA0C3B3167BAF1400CBECC4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		EDA0C3B4167BAF1400CBECC4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		EDA0C3BD167BAF1400CBECC4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		EDA0C3BD167BAF1400CBECC4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		EDA0C3CC167BB23800CBECC4 /* CountryCoordinates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryCoordinates.h; sourceTree = "<group>"; };
 		EDA0C3CD167BB23800CBECC4 /* CountryCoordinates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryCoordinates.m; sourceTree = "<group>"; };
 		EDA0C3CE167BB23800CBECC4 /* CountryDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryDetector.h; sourceTree = "<group>"; };
@@ -1832,7 +1838,8 @@
 				EDADD8011684D3E1007E8BD5 /* globals.m */,
 				EDF8D0801695BF3500FE02B1 /* InAppPurchaseManager.h */,
 				EDF8D0811695BF3500FE02B1 /* InAppPurchaseManager.m */,
-				EDA0C3BC167BAF1400CBECC4 /* MainStoryboard.storyboard */,
+				EDA0C3BC167BAF1400CBECC4 /* MainStoryboard_iPad.storyboard */,
+				ED7769D616C41D0B00BC486F /* MainStoryboard_iPhone.storyboard */,
 				EDA0C3D0167BB23800CBECC4 /* MainView.h */,
 				EDA0C3D1167BB23800CBECC4 /* MainView.m */,
 				EDA0C3D2167BB23800CBECC4 /* MainViewController.h */,
@@ -1931,6 +1938,8 @@
 				EDADD8061684DAA1007E8BD5 /* globeVertical@2x.png */,
 				ED0108CF1680F61D0067F88D /* Icon-72.png */,
 				ED0108D11680F6230067F88D /* Icon-72@2x.png */,
+				ED7769D816C41D9F00BC486F /* Icon.png */,
+				ED7769DA16C41DA600BC486F /* Icon@2x.png */,
 				ED0108B51680CDD10067F88D /* inativoAtivo.png */,
 				ED0108B61680CDD10067F88D /* inativoAtivo@2x.png */,
 				ED247EB3168387000092E185 /* info_template_landscape.html */,
@@ -2061,7 +2070,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDA0C3BE167BAF1400CBECC4 /* MainStoryboard.storyboard in Resources */,
+				EDA0C3BE167BAF1400CBECC4 /* MainStoryboard_iPad.storyboard in Resources */,
 				EDA0C3E0167BB2F800CBECC4 /* colormap.plist in Resources */,
 				EDA0C3E1167BB2F800CBECC4 /* colormap.png in Resources */,
 				EDA0C3E2167BB2F800CBECC4 /* coords.plist in Resources */,
@@ -2607,6 +2616,9 @@
 				ED05A4D7169F246600916AB1 /* .gitignore in Resources */,
 				ED05A4D9169F246600916AB1 /* AppiraterLocalizable.strings in Resources */,
 				ED05A4DA169F246600916AB1 /* README.md in Resources */,
+				ED7769D716C41D0B00BC486F /* MainStoryboard_iPhone.storyboard in Resources */,
+				ED7769D916C41D9F00BC486F /* Icon.png in Resources */,
+				ED7769DB16C41DA600BC486F /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2679,12 +2691,12 @@
 			name = AppiraterLocalizable.strings;
 			sourceTree = "<group>";
 		};
-		EDA0C3BC167BAF1400CBECC4 /* MainStoryboard.storyboard */ = {
+		EDA0C3BC167BAF1400CBECC4 /* MainStoryboard_iPad.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				EDA0C3BD167BAF1400CBECC4 /* en */,
 			);
-			name = MainStoryboard.storyboard;
+			name = MainStoryboard_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -2729,6 +2741,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = AdHoc;
@@ -2799,6 +2812,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2817,6 +2831,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
