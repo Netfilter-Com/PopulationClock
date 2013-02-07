@@ -113,6 +113,7 @@
 		ED7769D716C41D0B00BC486F /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED7769D616C41D0B00BC486F /* MainStoryboard_iPhone.storyboard */; };
 		ED7769D916C41D9F00BC486F /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = ED7769D816C41D9F00BC486F /* Icon.png */; };
 		ED7769DB16C41DA600BC486F /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED7769DA16C41DA600BC486F /* Icon@2x.png */; };
+		ED7769DE16C4232900BC486F /* StatsBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7769DD16C4232900BC486F /* StatsBuilder.m */; };
 		ED7FF18C169B1FD800123037 /* MapLegendView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7FF18B169B1FD800123037 /* MapLegendView.m */; };
 		ED7FF1A9169B34F400123037 /* clock_background.png in Resources */ = {isa = PBXBuildFile; fileRef = ED7FF1A3169B34F400123037 /* clock_background.png */; };
 		ED7FF1AA169B34F400123037 /* clock_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED7FF1A4169B34F400123037 /* clock_background@2x.png */; };
@@ -736,6 +737,8 @@
 		ED7769D616C41D0B00BC486F /* MainStoryboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		ED7769D816C41D9F00BC486F /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../Icon.png; sourceTree = "<group>"; };
 		ED7769DA16C41DA600BC486F /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "../Icon@2x.png"; sourceTree = "<group>"; };
+		ED7769DC16C4232900BC486F /* StatsBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsBuilder.h; sourceTree = "<group>"; };
+		ED7769DD16C4232900BC486F /* StatsBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsBuilder.m; sourceTree = "<group>"; };
 		ED7FF18A169B1FD800123037 /* MapLegendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapLegendView.h; sourceTree = "<group>"; };
 		ED7FF18B169B1FD800123037 /* MapLegendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapLegendView.m; sourceTree = "<group>"; };
 		ED7FF1A3169B34F400123037 /* clock_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock_background.png; sourceTree = "<group>"; };
@@ -1854,6 +1857,8 @@
 				ED7FF1B0169B3E1600123037 /* PopulationClockView.m */,
 				ED0E20AB169719AD005445B7 /* SimulationEngine.h */,
 				ED0E20AC169719AD005445B7 /* SimulationEngine.m */,
+				ED7769DC16C4232900BC486F /* StatsBuilder.h */,
+				ED7769DD16C4232900BC486F /* StatsBuilder.m */,
 				ED597E8C167FA55600038B75 /* TopBarView.h */,
 				ED597E8D167FA55600038B75 /* TopBarView.m */,
 				ED3A9BDF16961A3E007D19DB /* UIImage+Resizable.h */,
@@ -2656,6 +2661,7 @@
 				ED7FF1BE169B461D00123037 /* UIView+SBExtras.m in Sources */,
 				ED993BA5169C8BE1001B2F13 /* ModalDialogViewController.m in Sources */,
 				ED05A4D8169F246600916AB1 /* Appirater.m in Sources */,
+				ED7769DE16C4232900BC486F /* StatsBuilder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
