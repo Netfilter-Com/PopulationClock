@@ -95,6 +95,10 @@
         [[NSUserDefaults standardUserDefaults] setObject:selection forKey:SelectedCountryKey];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
+    
+    // Update the population clock
+    _selectedCountry = selection;
+    [self updatePopulationClockAnimated:YES];
 }
 
 - (void)simulationEngineReset:(NSNotification *)notification {
