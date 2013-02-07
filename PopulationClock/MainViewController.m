@@ -38,6 +38,11 @@
     GADBannerView *_adView;
 }
 
+- (void)dealloc {
+    // We're no longer observers
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)viewDidLoad {
     // Create the colors
     _birthBlinkColor = [UIColor nf_birthBlinkColor];
@@ -103,14 +108,6 @@
         [self.view insertSubview:_adView belowSubview:_dimmedView];
         [adManager doneConfiguringAdBannerView:_adView];
     }
-}
-
-- (void)viewDidUnload {
-    // We're no longer observers
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    
-    // Get rid of the country detector
-    _countryDetector = nil;
 }
 
 - (void)countrySelectionChanged:(NSNotification *)notification {
