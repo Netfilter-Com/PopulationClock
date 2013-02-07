@@ -16,9 +16,8 @@
 #import "MBProgressHUD.h"
 #import "PopulationClockView.h"
 #import "SimulationEngine.h"
+#import "UIColor+NFAppColors.h"
 #import "UIViewController+NFSharing.h"
-
-#define MAP_MASK_COLOR [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5]
 
 @implementation MainViewController {
     IBOutlet __weak UIScrollView *_scrollView;
@@ -41,9 +40,9 @@
 
 - (void)viewDidLoad {
     // Create the colors
-    _birthBlinkColor = [UIColor colorWithRed:1 green:1 blue:0 alpha:0.3];
-    _deathBlinkColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:0.5];
-    _bothBlinkColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
+    _birthBlinkColor = [UIColor nf_birthBlinkColor];
+    _deathBlinkColor = [UIColor nf_deathBlinkColor];
+    _bothBlinkColor = [UIColor nf_birthAndDeathBlinkColor];
     
     // Load the country detector
     _countryDetector = [[CountryDetector alloc] init];
@@ -127,7 +126,7 @@
         _selectedCountry = [selection copy];
         [_map deselectCurrentCountry];
         if (![selection isEqualToString:@"world"])
-            [_map selectCountry:selection maskColor:MAP_MASK_COLOR];
+            [_map selectCountry:selection maskColor:[UIColor nf_mapMaskColor]];
     }
 }
 
@@ -205,7 +204,7 @@
     // Either select the country or deselect the current
     // selection in the map
     if (country)
-        [_map selectCountry:country maskColor:MAP_MASK_COLOR];
+        [_map selectCountry:country maskColor:[UIColor nf_mapMaskColor]];
     else
         [_map deselectCurrentCountry];
     

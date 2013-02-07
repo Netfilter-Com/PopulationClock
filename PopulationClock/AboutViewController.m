@@ -9,6 +9,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "AboutViewController.h"
+#import "UIColor+NFAppColors.h"
 
 @implementation AboutViewController {
     IBOutlet __weak UINavigationBar *_navigationBar;
@@ -32,7 +33,7 @@
     
     // Set the navigation bar theme
     [_navigationBar setBackgroundImage:[UIImage imageNamed:@"barraAbout"] forBarMetrics:UIBarMetricsDefault];
-    NSDictionary *attrs = @{UITextAttributeTextColor : [UIColor colorWithRed:0xfa/255.0 green:0xc4/255.0 blue:0x2a/255.0 alpha:1]};
+    NSDictionary *attrs = @{UITextAttributeTextColor : [UIColor nf_orangeTextColor]};
     [_navigationBar setTitleTextAttributes:attrs];
     
     // Set the background color

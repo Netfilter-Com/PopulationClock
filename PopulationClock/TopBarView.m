@@ -6,9 +6,10 @@
 //  Copyright (c) 2012 NetFilter. All rights reserved.
 //
 
-NSString * const selectedCountryNoWorldKey = @"selectedCountryNoWorld";
-
 #import "TopBarView.h"
+#import "UIColor+NFAppColors.h"
+
+NSString * const selectedCountryNoWorldKey = @"selectedCountryNoWorld";
 
 @implementation TopBarView {
     IBOutlet __weak UIImageView *_backgroundImageView;
@@ -20,7 +21,7 @@ NSString * const selectedCountryNoWorldKey = @"selectedCountryNoWorld";
 
 - (void)awakeFromNib {
     // Set the label colors for the segmented control
-    NSDictionary *attrs = @{UITextAttributeTextColor : [UIColor colorWithRed:0xfa/255.0 green:0xc4/255.0 blue:0x2a/255.0 alpha:1]};
+    NSDictionary *attrs = @{UITextAttributeTextColor : [UIColor nf_orangeTextColor]};
     [_modeSegmentedControl setTitleTextAttributes:attrs forState:UIControlStateNormal];
     [_modeSegmentedControl setTitleTextAttributes:attrs forState:UIControlStateHighlighted];
     

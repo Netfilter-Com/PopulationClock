@@ -9,6 +9,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "MapLegendView.h"
+#import "UIColor+NFAppColors.h"
 
 @implementation MapLegendView {
     IBOutlet __weak UILabel *_titleLabel;
@@ -30,8 +31,8 @@
     CAGradientLayer *gradient = [CAGradientLayer layer];
     gradient.frame = gradientView.bounds;
     gradient.colors = @[
-        (id)[UIColor colorWithRed:0xff/255.0 green:0x32/255.0 blue:0 alpha:1].CGColor,
-        (id)[UIColor colorWithRed:0xff/255.0 green:0xe1/255.0 blue:0 alpha:1].CGColor
+        (id)[UIColor nf_minGrowthColor].CGColor,
+        (id)[UIColor nf_maxGrowthColor].CGColor
     ];
     gradient.startPoint = CGPointMake(0, 0);
     gradient.endPoint = CGPointMake(1, 0);

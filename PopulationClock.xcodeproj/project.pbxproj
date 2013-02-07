@@ -116,6 +116,7 @@
 		ED7769DE16C4232900BC486F /* StatsBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7769DD16C4232900BC486F /* StatsBuilder.m */; };
 		ED7769E116C429AE00BC486F /* AdManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7769E016C429AE00BC486F /* AdManager.m */; };
 		ED7769EA16C4318800BC486F /* UIViewController+NFSharing.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7769E916C4318700BC486F /* UIViewController+NFSharing.m */; };
+		ED7769ED16C434B600BC486F /* UIColor+NFAppColors.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7769EC16C434B600BC486F /* UIColor+NFAppColors.m */; };
 		ED7FF18C169B1FD800123037 /* MapLegendView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7FF18B169B1FD800123037 /* MapLegendView.m */; };
 		ED7FF1A9169B34F400123037 /* clock_background.png in Resources */ = {isa = PBXBuildFile; fileRef = ED7FF1A3169B34F400123037 /* clock_background.png */; };
 		ED7FF1AA169B34F400123037 /* clock_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED7FF1A4169B34F400123037 /* clock_background@2x.png */; };
@@ -745,6 +746,8 @@
 		ED7769E016C429AE00BC486F /* AdManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdManager.m; sourceTree = "<group>"; };
 		ED7769E816C4318700BC486F /* UIViewController+NFSharing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+NFSharing.h"; sourceTree = "<group>"; };
 		ED7769E916C4318700BC486F /* UIViewController+NFSharing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+NFSharing.m"; sourceTree = "<group>"; };
+		ED7769EB16C434B500BC486F /* UIColor+NFAppColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+NFAppColors.h"; sourceTree = "<group>"; };
+		ED7769EC16C434B600BC486F /* UIColor+NFAppColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+NFAppColors.m"; sourceTree = "<group>"; };
 		ED7FF18A169B1FD800123037 /* MapLegendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapLegendView.h; sourceTree = "<group>"; };
 		ED7FF18B169B1FD800123037 /* MapLegendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapLegendView.m; sourceTree = "<group>"; };
 		ED7FF1A3169B34F400123037 /* clock_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock_background.png; sourceTree = "<group>"; };
@@ -1869,6 +1872,8 @@
 				ED7769DD16C4232900BC486F /* StatsBuilder.m */,
 				ED597E8C167FA55600038B75 /* TopBarView.h */,
 				ED597E8D167FA55600038B75 /* TopBarView.m */,
+				ED7769EB16C434B500BC486F /* UIColor+NFAppColors.h */,
+				ED7769EC16C434B600BC486F /* UIColor+NFAppColors.m */,
 				ED3A9BDF16961A3E007D19DB /* UIImage+NFResizable.h */,
 				ED3A9BE016961A3E007D19DB /* UIImage+NFResizable.m */,
 				ED7769E816C4318700BC486F /* UIViewController+NFSharing.h */,
@@ -2674,6 +2679,7 @@
 				ED7769DE16C4232900BC486F /* StatsBuilder.m in Sources */,
 				ED7769E116C429AE00BC486F /* AdManager.m in Sources */,
 				ED7769EA16C4318800BC486F /* UIViewController+NFSharing.m in Sources */,
+				ED7769ED16C434B600BC486F /* UIColor+NFAppColors.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

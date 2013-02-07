@@ -10,6 +10,7 @@
 
 #import "CountryListPanelView.h"
 #import "DataManager.h"
+#import "UIColor+NFAppColors.h"
 
 @implementation CountryListPanelView {
     IBOutlet __weak UIImageView *_backgroundImageView;
@@ -140,7 +141,7 @@
         // Style the selected view
         CAGradientLayer *gradient = [CAGradientLayer layer];
         gradient.colors = @[
-            (id)[UIColor colorWithRed:0xfa/255.0 green:0xc4/255.0 blue:0x2a/255.0 alpha:1].CGColor,
+            (id)[UIColor nf_orangeTextColor].CGColor,
             (id)[UIColor colorWithRed:195/255.0 green:141/255.0 blue:18/255.0 alpha:1].CGColor
         ];
         gradient.locations = @[@0.0f, @1.0f];
