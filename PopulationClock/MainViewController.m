@@ -6,8 +6,6 @@
 //  Copyright (c) 2012 NetFilter. All rights reserved.
 //
 
-#import <Twitter/Twitter.h>
-
 #import "CountryDetector.h"
 #import "DataManager.h"
 #import "GADBannerView.h"
@@ -18,9 +16,9 @@
 #import "MBProgressHUD.h"
 #import "PopulationClockView.h"
 #import "SimulationEngine.h"
+#import "UIViewController+NFSharing.h"
 
 #define MAP_MASK_COLOR [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5]
-#define GAME_SHORT_URL @"http://bit.ly/populationclock"
 
 @implementation MainViewController {
     IBOutlet __weak UIScrollView *_scrollView;
@@ -261,39 +259,7 @@
 }
 
 - (IBAction)ShareApp:(id)sender {
-    // Compose the message
-    NSString *message = NSLocalizedString(@"I loved %@, awesome app for iPad! %@", @"");
-    NSString *gameName = [[[NSBundle mainBundle] localizedInfoDictionary] objectForKey:(NSString *)kCFBundleNameKey];
-    if (!gameName)
-        gameName = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleNameKey];
-    message = [NSString stringWithFormat:message, gameName, GAME_SHORT_URL];
-    
-    // If we have the activity view controller, use it
-    if (NSClassFromString(@"UIActivityViewController")) {
-        NSArray *items = @[ message, [UIImage imageNamed:@"Icon-72"] ];
-        NSArray *exclude = @[
-        UIActivityTypeAssignToContact,
-        UIActivityTypeSaveToCameraRoll,
-        UIActivityTypePrint,
-        UIActivityTypeCopyToPasteboard
-        ];
-        UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:items applicationActivities:nil];
-        controller.excludedActivityTypes = exclude;
-        [self presentModalViewController:controller animated:YES];
-        return;
-    }
-    
-    // If we have Twitter support, use that
-    if (NSClassFromString(@"TWTweetComposeViewController")) {
-        TWTweetComposeViewController *controller = [[TWTweetComposeViewController alloc] init];
-        [controller setInitialText:message];
-        [controller addImage:[UIImage imageNamed:@"Icon-72"]];
-        [self presentModalViewController:controller animated:YES];
-        return;
-    }
-    
-    // No deal, this shouldn't normally happen
-    assert(NO);
+    [self nf_presentShareViewControllerAnimated:YES];
 }
 
 - (IBAction)aboutButtonTouched:(id)sender {

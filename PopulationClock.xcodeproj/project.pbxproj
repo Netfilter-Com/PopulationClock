@@ -115,6 +115,7 @@
 		ED7769DB16C41DA600BC486F /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED7769DA16C41DA600BC486F /* Icon@2x.png */; };
 		ED7769DE16C4232900BC486F /* StatsBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7769DD16C4232900BC486F /* StatsBuilder.m */; };
 		ED7769E116C429AE00BC486F /* AdManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7769E016C429AE00BC486F /* AdManager.m */; };
+		ED7769EA16C4318800BC486F /* UIViewController+NFSharing.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7769E916C4318700BC486F /* UIViewController+NFSharing.m */; };
 		ED7FF18C169B1FD800123037 /* MapLegendView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7FF18B169B1FD800123037 /* MapLegendView.m */; };
 		ED7FF1A9169B34F400123037 /* clock_background.png in Resources */ = {isa = PBXBuildFile; fileRef = ED7FF1A3169B34F400123037 /* clock_background.png */; };
 		ED7FF1AA169B34F400123037 /* clock_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED7FF1A4169B34F400123037 /* clock_background@2x.png */; };
@@ -742,6 +743,8 @@
 		ED7769DD16C4232900BC486F /* StatsBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsBuilder.m; sourceTree = "<group>"; };
 		ED7769DF16C429AD00BC486F /* AdManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdManager.h; sourceTree = "<group>"; };
 		ED7769E016C429AE00BC486F /* AdManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdManager.m; sourceTree = "<group>"; };
+		ED7769E816C4318700BC486F /* UIViewController+NFSharing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+NFSharing.h"; sourceTree = "<group>"; };
+		ED7769E916C4318700BC486F /* UIViewController+NFSharing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+NFSharing.m"; sourceTree = "<group>"; };
 		ED7FF18A169B1FD800123037 /* MapLegendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapLegendView.h; sourceTree = "<group>"; };
 		ED7FF18B169B1FD800123037 /* MapLegendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapLegendView.m; sourceTree = "<group>"; };
 		ED7FF1A3169B34F400123037 /* clock_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock_background.png; sourceTree = "<group>"; };
@@ -1868,6 +1871,8 @@
 				ED597E8D167FA55600038B75 /* TopBarView.m */,
 				ED3A9BDF16961A3E007D19DB /* UIImage+NFResizable.h */,
 				ED3A9BE016961A3E007D19DB /* UIImage+NFResizable.m */,
+				ED7769E816C4318700BC486F /* UIViewController+NFSharing.h */,
+				ED7769E916C4318700BC486F /* UIViewController+NFSharing.m */,
 			);
 			path = PopulationClock;
 			sourceTree = "<group>";
@@ -2668,6 +2673,7 @@
 				ED05A4D8169F246600916AB1 /* Appirater.m in Sources */,
 				ED7769DE16C4232900BC486F /* StatsBuilder.m in Sources */,
 				ED7769E116C429AE00BC486F /* AdManager.m in Sources */,
+				ED7769EA16C4318800BC486F /* UIViewController+NFSharing.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
