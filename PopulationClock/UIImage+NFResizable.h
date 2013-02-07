@@ -6,8 +6,10 @@
 //  Copyright (c) 2013 NetFilter. All rights reserved.
 //
 
-@interface UIImage (Resizable)
+#import <UIKit/UIKit.h>
 
-- (UIImage *)resizedImageWithSize:(CGSize)size;
+@interface UIImage (NFResizable)
+
+- (UIImage *)nf_resizedImageWithSize:(CGSize)size;
 
 @end

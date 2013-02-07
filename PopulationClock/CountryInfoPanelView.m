@@ -10,7 +10,7 @@
 
 #import "CountryInfoPanelView.h"
 #import "DataManager.h"
-#import "UIImage+Resizable.h"
+#import "UIImage+NFResizable.h"
 
 @implementation CountryInfoPanelView {
     IBOutlet __weak UIImageView *_backgroundImageView;
@@ -101,7 +101,7 @@
             innerSize.height -= 8;
             
             // Create the image view and configure it
-            flag = [[UIImageView alloc] initWithImage:[image resizedImageWithSize:innerSize]];
+            flag = [[UIImageView alloc] initWithImage:[image nf_resizedImageWithSize:innerSize]];
             flag.frame = CGRectMake(0, 0, newSize.width, newSize.height);
             flag.contentMode = UIViewContentModeCenter;
             flag.backgroundColor = [UIColor whiteColor];
@@ -147,7 +147,7 @@
         innerSize.height -= 4;
         
         // Assign the image to the image view and configure it
-        _landscapeFlag.image = [image resizedImageWithSize:innerSize];
+        _landscapeFlag.image = [image nf_resizedImageWithSize:innerSize];
         _landscapeFlag.frame = CGRectMake(0, 0, newSize.width, newSize.height);
         _landscapeFlag.contentMode = UIViewContentModeCenter;
         _landscapeFlag.backgroundColor = [UIColor whiteColor];

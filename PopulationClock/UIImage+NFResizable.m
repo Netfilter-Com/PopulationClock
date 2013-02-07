@@ -6,11 +6,12 @@
 //  Copyright (c) 2013 NetFilter. All rights reserved.
 //
 
-#import "UIImage+Resizable.h"
+#import "UIImage+NFResizable.h"
 
-@implementation UIImage (Resizable)
+@implementation UIImage (NFResizable)
 
-- (UIImage *)resizedImageWithSize:(CGSize)size {
+- (UIImage *)nf_resizedImageWithSize:(CGSize)size
+{
     UIGraphicsBeginImageContextWithOptions(size, NO, self.scale);
     [self drawInRect:CGRectMake(0, 0, size.width, size.height)];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();

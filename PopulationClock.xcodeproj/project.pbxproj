@@ -107,7 +107,7 @@
 		ED247ECA1683ABC90092E185 /* setaNavDir@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED247EC61683ABC90092E185 /* setaNavDir@2x.png */; };
 		ED247ECB1683ABC90092E185 /* setaNavEsq.png in Resources */ = {isa = PBXBuildFile; fileRef = ED247EC71683ABC90092E185 /* setaNavEsq.png */; };
 		ED247ECC1683ABC90092E185 /* setaNavEsq@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED247EC81683ABC90092E185 /* setaNavEsq@2x.png */; };
-		ED3A9BE116961A3E007D19DB /* UIImage+Resizable.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3A9BE016961A3E007D19DB /* UIImage+Resizable.m */; };
+		ED3A9BE116961A3E007D19DB /* UIImage+NFResizable.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3A9BE016961A3E007D19DB /* UIImage+NFResizable.m */; };
 		ED597E8A167F988000038B75 /* CountryListPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED597E89167F988000038B75 /* CountryListPanelView.m */; };
 		ED597E8E167FA55600038B75 /* TopBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED597E8D167FA55600038B75 /* TopBarView.m */; };
 		ED7769D716C41D0B00BC486F /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED7769D616C41D0B00BC486F /* MainStoryboard_iPhone.storyboard */; };
@@ -729,8 +729,8 @@
 		ED247EC61683ABC90092E185 /* setaNavDir@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setaNavDir@2x.png"; sourceTree = "<group>"; };
 		ED247EC71683ABC90092E185 /* setaNavEsq.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setaNavEsq.png; sourceTree = "<group>"; };
 		ED247EC81683ABC90092E185 /* setaNavEsq@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setaNavEsq@2x.png"; sourceTree = "<group>"; };
-		ED3A9BDF16961A3E007D19DB /* UIImage+Resizable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resizable.h"; sourceTree = "<group>"; };
-		ED3A9BE016961A3E007D19DB /* UIImage+Resizable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resizable.m"; sourceTree = "<group>"; };
+		ED3A9BDF16961A3E007D19DB /* UIImage+NFResizable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+NFResizable.h"; sourceTree = "<group>"; };
+		ED3A9BE016961A3E007D19DB /* UIImage+NFResizable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+NFResizable.m"; sourceTree = "<group>"; };
 		ED597E88167F988000038B75 /* CountryListPanelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryListPanelView.h; sourceTree = "<group>"; };
 		ED597E89167F988000038B75 /* CountryListPanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryListPanelView.m; sourceTree = "<group>"; };
 		ED597E8C167FA55600038B75 /* TopBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopBarView.h; sourceTree = "<group>"; };
@@ -1866,8 +1866,8 @@
 				ED7769DD16C4232900BC486F /* StatsBuilder.m */,
 				ED597E8C167FA55600038B75 /* TopBarView.h */,
 				ED597E8D167FA55600038B75 /* TopBarView.m */,
-				ED3A9BDF16961A3E007D19DB /* UIImage+Resizable.h */,
-				ED3A9BE016961A3E007D19DB /* UIImage+Resizable.m */,
+				ED3A9BDF16961A3E007D19DB /* UIImage+NFResizable.h */,
+				ED3A9BE016961A3E007D19DB /* UIImage+NFResizable.m */,
 			);
 			path = PopulationClock;
 			sourceTree = "<group>";
@@ -2656,7 +2656,7 @@
 				8248F1CE168CC6BC00717BA7 /* AboutViewController.m in Sources */,
 				EDF8D0821695BF3500FE02B1 /* InAppPurchaseManager.m in Sources */,
 				EDF8D0861695DAAE00FE02B1 /* MBProgressHUD.m in Sources */,
-				ED3A9BE116961A3E007D19DB /* UIImage+Resizable.m in Sources */,
+				ED3A9BE116961A3E007D19DB /* UIImage+NFResizable.m in Sources */,
 				ED0E20AD169719AD005445B7 /* SimulationEngine.m in Sources */,
 				ED7FF18C169B1FD800123037 /* MapLegendView.m in Sources */,
 				ED7FF1B1169B3E1600123037 /* PopulationClockView.m in Sources */,
