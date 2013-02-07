@@ -45,6 +45,9 @@
     UIView *shadowView = [[UIView alloc] initWithFrame:frame];
     shadowView.layer.shadowRadius = 10;
     shadowView.layer.shadowOpacity = 1;
+    shadowView.layer.shadowPath = CGPathCreateWithRect(shadowView.bounds, NULL);
+    shadowView.layer.shouldRasterize = YES;
+    shadowView.layer.rasterizationScale = [UIScreen mainScreen].scale;
     [shadowView addSubview:cview];
     
     // Set its autoresizing masks so it goes to landscape properly
