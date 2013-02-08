@@ -12,19 +12,6 @@
                         <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" maximumZoomScale="4" bouncesZoom="NO" id="wmV-Tx-Q6q">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="400"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <imageView contentMode="scaleToFill" image="map.png" id="uWc-dp-F9S" customClass="MapImageView">
-                                        <rect key="frame" x="0.0" y="0.0" width="768" height="400"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                </subviews>
-                                <connections>
-                                    <outlet property="delegate" destination="2" id="m3l-yp-bi0"/>
-                                </connections>
-                            </scrollView>
                             <view contentMode="scaleToFill" id="f4I-fl-wvI" customClass="MapLegendView">
                                 <rect key="frame" x="20" y="233" width="160" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -315,28 +302,51 @@
                         <connections>
                             <outlet property="_dimmedView" destination="rB6-lo-KOg" id="6Os-Lb-39x"/>
                             <outlet property="_legend" destination="f4I-fl-wvI" id="cY5-lk-taO"/>
-                            <outlet property="_map" destination="uWc-dp-F9S" id="A57-rc-8aM"/>
                             <outlet property="_navigationBar" destination="P7i-wZ-xLP" id="Hsh-YJ-0Xl"/>
                             <outlet property="_panel1" destination="dcz-Qe-vLN" id="nO5-Cv-spi"/>
                             <outlet property="_panel2" destination="5UU-Nt-6Z6" id="kA9-xK-Jfq"/>
                             <outlet property="_panel3" destination="ol5-nt-F4E" id="Fgz-iC-7lY"/>
-                            <outlet property="_scrollView" destination="wmV-Tx-Q6q" id="AKo-or-CBF"/>
                             <outlet property="_toolbar" destination="Clf-1b-KYv" id="aE9-mF-qn7"/>
                         </connections>
                     </view>
                     <connections>
                         <outlet property="_dimmedView" destination="rB6-lo-KOg" id="gvY-gx-ZRV"/>
                         <outlet property="_legend" destination="f4I-fl-wvI" id="GF6-Rb-fJV"/>
-                        <outlet property="_map" destination="uWc-dp-F9S" id="cG3-Ng-MhF"/>
                         <outlet property="_populationClock" destination="Xcl-AC-G2O" id="Kfp-vU-KAd"/>
                         <outlet property="_removeAdsButton" destination="Ax7-ql-JHu" id="lPx-EE-xyF"/>
-                        <outlet property="_scrollView" destination="wmV-Tx-Q6q" id="xbu-xm-Wo9"/>
                         <outlet property="_toolbar" destination="Clf-1b-KYv" id="toJ-rV-sep"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-787" y="-498"/>
+        </scene>
+        <!--Map Image View Controller-->
+        <scene sceneID="Kgt-zl-Lsc">
+            <objects>
+                <viewController storyboardIdentifier="mapImageViewController" id="kJD-Pq-D9q" customClass="MapImageViewController" sceneMemberID="viewController">
+                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" maximumZoomScale="4" bouncesZoom="NO" id="wmV-Tx-Q6q">
+                        <rect key="frame" x="0.0" y="20" width="768" height="400"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView contentMode="scaleToFill" image="map.png" id="uWc-dp-F9S" customClass="MapImageView">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="400"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <connections>
+                            <outlet property="delegate" destination="kJD-Pq-D9q" id="vYA-ee-oiq"/>
+                        </connections>
+                    </scrollView>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="mapImageView" destination="uWc-dp-F9S" id="SKu-0c-C97"/>
+                        <outlet property="scrollView" destination="wmV-Tx-Q6q" id="mqx-or-XEN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gnp-2r-RLD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-787" y="-1025"/>
         </scene>
         <!--About View Controller-->
         <scene sceneID="6qw-99-V8K">
@@ -413,7 +423,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AWf-OK-TVU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="222" y="-206"/>
+            <point key="canvasLocation" x="134" y="-216"/>
         </scene>
     </scenes>
     <resources>
@@ -457,6 +467,13 @@
         </class>
         <class className="MapImageView" superclassName="UIImageView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MapImageView.h"/>
+        </class>
+        <class className="MapImageViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapImageViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="mapImageView" candidateClass="MapImageView"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+            </relationships>
         </class>
         <class className="MapLegendView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MapLegendView.h"/>

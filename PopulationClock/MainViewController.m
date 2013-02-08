@@ -11,22 +11,18 @@
 #import "MainView.h"
 #import "MainViewController.h"
 #import "MapImageView.h"
-#import "MapImageViewController.h"
 #import "MBProgressHUD.h"
 #import "PopulationClockView.h"
 #import "SimulationEngine.h"
 #import "UIViewController+NFSharing.h"
 
 @implementation MainViewController {
-    IBOutlet __weak UIScrollView *_scrollView;
     IBOutlet __weak UIView *_legend;
-    IBOutlet __weak MapImageView *_map;
     IBOutlet __weak PopulationClockView *_populationClock;
     IBOutlet __weak UIToolbar *_toolbar;
     IBOutlet __weak UIBarButtonItem *_removeAdsButton;
     IBOutlet __weak UIView *_dimmedView;
     
-    MapImageViewController *_mapImageViewController;
     CGPoint _legendOrigin;
     
     NSString *_selectedCountry;
@@ -39,11 +35,17 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)viewDidLoad {
-    // Create a controller for the map view, keep a strong reference
-    // to it. We should have used the containment APIs, but we didn't :-(
-    _mapImageViewController = [[MapImageViewController alloc] initWithMapImageViewInScrollView:_map];
+- (void)loadView {
+    [super loadView];
     
+    // Add the contained view controllers (no embed segues in iOS 5)
+    UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"mapImageViewController"];
+    [self addChildViewController:controller];
+    [(MainView *)self.view addMapImageViewController:(MapImageViewController *)controller];
+    [controller didMoveToParentViewController:self];
+}
+
+- (void)viewDidLoad {
     // Set up pan gesture recognizers for the legend
     [_legend addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(legendPanningGestureRecognized:)]];
     
@@ -115,10 +117,6 @@
 - (void)updatePopulationClockAnimated:(BOOL)animated {
     NSNumber *number = [SimulationEngine sharedInstance].populationPerCountry[_selectedCountry];
     [_populationClock setPopulation:number.longLongValue animated:animated];
-}
-
-- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
-    return _map;
 }
 
 - (void)legendPanningGestureRecognized:(UIPanGestureRecognizer *)recognizer {

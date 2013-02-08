@@ -8,70 +8,46 @@
 
 #import "CountryDetector.h"
 #import "DataManager.h"
-#import "MapImageView.h"
 #import "MapImageViewController.h"
 #import "SimulationEngine.h"
 #import "UIColor+NFAppColors.h"
 
-@interface MapImageViewController ()
-
-@property (readonly, nonatomic, assign) MapImageView *mapImageView;
-
-@end
-
 @implementation MapImageViewController {
-    UIScrollView *_scrollView;
     NSString *_selectedCountry;
     CountryDetector *_countryDetector;
 }
 
-- (id)initWithMapImageViewInScrollView:(MapImageView *)mapImageView
+- (void)viewDidLoad
 {
-    self = [super init];
-    if (self) {
-        // Save the view
-        self.view = mapImageView;
-        
-        // Get a reference to the scroll view
-        _scrollView = (UIScrollView *)self.mapImageView.superview;
-        assert([_scrollView isKindOfClass:[UIScrollView class]]);
-        
-        // Set up the single tap gesture recognizer
-        UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
-        singleTap.numberOfTapsRequired = 1;
-        [self.mapImageView addGestureRecognizer:singleTap];
-        
-        // Set up the double tap gesture recognizer
-        UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
-        doubleTap.numberOfTapsRequired = 2;
-        [self.mapImageView addGestureRecognizer:doubleTap];
-        
-        // Make the single tap recognizer require the double tap
-        // recognizer to fail, so it doesn't get called too
-        [singleTap requireGestureRecognizerToFail:doubleTap];
-        
-        // Create the country detector
-        _countryDetector = [CountryDetector new];
-        
-        // Observe changes to the country selection
-        NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-        [nc addObserver:self selector:@selector(countrySelectionChanged:) name:CountrySelectionNotification object:nil];
-        
-        // Observe steps taken by the simulator
-        [nc addObserver:self selector:@selector(simulationEngineStepTaken:) name:SimulationEngineStepTakenNotification object:nil];
-    }
-    return self;
+    // Set up the single tap gesture recognizer
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    singleTap.numberOfTapsRequired = 1;
+    [self.mapImageView addGestureRecognizer:singleTap];
+    
+    // Set up the double tap gesture recognizer
+    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
+    doubleTap.numberOfTapsRequired = 2;
+    [self.mapImageView addGestureRecognizer:doubleTap];
+    
+    // Make the single tap recognizer require the double tap
+    // recognizer to fail, so it doesn't get called too
+    [singleTap requireGestureRecognizerToFail:doubleTap];
+    
+    // Create the country detector
+    _countryDetector = [CountryDetector new];
+    
+    // Observe changes to the country selection
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc addObserver:self selector:@selector(countrySelectionChanged:) name:CountrySelectionNotification object:nil];
+    
+    // Observe steps taken by the simulator
+    [nc addObserver:self selector:@selector(simulationEngineStepTaken:) name:SimulationEngineStepTakenNotification object:nil];
 }
 
 - (void)dealloc
 {
     // We're no longer observers
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (MapImageView *)mapImageView
-{
-    return (MapImageView *)self.view;
 }
 
 - (void)countrySelectionChanged:(NSNotification *)notification
@@ -188,6 +164,11 @@
         // Back to the minimum zoom level
         [_scrollView setZoomScale:_scrollView.minimumZoomScale animated:YES];
     }
+}
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+    return self.mapImageView;
 }
 
 @end

@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MapImageViewController : UIViewController
+#import "MapImageView.h"
 
-- (id)initWithMapImageViewInScrollView:(MapImageView *)mapImageView;
+@interface MapImageViewController : UIViewController <UIScrollViewDelegate>
+
+@property (nonatomic, weak) IBOutlet MapImageView *mapImageView;
+@property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
 
 @end

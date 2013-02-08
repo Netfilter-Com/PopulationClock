@@ -11,8 +11,8 @@
 #define MAP_NAVIGATION_BAR_OVERLAP_PIXELS 4
 
 @implementation MainView {
-    IBOutlet __weak UIScrollView *_scrollView;
-    IBOutlet __weak UIImageView *_map;
+    __weak UIScrollView *_scrollView;
+    __weak UIImageView *_map;
     IBOutlet __weak UIView *_legend;
     IBOutlet __weak UIView *_navigationBar;
     IBOutlet __weak UIView *_panel1;
@@ -21,6 +21,7 @@
     IBOutlet __weak UIToolbar *_toolbar;
     IBOutlet __weak UIView *_dimmedView;
     int _numKeyboardsShowing;
+    BOOL _notFirstLayout;
 }
 
 - (void)awakeFromNib {
@@ -41,6 +42,16 @@
 - (void)dealloc {
     // Remove the observers
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)addMapImageViewController:(MapImageViewController *)controller
+{
+    // Add the view to the hierarchy
+    [self insertSubview:controller.view atIndex:0];
+    
+    // Save those references
+    _map = controller.mapImageView;
+    _scrollView = controller.scrollView;
 }
 
 static inline UIViewAnimationOptions animationOptionsWithCurve(UIViewAnimationCurve curve) {
@@ -177,17 +188,20 @@ static inline UIViewAnimationOptions animationOptionsWithCurve(UIViewAnimationCu
     frame.origin.y = _navigationBar.frame.origin.y - _adView.frame.size.height;
     _adView.frame = frame;
     
-    // Position the legend
-    CGSize newMapSize = _scrollView.frame.size;
-    CGFloat orientationScaleX = newMapSize.width / prevMapSize.width;
-    CGFloat orientationScaleY = newMapSize.height / prevMapSize.height;
-    CGPoint center = _legend.center;
-    _legend.center = CGPointMake(center.x * orientationScaleX, center.y * orientationScaleY);
-    
-    // Make sure it's still within bounds
-    frame = _legend.frame;
-    [self adjustMapLegendFrameToBounds:&frame];
-    _legend.frame = frame;
+    if (_notFirstLayout) {
+        // Position the legend
+        CGSize newMapSize = _scrollView.frame.size;
+        CGFloat orientationScaleX = newMapSize.width / prevMapSize.width;
+        CGFloat orientationScaleY = newMapSize.height / prevMapSize.height;
+        CGPoint center = _legend.center;
+        _legend.center = CGPointMake(center.x * orientationScaleX, center.y * orientationScaleY);
+        
+        // Make sure it's still within bounds
+        frame = _legend.frame;
+        [self adjustMapLegendFrameToBounds:&frame];
+        _legend.frame = frame;
+    }
+    _notFirstLayout = YES;
     
     // We have a different layout depending on the orientation
     BOOL landscape = self.bounds.size.width > self.bounds.size.height;
