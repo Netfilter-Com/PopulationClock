@@ -8,3 +8,4 @@
 
 NSString * const CountrySelectionNotification;
 NSString * const SelectedCountryKey;
+NSString * const StateRestorationKey;

@@ -7,4 +7,5 @@
 //
 
 NSString * const CountrySelectionNotification = @"CountrySelectionNotification";
-NSString * const SelectedCountryKey = @"selectedCountry";
+NSString * const SelectedCountryKey = @"selectedCountryKey";
+NSString * const StateRestorationKey = @"stateRestorationKey";

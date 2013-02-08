@@ -61,10 +61,10 @@
     [nc addObserver:self selector:@selector(simulationEngineStepTaken:) name:SimulationEngineStepTakenNotification object:nil];
     
     // Let others know about the current selection
-    [nc postNotificationName:CountrySelectionNotification object:self userInfo:@{SelectedCountryKey : _selectedCountry}];
-    
-    // Update the population clock
-    [self updatePopulationClockAnimated:NO];
+    [nc postNotificationName:CountrySelectionNotification object:self userInfo:@{
+        SelectedCountryKey : _selectedCountry,
+        StateRestorationKey : @YES
+    }];
     
     // If the user has purchased the option to remove ads or if he is
     // not able to purchase this option, get rid of the button
@@ -98,7 +98,8 @@
     
     // Update the population clock
     _selectedCountry = selection;
-    [self updatePopulationClockAnimated:YES];
+    BOOL stateRestoration = [notification.userInfo[StateRestorationKey] boolValue];
+    [self updatePopulationClockAnimated:!stateRestoration];
 }
 
 - (void)simulationEngineReset:(NSNotification *)notification {
