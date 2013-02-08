@@ -12,20 +12,15 @@
 #import "MainViewController.h"
 #import "MapImageView.h"
 #import "MBProgressHUD.h"
-#import "PopulationClockView.h"
-#import "SimulationEngine.h"
 #import "UIViewController+NFSharing.h"
 
 @implementation MainViewController {
     IBOutlet __weak UIView *_legend;
-    IBOutlet __weak PopulationClockView *_populationClock;
     IBOutlet __weak UIToolbar *_toolbar;
     IBOutlet __weak UIBarButtonItem *_removeAdsButton;
     IBOutlet __weak UIView *_dimmedView;
     
     CGPoint _legendOrigin;
-    
-    NSString *_selectedCountry;
     
     GADBannerView *_adView;
 }
@@ -46,12 +41,9 @@
     [controller didMoveToParentViewController:self];
     
     // Then the clock view controller
-    // TODO: Stop referencing the population clock, make
-    // the clock view controller update it on demand
     controller = [self.storyboard instantiateViewControllerWithIdentifier:@"clockViewController"];
     [self addChildViewController:controller];
     [(MainView *)self.view addClockViewController:(ClockViewController *)controller];
-    _populationClock = ((ClockViewController *)controller).clock;
     [controller didMoveToParentViewController:self];
     
     // Then the country list view controller
@@ -72,21 +64,17 @@
     [_legend addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(legendPanningGestureRecognized:)]];
     
     // Load the selected country from the saved state
-    _selectedCountry = [[NSUserDefaults standardUserDefaults] stringForKey:SelectedCountryKey];
-    if (!_selectedCountry)
-        _selectedCountry = @"world";
+    NSString *selection = [[NSUserDefaults standardUserDefaults] stringForKey:SelectedCountryKey];
+    if (!selection)
+        selection = @"world";
     
     // Observe changes to the country selection
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(countrySelectionChanged:) name:CountrySelectionNotification object:nil];
     
-    // Observe resets and steps taken by the simulator
-    [nc addObserver:self selector:@selector(simulationEngineReset:) name:SimulationEngineResetNotification object:nil];
-    [nc addObserver:self selector:@selector(simulationEngineStepTaken:) name:SimulationEngineStepTakenNotification object:nil];
-    
     // Let others know about the current selection
     [nc postNotificationName:CountrySelectionNotification object:self userInfo:@{
-        SelectedCountryKey : _selectedCountry,
+        SelectedCountryKey : selection,
         StateRestorationKey : @YES
     }];
     
@@ -119,26 +107,6 @@
         [[NSUserDefaults standardUserDefaults] setObject:selection forKey:SelectedCountryKey];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
-    
-    // Update the population clock
-    _selectedCountry = selection;
-    BOOL stateRestoration = [notification.userInfo[StateRestorationKey] boolValue];
-    [self updatePopulationClockAnimated:!stateRestoration];
-}
-
-- (void)simulationEngineReset:(NSNotification *)notification {
-    // Update the population clock with no animation
-    [self updatePopulationClockAnimated:NO];
-}
-
-- (void)simulationEngineStepTaken:(NSNotification *)notification {
-    // Update the population clock
-    [self updatePopulationClockAnimated:YES];
-}
-
-- (void)updatePopulationClockAnimated:(BOOL)animated {
-    NSNumber *number = [SimulationEngine sharedInstance].populationPerCountry[_selectedCountry];
-    [_populationClock setPopulation:number.longLongValue animated:animated];
 }
 
 - (void)legendPanningGestureRecognized:(UIPanGestureRecognizer *)recognizer {

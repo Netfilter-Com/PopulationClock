@@ -10,6 +10,4 @@
 
 @interface ClockViewController : UIViewController
 
-@property (nonatomic, weak) IBOutlet PopulationClockView *clock;
-
 @end
