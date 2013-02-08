@@ -4,6 +4,73 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
+        <!--Country Info View Controller-->
+        <scene sceneID="5dj-2U-nKm">
+            <objects>
+                <viewController storyboardIdentifier="countryInfoViewController" id="gWn-ZV-t9O" customClass="CountryInfoViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ol5-nt-F4E">
+                        <rect key="frame" x="0.0" y="0.0" width="384" height="516"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="bgInfoPaisVert.png" id="wuw-H0-RN1">
+                                <rect key="frame" x="0.0" y="0.0" width="384" height="516"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="boxInfoPais.png" id="tLe-Op-n7z">
+                                <rect key="frame" x="20" y="129" width="344" height="367"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <webView opaque="NO" contentMode="scaleToFill" id="KQe-4j-zZ6" customClass="CountryInfoWebView">
+                                <rect key="frame" x="20" y="129" width="344" height="367"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <dataDetectorType key="dataDetectorTypes"/>
+                            </webView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="setaNavEsq.png" id="qvL-67-WgR">
+                                <rect key="frame" x="20" y="56" width="30" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="setaNavDir.png" id="wW4-N9-jD2">
+                                <rect key="frame" x="334" y="56" width="30" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="iYz-tK-Chl">
+                                <rect key="frame" x="0.0" y="0.0" width="384" height="160"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="gWn-ZV-t9O" id="T0O-Zg-e3W"/>
+                                </connections>
+                            </scrollView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="country_flag_br.png" id="vVZ-Jk-WQy">
+                                <rect key="frame" x="20" y="177" width="79" height="54"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="United States of Bananaland" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IBg-fZ-8Xk">
+                                <rect key="frame" x="107" y="190" width="237" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="21"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="_backgroundImageView" destination="wuw-H0-RN1" id="5nL-7Z-2v0"/>
+                        <outlet property="_landscapeCountryName" destination="IBg-fZ-8Xk" id="PsF-sO-tzJ"/>
+                        <outlet property="_landscapeFlag" destination="vVZ-Jk-WQy" id="Bhp-qb-AnT"/>
+                        <outlet property="_portraitArrowLeft" destination="qvL-67-WgR" id="6c9-20-EN6"/>
+                        <outlet property="_portraitArrowRight" destination="wW4-N9-jD2" id="a2X-l4-aGl"/>
+                        <outlet property="_portraitScrollView" destination="iYz-tK-Chl" id="2Op-kg-1za"/>
+                        <outlet property="_portraitWebViewBackground" destination="tLe-Op-n7z" id="xfY-Wx-EsT"/>
+                        <outlet property="_webView" destination="KQe-4j-zZ6" id="5L4-9z-gNs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mpy-Ed-X4I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="18" y="10"/>
+        </scene>
         <!--Country List View Controller-->
         <scene sceneID="8zA-Tl-ept">
             <objects>
@@ -214,62 +281,6 @@
                                     <outlet property="_countryNameLabel" destination="jVM-VJ-ONO" id="c0a-vN-vCG"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" id="ol5-nt-F4E" customClass="CountryInfoPanelView">
-                                <rect key="frame" x="384" y="444" width="384" height="516"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="bgInfoPaisVert.png" id="wuw-H0-RN1">
-                                        <rect key="frame" x="0.0" y="0.0" width="384" height="516"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="boxInfoPais.png" id="tLe-Op-n7z">
-                                        <rect key="frame" x="20" y="129" width="344" height="367"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <webView opaque="NO" contentMode="scaleToFill" id="KQe-4j-zZ6" customClass="CountryInfoWebView">
-                                        <rect key="frame" x="20" y="129" width="344" height="367"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <dataDetectorType key="dataDetectorTypes"/>
-                                    </webView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="setaNavEsq.png" id="qvL-67-WgR">
-                                        <rect key="frame" x="20" y="56" width="30" height="47"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="setaNavDir.png" id="wW4-N9-jD2">
-                                        <rect key="frame" x="334" y="56" width="30" height="47"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="iYz-tK-Chl">
-                                        <rect key="frame" x="0.0" y="0.0" width="384" height="160"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="ol5-nt-F4E" id="EG5-PM-h6n"/>
-                                        </connections>
-                                    </scrollView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="country_flag_br.png" id="vVZ-Jk-WQy">
-                                        <rect key="frame" x="20" y="177" width="79" height="54"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="United States of Bananaland" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IBg-fZ-8Xk">
-                                        <rect key="frame" x="107" y="190" width="237" height="27"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="21"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <connections>
-                                    <outlet property="_backgroundImageView" destination="wuw-H0-RN1" id="rwe-xs-Xtt"/>
-                                    <outlet property="_landscapeCountryName" destination="IBg-fZ-8Xk" id="nHJ-xk-gcD"/>
-                                    <outlet property="_landscapeFlag" destination="vVZ-Jk-WQy" id="5Ew-jy-3Fz"/>
-                                    <outlet property="_portraitArrowLeft" destination="qvL-67-WgR" id="xZC-J1-1qX"/>
-                                    <outlet property="_portraitArrowRight" destination="wW4-N9-jD2" id="Z4m-Pj-zx7"/>
-                                    <outlet property="_portraitScrollView" destination="iYz-tK-Chl" id="bTh-TN-YTf"/>
-                                    <outlet property="_portraitWebViewBackground" destination="tLe-Op-n7z" id="9F7-tf-uqH"/>
-                                    <outlet property="_webView" destination="KQe-4j-zZ6" id="nAK-yT-wlR"/>
-                                </connections>
-                            </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" id="Clf-1b-KYv">
                                 <rect key="frame" x="0.0" y="960" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -315,7 +326,6 @@
                             <outlet property="_legend" destination="f4I-fl-wvI" id="cY5-lk-taO"/>
                             <outlet property="_navigationBar" destination="P7i-wZ-xLP" id="Hsh-YJ-0Xl"/>
                             <outlet property="_panel1" destination="dcz-Qe-vLN" id="nO5-Cv-spi"/>
-                            <outlet property="_panel3" destination="ol5-nt-F4E" id="Fgz-iC-7lY"/>
                             <outlet property="_toolbar" destination="Clf-1b-KYv" id="aE9-mF-qn7"/>
                         </connections>
                     </view>
@@ -434,7 +444,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AWf-OK-TVU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="134" y="-216"/>
+            <point key="canvasLocation" x="966" y="-1376"/>
         </scene>
     </scenes>
     <resources>
@@ -461,8 +471,8 @@
         <class className="ClockPanelView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ClockPanelView.h"/>
         </class>
-        <class className="CountryInfoPanelView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CountryInfoPanelView.h"/>
+        <class className="CountryInfoViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CountryInfoViewController.h"/>
         </class>
         <class className="CountryInfoWebView" superclassName="UIWebView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CountryInfoWebView.h"/>
@@ -497,9 +507,6 @@
         </class>
         <class className="TopBarView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TopBarView.h"/>
-            <relationships>
-                <relationship kind="action" name="segmentedControlSelectionChanged:"/>
-            </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

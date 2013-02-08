@@ -16,8 +16,8 @@
     IBOutlet __weak UIView *_legend;
     IBOutlet __weak UIView *_navigationBar;
     IBOutlet __weak UIView *_panel1;
-    IBOutlet __weak UIView *_panel2;
-    IBOutlet __weak UIView *_panel3;
+    __weak UIView *_panel2;
+    __weak UIView *_panel3;
     IBOutlet __weak UIToolbar *_toolbar;
     IBOutlet __weak UIView *_dimmedView;
     int _numKeyboardsShowing;
@@ -46,7 +46,7 @@
 
 - (void)addMapImageViewController:(MapImageViewController *)controller {
     // Add the view to the hierarchy
-    [self insertSubview:controller.view atIndex:0];
+    [self insertSubview:controller.view belowSubview:_dimmedView];
     
     // Save those references
     _map = controller.mapImageView;
@@ -55,10 +55,18 @@
 
 - (void)addCountryListViewController:(CountryListViewController *)controller {
     // Add the view to the hierarchy
-    [self addSubview:controller.view];
+    [self insertSubview:controller.view aboveSubview:_dimmedView];
     
     // Save a reference to the view
     _panel2 = controller.view;
+}
+
+- (void)addCountryInfoViewController:(CountryInfoViewController *)controller {
+    // Add the view to the hierarchy
+    [self insertSubview:controller.view belowSubview:_dimmedView];
+    
+    // Save a reference to the view
+    _panel3 = controller.view;
 }
 
 static inline UIViewAnimationOptions animationOptionsWithCurve(UIViewAnimationCurve curve) {

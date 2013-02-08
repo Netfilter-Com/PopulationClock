@@ -50,6 +50,12 @@
     [self addChildViewController:controller];
     [(MainView *)self.view addCountryListViewController:(CountryListViewController *)controller];
     [controller didMoveToParentViewController:self];
+    
+    // And finally the country info view controller
+    controller = [self.storyboard instantiateViewControllerWithIdentifier:@"countryInfoViewController"];
+    [self addChildViewController:controller];
+    [(MainView *)self.view addCountryInfoViewController:(CountryInfoViewController *)controller];
+    [controller didMoveToParentViewController:self];
 }
 
 - (void)viewDidLoad {

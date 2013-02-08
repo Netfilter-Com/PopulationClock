@@ -1,5 +1,5 @@
 //
-//  CountryInfoPanelView.m
+//  CountryInfoViewController.m
 //  PopulationClock
 //
 //  Created by Fernando Lemos on 18/12/12.
@@ -8,11 +8,11 @@
 
 #import <QuartzCore/QuartzCore.h>
 
-#import "CountryInfoPanelView.h"
+#import "CountryInfoViewController.h"
 #import "DataManager.h"
 #import "UIImage+NFResizable.h"
 
-@implementation CountryInfoPanelView {
+@implementation CountryInfoViewController {
     IBOutlet __weak UIImageView *_backgroundImageView;
     IBOutlet __weak UIScrollView *_portraitScrollView;
     IBOutlet __weak UIImageView *_portraitArrowLeft;
@@ -25,7 +25,12 @@
     NSString *_portraitCountryCodes[3];
 }
 
-- (void)awakeFromNib {
+- (void)dealloc {
+    // We are no longer observers
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)viewDidLoad {
     // Set up the gesture recognizer for the arrows
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollViewTouched:)];
     recognizer.numberOfTapsRequired = 1;
@@ -33,11 +38,6 @@
     
     // Observe changes to the country selection
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(countrySelectionChanged:) name:CountrySelectionNotification object:nil];
-}
-
-- (void)dealloc {
-    // We are no longer observers
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)countrySelectionChanged:(NSNotification *)notification {
@@ -157,7 +157,7 @@
     _landscapeCountryName.text = info[@"name"];
     
     // Force a layout
-    [self setNeedsLayout];
+    [self.view setNeedsLayout];
 }
 
 - (void)scrollViewTouched:(UIGestureRecognizer *)recognizer {
@@ -200,9 +200,9 @@
     _landscapeCountryName.alpha = landscapeAlpha;
 }
 
-- (void)layoutSubviews {
+- (void)viewWillLayoutSubviews {
     // The first time the view is laid out, we don't have metrics
-    if (self.bounds.size.width == 0 || self.bounds.size.height == 0)
+    if (self.view.bounds.size.width == 0 || self.view.bounds.size.height == 0)
         return;
     
     // We have a different background image depending on the orientation
@@ -225,9 +225,9 @@
         _landscapeCountryName.center = CGPointMake(_landscapeCountryName.center.x, _landscapeFlag.center.y);
         
         // Position the web view
-        frame = CGRectMake(20, 0, self.bounds.size.width - 40, 0);
-        frame.size.height = self.bounds.size.height - _landscapeFlag.frame.origin.y - _landscapeFlag.frame.size.height - 40;
-        frame.origin.y = self.bounds.size.height - 20 - frame.size.height;
+        frame = CGRectMake(20, 0, self.view.bounds.size.width - 40, 0);
+        frame.size.height = self.view.bounds.size.height - _landscapeFlag.frame.origin.y - _landscapeFlag.frame.size.height - 40;
+        frame.origin.y = self.view.bounds.size.height - 20 - frame.size.height;
         _webView.frame = frame;
     }
     else {
@@ -238,23 +238,23 @@
         [self enableOrDisableViews:YES];
         
         // Position the scroll view
-        _portraitScrollView.frame = CGRectMake(0, 20, self.bounds.size.width, 140);
-        _portraitScrollView.contentSize = CGSizeMake(self.bounds.size.width * 3, _portraitScrollView.frame.size.height);
-        _portraitScrollView.contentOffset = CGPointMake(self.bounds.size.width, 0);
+        _portraitScrollView.frame = CGRectMake(0, 20, self.view.bounds.size.width, 140);
+        _portraitScrollView.contentSize = CGSizeMake(self.view.bounds.size.width * 3, _portraitScrollView.frame.size.height);
+        _portraitScrollView.contentOffset = CGPointMake(self.view.bounds.size.width, 0);
         
         // Position the arrows
         _portraitArrowLeft.center = CGPointMake(20 + _portraitArrowLeft.frame.size.width / 2, _portraitScrollView.center.y);
-        _portraitArrowRight.center = CGPointMake(self.bounds.size.width -  20 - _portraitArrowRight.frame.size.width / 2, _portraitScrollView.center.y);
+        _portraitArrowRight.center = CGPointMake(self.view.bounds.size.width -  20 - _portraitArrowRight.frame.size.width / 2, _portraitScrollView.center.y);
         
         // Position the flags in the scroll view
         for (int i = 0; i < 3; ++i) {
             UIImageView *flag = _portraitFlags[i];
-            flag.center = CGPointMake(self.bounds.size.width * (i + 0.5), _portraitScrollView.frame.size.height / 2);
+            flag.center = CGPointMake(self.view.bounds.size.width * (i + 0.5), _portraitScrollView.frame.size.height / 2);
         }
         
         // Position the web view and its background
-        CGRect frame = CGRectMake(20, 0, self.bounds.size.width - 40, 367);
-        frame.origin.y = self.bounds.size.height - 20 - frame.size.height;
+        CGRect frame = CGRectMake(20, 0, self.view.bounds.size.width - 40, 367);
+        frame.origin.y = self.view.bounds.size.height - 20 - frame.size.height;
         _webView.frame = frame;
         _portraitWebViewBackground.frame = frame;
     }

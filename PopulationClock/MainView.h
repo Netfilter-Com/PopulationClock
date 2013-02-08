@@ -6,8 +6,9 @@
 //  Copyright (c) 2012 NetFilter. All rights reserved.
 //
 
-#include "CountryListViewController.h"
-#include "MapImageViewController.h"
+#import "CountryInfoViewController.h"
+#import "CountryListViewController.h"
+#import "MapImageViewController.h"
 
 @interface MainView : UIScrollView
 
@@ -15,6 +16,7 @@
 
 - (void)addMapImageViewController:(MapImageViewController *)controller;
 - (void)addCountryListViewController:(CountryListViewController *)controller;
+- (void)addCountryInfoViewController:(CountryInfoViewController *)controller;
 
 - (void)adjustMapLegendFrameToBounds:(CGRect *)frame;
 
