@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 NetFilter. All rights reserved.
 //
 
+#import "ClockViewController.h"
 #import "CountryInfoViewController.h"
 #import "CountryListViewController.h"
 #import "MapImageViewController.h"
@@ -15,6 +16,7 @@
 @property (nonatomic, weak) UIView *adView;
 
 - (void)addMapImageViewController:(MapImageViewController *)controller;
+- (void)addClockViewController:(ClockViewController *)controller;
 - (void)addCountryListViewController:(CountryListViewController *)controller;
 - (void)addCountryInfoViewController:(CountryInfoViewController *)controller;
 

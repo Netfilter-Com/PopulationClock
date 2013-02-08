@@ -71,6 +71,43 @@
             </objects>
             <point key="canvasLocation" x="18" y="10"/>
         </scene>
+        <!--Clock View Controller-->
+        <scene sceneID="Xsm-dV-xMi">
+            <objects>
+                <viewController storyboardIdentifier="clockViewController" id="Bie-PL-2zw" customClass="ClockViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dcz-Qe-vLN">
+                        <rect key="frame" x="0.0" y="0.0" width="384" height="137"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="bgClockVert.png" id="KXl-G9-zaH">
+                                <rect key="frame" x="0.0" y="0.0" width="384" height="137"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="clock_background.png" id="Xcl-AC-G2O" customClass="PopulationClockView">
+                                <rect key="frame" x="82" y="61" width="221" height="56"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="POPULATION: UNITED STATES OF BANANALAND" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="jVM-VJ-ONO">
+                                <rect key="frame" x="20" y="35" width="344" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="_backgroundImageView" destination="KXl-G9-zaH" id="B6X-lF-QmW"/>
+                        <outlet property="_clock" destination="Xcl-AC-G2O" id="luS-Cf-qb1"/>
+                        <outlet property="_countryNameLabel" destination="jVM-VJ-ONO" id="VFU-mI-Ved"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IMB-LD-3qI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1205" y="-92"/>
+        </scene>
         <!--Country List View Controller-->
         <scene sceneID="8zA-Tl-ept">
             <objects>
@@ -255,32 +292,6 @@
                                     <outlet property="_titleLabel" destination="QhB-k2-gBU" id="bLg-Su-zZe"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" id="dcz-Qe-vLN" customClass="ClockPanelView">
-                                <rect key="frame" x="0.0" y="444" width="384" height="137"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="bgClockVert.png" id="KXl-G9-zaH">
-                                        <rect key="frame" x="0.0" y="0.0" width="384" height="137"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="clock_background.png" id="Xcl-AC-G2O" customClass="PopulationClockView">
-                                        <rect key="frame" x="82" y="61" width="221" height="56"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="POPULATION: UNITED STATES OF BANANALAND" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="jVM-VJ-ONO">
-                                        <rect key="frame" x="20" y="35" width="344" height="20"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <connections>
-                                    <outlet property="_backgroundImageView" destination="KXl-G9-zaH" id="Ykn-xs-Adh"/>
-                                    <outlet property="_clock" destination="Xcl-AC-G2O" id="fnc-Zz-TBQ"/>
-                                    <outlet property="_countryNameLabel" destination="jVM-VJ-ONO" id="c0a-vN-vCG"/>
-                                </connections>
-                            </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" id="Clf-1b-KYv">
                                 <rect key="frame" x="0.0" y="960" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -325,14 +336,12 @@
                             <outlet property="_dimmedView" destination="rB6-lo-KOg" id="6Os-Lb-39x"/>
                             <outlet property="_legend" destination="f4I-fl-wvI" id="cY5-lk-taO"/>
                             <outlet property="_navigationBar" destination="P7i-wZ-xLP" id="Hsh-YJ-0Xl"/>
-                            <outlet property="_panel1" destination="dcz-Qe-vLN" id="nO5-Cv-spi"/>
                             <outlet property="_toolbar" destination="Clf-1b-KYv" id="aE9-mF-qn7"/>
                         </connections>
                     </view>
                     <connections>
                         <outlet property="_dimmedView" destination="rB6-lo-KOg" id="gvY-gx-ZRV"/>
                         <outlet property="_legend" destination="f4I-fl-wvI" id="GF6-Rb-fJV"/>
-                        <outlet property="_populationClock" destination="Xcl-AC-G2O" id="Kfp-vU-KAd"/>
                         <outlet property="_removeAdsButton" destination="Ax7-ql-JHu" id="lPx-EE-xyF"/>
                         <outlet property="_toolbar" destination="Clf-1b-KYv" id="toJ-rV-sep"/>
                     </connections>
@@ -444,7 +453,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AWf-OK-TVU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="966" y="-1376"/>
+            <point key="canvasLocation" x="622" y="-384"/>
         </scene>
     </scenes>
     <resources>
@@ -468,8 +477,11 @@
         <class className="AboutViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AboutViewController.h"/>
         </class>
-        <class className="ClockPanelView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ClockPanelView.h"/>
+        <class className="ClockViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ClockViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="clock" candidateClass="PopulationClockView"/>
+            </relationships>
         </class>
         <class className="CountryInfoViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CountryInfoViewController.h"/>
@@ -485,6 +497,11 @@
         </class>
         <class className="MainViewController" superclassName="ModalDialogViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MainViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="ShareApp:"/>
+                <relationship kind="action" name="aboutButtonTouched:"/>
+                <relationship kind="action" name="purchaseButtonTouched:"/>
+            </relationships>
         </class>
         <class className="MapImageView" superclassName="UIImageView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MapImageView.h"/>

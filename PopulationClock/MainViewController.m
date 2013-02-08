@@ -45,6 +45,15 @@
     [(MainView *)self.view addMapImageViewController:(MapImageViewController *)controller];
     [controller didMoveToParentViewController:self];
     
+    // Then the clock view controller
+    // TODO: Stop referencing the population clock, make
+    // the clock view controller update it on demand
+    controller = [self.storyboard instantiateViewControllerWithIdentifier:@"clockViewController"];
+    [self addChildViewController:controller];
+    [(MainView *)self.view addClockViewController:(ClockViewController *)controller];
+    _populationClock = ((ClockViewController *)controller).clock;
+    [controller didMoveToParentViewController:self];
+    
     // Then the country list view controller
     controller = [self.storyboard instantiateViewControllerWithIdentifier:@"countryListViewController"];
     [self addChildViewController:controller];

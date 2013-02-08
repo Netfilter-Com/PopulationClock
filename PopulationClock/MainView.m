@@ -15,7 +15,7 @@
     __weak UIImageView *_map;
     IBOutlet __weak UIView *_legend;
     IBOutlet __weak UIView *_navigationBar;
-    IBOutlet __weak UIView *_panel1;
+    __weak UIView *_panel1;
     __weak UIView *_panel2;
     __weak UIView *_panel3;
     IBOutlet __weak UIToolbar *_toolbar;
@@ -46,11 +46,19 @@
 
 - (void)addMapImageViewController:(MapImageViewController *)controller {
     // Add the view to the hierarchy
-    [self insertSubview:controller.view belowSubview:_dimmedView];
+    [self insertSubview:controller.view belowSubview:_legend];
     
     // Save those references
     _map = controller.mapImageView;
     _scrollView = controller.scrollView;
+}
+
+- (void)addClockViewController:(ClockViewController *)controller {
+    // Add the view to the hierarchy
+    [self insertSubview:controller.view belowSubview:_dimmedView];
+    
+    // Save a reference to the view
+    _panel1 = controller.view;
 }
 
 - (void)addCountryListViewController:(CountryListViewController *)controller {

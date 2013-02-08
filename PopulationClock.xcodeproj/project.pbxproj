@@ -94,7 +94,7 @@
 		ED23C58B1680A41200005C5F /* bgListaHoriz@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED23C57F1680A41200005C5F /* bgListaHoriz@2x.png */; };
 		ED23C58C1680A41200005C5F /* bgListaVert.png in Resources */ = {isa = PBXBuildFile; fileRef = ED23C5801680A41200005C5F /* bgListaVert.png */; };
 		ED23C58D1680A41200005C5F /* bgListaVert@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED23C5811680A41200005C5F /* bgListaVert@2x.png */; };
-		ED23C5901680A43F00005C5F /* ClockPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED23C58F1680A43E00005C5F /* ClockPanelView.m */; };
+		ED23C5901680A43F00005C5F /* ClockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED23C58F1680A43E00005C5F /* ClockViewController.m */; };
 		ED23C5931680A46000005C5F /* CountryInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED23C5921680A46000005C5F /* CountryInfoViewController.m */; };
 		ED247EAF168385660092E185 /* CountryInfoWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED247EAE168385660092E185 /* CountryInfoWebView.m */; };
 		ED247EB5168387000092E185 /* boxInfoPais.png in Resources */ = {isa = PBXBuildFile; fileRef = ED247EB1168387000092E185 /* boxInfoPais.png */; };
@@ -716,8 +716,8 @@
 		ED23C57F1680A41200005C5F /* bgListaHoriz@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgListaHoriz@2x.png"; sourceTree = "<group>"; };
 		ED23C5801680A41200005C5F /* bgListaVert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgListaVert.png; sourceTree = "<group>"; };
 		ED23C5811680A41200005C5F /* bgListaVert@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgListaVert@2x.png"; sourceTree = "<group>"; };
-		ED23C58E1680A43E00005C5F /* ClockPanelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClockPanelView.h; sourceTree = "<group>"; };
-		ED23C58F1680A43E00005C5F /* ClockPanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClockPanelView.m; sourceTree = "<group>"; };
+		ED23C58E1680A43E00005C5F /* ClockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClockViewController.h; sourceTree = "<group>"; };
+		ED23C58F1680A43E00005C5F /* ClockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClockViewController.m; sourceTree = "<group>"; };
 		ED23C5911680A46000005C5F /* CountryInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryInfoViewController.h; sourceTree = "<group>"; };
 		ED23C5921680A46000005C5F /* CountryInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryInfoViewController.m; sourceTree = "<group>"; };
 		ED247EAD168385660092E185 /* CountryInfoWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryInfoWebView.h; sourceTree = "<group>"; };
@@ -1837,8 +1837,8 @@
 				ED7769E016C429AE00BC486F /* AdManager.m */,
 				EDA0C3B3167BAF1400CBECC4 /* AppDelegate.h */,
 				EDA0C3B4167BAF1400CBECC4 /* AppDelegate.m */,
-				ED23C58E1680A43E00005C5F /* ClockPanelView.h */,
-				ED23C58F1680A43E00005C5F /* ClockPanelView.m */,
+				ED23C58E1680A43E00005C5F /* ClockViewController.h */,
+				ED23C58F1680A43E00005C5F /* ClockViewController.m */,
 				EDA0C3CC167BB23800CBECC4 /* CountryCoordinates.h */,
 				EDA0C3CD167BB23800CBECC4 /* CountryCoordinates.m */,
 				EDA0C3CE167BB23800CBECC4 /* CountryDetector.h */,
@@ -2663,7 +2663,7 @@
 				EDA0C3DA167BB23800CBECC4 /* MapImageView.m in Sources */,
 				ED597E8A167F988000038B75 /* CountryListViewController.m in Sources */,
 				ED597E8E167FA55600038B75 /* TopBarView.m in Sources */,
-				ED23C5901680A43F00005C5F /* ClockPanelView.m in Sources */,
+				ED23C5901680A43F00005C5F /* ClockViewController.m in Sources */,
 				ED23C5931680A46000005C5F /* CountryInfoViewController.m in Sources */,
 				ED247EAF168385660092E185 /* CountryInfoWebView.m in Sources */,
 				EDADD7F91684B2B9007E8BD5 /* DataManager.m in Sources */,
