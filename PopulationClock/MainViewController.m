@@ -10,8 +10,8 @@
 #import "InAppPurchaseManager.h"
 #import "MainView.h"
 #import "MainViewController.h"
-#import "MapImageView.h"
 #import "MBProgressHUD.h"
+#import "SavedStateManager.h"
 #import "UIViewController+NFSharing.h"
 
 @implementation MainViewController {
@@ -23,11 +23,6 @@
     CGPoint _legendOrigin;
     
     GADBannerView *_adView;
-}
-
-- (void)dealloc {
-    // We're no longer observers
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)loadView {
@@ -64,19 +59,7 @@
     [_legend addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(legendPanningGestureRecognized:)]];
     
     // Load the selected country from the saved state
-    NSString *selection = [[NSUserDefaults standardUserDefaults] stringForKey:SelectedCountryKey];
-    if (!selection)
-        selection = @"world";
-    
-    // Observe changes to the country selection
-    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-    [nc addObserver:self selector:@selector(countrySelectionChanged:) name:CountrySelectionNotification object:nil];
-    
-    // Let others know about the current selection
-    [nc postNotificationName:CountrySelectionNotification object:self userInfo:@{
-        SelectedCountryKey : selection,
-        StateRestorationKey : @YES
-    }];
+    [SavedStateManager sharedInstance];
     
     // If the user has purchased the option to remove ads or if he is
     // not able to purchase this option, get rid of the button
@@ -97,15 +80,6 @@
         [(MainView *)self.view setAdView:_adView];
         [self.view insertSubview:_adView belowSubview:_dimmedView];
         [adManager doneConfiguringAdBannerView:_adView];
-    }
-}
-
-- (void)countrySelectionChanged:(NSNotification *)notification {
-    // If we aren't the source of the notification, save the new selection
-    NSString *selection = notification.userInfo[SelectedCountryKey];
-    if (notification.object != self) {
-        [[NSUserDefaults standardUserDefaults] setObject:selection forKey:SelectedCountryKey];
-        [[NSUserDefaults standardUserDefaults] synchronize];
     }
 }
 
