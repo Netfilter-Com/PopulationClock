@@ -570,6 +570,7 @@
 		ED882D92168256D10084522F /* country_flag_zw@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED882BDA168256D00084522F /* country_flag_zw@2x.png */; };
 		ED8F4E6816C5598100AC197C /* SavedStateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED8F4E6716C5598100AC197C /* SavedStateManager.m */; };
 		ED8F4E9C16C590A700AC197C /* NFCarouselViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED8F4E9B16C590A700AC197C /* NFCarouselViewController.m */; };
+		ED8F4E9F16C5940F00AC197C /* MapViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = ED8F4E9E16C5940F00AC197C /* MapViewController_iPhone.m */; };
 		ED993BA5169C8BE1001B2F13 /* ModalDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED993BA4169C8BE1001B2F13 /* ModalDialogViewController.m */; };
 		ED993BB1169CA10F001B2F13 /* aboutBox.png in Resources */ = {isa = PBXBuildFile; fileRef = ED993BAF169CA10F001B2F13 /* aboutBox.png */; };
 		ED993BB2169CA10F001B2F13 /* aboutBox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED993BB0169CA10F001B2F13 /* aboutBox@2x.png */; };
@@ -1213,6 +1214,8 @@
 		ED8F4E6716C5598100AC197C /* SavedStateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavedStateManager.m; sourceTree = "<group>"; };
 		ED8F4E9A16C590A700AC197C /* NFCarouselViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFCarouselViewController.h; sourceTree = "<group>"; };
 		ED8F4E9B16C590A700AC197C /* NFCarouselViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFCarouselViewController.m; sourceTree = "<group>"; };
+		ED8F4E9D16C5940F00AC197C /* MapViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController_iPhone.h; sourceTree = "<group>"; };
+		ED8F4E9E16C5940F00AC197C /* MapViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController_iPhone.m; sourceTree = "<group>"; };
 		ED993BA3169C8BE1001B2F13 /* ModalDialogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalDialogViewController.h; sourceTree = "<group>"; };
 		ED993BA4169C8BE1001B2F13 /* ModalDialogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalDialogViewController.m; sourceTree = "<group>"; };
 		ED993BAF169CA10F001B2F13 /* aboutBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aboutBox.png; sourceTree = "<group>"; };
@@ -1873,6 +1876,8 @@
 				ED7769EF16C43A4600BC486F /* MapImageViewController.m */,
 				ED7FF18A169B1FD800123037 /* MapLegendView.h */,
 				ED7FF18B169B1FD800123037 /* MapLegendView.m */,
+				ED8F4E9D16C5940F00AC197C /* MapViewController_iPhone.h */,
+				ED8F4E9E16C5940F00AC197C /* MapViewController_iPhone.m */,
 				ED993BA3169C8BE1001B2F13 /* ModalDialogViewController.h */,
 				ED993BA4169C8BE1001B2F13 /* ModalDialogViewController.m */,
 				ED8F4E9A16C590A700AC197C /* NFCarouselViewController.h */,
@@ -2698,6 +2703,7 @@
 				ED7769F016C43A4700BC486F /* MapImageViewController.m in Sources */,
 				ED8F4E6816C5598100AC197C /* SavedStateManager.m in Sources */,
 				ED8F4E9C16C590A700AC197C /* NFCarouselViewController.m in Sources */,
+				ED8F4E9F16C5940F00AC197C /* MapViewController_iPhone.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

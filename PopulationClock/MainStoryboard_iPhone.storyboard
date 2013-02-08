@@ -4,16 +4,17 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--View Controller - Map-->
+        <!--Map View Controller i Phone - Map-->
         <scene sceneID="bw2-e8-5RH">
             <objects>
-                <viewController title="Map" id="161-S7-1kb" sceneMemberID="viewController">
+                <viewController title="Map" id="161-S7-1kb" customClass="MapViewController_iPhone" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gBl-e1-8W0">
-                        <rect key="frame" x="0.0" y="20" width="480" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                 </viewController>
@@ -26,11 +27,12 @@
             <objects>
                 <viewController storyboardIdentifier="countryInfoViewController" title="Info" id="V6x-S4-M8G" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rL2-y6-OKr">
-                        <rect key="frame" x="0.0" y="20" width="480" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                 </viewController>
@@ -43,11 +45,12 @@
             <objects>
                 <viewController storyboardIdentifier="countryListViewController" title="List" id="JZb-fV-akn" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rVk-Do-LiR">
-                        <rect key="frame" x="0.0" y="20" width="480" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                 </viewController>
@@ -55,7 +58,53 @@
             </objects>
             <point key="canvasLocation" x="975" y="113"/>
         </scene>
+        <!--Map Image View Controller-->
+        <scene sceneID="ju0-rP-EOG">
+            <objects>
+                <viewController storyboardIdentifier="mapImageViewController" id="r7f-K0-CIn" customClass="MapImageViewController" sceneMemberID="viewController">
+                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" maximumZoomScale="4" bouncesZoom="NO" id="ksY-pb-1ct">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="288"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView contentMode="scaleToFill" image="map.png" id="uex-R3-q1Z" customClass="MapImageView">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="288"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <connections>
+                            <outlet property="delegate" destination="r7f-K0-CIn" id="Vyb-5r-89R"/>
+                        </connections>
+                    </scrollView>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="mapImageView" destination="uex-R3-q1Z" id="ENY-eC-jFp"/>
+                        <outlet property="scrollView" destination="ksY-pb-1ct" id="hXT-cT-KRr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4gu-Xz-PcH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="352" y="-270"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="map.png" width="1783" height="902"/>
+    </resources>
+    <classes>
+        <class className="MapImageView" superclassName="UIImageView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapImageView.h"/>
+        </class>
+        <class className="MapImageViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapImageViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="mapImageView" candidateClass="MapImageView"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="MapViewController_iPhone" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController_iPhone.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
