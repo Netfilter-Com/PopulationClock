@@ -581,7 +581,7 @@
 		EDA0C3A9167BAF1400CBECC4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA0C3A8167BAF1400CBECC4 /* CoreGraphics.framework */; };
 		EDA0C3B1167BAF1400CBECC4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA0C3B0167BAF1400CBECC4 /* main.m */; };
 		EDA0C3B5167BAF1400CBECC4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA0C3B4167BAF1400CBECC4 /* AppDelegate.m */; };
-		EDA0C3BE167BAF1400CBECC4 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDA0C3BC167BAF1400CBECC4 /* MainStoryboard_iPad.storyboard */; };
+		EDA0C3BE167BAF1400CBECC4 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDA0C3BC167BAF1400CBECC4 /* MainStoryboard.storyboard */; };
 		EDA0C3D6167BB23800CBECC4 /* CountryCoordinates.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA0C3CD167BB23800CBECC4 /* CountryCoordinates.m */; };
 		EDA0C3D7167BB23800CBECC4 /* CountryDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA0C3CF167BB23800CBECC4 /* CountryDetector.m */; };
 		EDA0C3D8167BB23800CBECC4 /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA0C3D1167BB23800CBECC4 /* MainView.m */; };
@@ -1227,7 +1227,7 @@
 		EDA0C3B2167BAF1400CBECC4 /* PopulationClock-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PopulationClock-Prefix.pch"; sourceTree = "<group>"; };
 		EDA0C3B3167BAF1400CBECC4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		EDA0C3B4167BAF1400CBECC4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		EDA0C3BD167BAF1400CBECC4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		EDA0C3BD167BAF1400CBECC4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		EDA0C3CC167BB23800CBECC4 /* CountryCoordinates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryCoordinates.h; sourceTree = "<group>"; };
 		EDA0C3CD167BB23800CBECC4 /* CountryCoordinates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryCoordinates.m; sourceTree = "<group>"; };
 		EDA0C3CE167BB23800CBECC4 /* CountryDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryDetector.h; sourceTree = "<group>"; };
@@ -1858,7 +1858,7 @@
 				EDADD8011684D3E1007E8BD5 /* globals.m */,
 				EDF8D0801695BF3500FE02B1 /* InAppPurchaseManager.h */,
 				EDF8D0811695BF3500FE02B1 /* InAppPurchaseManager.m */,
-				EDA0C3BC167BAF1400CBECC4 /* MainStoryboard_iPad.storyboard */,
+				EDA0C3BC167BAF1400CBECC4 /* MainStoryboard.storyboard */,
 				ED7769D616C41D0B00BC486F /* MainStoryboard_iPhone.storyboard */,
 				EDA0C3D0167BB23800CBECC4 /* MainView.h */,
 				EDA0C3D1167BB23800CBECC4 /* MainView.m */,
@@ -2100,7 +2100,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDA0C3BE167BAF1400CBECC4 /* MainStoryboard_iPad.storyboard in Resources */,
+				EDA0C3BE167BAF1400CBECC4 /* MainStoryboard.storyboard in Resources */,
 				EDA0C3E0167BB2F800CBECC4 /* colormap.plist in Resources */,
 				EDA0C3E1167BB2F800CBECC4 /* colormap.png in Resources */,
 				EDA0C3E2167BB2F800CBECC4 /* coords.plist in Resources */,
@@ -2727,12 +2727,12 @@
 			name = AppiraterLocalizable.strings;
 			sourceTree = "<group>";
 		};
-		EDA0C3BC167BAF1400CBECC4 /* MainStoryboard_iPad.storyboard */ = {
+		EDA0C3BC167BAF1400CBECC4 /* MainStoryboard.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				EDA0C3BD167BAF1400CBECC4 /* en */,
 			);
-			name = MainStoryboard_iPad.storyboard;
+			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
