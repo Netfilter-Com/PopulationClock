@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "Appirater.h"
 #import "InAppPurchaseManager.h"
+#import "NFCarouselViewController.h"
 #import "SimulationEngine.h"
 #import "UIColor+NFAppColors.h"
 
@@ -19,6 +20,19 @@
     [[UIBarButtonItem appearance] setBackgroundImage:[UIImage imageNamed:@"barBtn.png"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     NSDictionary *attrs = @{UITextAttributeTextColor : [UIColor nf_orangeTextColor]};
     [[UIBarButtonItem appearance] setTitleTextAttributes:attrs forState:UIControlStateNormal];
+    
+    // On the iPhone, we need to manually create the storyboard
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+        NFCarouselViewController *carousel = [[NFCarouselViewController alloc] initWithViewControllers:@[
+            [storyboard instantiateViewControllerWithIdentifier:@"countryInfoViewController"],
+            [storyboard instantiateInitialViewController],
+            [storyboard instantiateViewControllerWithIdentifier:@"countryListViewController"]
+        ]];
+        self.window.rootViewController = carousel;
+        [self.window makeKeyAndVisible];
+    }
     
     // Pre-load the IAP products
     [InAppPurchaseManager sharedInstance];
