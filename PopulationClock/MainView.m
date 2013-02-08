@@ -44,14 +44,21 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)addMapImageViewController:(MapImageViewController *)controller
-{
+- (void)addMapImageViewController:(MapImageViewController *)controller {
     // Add the view to the hierarchy
     [self insertSubview:controller.view atIndex:0];
     
     // Save those references
     _map = controller.mapImageView;
     _scrollView = controller.scrollView;
+}
+
+- (void)addCountryListViewController:(CountryListViewController *)controller {
+    // Add the view to the hierarchy
+    [self addSubview:controller.view];
+    
+    // Save a reference to the view
+    _panel2 = controller.view;
 }
 
 static inline UIViewAnimationOptions animationOptionsWithCurve(UIViewAnimationCurve curve) {

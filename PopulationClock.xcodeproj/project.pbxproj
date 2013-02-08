@@ -108,7 +108,7 @@
 		ED247ECB1683ABC90092E185 /* setaNavEsq.png in Resources */ = {isa = PBXBuildFile; fileRef = ED247EC71683ABC90092E185 /* setaNavEsq.png */; };
 		ED247ECC1683ABC90092E185 /* setaNavEsq@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED247EC81683ABC90092E185 /* setaNavEsq@2x.png */; };
 		ED3A9BE116961A3E007D19DB /* UIImage+NFResizable.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3A9BE016961A3E007D19DB /* UIImage+NFResizable.m */; };
-		ED597E8A167F988000038B75 /* CountryListPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED597E89167F988000038B75 /* CountryListPanelView.m */; };
+		ED597E8A167F988000038B75 /* CountryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED597E89167F988000038B75 /* CountryListViewController.m */; };
 		ED597E8E167FA55600038B75 /* TopBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED597E8D167FA55600038B75 /* TopBarView.m */; };
 		ED7769D716C41D0B00BC486F /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED7769D616C41D0B00BC486F /* MainStoryboard_iPhone.storyboard */; };
 		ED7769D916C41D9F00BC486F /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = ED7769D816C41D9F00BC486F /* Icon.png */; };
@@ -734,8 +734,8 @@
 		ED247EC81683ABC90092E185 /* setaNavEsq@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setaNavEsq@2x.png"; sourceTree = "<group>"; };
 		ED3A9BDF16961A3E007D19DB /* UIImage+NFResizable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+NFResizable.h"; sourceTree = "<group>"; };
 		ED3A9BE016961A3E007D19DB /* UIImage+NFResizable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+NFResizable.m"; sourceTree = "<group>"; };
-		ED597E88167F988000038B75 /* CountryListPanelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryListPanelView.h; sourceTree = "<group>"; };
-		ED597E89167F988000038B75 /* CountryListPanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryListPanelView.m; sourceTree = "<group>"; };
+		ED597E88167F988000038B75 /* CountryListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryListViewController.h; sourceTree = "<group>"; };
+		ED597E89167F988000038B75 /* CountryListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryListViewController.m; sourceTree = "<group>"; };
 		ED597E8C167FA55600038B75 /* TopBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopBarView.h; sourceTree = "<group>"; };
 		ED597E8D167FA55600038B75 /* TopBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopBarView.m; sourceTree = "<group>"; };
 		ED7769D616C41D0B00BC486F /* MainStoryboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
@@ -1847,8 +1847,8 @@
 				ED23C5921680A46000005C5F /* CountryInfoPanelView.m */,
 				ED247EAD168385660092E185 /* CountryInfoWebView.h */,
 				ED247EAE168385660092E185 /* CountryInfoWebView.m */,
-				ED597E88167F988000038B75 /* CountryListPanelView.h */,
-				ED597E89167F988000038B75 /* CountryListPanelView.m */,
+				ED597E88167F988000038B75 /* CountryListViewController.h */,
+				ED597E89167F988000038B75 /* CountryListViewController.m */,
 				EDADD7F71684B2B9007E8BD5 /* DataManager.h */,
 				EDADD7F81684B2B9007E8BD5 /* DataManager.m */,
 				EDADD8001684D3D6007E8BD5 /* globals.h */,
@@ -2661,7 +2661,7 @@
 				EDA0C3D8167BB23800CBECC4 /* MainView.m in Sources */,
 				EDA0C3D9167BB23800CBECC4 /* MainViewController.m in Sources */,
 				EDA0C3DA167BB23800CBECC4 /* MapImageView.m in Sources */,
-				ED597E8A167F988000038B75 /* CountryListPanelView.m in Sources */,
+				ED597E8A167F988000038B75 /* CountryListViewController.m in Sources */,
 				ED597E8E167FA55600038B75 /* TopBarView.m in Sources */,
 				ED23C5901680A43F00005C5F /* ClockPanelView.m in Sources */,
 				ED23C5931680A46000005C5F /* CountryInfoPanelView.m in Sources */,

@@ -1,5 +1,5 @@
 //
-//  CountryListPanelView.m
+//  CountryListViewController.m
 //  PopulationClock
 //
 //  Created by Fernando Lemos on 17/12/12.
@@ -8,11 +8,11 @@
 
 #import <QuartzCore/QuartzCore.h>
 
-#import "CountryListPanelView.h"
+#import "CountryListViewController.h"
 #import "DataManager.h"
 #import "UIColor+NFAppColors.h"
 
-@implementation CountryListPanelView {
+@implementation CountryListViewController {
     IBOutlet __weak UIImageView *_backgroundImageView;
     IBOutlet __weak UIView *_containerView;
     IBOutlet __weak UIView *_searchBackground;
@@ -22,7 +22,12 @@
     NSMutableArray *_searchResult;
 }
 
-- (void)awakeFromNib {
+- (void)dealloc {
+    // We are no longer observers
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)viewDidLoad {
     // Load the list of countries by removing the entry
     // for the entire world
     _countries = [[DataManager sharedDataManager].orderedCountryData mutableCopy];
@@ -59,11 +64,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(countrySelectionChanged:) name:CountrySelectionNotification object:nil];
 }
 
-- (void)dealloc {
-    // We are no longer observers
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 - (void)countrySelectionChanged:(NSNotification *)notification {
     // Ignore this if we're the source of the notification
     if (notification.object == self)
@@ -98,9 +98,9 @@
     }
 }
 
-- (void)layoutSubviews {
+- (void)viewWillLayoutSubviews {
     // The first time the view is laid out, we don't have metrics
-    if (self.bounds.size.width == 0 || self.bounds.size.height == 0)
+    if (self.view.bounds.size.width == 0 || self.view.bounds.size.height == 0)
         return;
     
     // We have a different background image depending on the orientation
@@ -112,7 +112,7 @@
     
     // Position the container view and the table view inside it (the
     // autoresizing hints for the search background are good enough)
-    _containerView.frame = CGRectInset(self.bounds, 20, 20);
+    _containerView.frame = CGRectInset(self.view.bounds, 20, 20);
     CGRect frame = _containerView.bounds;
     frame.origin.y = _searchBackground.frame.size.height;
     frame.size.height -= frame.origin.y;

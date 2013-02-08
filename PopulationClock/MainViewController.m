@@ -38,10 +38,17 @@
 - (void)loadView {
     [super loadView];
     
-    // Add the contained view controllers (no embed segues in iOS 5)
+    // Add the contained view controllers (no embed segues in iOS 5),
+    // starting with the map view controller
     UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"mapImageViewController"];
     [self addChildViewController:controller];
     [(MainView *)self.view addMapImageViewController:(MapImageViewController *)controller];
+    [controller didMoveToParentViewController:self];
+    
+    // Then the country list view controller
+    controller = [self.storyboard instantiateViewControllerWithIdentifier:@"countryListViewController"];
+    [self addChildViewController:controller];
+    [(MainView *)self.view addCountryListViewController:(CountryListViewController *)controller];
     [controller didMoveToParentViewController:self];
 }
 
