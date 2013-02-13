@@ -16,6 +16,9 @@
 
 - (id)initWithViewControllers:(NSArray *)viewControllers;
 
+- (void)rotateLeft;
+- (void)rotateRight;
+
 @end
 
 @protocol NFCarouselViewControllerDelegate <NSObject>

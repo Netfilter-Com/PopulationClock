@@ -10,6 +10,7 @@
 
 #import "CountryListViewController.h"
 #import "DataManager.h"
+#import "NFCarouselViewController.h"
 #import "UIColor+NFAppColors.h"
 
 @interface CountryListSelectedBackgroundView : UIView
@@ -304,6 +305,12 @@ static inline UIViewAnimationOptions animationOptionsWithCurve(UIViewAnimationCu
         // Select it
         indexPath = [NSIndexPath indexPathForRow:pos inSection:0];
         [_tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionMiddle];
+    }
+    
+    // Rotate the carousel container
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        NFCarouselViewController *controller = (NFCarouselViewController *)self.parentViewController;
+        [controller rotateRight];
     }
     
     // Let others know about this selection
