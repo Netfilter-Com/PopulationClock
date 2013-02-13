@@ -154,6 +154,7 @@
 
 - (void)animateAfterRotation
 {
+    [self.view endEditing:NO];
     [_scrollView setContentOffset:CGPointMake(_scrollView.bounds.size.width * _selectedController, 0.0f) animated:YES];
 }
 
@@ -171,11 +172,15 @@
     [self animateAfterRotation];
 }
 
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    [self.view endEditing:NO];
+}
+
 - (void)adjustAfterScrolling
 {
     _selectedController = (int)(_scrollView.contentOffset.x / _scrollView.frame.size.width);
     if (_selectedController != 1) {
-        [self.view endEditing:NO];
         [self reorderControllers];
     }
     [self updateToolbarButtons];
