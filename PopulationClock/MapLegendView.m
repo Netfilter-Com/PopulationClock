@@ -120,7 +120,7 @@
 - (void)setCollapsed:(BOOL)collapsed animated:(BOOL)animated
 {
     if (animated) {
-        [UIView animateWithDuration:0.3 animations:^{
+        [UIView animateWithDuration:0.2 animations:^{
             self.collapsed = collapsed;
         }];
     } else {
