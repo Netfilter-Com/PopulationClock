@@ -72,8 +72,9 @@
     _containerView.layer.cornerRadius = 2;
     _containerView.layer.masksToBounds = YES;
     
-    // Set the table view background
+    // Set the table view background and row height
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"debut_light"]];
+    _tableView.rowHeight = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 44 : 36;
     
     // Style the search background
     _searchBackground.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"debut_light"]];
