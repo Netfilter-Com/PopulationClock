@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MapViewController_iPhone : UIViewController
+#import "NFCarouselViewController.h"
+
+@interface MapViewController_iPhone : UIViewController <NFCarouselDataSource>
 
 @end

@@ -9,6 +9,7 @@
 #import "MapViewController_iPhone.h"
 #import "MapLegendView.h"
 #import "SavedStateManager.h"
+#import "UIColor+NFAppColors.h"
 
 @implementation MapViewController_iPhone {
     UIView *_mapView;
@@ -74,6 +75,19 @@
     if (recognizer.state == UIGestureRecognizerStateRecognized) {
         [_legend setCollapsed:!_legend.isCollapsed animated:YES];
     }
+}
+
+- (NSArray *)extraToolbarItemsForCarouselViewController:(NFCarouselViewController *)controller
+{
+    UILabel *label = [UILabel new];
+    label.text = NSLocalizedString(@"Population Clock", nil);
+    label.font = [UIFont boldSystemFontOfSize:20];
+    label.backgroundColor = [UIColor clearColor];
+    label.textColor = [UIColor nf_orangeTextColor];
+    label.shadowColor = [UIColor blackColor];
+    label.shadowOffset = CGSizeMake(0, -1);
+    [label sizeToFit];
+    return @[[[UIBarButtonItem alloc] initWithCustomView:label]];
 }
 
 @end
