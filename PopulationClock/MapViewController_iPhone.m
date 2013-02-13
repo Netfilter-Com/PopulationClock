@@ -69,7 +69,6 @@
     _mapView.frame = _mapView.superview.bounds;
 }
 
-
 - (void)legendTapGestureRecognized:(UITapGestureRecognizer *)recognizer
 {
     if (recognizer.state == UIGestureRecognizerStateRecognized) {
