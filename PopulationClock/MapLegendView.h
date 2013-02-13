@@ -10,4 +10,6 @@
 
 @property (getter = isCollapsed, nonatomic, assign) BOOL collapsed;
 
+- (void)setCollapsed:(BOOL)collapsed animated:(BOOL)animated;
+
 @end

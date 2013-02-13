@@ -58,6 +58,9 @@
     // Set up a gesture recognizer on the legend
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(legendTapGestureRecognized:)];
     [_legend addGestureRecognizer:tapGestureRecognizer];
+    
+    // Start with the legend collapsed
+    [_legend setCollapsed:YES animated:NO];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -70,7 +73,7 @@
 - (void)legendTapGestureRecognized:(UITapGestureRecognizer *)recognizer
 {
     if (recognizer.state == UIGestureRecognizerStateRecognized) {
-        _legend.collapsed = !_legend.isCollapsed;
+        [_legend setCollapsed:!_legend.isCollapsed animated:YES];
     }
 }
 

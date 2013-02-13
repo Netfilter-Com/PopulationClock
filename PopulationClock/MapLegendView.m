@@ -101,22 +101,31 @@
         return;
     }
     _collapsed = collapsed;
-    
-    [UIView animateWithDuration:0.3 animations:^{
-        CGRect oldFrame = self.frame;
-        CGRect frame = oldFrame;
-        if (collapsed) {
-            frame.size = _collapsedSize;
-            _normalView.alpha = 0;
-            _collapsedView.alpha = 1;
-        } else {
-            frame.size = _normalSize;
-            _normalView.alpha = 1;
-            _collapsedView.alpha = 0;
-        }
-        frame.origin.y += oldFrame.size.height - frame.size.height;
-        self.frame = frame;
-    }];
+ 
+    CGRect oldFrame = self.frame;
+    CGRect frame = oldFrame;
+    if (collapsed) {
+        frame.size = _collapsedSize;
+        _normalView.alpha = 0;
+        _collapsedView.alpha = 1;
+    } else {
+        frame.size = _normalSize;
+        _normalView.alpha = 1;
+        _collapsedView.alpha = 0;
+    }
+    frame.origin.y += oldFrame.size.height - frame.size.height;
+    self.frame = frame;
+}
+
+- (void)setCollapsed:(BOOL)collapsed animated:(BOOL)animated
+{
+    if (animated) {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.collapsed = collapsed;
+        }];
+    } else {
+        self.collapsed = collapsed;
+    }
 }
 
 @end
