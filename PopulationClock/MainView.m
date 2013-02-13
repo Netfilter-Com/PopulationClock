@@ -121,7 +121,7 @@ static inline UIViewAnimationOptions animationOptionsWithCurve(UIViewAnimationCu
 
 - (void)keyboardWillHide:(NSNotification *)notification {
     // Decrement the number of keyboards showing
-    _numKeyboardsShowing = 0;
+    --_numKeyboardsShowing;
     
     // Adjust the content and get rid of the dimmed view
     CGFloat duration = [notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] floatValue];
