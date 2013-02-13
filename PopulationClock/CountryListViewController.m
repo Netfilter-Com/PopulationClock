@@ -206,13 +206,11 @@ static inline UIViewAnimationOptions animationOptionsWithCurve(UIViewAnimationCu
         frame.origin.y -= 32;
         _containerView.frame = frame;
     } else {
-        // Position the container view and the table view inside it (the
-        // autoresizing hints for the search background are good enough)
+        // Position the container view
         _containerView.frame = CGRectInset(self.view.bounds, 20, 20);
         CGRect frame = _containerView.bounds;
         frame.origin.y = _searchBackground.frame.size.height;
         frame.size.height -= frame.origin.y;
-        _tableView.frame = frame;
     }
     
     // If we had a selection, center on it
