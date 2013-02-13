@@ -12,6 +12,32 @@
 #import "DataManager.h"
 #import "UIColor+NFAppColors.h"
 
+@interface CountryListSelectedBackgroundView : UIView
+
+@end
+
+@implementation CountryListSelectedBackgroundView
+
++ (Class)layerClass {
+    return [CAGradientLayer class];
+}
+
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        CAGradientLayer *gradient = (CAGradientLayer *)self.layer;
+        gradient.colors = @[
+            (id)[UIColor nf_orangeTextColor].CGColor,
+            (id)[UIColor colorWithRed:195/255.0 green:141/255.0 blue:18/255.0 alpha:1].CGColor
+        ];
+        gradient.locations = @[@0.0f, @1.0f];
+    }
+    return self;
+}
+
+@end
+
 @implementation CountryListViewController {
     IBOutlet __weak UIImageView *_backgroundImageView;
     IBOutlet __weak UIView *_containerView;
@@ -139,14 +165,8 @@
         cell.textLabel.font = [UIFont boldSystemFontOfSize:17];
         
         // Style the selected view
-        CAGradientLayer *gradient = [CAGradientLayer layer];
-        gradient.colors = @[
-            (id)[UIColor nf_orangeTextColor].CGColor,
-            (id)[UIColor colorWithRed:195/255.0 green:141/255.0 blue:18/255.0 alpha:1].CGColor
-        ];
-        gradient.locations = @[@0.0f, @1.0f];
-        gradient.frame = CGRectMake(0, 0, 400, 44);
-        [cell.selectedBackgroundView.layer insertSublayer:gradient atIndex:0];
+        cell.selectedBackgroundView = [[CountryListSelectedBackgroundView alloc] initWithFrame:cell.bounds];
+        cell.selectedBackgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     }
     
     // Get the country info
@@ -174,6 +194,11 @@
     
     // Reload the table
     [_tableView reloadData];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
 }
 
 - (void)searchTextFieldChanged {
