@@ -17,6 +17,66 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items/>
                             </toolbar>
+                            <view contentMode="scaleToFill" id="TIK-VJ-PKi" customClass="MapLegendView">
+                                <rect key="frame" x="20" y="156" width="160" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Population growth" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="T6B-di-8HG">
+                                        <rect key="frame" x="0.0" y="10" width="160" height="16"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                        <color key="textColor" red="0.98823529409999999" green="0.78823529410000004" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="-3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Exs-9G-qtx">
+                                        <rect key="frame" x="12" y="51" width="12" height="15"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                        <color key="textColor" red="0.4431372549" green="0.47058823529999999" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Births" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1gJ-u6-EKx">
+                                        <rect key="frame" x="27" y="74" width="50" height="15"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                        <color key="textColor" red="0.4431372549" green="0.47058823529999999" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Deaths" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xeV-TU-2pD">
+                                        <rect key="frame" x="107" y="75" width="41" height="15"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                        <color key="textColor" red="0.4431372549" green="0.47058823529999999" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="6" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="833-6Y-TFV">
+                                        <rect key="frame" x="141" y="51" width="7" height="15"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                        <color key="textColor" red="0.4431372549" green="0.47058823529999999" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="birth.png" id="9qS-lS-omj">
+                                        <rect key="frame" x="12" y="75" width="13" height="13"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="death.png" id="4wu-pW-Spb">
+                                        <rect key="frame" x="93" y="75" width="13" height="13"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.40000000000000002" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="_birthsLabel" destination="1gJ-u6-EKx" id="kks-vL-5Ac"/>
+                                    <outlet property="_deathsIcon" destination="4wu-pW-Spb" id="3dl-qi-c6C"/>
+                                    <outlet property="_deathsLabel" destination="xeV-TU-2pD" id="sRS-Zi-QgA"/>
+                                    <outlet property="_titleLabel" destination="T6B-di-8HG" id="3zN-Ie-ClJ"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -25,6 +85,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="_legend" destination="TIK-VJ-PKi" id="8fg-ca-1Ji"/>
                         <outlet property="_toolbar" destination="hwd-u7-z03" id="0Ch-PH-RVu"/>
                     </connections>
                 </viewController>
@@ -134,7 +195,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="birth.png" width="19" height="22"/>
         <image name="country_flag_br.png" width="236" height="162"/>
+        <image name="death.png" width="16" height="22"/>
         <image name="map.png" width="1783" height="902"/>
     </resources>
     <classes>
@@ -148,9 +211,13 @@
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
             </relationships>
         </class>
+        <class className="MapLegendView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapLegendView.h"/>
+        </class>
         <class className="MapViewController_iPhone" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController_iPhone.h"/>
             <relationships>
+                <relationship kind="outlet" name="_legend" candidateClass="MapLegendView"/>
                 <relationship kind="outlet" name="_toolbar" candidateClass="UIToolbar"/>
             </relationships>
         </class>

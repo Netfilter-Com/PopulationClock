@@ -7,11 +7,13 @@
 //
 
 #import "MapViewController_iPhone.h"
+#import "MapLegendView.h"
 #import "SavedStateManager.h"
 
 @implementation MapViewController_iPhone {
     UIView *_mapView;
     IBOutlet UIToolbar *_toolbar;
+    IBOutlet MapLegendView *_legend;
 }
 
 - (void)loadView
@@ -48,15 +50,28 @@
     }
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     // Load the selected country from the saved state
     [SavedStateManager sharedInstance];
+    
+    // Set up a gesture recognizer on the legend
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(legendTapGestureRecognized:)];
+    [_legend addGestureRecognizer:tapGestureRecognizer];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     // Scale the map to fill the screen on the iPhone 5
     _mapView.frame = _mapView.superview.bounds;
+}
+
+
+- (void)legendTapGestureRecognized:(UITapGestureRecognizer *)recognizer
+{
+    if (recognizer.state == UIGestureRecognizerStateRecognized) {
+        _legend.collapsed = !_legend.isCollapsed;
+    }
 }
 
 @end

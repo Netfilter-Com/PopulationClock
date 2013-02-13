@@ -8,4 +8,6 @@
 
 @interface MapLegendView : UIView
 
+@property (getter = isCollapsed, nonatomic, assign) BOOL collapsed;
+
 @end
