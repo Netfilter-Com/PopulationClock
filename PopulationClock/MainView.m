@@ -141,24 +141,8 @@ static inline UIViewAnimationOptions animationOptionsWithCurve(UIViewAnimationCu
     }];
 }
 
-- (BOOL)findAndResignFirstResponder:(UIView *)view {
-    if (view.isFirstResponder) {
-        [view resignFirstResponder];
-        return YES;
-    }
-    for (UIView *subview in view.subviews) {
-        if ([self findAndResignFirstResponder:subview])
-            return YES;
-    }
-    return NO;
-}
-
 - (IBAction)dimmedViewButtonTouched:(id)sender {
-    // Find and resign the first responder. This is ugly but,
-    // alternatives would be either having to keep track of
-    // the search UITextField or telling the view controller
-    // to end editing
-    [self findAndResignFirstResponder:self];
+    [self endEditing:NO];
 }
 
 - (void)layoutSubviews {
