@@ -608,6 +608,7 @@
 		EDFC9D0E16CBC36C00D3B7BE /* colormap~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = EDFC9D0A16CBC36C00D3B7BE /* colormap~iphone.png */; };
 		EDFC9D0F16CBC36C00D3B7BE /* map@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = EDFC9D0B16CBC36C00D3B7BE /* map@2x~iphone.png */; };
 		EDFC9D1016CBC36C00D3B7BE /* map~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = EDFC9D0C16CBC36C00D3B7BE /* map~iphone.png */; };
+		EDFC9D1316CBC8A800D3B7BE /* MapViewFlagViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFC9D1216CBC8A800D3B7BE /* MapViewFlagViewController_iPhone.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1280,6 +1281,8 @@
 		EDFC9D0A16CBC36C00D3B7BE /* colormap~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "colormap~iphone.png"; sourceTree = "<group>"; };
 		EDFC9D0B16CBC36C00D3B7BE /* map@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map@2x~iphone.png"; sourceTree = "<group>"; };
 		EDFC9D0C16CBC36C00D3B7BE /* map~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map~iphone.png"; sourceTree = "<group>"; };
+		EDFC9D1116CBC8A800D3B7BE /* MapViewFlagViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewFlagViewController_iPhone.h; sourceTree = "<group>"; };
+		EDFC9D1216CBC8A800D3B7BE /* MapViewFlagViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewFlagViewController_iPhone.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1886,6 +1889,8 @@
 				ED7FF18B169B1FD800123037 /* MapLegendView.m */,
 				ED8F4E9D16C5940F00AC197C /* MapViewController_iPhone.h */,
 				ED8F4E9E16C5940F00AC197C /* MapViewController_iPhone.m */,
+				EDFC9D1116CBC8A800D3B7BE /* MapViewFlagViewController_iPhone.h */,
+				EDFC9D1216CBC8A800D3B7BE /* MapViewFlagViewController_iPhone.m */,
 				ED993BA3169C8BE1001B2F13 /* ModalDialogViewController.h */,
 				ED993BA4169C8BE1001B2F13 /* ModalDialogViewController.m */,
 				ED8F4E9A16C590A700AC197C /* NFCarouselViewController.h */,
@@ -2720,6 +2725,7 @@
 				ED8F4E6816C5598100AC197C /* SavedStateManager.m in Sources */,
 				ED8F4E9C16C590A700AC197C /* NFCarouselViewController.m in Sources */,
 				ED8F4E9F16C5940F00AC197C /* MapViewController_iPhone.m in Sources */,
+				EDFC9D1316CBC8A800D3B7BE /* MapViewFlagViewController_iPhone.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
