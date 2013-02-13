@@ -68,6 +68,7 @@
     _scrollView.bounces = NO;
     _scrollView.showsHorizontalScrollIndicator = NO;
     _scrollView.showsVerticalScrollIndicator = NO;
+    _scrollView.clipsToBounds = NO;
     [self.view addSubview:_scrollView];
     
     // Add the view controllers

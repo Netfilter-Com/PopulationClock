@@ -44,8 +44,12 @@
     IBOutlet __weak UIView *_searchBackground;
     IBOutlet __weak UITextField *_searchTextField;
     IBOutlet __weak UITableView *_tableView;
+    
     NSMutableArray *_countries;
     NSMutableArray *_searchResult;
+    
+    int _numKeyboardsShowing;
+    CGSize _keyboardSize;
 }
 
 - (void)dealloc {
@@ -88,7 +92,14 @@
     [_searchTextField addTarget:self action:@selector(searchTextFieldChanged) forControlEvents:UIControlEventEditingChanged];
     
     // Observe changes to the country selection
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(countrySelectionChanged:) name:CountrySelectionNotification object:nil];
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc addObserver:self selector:@selector(countrySelectionChanged:) name:CountrySelectionNotification object:nil];
+    
+    // Add observers to the keyboard events
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        [nc addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+        [nc addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    }
 }
 
 - (void)countrySelectionChanged:(NSNotification *)notification {
@@ -125,6 +136,55 @@
     }
 }
 
+static inline UIViewAnimationOptions animationOptionsWithCurve(UIViewAnimationCurve curve) {
+    switch (curve) {
+        case UIViewAnimationCurveEaseInOut:
+            return UIViewAnimationOptionCurveEaseInOut;
+        case UIViewAnimationCurveEaseIn:
+            return UIViewAnimationOptionCurveEaseIn;
+        case UIViewAnimationCurveEaseOut:
+            return UIViewAnimationOptionCurveEaseOut;
+        case UIViewAnimationCurveLinear:
+            return UIViewAnimationOptionCurveLinear;
+    }
+}
+
+- (void)keyboardWillShow:(NSNotification *)notification {
+    // Increment the number of keyboards showing
+    ++_numKeyboardsShowing;
+    
+    // Get the keyboard size
+    _keyboardSize = [notification.userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    // The keyboard size doesn't follow the orientation
+    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+    if (UIInterfaceOrientationIsLandscape(orientation)) {
+        CGFloat tmp = _keyboardSize.width;
+        _keyboardSize.width = _keyboardSize.height;
+        _keyboardSize.height = tmp;
+    }
+    
+    // Animate with the keyboard
+    CGFloat duration = [notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] floatValue];
+    UIViewAnimationOptions options = animationOptionsWithCurve([notification.userInfo[UIKeyboardAnimationCurveUserInfoKey] intValue]);
+    [UIView animateWithDuration:duration delay:0 options:options animations:^{
+        [self viewWillLayoutSubviews];
+    } completion:nil];
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification {
+    // Decrement the number of keyboards showing
+    --_numKeyboardsShowing;
+    
+    // Adjust the content and get rid of the dimmed view
+    CGFloat duration = [notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] floatValue];
+    UIViewAnimationOptions options = animationOptionsWithCurve([notification.userInfo[UIKeyboardAnimationCurveUserInfoKey] intValue]);
+    [UIView animateWithDuration:duration delay:0 options:options animations:^{
+        [self viewWillLayoutSubviews];
+    } completion:^(BOOL finished) {
+    }];
+}
+
 - (void)viewWillLayoutSubviews {
     // The first time the view is laid out, we don't have metrics
     if (self.view.bounds.size.width == 0 || self.view.bounds.size.height == 0)
@@ -137,13 +197,23 @@
     else
         _backgroundImageView.image = [UIImage imageNamed:@"bgListaVert"];
     
-    // Position the container view and the table view inside it (the
-    // autoresizing hints for the search background are good enough)
-    _containerView.frame = CGRectInset(self.view.bounds, 20, 20);
-    CGRect frame = _containerView.bounds;
-    frame.origin.y = _searchBackground.frame.size.height;
-    frame.size.height -= frame.origin.y;
-    _tableView.frame = frame;
+    if (_numKeyboardsShowing && _keyboardSize.height) {
+        // Note that this is only ever true on the iPhone, we don't
+        // handle keyboard notifications on the iPad here
+        CGRect frame = self.view.bounds;
+        frame.size.height -= _keyboardSize.height;
+        frame.size.height += 32;
+        frame.origin.y -= 32;
+        _containerView.frame = frame;
+    } else {
+        // Position the container view and the table view inside it (the
+        // autoresizing hints for the search background are good enough)
+        _containerView.frame = CGRectInset(self.view.bounds, 20, 20);
+        CGRect frame = _containerView.bounds;
+        frame.origin.y = _searchBackground.frame.size.height;
+        frame.size.height -= frame.origin.y;
+        _tableView.frame = frame;
+    }
     
     // If we had a selection, center on it
     NSIndexPath *selection = [_tableView indexPathForSelectedRow];
