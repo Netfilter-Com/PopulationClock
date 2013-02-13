@@ -175,6 +175,7 @@
 {
     _selectedController = (int)(_scrollView.contentOffset.x / _scrollView.frame.size.width);
     if (_selectedController != 1) {
+        [self.view endEditing:NO];
         [self reorderControllers];
     }
     [self updateToolbarButtons];
