@@ -151,6 +151,9 @@ NSString *InAppPurchasePurchasedRemoveAds = @"InAppPurchasePurchasedRemoveAds";
 }
 
 - (void)provideRemoveAds {
+    // Update our state
+    _adsRemoved = YES;
+    
     // Write to the user defaults
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:REMOVE_ADS_DEFAULTS_KEY];
     [[NSUserDefaults standardUserDefaults] synchronize];

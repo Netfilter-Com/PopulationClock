@@ -134,8 +134,9 @@
     UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     [items addObject:flexibleSpace];
     
-    if ([self.delegate respondsToSelector:@selector(extraToolbarItemsForCarouselViewController:)]) {
-        NSArray *extraItems = [self.delegate extraToolbarItemsForCarouselViewController:self];
+    UIViewController *current = _controllers[_selectedController];
+    if ([current respondsToSelector:@selector(extraToolbarItemsForCarouselViewController:)]) {
+        NSArray *extraItems = [(id <NFCarouselDataSource>)current extraToolbarItemsForCarouselViewController:self];
         if (extraItems.count) {
             for (UIBarButtonItem *item in extraItems) {
                 [items addObject:item];

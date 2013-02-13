@@ -10,8 +10,10 @@
 
 #import "CountryListViewController.h"
 #import "DataManager.h"
-#import "NFCarouselViewController.h"
+#import "InAppPurchaseManager.h"
+#import "MBProgressHUD.h"
 #import "UIColor+NFAppColors.h"
+#import "UIViewController+NFSharing.h"
 
 @interface CountryListSelectedBackgroundView : UIView
 
@@ -316,6 +318,60 @@ static inline UIViewAnimationOptions animationOptionsWithCurve(UIViewAnimationCu
     // Let others know about this selection
     NSDictionary *info = _countries[indexPath.row];
     [[NSNotificationCenter defaultCenter] postNotificationName:CountrySelectionNotification object:self userInfo:@{SelectedCountryKey : info[@"code"]}];
+}
+
+- (NSArray *)extraToolbarItemsForCarouselViewController:(NFCarouselViewController *)controller
+{
+    UIBarButtonItem *removeAdsItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Remove ads", nil)
+                                                                      style:UIBarButtonItemStyleBordered
+                                                                     target:self
+                                                                     action:@selector(removeAdsButtonTouched:)];
+    
+    UIBarButtonItem *shareItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Share", nil)
+                                                                  style:UIBarButtonItemStyleBordered
+                                                                 target:self
+                                                                 action:@selector(shareButtonTouched:)];
+    
+    UIBarButtonItem *aboutItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"About", nil)
+                                                                  style:UIBarButtonItemStyleBordered
+                                                                 target:self
+                                                                 action:@selector(aboutButtonTouched:)];
+    
+    NSMutableArray *items = [NSMutableArray arrayWithCapacity:3];
+    if (![InAppPurchaseManager sharedInstance].adsRemoved) {
+        [items addObject:removeAdsItem];
+    }
+    [items addObject:shareItem];
+    [items addObject:aboutItem];
+    
+    return items;
+}
+
+- (void)removeAdsButtonTouched:(id)sender
+{
+    // Show the HUD
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = NSLocalizedString(@"Contacting the App Store", @"");
+    hud.dimBackground = YES;
+    
+    // Purchase the option to remove ads
+    [[InAppPurchaseManager sharedInstance] purchaseRemoveAdsWithCallback:^(BOOL purchased) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        if (purchased) {
+            NFCarouselViewController *controller = (NFCarouselViewController *)self.parentViewController;
+            [controller updateToolbarButtons];
+        }
+    }];
+}
+
+- (void)shareButtonTouched:(id)sender
+{
+    [self nf_presentShareViewControllerAnimated:YES];
+}
+
+- (void)aboutButtonTouched:(id)sender
+{
+    // TODO
 }
 
 @end
