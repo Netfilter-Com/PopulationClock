@@ -8,6 +8,28 @@
 
 #import "NFCarouselViewController.h"
 
+@interface NFCarouselTouchHackView : UIView
+
+@property (nonatomic, strong) UIView *viewStealingTouch;
+
+@end
+
+@implementation NFCarouselTouchHackView
+
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
+{
+    if (self.viewStealingTouch) {
+        CGPoint subviewPoint = [self.viewStealingTouch convertPoint:point fromView:self];
+        UIView *touchedView = [self.viewStealingTouch hitTest:subviewPoint withEvent:event];
+        if (touchedView) {
+            return touchedView;
+        }
+    }
+    return [super hitTest:point withEvent:event];
+}
+
+@end
+
 @implementation NFCarouselViewController {
     UIToolbar *_toolbar;
     UIScrollView *_scrollView;
@@ -33,7 +55,7 @@
 {
     // Create the main view
     CGRect frame = [UIScreen mainScreen].bounds;
-    self.view = [[UIView alloc] initWithFrame:frame];
+    self.view = [[NFCarouselTouchHackView alloc] initWithFrame:frame];
     self.view.backgroundColor = [UIColor blackColor];
     self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
@@ -201,6 +223,11 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 {
     return UIInterfaceOrientationIsLandscape(toInterfaceOrientation);
+}
+
+- (void)setViewStealingTouch:(UIView *)view
+{
+    ((NFCarouselTouchHackView *)self.view).viewStealingTouch = view;
 }
 
 @end

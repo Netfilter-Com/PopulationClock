@@ -17,6 +17,8 @@
 
 - (void)updateToolbarButtons;
 
+- (void)setViewStealingTouch:(UIView *)view;
+
 @end
 
 @protocol NFCarouselDataSource <NSObject>

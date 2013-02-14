@@ -208,12 +208,21 @@ static inline UIViewAnimationOptions animationOptionsWithCurve(UIViewAnimationCu
         frame.size.height += 32;
         frame.origin.y -= 32;
         _containerView.frame = frame;
+        
+        // We must hack around the fact that views outside their
+        // bounds don't get a chance to be hit tested
+        [(NFCarouselViewController *)self.parentViewController setViewStealingTouch:_containerView];
     } else {
         // Position the container view
         _containerView.frame = CGRectInset(self.view.bounds, 20, 20);
         CGRect frame = _containerView.bounds;
         frame.origin.y = _searchBackground.frame.size.height;
         frame.size.height -= frame.origin.y;
+        
+        // Disable the hit test hack
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+            [(NFCarouselViewController *)self.parentViewController setViewStealingTouch:nil];
+        }
     }
     
     // If we had a selection, center on it
