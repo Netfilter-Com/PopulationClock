@@ -19,6 +19,11 @@
     CALayer *_shadowLayer;
 }
 
++ (Class)layerClass
+{
+    return [CAGradientLayer class];
+}
+
 - (void)awakeFromNib {
     // Disable bouncing
     self.scrollView.bounces = NO;
@@ -38,6 +43,26 @@
     // Set the rounded corners
     self.layer.cornerRadius = 2.0f;
     self.layer.masksToBounds = YES;
+    
+    // Configure the gradient
+    CAGradientLayer *gradient = (CAGradientLayer *)self.layer;
+    UIColor *finalColor;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        gradient.startPoint = CGPointMake(0, 0.75);
+        finalColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+    } else {
+        gradient.startPoint = CGPointMake(0, 0.5);
+        finalColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
+    }
+    gradient.endPoint = CGPointMake(0, 1);
+    gradient.colors = @[
+        (id)[UIColor colorWithRed:0 green:0 blue:0 alpha:0].CGColor,
+        (id)finalColor.CGColor
+    ];
+    
+    // Rasterize this layer
+    self.layer.shouldRasterize = YES;
+    self.layer.rasterizationScale = [UIScreen mainScreen].scale;
     
     // Add the shadow layer
     _shadowLayer = [CALayer layer];
