@@ -218,7 +218,8 @@ static inline UIViewAnimationOptions animationOptionsWithCurve(UIViewAnimationCu
         [(NFCarouselViewController *)self.parentViewController setViewStealingTouch:_containerView];
     } else {
         // Position the container view
-        _containerView.frame = CGRectInset(self.view.bounds, 20, 20);
+        CGFloat inset = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 20 : 16;
+        _containerView.frame = CGRectInset(self.view.bounds, inset, inset);
         CGRect frame = _containerView.bounds;
         frame.origin.y = _searchBackground.frame.size.height;
         frame.size.height -= frame.origin.y;
