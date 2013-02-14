@@ -152,7 +152,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </view>
                                     <webView opaque="NO" contentMode="scaleToFill" id="U7w-0F-3g2" customClass="CountryInfoWebView">
-                                        <rect key="frame" x="27" y="16" width="186" height="288"/>
+                                        <rect key="frame" x="16" y="16" width="208" height="288"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <dataDetectorType key="dataDetectorTypes"/>
