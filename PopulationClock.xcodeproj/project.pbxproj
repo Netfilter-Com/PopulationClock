@@ -602,6 +602,7 @@
 		EDADD8081684DAA1007E8BD5 /* globeHoriz@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EDADD8041684DAA1007E8BD5 /* globeHoriz@2x.png */; };
 		EDADD8091684DAA1007E8BD5 /* globeVertical.png in Resources */ = {isa = PBXBuildFile; fileRef = EDADD8051684DAA1007E8BD5 /* globeVertical.png */; };
 		EDADD80A1684DAA1007E8BD5 /* globeVertical@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EDADD8061684DAA1007E8BD5 /* globeVertical@2x.png */; };
+		EDF0F5B516CD6DBF001F9262 /* CountryCarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF0F5B416CD6DBE001F9262 /* CountryCarouselView.m */; };
 		EDF8D07F1695B81600FE02B1 /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDF8D07E1695B81600FE02B1 /* libGoogleAdMobAds.a */; };
 		EDF8D0821695BF3500FE02B1 /* InAppPurchaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF8D0811695BF3500FE02B1 /* InAppPurchaseManager.m */; };
 		EDF8D0861695DAAE00FE02B1 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF8D0851695DAAE00FE02B1 /* MBProgressHUD.m */; };
@@ -1267,6 +1268,8 @@
 		EDADD8041684DAA1007E8BD5 /* globeHoriz@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "globeHoriz@2x.png"; sourceTree = "<group>"; };
 		EDADD8051684DAA1007E8BD5 /* globeVertical.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = globeVertical.png; sourceTree = "<group>"; };
 		EDADD8061684DAA1007E8BD5 /* globeVertical@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "globeVertical@2x.png"; sourceTree = "<group>"; };
+		EDF0F5B316CD6DBE001F9262 /* CountryCarouselView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryCarouselView.h; sourceTree = "<group>"; };
+		EDF0F5B416CD6DBE001F9262 /* CountryCarouselView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryCarouselView.m; sourceTree = "<group>"; };
 		EDF8D0751695B81600FE02B1 /* GADAdMobExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdMobExtras.h; sourceTree = "<group>"; };
 		EDF8D0761695B81600FE02B1 /* GADAdNetworkExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdNetworkExtras.h; sourceTree = "<group>"; };
 		EDF8D0771695B81600FE02B1 /* GADAdSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdSize.h; sourceTree = "<group>"; };
@@ -1863,6 +1866,8 @@
 				EDA0C3B4167BAF1400CBECC4 /* AppDelegate.m */,
 				ED23C58E1680A43E00005C5F /* ClockViewController.h */,
 				ED23C58F1680A43E00005C5F /* ClockViewController.m */,
+				EDF0F5B316CD6DBE001F9262 /* CountryCarouselView.h */,
+				EDF0F5B416CD6DBE001F9262 /* CountryCarouselView.m */,
 				EDA0C3CC167BB23800CBECC4 /* CountryCoordinates.h */,
 				EDA0C3CD167BB23800CBECC4 /* CountryCoordinates.m */,
 				EDA0C3CE167BB23800CBECC4 /* CountryDetector.h */,
@@ -2734,6 +2739,7 @@
 				EDFC9D1316CBC8A800D3B7BE /* MapViewFlagViewController_iPhone.m in Sources */,
 				ED3A406516CD22B900D2A814 /* CountryInfoBackgroundView.m in Sources */,
 				ED3A406A16CD55AB00D2A814 /* CountryInfoViewController_iPhone.m in Sources */,
+				EDF0F5B516CD6DBF001F9262 /* CountryCarouselView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

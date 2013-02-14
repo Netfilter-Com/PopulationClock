@@ -27,19 +27,42 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <dataDetectorType key="dataDetectorTypes"/>
                             </webView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="setaNavEsq.png" id="qvL-67-WgR">
-                                <rect key="frame" x="20" y="56" width="30" height="47"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WCH-Sz-j3y">
+                                <rect key="frame" x="20" y="48" width="30" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="setaNavDir.png" id="wW4-N9-jD2">
-                                <rect key="frame" x="334" y="56" width="30" height="47"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" image="setaNavEsq.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="leftArrowTouched:" destination="iYz-tK-Chl" eventType="touchUpInside" id="weL-fs-wjg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Ljd-hd-H5s">
+                                <rect key="frame" x="334" y="48" width="30" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="iYz-tK-Chl">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" image="setaNavDir.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="rightArrowTouched:" destination="iYz-tK-Chl" eventType="touchUpInside" id="kFy-03-HCR"/>
+                                </connections>
+                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="iYz-tK-Chl" customClass="CountryCarouselView">
                                 <rect key="frame" x="0.0" y="0.0" width="384" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <outlet property="delegate" destination="gWn-ZV-t9O" id="T0O-Zg-e3W"/>
+                                    <outlet property="leftArrow" destination="WCH-Sz-j3y" id="Bia-UY-uhd"/>
+                                    <outlet property="rightArrow" destination="Ljd-hd-H5s" id="i47-XF-65L"/>
                                 </connections>
                             </scrollView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="country_flag_br.png" id="vVZ-Jk-WQy">
@@ -61,8 +84,8 @@
                         <outlet property="_backgroundImageView" destination="wuw-H0-RN1" id="5nL-7Z-2v0"/>
                         <outlet property="_landscapeCountryName" destination="IBg-fZ-8Xk" id="PsF-sO-tzJ"/>
                         <outlet property="_landscapeFlag" destination="vVZ-Jk-WQy" id="Bhp-qb-AnT"/>
-                        <outlet property="_portraitArrowLeft" destination="qvL-67-WgR" id="6c9-20-EN6"/>
-                        <outlet property="_portraitArrowRight" destination="wW4-N9-jD2" id="a2X-l4-aGl"/>
+                        <outlet property="_portraitArrowLeft" destination="WCH-Sz-j3y" id="AHe-yD-bbn"/>
+                        <outlet property="_portraitArrowRight" destination="Ljd-hd-H5s" id="6hj-Hn-7Yu"/>
                         <outlet property="_portraitScrollView" destination="iYz-tK-Chl" id="2Op-kg-1za"/>
                         <outlet property="_portraitWebViewBackground" destination="PBO-oY-k7f" id="9m2-pp-E6g"/>
                         <outlet property="_webView" destination="KQe-4j-zZ6" id="5L4-9z-gNs"/>
@@ -479,6 +502,13 @@
         </class>
         <class className="ClockViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ClockViewController.h"/>
+        </class>
+        <class className="CountryCarouselView" superclassName="UIScrollView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CountryCarouselView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="leftArrow" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="rightArrow" candidateClass="UIButton"/>
+            </relationships>
         </class>
         <class className="CountryInfoBackgroundView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CountryInfoBackgroundView.h"/>
