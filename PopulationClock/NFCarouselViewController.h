@@ -25,11 +25,6 @@
 
 @optional
 
-- (void)carouselViewControllerWillBeginDragging:(NFCarouselViewController *)controller;
-
-- (void)carouselViewController:(NFCarouselViewController *)controller
-            controllerSelected:(UIViewController *)selectedController;
-
 - (NSArray *)extraToolbarItemsForCarouselViewController:(NFCarouselViewController *)controller;
 
 @end
