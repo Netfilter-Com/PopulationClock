@@ -62,19 +62,7 @@
     // Change the scroll bar behavior depending whether we're
     // in portrait or landscape
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        UIScrollView *scrollView;
-        for (UIView *view in self.subviews) {
-            if ([view isKindOfClass:[UIScrollView class]]) {
-                scrollView = (UIScrollView *)view;
-                break;
-            }
-        }
-        @try {
-            scrollView.indicatorStyle = isPortrait ? UIScrollViewIndicatorStyleBlack : UIScrollViewIndicatorStyleWhite;
-        }
-        @catch (NSException *exception) {
-            NSLog(@"Failed to set web view indicator style: %@", exception);
-        }
+        self.scrollView.indicatorStyle = isPortrait ? UIScrollViewIndicatorStyleBlack : UIScrollViewIndicatorStyleWhite;
     }
     
     // Load the right template depending on the orientation
