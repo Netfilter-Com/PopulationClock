@@ -6,6 +6,8 @@
 //  Copyright (c) 2012 NetFilter. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
+
 #import "CountryInfoWebView.h"
 #import "DataManager.h"
 #import "StatsBuilder.h"
@@ -14,6 +16,7 @@
     BOOL _didLayout;
     UIInterfaceOrientation _interfaceOrientationForLayout;
     NSString *_selectedCountry;
+    CALayer *_shadowLayer;
 }
 
 - (void)awakeFromNib {
@@ -27,7 +30,24 @@
     }
     
     // Observe changes to the country selection
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(countrySelectionChanged:) name:CountrySelectionNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(countrySelectionChanged:)
+                                                 name:CountrySelectionNotification
+                                               object:nil];
+    
+    // Set the rounded corners
+    self.layer.cornerRadius = 2.0f;
+    self.layer.masksToBounds = YES;
+    
+    // Add the shadow layer
+    _shadowLayer = [CALayer layer];
+    _shadowLayer.shadowColor = [UIColor blackColor].CGColor;
+    _shadowLayer.shadowOpacity = 0.7f;
+    _shadowLayer.shadowRadius = 2.0f;
+    _shadowLayer.shadowOffset = CGSizeZero;
+    _shadowLayer.shouldRasterize = YES;
+    _shadowLayer.rasterizationScale = [UIScreen mainScreen].scale;
+    [self.layer addSublayer:_shadowLayer];
 }
 
 - (void)dealloc {
@@ -45,6 +65,22 @@
 }
 
 - (void)layoutSubviews {
+    // Set the shadow path
+    CGFloat r = _shadowLayer.shadowRadius;
+    CGMutablePathRef shadowPath = CGPathCreateMutable();
+    CGPoint lines[] = {
+        CGPointMake(-r, -r),
+        CGPointMake(self.bounds.size.width + r, -r),
+        CGPointMake(self.bounds.size.width + r, r),
+        CGPointMake(r, r),
+        CGPointMake(r, self.bounds.size.height + r),
+        CGPointMake(-r, self.bounds.size.height + r),
+        CGPointMake(-r, -r)
+    };
+    CGPathAddLines(shadowPath, NULL, lines, sizeof(lines) / sizeof(CGPoint));
+    _shadowLayer.shadowPath = shadowPath;
+    CGPathRelease(shadowPath);
+    
     // Nothing to do until we have a selection
     if (!_selectedCountry)
         return;
