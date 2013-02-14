@@ -313,4 +313,14 @@
     }];
 }
 
+- (void)setPaused:(BOOL)paused
+{
+    _paused = paused;
+    if (paused) {
+        for (UIView *subview in self.subviews) {
+            [subview removeFromSuperview];
+        }
+    }
+}
+
 @end
