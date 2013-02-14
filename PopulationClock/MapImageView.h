@@ -8,6 +8,8 @@
 
 @interface MapImageView : UIImageView
 
+@property (nonatomic, assign) BOOL paused;
+
 - (void)blinkCountries:(NSArray *)countryCodes color:(UIColor *)color;
 
 - (void)selectCountry:(NSString *)country maskColor:(UIColor *)color;

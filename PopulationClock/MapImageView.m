@@ -151,6 +151,10 @@
 }
 
 - (void)blinkCountries:(NSArray *)countryCodes color:(UIColor *)color {
+    if (self.paused) {
+        return;
+    }
+    
     // Create the image view
     [self asyncCreateTintedImageViewForCountries:countryCodes color:color block:^(UIImageView *imageView) {
         // Add it on top of the map
@@ -260,6 +264,10 @@
 }
 
 - (void)flashIcon:(UIImage *)icon atCountry:(NSString *)countryCode {
+    if (self.paused) {
+        return;
+    }
+    
     // Get the relative coordinates for this country
     CGPoint coords = [_coordinates relativeCoordinatesForCountry:countryCode];
     if (CGPointEqualToPoint(coords, CountryCoordinatesNotFound))

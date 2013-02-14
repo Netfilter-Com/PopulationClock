@@ -7,12 +7,13 @@
 //
 
 #import "MapViewController_iPhone.h"
+#import "MapImageView.h"
 #import "MapLegendView.h"
 #import "SavedStateManager.h"
 #import "UIColor+NFAppColors.h"
 
 @implementation MapViewController_iPhone {
-    UIView *_mapView;
+    MapImageView *_mapView;
     IBOutlet UIToolbar *_toolbar;
     IBOutlet MapLegendView *_legend;
 }
@@ -28,7 +29,7 @@
     controller.view.frame = self.view.bounds;
     controller.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.view insertSubview:controller.view atIndex:0];
-    _mapView = controller.view.subviews[0];
+    _mapView = (MapImageView *)controller.view.subviews[0];
     [controller didMoveToParentViewController:self];
     
     NSMutableArray *toolbarItemContainers = [NSMutableArray arrayWithCapacity:2];
@@ -68,6 +69,15 @@
 {
     // Scale the map to fill the screen on the iPhone 5
     _mapView.frame = _mapView.superview.bounds;
+ 
+    // Unpause the map animations
+    _mapView.paused = NO;
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    // Pause the map animations
+    _mapView.paused = YES;
 }
 
 - (void)legendTapGestureRecognized:(UITapGestureRecognizer *)recognizer

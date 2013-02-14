@@ -30,6 +30,8 @@
 
 @end
 
+#pragma mark -
+
 @implementation NFCarouselViewController {
     UIToolbar *_toolbar;
     UIScrollView *_scrollView;
@@ -110,6 +112,51 @@
     [self updateToolbarButtons];
 }
 
+#pragma mark -
+
+- (BOOL)automaticallyForwardAppearanceAndRotationMethodsToChildViewControllers
+{
+    // This means we should call beginAppearanceTransition:animated: and
+    // endAppearanceTransition on the child controllers ourselves. Same
+    // for the rotation methods, but we don't care about those for now
+    return NO;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    if (!_scrollView.dragging) {
+        [_controllers[_selectedController] beginAppearanceTransition:YES animated:animated];
+    }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    if (!_scrollView.dragging) {
+        [_controllers[_selectedController] endAppearanceTransition];
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    if (!_scrollView.dragging) {
+        [_controllers[_selectedController] beginAppearanceTransition:NO animated:animated];
+    }
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    if (!_scrollView.dragging) {
+        [_controllers[_selectedController] endAppearanceTransition];
+    }
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    return UIInterfaceOrientationIsLandscape(toInterfaceOrientation);
+}
+
+#pragma mark -
+
 - (void)viewWillLayoutSubviews
 {
     CGRect frame = _scrollView.bounds;
@@ -184,29 +231,51 @@
 
 - (void)rotateLeft
 {
-    if (++_selectedController == _controllers.count)
+    UIViewController *current = _controllers[_selectedController];
+    [current beginAppearanceTransition:NO animated:NO];
+    [current endAppearanceTransition];
+    
+    if (++_selectedController == _controllers.count) {
         _selectedController = 0;
+    }
+    
     [self animateAfterRotation];
 }
 
 - (void)rotateRight
 {
-    if (_selectedController-- == 0)
+    UIViewController *current = _controllers[_selectedController];
+    [current beginAppearanceTransition:NO animated:NO];
+    [current endAppearanceTransition];
+    
+    if (_selectedController-- == 0) {
         _selectedController = _controllers.count - 1;
+    }
     [self animateAfterRotation];
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
     [self.view endEditing:NO];
+    
+    UIViewController *current = _controllers[_selectedController];
+    [current beginAppearanceTransition:NO animated:NO];
+    [current endAppearanceTransition];
 }
 
 - (void)adjustAfterScrolling
 {
     _selectedController = (int)(_scrollView.contentOffset.x / _scrollView.frame.size.width);
-    if (_selectedController != 1) {
+    int middle = _controllers.count / 2;
+    
+    if (_selectedController != middle) {
         [self reorderControllers];
     }
+    
+    UIViewController *current = _controllers[_selectedController];
+    [current beginAppearanceTransition:YES animated:NO];
+    [current endAppearanceTransition];
+    
     [self updateToolbarButtons];
 }
 
@@ -220,10 +289,7 @@
     [self adjustAfterScrolling];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
-{
-    return UIInterfaceOrientationIsLandscape(toInterfaceOrientation);
-}
+#pragma mark -
 
 - (void)setViewStealingTouch:(UIView *)view
 {

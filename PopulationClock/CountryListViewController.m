@@ -41,6 +41,8 @@
 
 @end
 
+#pragma mark -
+
 @implementation CountryListViewController {
     IBOutlet __weak UIImageView *_backgroundImageView;
     IBOutlet __weak UIView *_containerView;
@@ -139,6 +141,8 @@
     }
 }
 
+#pragma mark -
+
 static inline UIViewAnimationOptions animationOptionsWithCurve(UIViewAnimationCurve curve) {
     switch (curve) {
         case UIViewAnimationCurveEaseInOut:
@@ -231,6 +235,8 @@ static inline UIViewAnimationOptions animationOptionsWithCurve(UIViewAnimationCu
         [_tableView scrollToRowAtIndexPath:selection atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
 }
 
+#pragma mark -
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _searchResult ? _searchResult.count : _countries.count;
 }
@@ -259,6 +265,38 @@ static inline UIViewAnimationOptions animationOptionsWithCurve(UIViewAnimationCu
     // Return it
     return cell;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // If we were filtering the list, stop filtering and
+    // select the item we had selected in the filtered list
+    if (_searchResult) {
+        // Get the selected item
+        NSDictionary *item = _searchResult[indexPath.row];
+        
+        // Stop filtering
+        [_searchTextField resignFirstResponder];
+        
+        // Find the selected item in the new list
+        NSInteger pos = [_countries indexOfObject:item];
+        assert(pos != NSNotFound);
+        
+        // Select it
+        indexPath = [NSIndexPath indexPathForRow:pos inSection:0];
+        [_tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionMiddle];
+    }
+    
+    // Rotate the carousel container
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        NFCarouselViewController *controller = (NFCarouselViewController *)self.parentViewController;
+        [controller rotateRight];
+    }
+    
+    // Let others know about this selection
+    NSDictionary *info = _countries[indexPath.row];
+    [[NSNotificationCenter defaultCenter] postNotificationName:CountrySelectionNotification object:self userInfo:@{SelectedCountryKey : info[@"code"]}];
+}
+
+#pragma mark -
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     // Create the empty filter result array
@@ -299,35 +337,7 @@ static inline UIViewAnimationOptions animationOptionsWithCurve(UIViewAnimationCu
     [_tableView reloadData];
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // If we were filtering the list, stop filtering and
-    // select the item we had selected in the filtered list
-    if (_searchResult) {
-        // Get the selected item
-        NSDictionary *item = _searchResult[indexPath.row];
-        
-        // Stop filtering
-        [_searchTextField resignFirstResponder];
-        
-        // Find the selected item in the new list
-        NSInteger pos = [_countries indexOfObject:item];
-        assert(pos != NSNotFound);
-        
-        // Select it
-        indexPath = [NSIndexPath indexPathForRow:pos inSection:0];
-        [_tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionMiddle];
-    }
-    
-    // Rotate the carousel container
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-        NFCarouselViewController *controller = (NFCarouselViewController *)self.parentViewController;
-        [controller rotateRight];
-    }
-    
-    // Let others know about this selection
-    NSDictionary *info = _countries[indexPath.row];
-    [[NSNotificationCenter defaultCenter] postNotificationName:CountrySelectionNotification object:self userInfo:@{SelectedCountryKey : info[@"code"]}];
-}
+#pragma mark -
 
 - (NSArray *)extraToolbarItemsForCarouselViewController:(NFCarouselViewController *)controller
 {
