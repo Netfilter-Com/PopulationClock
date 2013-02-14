@@ -369,13 +369,14 @@ static inline UIViewAnimationOptions animationOptionsWithCurve(UIViewAnimationCu
 - (void)removeAdsButtonTouched:(id)sender
 {
     // Show the HUD
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:window animated:YES];
     hud.labelText = NSLocalizedString(@"Contacting the App Store", @"");
     hud.dimBackground = YES;
     
     // Purchase the option to remove ads
     [[InAppPurchaseManager sharedInstance] purchaseRemoveAdsWithCallback:^(BOOL purchased) {
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [MBProgressHUD hideHUDForView:window animated:YES];
         if (purchased) {
             NFCarouselViewController *controller = (NFCarouselViewController *)self.parentViewController;
             [controller updateToolbarButtons];
