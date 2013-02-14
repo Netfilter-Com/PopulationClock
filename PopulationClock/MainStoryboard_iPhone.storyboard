@@ -136,7 +136,20 @@
                     <view key="view" contentMode="scaleToFill" id="rL2-y6-OKr">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="yfl-7u-aWs" customClass="CountryInfoBackgroundView">
+                                <rect key="frame" x="250" y="10" width="220" height="300"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <webView opaque="NO" contentMode="scaleToFill" id="U7w-0F-3g2" customClass="CountryInfoWebView">
+                                <rect key="frame" x="265" y="10" width="190" height="300"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <dataDetectorType key="dataDetectorTypes"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -252,6 +265,12 @@
         <image name="map.png" width="1783" height="902"/>
     </resources>
     <classes>
+        <class className="CountryInfoBackgroundView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CountryInfoBackgroundView.h"/>
+        </class>
+        <class className="CountryInfoWebView" superclassName="UIWebView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CountryInfoWebView.h"/>
+        </class>
         <class className="CountryListViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CountryListViewController.h"/>
         </class>
@@ -270,10 +289,6 @@
         </class>
         <class className="MapViewController_iPhone" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController_iPhone.h"/>
-            <relationships>
-                <relationship kind="outlet" name="_legend" candidateClass="MapLegendView"/>
-                <relationship kind="outlet" name="_toolbar" candidateClass="UIToolbar"/>
-            </relationships>
         </class>
         <class className="MapViewFlagViewController_iPhone" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewFlagViewController_iPhone.h"/>

@@ -61,18 +61,20 @@
     
     // Change the scroll bar behavior depending whether we're
     // in portrait or landscape
-    UIScrollView *scrollView;
-    for (UIView *view in self.subviews) {
-        if ([view isKindOfClass:[UIScrollView class]]) {
-            scrollView = (UIScrollView *)view;
-            break;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        UIScrollView *scrollView;
+        for (UIView *view in self.subviews) {
+            if ([view isKindOfClass:[UIScrollView class]]) {
+                scrollView = (UIScrollView *)view;
+                break;
+            }
         }
-    }
-    @try {
-        scrollView.indicatorStyle = isPortrait ? UIScrollViewIndicatorStyleBlack : UIScrollViewIndicatorStyleWhite;
-    }
-    @catch (NSException *exception) {
-        NSLog(@"Failed to set web view indicator style: %@", exception);
+        @try {
+            scrollView.indicatorStyle = isPortrait ? UIScrollViewIndicatorStyleBlack : UIScrollViewIndicatorStyleWhite;
+        }
+        @catch (NSException *exception) {
+            NSLog(@"Failed to set web view indicator style: %@", exception);
+        }
     }
     
     // Load the right template depending on the orientation
@@ -85,7 +87,7 @@
     
     // Create the substitution dictionary
     NSDictionary *substitutions;
-    if (isPortrait) {
+    if (isPortrait || UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         NSDictionary *info = [DataManager sharedDataManager].countryData[_selectedCountry];
         substitutions = @{
             @"%%NAME%%" : info[@"name"],
