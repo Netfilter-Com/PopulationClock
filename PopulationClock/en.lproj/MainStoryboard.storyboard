@@ -16,10 +16,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="384" height="516"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="boxInfoPais.png" id="tLe-Op-n7z">
+                            <view contentMode="scaleToFill" id="PBO-oY-k7f" customClass="CountryInfoBackgroundView">
                                 <rect key="frame" x="20" y="129" width="344" height="367"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
                             <webView opaque="NO" contentMode="scaleToFill" id="KQe-4j-zZ6" customClass="CountryInfoWebView">
                                 <rect key="frame" x="20" y="129" width="344" height="367"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
@@ -63,7 +64,7 @@
                         <outlet property="_portraitArrowLeft" destination="qvL-67-WgR" id="6c9-20-EN6"/>
                         <outlet property="_portraitArrowRight" destination="wW4-N9-jD2" id="a2X-l4-aGl"/>
                         <outlet property="_portraitScrollView" destination="iYz-tK-Chl" id="2Op-kg-1za"/>
-                        <outlet property="_portraitWebViewBackground" destination="tLe-Op-n7z" id="xfY-Wx-EsT"/>
+                        <outlet property="_portraitWebViewBackground" destination="PBO-oY-k7f" id="9m2-pp-E6g"/>
                         <outlet property="_webView" destination="KQe-4j-zZ6" id="5L4-9z-gNs"/>
                     </connections>
                 </viewController>
@@ -464,7 +465,6 @@
         <image name="bgInfoPaisVert.png" width="387" height="577"/>
         <image name="bgListaVert.png" width="386" height="461"/>
         <image name="birth.png" width="19" height="22"/>
-        <image name="boxInfoPais.png" width="333" height="367"/>
         <image name="clock_background.png" width="221" height="56"/>
         <image name="country_flag_br.png" width="236" height="162"/>
         <image name="death.png" width="16" height="22"/>
@@ -479,6 +479,9 @@
         </class>
         <class className="ClockViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ClockViewController.h"/>
+        </class>
+        <class className="CountryInfoBackgroundView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CountryInfoBackgroundView.h"/>
         </class>
         <class className="CountryInfoViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CountryInfoViewController.h"/>

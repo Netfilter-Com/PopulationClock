@@ -97,8 +97,6 @@
 		ED23C5901680A43F00005C5F /* ClockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED23C58F1680A43E00005C5F /* ClockViewController.m */; };
 		ED23C5931680A46000005C5F /* CountryInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED23C5921680A46000005C5F /* CountryInfoViewController.m */; };
 		ED247EAF168385660092E185 /* CountryInfoWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED247EAE168385660092E185 /* CountryInfoWebView.m */; };
-		ED247EB5168387000092E185 /* boxInfoPais.png in Resources */ = {isa = PBXBuildFile; fileRef = ED247EB1168387000092E185 /* boxInfoPais.png */; };
-		ED247EB6168387000092E185 /* boxInfoPais@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED247EB2168387000092E185 /* boxInfoPais@2x.png */; };
 		ED247EB7168387000092E185 /* info_template_landscape.html in Resources */ = {isa = PBXBuildFile; fileRef = ED247EB3168387000092E185 /* info_template_landscape.html */; };
 		ED247EB8168387000092E185 /* info_template_portrait.html in Resources */ = {isa = PBXBuildFile; fileRef = ED247EB4168387000092E185 /* info_template_portrait.html */; };
 		ED247EBB16839DCC0092E185 /* infoPaisNome.png in Resources */ = {isa = PBXBuildFile; fileRef = ED247EB916839DCC0092E185 /* infoPaisNome.png */; };
@@ -733,8 +731,6 @@
 		ED23C5921680A46000005C5F /* CountryInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryInfoViewController.m; sourceTree = "<group>"; };
 		ED247EAD168385660092E185 /* CountryInfoWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryInfoWebView.h; sourceTree = "<group>"; };
 		ED247EAE168385660092E185 /* CountryInfoWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryInfoWebView.m; sourceTree = "<group>"; };
-		ED247EB1168387000092E185 /* boxInfoPais.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boxInfoPais.png; sourceTree = "<group>"; };
-		ED247EB2168387000092E185 /* boxInfoPais@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "boxInfoPais@2x.png"; sourceTree = "<group>"; };
 		ED247EB3168387000092E185 /* info_template_landscape.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = info_template_landscape.html; sourceTree = "<group>"; };
 		ED247EB4168387000092E185 /* info_template_portrait.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = info_template_portrait.html; sourceTree = "<group>"; };
 		ED247EB916839DCC0092E185 /* infoPaisNome.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = infoPaisNome.png; sourceTree = "<group>"; };
@@ -1975,8 +1971,6 @@
 				ED0E20C116975A04005445B7 /* birth+death@2x.png */,
 				ED0E20B71697570F005445B7 /* birth.png */,
 				ED0E20B81697570F005445B7 /* birth@2x.png */,
-				ED247EB1168387000092E185 /* boxInfoPais.png */,
-				ED247EB2168387000092E185 /* boxInfoPais@2x.png */,
 				ED0108A51680CADD0067F88D /* boxRodapeVert.png */,
 				ED0108A61680CADD0067F88D /* boxRodapeVert@2x.png */,
 				ED7FF1A3169B34F400123037 /* clock_background.png */,
@@ -2623,8 +2617,6 @@
 				ED882D90168256D10084522F /* country_flag_zm@2x.png in Resources */,
 				ED882D91168256D10084522F /* country_flag_zw.png in Resources */,
 				ED882D92168256D10084522F /* country_flag_zw@2x.png in Resources */,
-				ED247EB5168387000092E185 /* boxInfoPais.png in Resources */,
-				ED247EB6168387000092E185 /* boxInfoPais@2x.png in Resources */,
 				ED247EB7168387000092E185 /* info_template_landscape.html in Resources */,
 				ED247EB8168387000092E185 /* info_template_portrait.html in Resources */,
 				ED247EBB16839DCC0092E185 /* infoPaisNome.png in Resources */,

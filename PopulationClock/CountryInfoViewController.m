@@ -17,7 +17,7 @@
     IBOutlet __weak UIScrollView *_portraitScrollView;
     IBOutlet __weak UIImageView *_portraitArrowLeft;
     IBOutlet __weak UIImageView *_portraitArrowRight;
-    IBOutlet __weak UIImageView *_portraitWebViewBackground;
+    IBOutlet __weak UIView *_portraitWebViewBackground;
     IBOutlet __weak UIImageView *_landscapeFlag;
     IBOutlet __weak UILabel *_landscapeCountryName;
     IBOutlet __weak UIWebView *_webView;
