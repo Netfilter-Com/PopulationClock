@@ -17,6 +17,7 @@
     IBOutlet UIToolbar *_toolbar;
     IBOutlet MapLegendView *_legend;
     GADBannerView *_adView;
+    BOOL _adjustedMapSize;
 }
 
 - (void)loadView
@@ -87,7 +88,10 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     // Scale the map to fill the screen on the iPhone 5
-    _mapView.frame = _mapView.superview.bounds;
+    if (!_adjustedMapSize) {
+        _mapView.frame = _mapView.superview.bounds;
+        _adjustedMapSize = YES;
+    }
  
     // Unpause the map animations
     _mapView.paused = NO;
