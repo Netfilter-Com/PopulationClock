@@ -318,7 +318,9 @@
     _paused = paused;
     if (paused) {
         for (UIView *subview in self.subviews) {
-            [subview removeFromSuperview];
+            if (subview.tag == TAG_BLINK_LAYER || subview.tag == TAG_ICON_LAYER) {
+                [subview removeFromSuperview];
+            }
         }
     }
 }
