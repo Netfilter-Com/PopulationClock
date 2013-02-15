@@ -72,7 +72,6 @@
     }
     
     // Update the label
-    // TODO: Use shortName instead
     self.label.text = info[@"name"];
     [self.label sizeToFit];
     
