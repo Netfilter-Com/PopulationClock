@@ -22,6 +22,7 @@
 @implementation CountryCarouselView {
     UIImageView *_flags[3];
     NSString *_countryCodes[3];
+    CGFloat _layoutWidth;
 }
 
 - (void)dealloc
@@ -159,6 +160,13 @@
 {
     // Set the content size
     self.contentSize = CGSizeMake(self.bounds.size.width * 3, self.frame.size.height);
+    
+    // Make sure the middle flag is centered even
+    // if our dimensions change
+    if (_layoutWidth != self.bounds.size.width) {
+        _layoutWidth = self.bounds.size.width;
+        self.contentOffset = CGPointMake(self.bounds.size.width, 0);
+    }
     
     // Position the flags
     for (int i = 0; i < 3; ++i) {
