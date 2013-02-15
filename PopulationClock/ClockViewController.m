@@ -8,7 +8,6 @@
 
 #import "ClockViewController.h"
 #import "DataManager.h"
-#import "SimulationEngine.h"
 
 @implementation ClockViewController {
     IBOutlet __weak PopulationClockView *_clock;
@@ -24,17 +23,10 @@
 
 - (void)viewDidLoad {
     // Observe changes to the country selection
-    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-    [nc addObserver:self selector:@selector(countrySelectionChanged:) name:CountrySelectionNotification object:nil];
-    
-    // Observe resets and steps taken by the simulator
-    [nc addObserver:self selector:@selector(simulationEngineReset:) name:SimulationEngineResetNotification object:nil];
-    [nc addObserver:self selector:@selector(simulationEngineStepTaken:) name:SimulationEngineStepTakenNotification object:nil];
-}
-
-- (void)updatePopulationClockAnimated:(BOOL)animated {
-    NSNumber *number = [SimulationEngine sharedInstance].populationPerCountry[_selectedCountry];
-    [_clock setPopulation:number.longLongValue animated:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(countrySelectionChanged:)
+                                                 name:CountrySelectionNotification
+                                               object:nil];
 }
 
 - (void)countrySelectionChanged:(NSNotification *)notification {
@@ -63,21 +55,6 @@
     
     // We'll need to layout the subviews again to align the labels
     [self.view setNeedsLayout];
-    
-    // Update the population clock
-    _selectedCountry = selection;
-    BOOL stateRestoration = [notification.userInfo[StateRestorationKey] boolValue];
-    [self updatePopulationClockAnimated:!stateRestoration];
-}
-
-- (void)simulationEngineReset:(NSNotification *)notification {
-    // Update the population clock with no animation
-    [self updatePopulationClockAnimated:NO];
-}
-
-- (void)simulationEngineStepTaken:(NSNotification *)notification {
-    // Update the population clock
-    [self updatePopulationClockAnimated:YES];
 }
 
 - (void)viewWillLayoutSubviews {

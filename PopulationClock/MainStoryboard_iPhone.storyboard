@@ -228,7 +228,6 @@
                     <connections>
                         <outlet property="countryName" destination="pPi-Ql-E1L" id="0oi-eK-N1d"/>
                         <outlet property="leftPanel" destination="1br-SP-ryc" id="T9x-Nz-rC7"/>
-                        <outlet property="populationClock" destination="aIR-CH-Ju9" id="4W7-WL-W9A"/>
                         <outlet property="rightPanel" destination="SPN-90-7vR" id="dQ3-AR-J69"/>
                     </connections>
                 </viewController>
@@ -359,7 +358,6 @@
             <relationships>
                 <relationship kind="outlet" name="countryName" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="leftPanel" candidateClass="UIView"/>
-                <relationship kind="outlet" name="populationClock" candidateClass="PopulationClockView"/>
                 <relationship kind="outlet" name="rightPanel" candidateClass="UIView"/>
             </relationships>
         </class>

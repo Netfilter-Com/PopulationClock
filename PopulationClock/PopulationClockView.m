@@ -6,8 +6,10 @@
 //  Copyright (c) 2013 NetFilter. All rights reserved.
 //
 
+#import "DataManager.h"
 #import "PopulationClockView.h"
 #import "SBTickerView.h"
+#import "SimulationEngine.h"
 
 #define FONT_SIZE 24
 
@@ -15,6 +17,12 @@
     long long _currentPopulation;
     UIImage *_baseImage;
     SBTickerView *_tickerViews[4];
+    NSString *_selectedCountry;
+}
+
+- (void)dealloc {
+    // We are no longer observers
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)awakeFromNib {
@@ -31,6 +39,48 @@
         [self addSubview:_tickerViews[i]];
         frame.origin.x += frame.size.width - 2;
     }
+    
+    // Observe changes to the country selection
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc addObserver:self selector:@selector(countrySelectionChanged:)
+               name:CountrySelectionNotification
+             object:nil];
+    
+    // Observe resets and steps taken by the simulator
+    [nc addObserver:self selector:@selector(simulationEngineReset:)
+               name:SimulationEngineResetNotification
+             object:nil];
+    [nc addObserver:self selector:@selector(simulationEngineStepTaken:)
+               name:SimulationEngineStepTakenNotification
+             object:nil];
+}
+
+- (void)updatePopulationClockAnimated:(BOOL)animated
+{
+    NSNumber *number = [SimulationEngine sharedInstance].populationPerCountry[_selectedCountry];
+    [self setPopulation:number.longLongValue animated:animated];
+}
+
+- (void)countrySelectionChanged:(NSNotification *)notification
+{
+    // Get the selection
+    NSString *selection = notification.userInfo[SelectedCountryKey];
+    
+    // Update the population count
+    _selectedCountry = selection;
+    BOOL stateRestoration = [notification.userInfo[StateRestorationKey] boolValue];
+    [self updatePopulationClockAnimated:!stateRestoration];
+}
+
+- (void)simulationEngineReset:(NSNotification *)notification
+{
+    // Update the population count with no animation
+    [self updatePopulationClockAnimated:NO];
+}
+
+- (void)simulationEngineStepTaken:(NSNotification *)notification {
+    // Update the population count
+    [self updatePopulationClockAnimated:YES];
 }
 
 - (UIImage *)imageForNumber:(int)number {
