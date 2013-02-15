@@ -23,8 +23,6 @@
 
 @protocol NFCarouselDataSource <NSObject>
 
-@optional
-
 - (NSArray *)extraToolbarItemsForCarouselViewController:(NFCarouselViewController *)controller;
 
 @end

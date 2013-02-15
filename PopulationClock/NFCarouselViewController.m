@@ -204,7 +204,7 @@
     [items addObject:flexibleSpace];
     
     UIViewController *current = _controllers[_selectedController];
-    if ([current respondsToSelector:@selector(extraToolbarItemsForCarouselViewController:)]) {
+    if ([current conformsToProtocol:@protocol(NFCarouselDataSource)]) {
         NSArray *extraItems = [(id <NFCarouselDataSource>)current extraToolbarItemsForCarouselViewController:self];
         if (extraItems.count) {
             for (UIBarButtonItem *item in extraItems) {

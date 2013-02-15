@@ -9,8 +9,6 @@
 #import "TopBarView.h"
 #import "UIColor+NFAppColors.h"
 
-NSString * const selectedCountryNoWorldKey = @"selectedCountryNoWorld";
-
 @implementation TopBarView {
     IBOutlet __weak UIImageView *_backgroundImageView;
     IBOutlet __weak UILabel *_titleLabel;
@@ -52,7 +50,7 @@ NSString * const selectedCountryNoWorldKey = @"selectedCountryNoWorld";
     // If a real country was selected, save that
     BOOL isWorld = [selection isEqualToString:@"world"];
     if (!isWorld) {
-        [[NSUserDefaults standardUserDefaults] setObject:selection forKey:selectedCountryNoWorldKey];
+        [[NSUserDefaults standardUserDefaults] setObject:selection forKey:SelectedCountryNoWorldKey];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
     
@@ -121,7 +119,7 @@ NSString * const selectedCountryNoWorldKey = @"selectedCountryNoWorld";
     }
     else {
         // Look at the last country selection, default to Brazil
-        selection = [[NSUserDefaults standardUserDefaults] stringForKey:selectedCountryNoWorldKey];
+        selection = [[NSUserDefaults standardUserDefaults] stringForKey:SelectedCountryNoWorldKey];
         if (!selection)
             selection = @"br";
     }

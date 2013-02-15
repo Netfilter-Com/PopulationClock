@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CountryInfoViewController_iPhone : UIViewController
+#import "NFCarouselViewController.h"
+
+@interface CountryInfoViewController_iPhone : UIViewController <NFCarouselDataSource>
 
 @end
