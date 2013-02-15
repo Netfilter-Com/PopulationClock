@@ -9,6 +9,7 @@
 #import "MapViewController_iPhone.h"
 #import "MapImageView.h"
 #import "MapLegendView.h"
+#import "PopulationClockView.h"
 #import "SavedStateManager.h"
 #import "UIColor+NFAppColors.h"
 
@@ -37,7 +38,10 @@
     NSMutableArray *toolbarItemContainers = [NSMutableArray arrayWithCapacity:2];
     NSMutableArray *toolbarItems = [NSMutableArray arrayWithCapacity:3];
     
-    // TODO: Add the population clock
+    // Add the population clock
+    PopulationClockView *populationClockView = [PopulationClockView clock];
+    populationClockView.transform = CGAffineTransformMakeScale(0.65, 0.65);
+    [toolbarItems addObject:[[UIBarButtonItem alloc] initWithCustomView:populationClockView]];
     
     [toolbarItems addObject:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil]];
     

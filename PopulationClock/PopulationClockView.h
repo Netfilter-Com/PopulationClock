@@ -8,6 +8,8 @@
 
 @interface PopulationClockView : UIImageView
 
++ (instancetype)clock;
+
 - (void)setPopulation:(long long)population animated:(BOOL)animated;
 
 @end

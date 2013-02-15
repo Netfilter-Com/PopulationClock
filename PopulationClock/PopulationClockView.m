@@ -20,12 +20,29 @@
     NSString *_selectedCountry;
 }
 
-- (void)dealloc {
-    // We are no longer observers
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
++ (instancetype)clock {
+    PopulationClockView *clock = [[PopulationClockView alloc] initWithFrame:CGRectMake(0, 0, 221, 56)];
+    clock.image = [UIImage imageNamed:@"clock_background"];
+    return clock;
 }
 
-- (void)awakeFromNib {
+- (id)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self initialize];
+    }
+    return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self initialize];
+    }
+    return self;
+}
+
+- (void)initialize {
     // Load the base image
     _baseImage = [UIImage imageNamed:@"flap_full"];
     
@@ -53,6 +70,11 @@
     [nc addObserver:self selector:@selector(simulationEngineStepTaken:)
                name:SimulationEngineStepTakenNotification
              object:nil];
+}
+
+- (void)dealloc {
+    // We are no longer observers
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)updatePopulationClockAnimated:(BOOL)animated
