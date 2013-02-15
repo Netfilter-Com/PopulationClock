@@ -140,6 +140,46 @@
                             <view contentMode="scaleToFill" id="1br-SP-ryc">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="320"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9Vg-0S-Ta4">
+                                        <rect key="frame" x="10" y="215" width="30" height="47"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" image="setaNavEsq.png">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="leftArrowTouched:" destination="wYD-cp-yYH" eventType="touchUpInside" id="Jg3-uh-bKd"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="SOZ-4u-FQd">
+                                        <rect key="frame" x="200" y="215" width="30" height="47"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" image="setaNavDir.png">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="rightArrowTouched:" destination="wYD-cp-yYH" eventType="touchUpInside" id="QgI-ax-DMv"/>
+                                        </connections>
+                                    </button>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="wYD-cp-yYH" customClass="CountryCarouselView">
+                                        <rect key="frame" x="0.0" y="194" width="240" height="90"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                        <connections>
+                                            <outlet property="leftArrow" destination="9Vg-0S-Ta4" id="H15-JF-Ixu"/>
+                                            <outlet property="rightArrow" destination="SOZ-4u-FQd" id="wRL-AV-03G"/>
+                                        </connections>
+                                    </scrollView>
+                                </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" id="SPN-90-7vR">
@@ -170,7 +210,6 @@
                     <connections>
                         <outlet property="leftPanel" destination="1br-SP-ryc" id="T9x-Nz-rC7"/>
                         <outlet property="rightPanel" destination="SPN-90-7vR" id="dQ3-AR-J69"/>
-                        <outlet property="webView" destination="U7w-0F-3g2" id="1m4-ly-lmR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K3M-xe-bSi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -280,8 +319,19 @@
         <image name="country_flag_br.png" width="236" height="162"/>
         <image name="death.png" width="16" height="22"/>
         <image name="map.png" width="1783" height="902"/>
+        <image name="setaNavDir.png" width="30" height="47"/>
+        <image name="setaNavEsq.png" width="30" height="47"/>
     </resources>
     <classes>
+        <class className="CountryCarouselView" superclassName="UIScrollView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CountryCarouselView.h"/>
+            <relationships>
+                <relationship kind="action" name="leftArrowTouched:"/>
+                <relationship kind="action" name="rightArrowTouched:"/>
+                <relationship kind="outlet" name="leftArrow" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="rightArrow" candidateClass="UIButton"/>
+            </relationships>
+        </class>
         <class className="CountryInfoBackgroundView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CountryInfoBackgroundView.h"/>
         </class>
@@ -290,7 +340,6 @@
             <relationships>
                 <relationship kind="outlet" name="leftPanel" candidateClass="UIView"/>
                 <relationship kind="outlet" name="rightPanel" candidateClass="UIView"/>
-                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
             </relationships>
         </class>
         <class className="CountryInfoWebView" superclassName="UIWebView">

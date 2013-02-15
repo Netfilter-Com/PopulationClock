@@ -135,8 +135,6 @@
         
         // Position the scroll view
         _portraitScrollView.frame = CGRectMake(0, 20, self.view.bounds.size.width, 140);
-        _portraitScrollView.contentSize = CGSizeMake(self.view.bounds.size.width * 3, _portraitScrollView.frame.size.height);
-        _portraitScrollView.contentOffset = CGPointMake(self.view.bounds.size.width, 0);
         
         // Position the arrows
         _portraitArrowLeft.center = CGPointMake(20 + _portraitArrowLeft.frame.size.width / 2, _portraitScrollView.center.y);

@@ -49,6 +49,10 @@
     // Get the selection and reload the flags
     NSString *selection = notification.userInfo[SelectedCountryKey];
     [self reloadWithCountry:selection];
+    
+    // Point to the flag in the middle
+    [self layoutSubviews];
+    self.contentOffset = CGPointMake(self.bounds.size.width, 0);
 }
 
 - (void)reloadWithCountry:(NSString *)countryCode
@@ -96,7 +100,8 @@
             UIImage *image = [UIImage imageNamed:flagName];
             
             // Calculate its new size, including borders
-            CGFloat scale = 126 / image.size.height;
+            CGFloat maxHeight = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 126 : 64;
+            CGFloat scale = maxHeight / image.size.height;
             CGSize newSize = CGSizeMake(floorf(image.size.width * scale), floorf(image.size.height * scale));
             
             // Calculate the size of the image centered in the
@@ -112,11 +117,13 @@
             flag.backgroundColor = [UIColor whiteColor];
             
             // Add the shadow effect
-            flag.layer.shadowOffset = CGSizeMake(2, 2);
-            flag.layer.shadowColor = [UIColor blackColor].CGColor;
-            flag.layer.shadowOpacity = 0.6;
-            flag.layer.shouldRasterize = YES;
-            flag.layer.rasterizationScale = [UIScreen mainScreen].scale;
+            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+                flag.layer.shadowOffset = CGSizeMake(2, 2);
+                flag.layer.shadowColor = [UIColor blackColor].CGColor;
+                flag.layer.shadowOpacity = 0.6;
+                flag.layer.shouldRasterize = YES;
+                flag.layer.rasterizationScale = [UIScreen mainScreen].scale;
+            }
         }
         
         // Save the flag and country code
@@ -150,6 +157,10 @@
 
 - (void)layoutSubviews
 {
+    // Set the content size
+    self.contentSize = CGSizeMake(self.bounds.size.width * 3, self.frame.size.height);
+    
+    // Position the flags
     for (int i = 0; i < 3; ++i) {
         UIImageView *flag = _flags[i];
         flag.center = CGPointMake(self.bounds.size.width * (i + 0.5), self.frame.size.height / 2);
@@ -194,6 +205,9 @@
     // Reload the flags
     NSString *selection = _countryCodes[page];
     [self reloadWithCountry:selection];
+    
+    // Point to the flag in the middle
+    self.contentOffset = CGPointMake(self.bounds.size.width, 0);
     
     // Let others know about this selection
     [[NSNotificationCenter defaultCenter] postNotificationName:CountrySelectionNotification

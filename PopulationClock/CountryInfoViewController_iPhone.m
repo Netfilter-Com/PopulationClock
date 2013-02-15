@@ -12,7 +12,6 @@
 
 @property (nonatomic, weak) IBOutlet UIView *leftPanel;
 @property (nonatomic, weak) IBOutlet UIView *rightPanel;
-@property (nonatomic, weak) IBOutlet UIWebView *webView;
 
 @end
 
