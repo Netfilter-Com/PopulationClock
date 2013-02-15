@@ -101,7 +101,14 @@
             UIImage *image = [UIImage imageNamed:flagName];
             
             // Calculate its new size, including borders
-            CGFloat maxHeight = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 126 : 64;
+            CGFloat maxHeight;
+            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+                maxHeight = 126;
+            } else if ([UIScreen mainScreen].bounds.size.height == 568) {
+                maxHeight = 72;
+            } else {
+                maxHeight = 64;
+            }
             CGFloat scale = maxHeight / image.size.height;
             CGSize newSize = CGSizeMake(floorf(image.size.width * scale), floorf(image.size.height * scale));
             
