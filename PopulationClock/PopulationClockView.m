@@ -124,8 +124,6 @@
     [[UIColor whiteColor] set];
     [text drawInRect:rect withFont:font lineBreakMode:NSLineBreakByClipping alignment:NSTextAlignmentCenter];
     
-    // TODO: Draw the line in the middle
-    
     // Get and return the new image
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
