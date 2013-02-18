@@ -55,6 +55,8 @@
     
     int _numKeyboardsShowing;
     CGSize _keyboardSize;
+    
+    GADBannerView *_adView;
 }
 
 - (void)dealloc {
@@ -100,10 +102,28 @@
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(countrySelectionChanged:) name:CountrySelectionNotification object:nil];
     
-    // Add observers to the keyboard events
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        // Add observers to the keyboard events
         [nc addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
         [nc addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+        
+        // Add the ad banner
+        AdManager *adManager = [AdManager sharedInstance];
+        adManager.delegate = self;
+        _adView = [adManager adBannerViewWithSize:kGADAdSizeBanner];
+        if (_adView) {
+            _adView.alpha = 0.0f;
+            _adView.delegate = self;
+            _adView.rootViewController = self;
+            [self.view addSubview:_adView];
+            [adManager doneConfiguringAdBannerView:_adView];
+            
+            CGRect frame = _adView.frame;
+            frame.origin.x = self.view.bounds.size.width - frame.size.width;
+            frame.origin.y = self.view.bounds.size.height - frame.size.height;
+            _adView.frame = frame;
+            _adView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
+        }
     }
 }
 
@@ -400,6 +420,18 @@ static inline UIViewAnimationOptions animationOptionsWithCurve(UIViewAnimationCu
 - (void)aboutViewControllerDone:(AboutViewController *)controller
 {
     [(ModalDialogViewController *)self.parentViewController dismissCurrentModalDialogViewController];
+}
+
+- (void)adViewDidReceiveAd:(GADBannerView *)view
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        _adView.alpha = 1.0f;
+    }];
+}
+
+- (void)adManagerShouldHideAdView:(AdManager *)manager
+{
+    [_adView removeFromSuperview];
 }
 
 @end

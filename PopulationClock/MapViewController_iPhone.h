@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-#import "AdManager.h"
 #import "NFCarouselViewController.h"
 
-@interface MapViewController_iPhone : UIViewController <AdManagerDelegate, GADBannerViewDelegate, NFCarouselDataSource>
+@interface MapViewController_iPhone : UIViewController <NFCarouselDataSource>
 
 @end

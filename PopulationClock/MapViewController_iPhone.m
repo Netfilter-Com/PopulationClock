@@ -17,7 +17,6 @@
     MapImageView *_mapView;
     IBOutlet UIToolbar *_toolbar;
     IBOutlet MapLegendView *_legend;
-    GADBannerView *_adView;
     BOOL _adjustedMapSize;
 }
 
@@ -69,24 +68,6 @@
     
     // Start with the legend collapsed
     [_legend setCollapsed:YES animated:NO];
-    
-    // Add the ad banner
-    AdManager *adManager = [AdManager sharedInstance];
-    adManager.delegate = self;
-    _adView = [adManager adBannerViewWithSize:kGADAdSizeBanner];
-    if (_adView) {
-        _adView.alpha = 0.0f;
-        _adView.delegate = self;
-        _adView.rootViewController = self;
-        [self.view addSubview:_adView];
-        [adManager doneConfiguringAdBannerView:_adView];
-        
-        CGRect frame = _adView.frame;
-        frame.origin.x = self.view.bounds.size.width - frame.size.width;
-        frame.origin.y = self.view.bounds.size.height - frame.size.height - _toolbar.frame.size.height;
-        _adView.frame = frame;
-        _adView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
-    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -125,18 +106,6 @@
     label.shadowOffset = CGSizeMake(0, -1);
     [label sizeToFit];
     return @[[[UIBarButtonItem alloc] initWithCustomView:label]];
-}
-
-- (void)adViewDidReceiveAd:(GADBannerView *)view
-{
-    [UIView animateWithDuration:0.3 animations:^{
-        _adView.alpha = 1.0f;
-    }];
-}
-
-- (void)adManagerShouldHideAdView:(AdManager *)manager
-{
-    [_adView removeFromSuperview];
 }
 
 @end
