@@ -15,31 +15,13 @@ jQuery.fn.shorten=function(e){var t={showChars:100,ellipsesText:"…",moreText:"
 }
 body {
     background-color: transparent;
-    margin: 10px 12px 15px 12px; /* 10px (top) is actually 15px - #name's padding-top / 2 */
-}
-#name {
-    background: url(infoPaisNome.png) no-repeat center center;
-    background-size: 180px 28px;
-    height: 28px;
-    font-family: "HelveticaNeue-CondensedBold";
-    text-transform: uppercase;
-    font-size: 16px;
-    text-align: center;
-    color: #fff;
-    text-shadow: 0 1px 1px #9a9a9a;
-    padding-top: 10px; /* this centers the text in the box, but offsets the body and the div below it */
-}
-@media only screen and (-webkit-min-device-pixel-ratio: 2) {
-    #name {
-        background: url(infoPaisNome@2x.png) no-repeat center center;
-    }
+    margin: 8px 12px;
 }
 #description {
     font-family: "HelveticaNeue-Light";
     font-size: 14px;
     line-height: 150%;
     color: #040404;
-    margin-top: 10px; /* this is 15px - #name's padding-top / 2 */
     margin-bottom: 15px;
 }
 #description a {
@@ -53,7 +35,6 @@ body {
     width: 100%;
     border-bottom: 1px solid #9a9a9a;
     box-shadow: 0 1px 1px #9a9a9a;
-    margin: 0 auto;
     margin-bottom: 17px;
 }
 .metric {
@@ -74,7 +55,7 @@ body {
 <script type="text/javascript">
   $(document).ready(function() {
     $("#description").shorten({
-    "showChars" : 135,
+    "showChars" : 175,
     "moreText"  : "%%READ_MORE_LINK%%",
     "lessText"  : "<<",
     });
@@ -82,7 +63,6 @@ body {
 </script>
 </head>
 <body>
-    <div id="name">%%NAME%%</div>
     <div id="description">%%DESCRIPTION%%</div>
     <div id="ruler"></div>
     %%STATS%%
