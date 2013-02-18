@@ -63,13 +63,18 @@
     
     // Create the toolbar
     _toolbar = [UIToolbar new];
-    _toolbar.barStyle = UIBarStyleBlack;
+    _toolbar.barStyle = UIBarStyleBlackOpaque;
     [_toolbar sizeToFit];
     CGRect toolbarFrame = _toolbar.frame;
     toolbarFrame.size.width = frame.size.width;
     _toolbar.frame = toolbarFrame;
     _toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
     [self.view addSubview:_toolbar];
+    
+    // Style it
+    [_toolbar setBackgroundImage:[UIImage imageNamed:@"barraTopo"]
+              forToolbarPosition:UIToolbarPositionAny
+                      barMetrics:UIBarMetricsDefault];
     
     // Create the segmented control items
     NSMutableArray *items = [NSMutableArray arrayWithCapacity:_controllers.count];
@@ -194,11 +199,25 @@
 {
     NSMutableArray *items = [NSMutableArray arrayWithCapacity:5];
     
+    // Create and add the button to the list
     NSString *title = ((UIViewController *)_controllers[_selectedController - 1]).title;
-    if (!title) {
-        title = @"Unnamed";
+    if (title) {
+        // This is an ugly, ugly hack to avoid fixing the artwork
+        title = [@"  " stringByAppendingString:title];
+    } else {
+        title = @"  Unnamed";
     }
-    [items addObject:[[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStyleBordered target:self action:@selector(rotateRight)]];
+    UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithTitle:title
+                                                                   style:UIBarButtonItemStyleBordered
+                                                                  target:self
+                                                                  action:@selector(rotateRight)];
+    [items addObject:buttonItem];
+    
+    // Style it
+    UIImage *barButtonImage = [UIImage imageNamed:@"setaEsqAtiva"];
+    UIEdgeInsets insets = UIEdgeInsetsMake(0, 10, 0, barButtonImage.size.width - 10);
+    barButtonImage = [barButtonImage resizableImageWithCapInsets:insets];
+    [buttonItem setBackgroundImage:barButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     
     UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     [items addObject:flexibleSpace];
@@ -214,11 +233,25 @@
         }
     }
     
+    // Create and add the button to the list
     title = ((UIViewController *)_controllers[_selectedController + 1]).title;
-    if (!title) {
-        title = @"Unnamed";
+    if (title) {
+        // This is an ugly, ugly hack to avoid fixing the artwork
+        title = [title stringByAppendingString:@"  "];
+    } else {
+        title = @"Unnamed  ";
     }
-    [items addObject:[[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStyleBordered target:self action:@selector(rotateLeft)]];
+    buttonItem = [[UIBarButtonItem alloc] initWithTitle:title
+                                                  style:UIBarButtonItemStyleBordered
+                                                 target:self
+                                                 action:@selector(rotateLeft)];
+    [items addObject:buttonItem];
+    
+    // Style it
+    barButtonImage = [UIImage imageNamed:@"setaDirAtiva"];
+    insets = UIEdgeInsetsMake(0, barButtonImage.size.width - 10, 0, 10);
+    barButtonImage = [barButtonImage resizableImageWithCapInsets:insets];
+    [buttonItem setBackgroundImage:barButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     
     [_toolbar setItems:items animated:YES];
 }
