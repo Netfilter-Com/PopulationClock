@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NFCarouselViewController : UIViewController <UIScrollViewDelegate>
+#import "ModalDialogViewController.h"
+
+@interface NFCarouselViewController : ModalDialogViewController <UIScrollViewDelegate>
 
 - (id)initWithViewControllers:(NSArray *)viewControllers;
 

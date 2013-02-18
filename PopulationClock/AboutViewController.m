@@ -22,17 +22,39 @@
     
     // For whatever reason, [UIViewController loadView] resets the
     // view size, overriding the free form in the storyboard
-    if (self.isViewLoaded)
-        self.view.bounds = CGRectMake(0, 0, 360, 440);
+    if (self.isViewLoaded) {
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            self.view.bounds = CGRectMake(0, 0, 360, 440);
+        } else {
+            CGSize winSize = [UIScreen mainScreen].bounds.size;
+            self.view.bounds = CGRectMake(0, 0, winSize.height - 60, winSize.width - 32);
+        }
+    }
 }
 
 - (void)viewDidLoad {
+    // Size to fit the navigation bar to correct
+    // it for the landscape orientation
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        // The -1 is another hack to avoid fixing the artwork...
+        [_navigationBar sizeToFit];
+        CGRect frame = _navigationBar.frame;
+        frame.origin = CGPointMake(0, -1);
+        _navigationBar.frame = frame;
+    }
+    
     // Set text here so we don't have to translate the storyboard
     _navigationBar.topItem.title = NSLocalizedString(@"About Population Clock", @"");
     _textView.text = NSLocalizedString(@"Real-time events portrayed in this app represent the outcome of a computer simulation based on projected population count and growth, birth and death rates. The statistics used in the simulation cover the years 2007 to 2011 and were retrieved from The World Bank. Statistics for American Samoa, Antigua and Barbuda, Dominica, Faroe Islands, Isle of Man, Holy See, Kiribati, Marshall Islands, Monaco, Northern Mariana Islands, Palau, Saint Kitts and Nevis, South Sudan, Taiwan, Turks and Caicos Islands and Tuvalu were partially or entirely obtained from Wikipedia. Descriptions for each of the countries presented in this app were retrieved from CIA's The World Factbook.\n\nThis app is NOT endorsed by any of the aforementioned institutions.", @"");
     
     // Set the navigation bar theme
-    [_navigationBar setBackgroundImage:[UIImage imageNamed:@"barraAbout"] forBarMetrics:UIBarMetricsDefault];
+    NSString *navBarBackgroundName;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        navBarBackgroundName = @"barraAbout";
+    } else {
+        navBarBackgroundName = @"barraTopo";
+    }
+    [_navigationBar setBackgroundImage:[UIImage imageNamed:navBarBackgroundName] forBarMetrics:UIBarMetricsDefault];
     NSDictionary *attrs = @{UITextAttributeTextColor : [UIColor nf_orangeTextColor]};
     [_navigationBar setTitleTextAttributes:attrs];
     

@@ -68,10 +68,18 @@
     cview.layer.masksToBounds = YES;
     
     // Animate everything
-    shadowView.center = CGPointMake(self.view.center.x, self.view.center.y + self.view.bounds.size.height);
+    CGFloat centerX = self.view.bounds.size.width / 2;
+    CGFloat centerY = self.view.bounds.size.height / 2;
+    shadowView.center = CGPointMake(centerX, centerY + self.view.bounds.size.height);
     [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         _dimmedView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.6];
-        shadowView.center = CGPointMake(self.view.center.x, self.view.center.y);
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            shadowView.center = CGPointMake(centerX, centerY);
+        } else {
+            CGRect frame = shadowView.frame;
+            frame.origin.y = self.view.bounds.size.height - frame.size.height;
+            shadowView.frame = frame;
+        }
     } completion:^(BOOL finished) {
         block();
     }];
@@ -95,7 +103,9 @@
         
         // Move the shadow view away
         UIView *shadowView = _dimmedView.subviews[0];
-        shadowView.center = CGPointMake(self.view.center.x, self.view.center.y + self.view.bounds.size.height);
+        CGFloat centerX = self.view.bounds.size.width / 2;
+        CGFloat centerY = self.view.bounds.size.height / 2;
+        shadowView.center = CGPointMake(centerX, centerY + self.view.bounds.size.height);
     } completion:^(BOOL finished) {
         // Get rid of the dimmed view
         [_dimmedView removeFromSuperview];

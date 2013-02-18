@@ -6,8 +6,10 @@
 //  Copyright (c) 2012 NetFilter. All rights reserved.
 //
 
+#import "AboutViewController.h"
 #import "NFCarouselViewController.h"
 
-@interface CountryListViewController : UIViewController <NFCarouselDataSource, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
+@interface CountryListViewController : UIViewController <AboutViewControllerDelegate,
+NFCarouselDataSource, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
 @end

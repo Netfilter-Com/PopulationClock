@@ -392,7 +392,14 @@ static inline UIViewAnimationOptions animationOptionsWithCurve(UIViewAnimationCu
 
 - (void)aboutButtonTouched:(id)sender
 {
-    // TODO
+    AboutViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"aboutViewController"];
+    controller.delegate = self;
+    [(ModalDialogViewController *)self.parentViewController presentModalDialogViewController:controller];
+}
+
+- (void)aboutViewControllerDone:(AboutViewController *)controller
+{
+    [(ModalDialogViewController *)self.parentViewController dismissCurrentModalDialogViewController];
 }
 
 @end
