@@ -105,6 +105,10 @@
 		ED247ECA1683ABC90092E185 /* setaNavDir@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED247EC61683ABC90092E185 /* setaNavDir@2x.png */; };
 		ED247ECB1683ABC90092E185 /* setaNavEsq.png in Resources */ = {isa = PBXBuildFile; fileRef = ED247EC71683ABC90092E185 /* setaNavEsq.png */; };
 		ED247ECC1683ABC90092E185 /* setaNavEsq@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED247EC81683ABC90092E185 /* setaNavEsq@2x.png */; };
+		ED2BED6016D273A800C05D43 /* patternBgBandeira.png in Resources */ = {isa = PBXBuildFile; fileRef = ED2BED5C16D273A800C05D43 /* patternBgBandeira.png */; };
+		ED2BED6116D273A800C05D43 /* patternBgBandeira@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED2BED5D16D273A800C05D43 /* patternBgBandeira@2x.png */; };
+		ED2BED6216D273A800C05D43 /* patternBgInfo.png in Resources */ = {isa = PBXBuildFile; fileRef = ED2BED5E16D273A800C05D43 /* patternBgInfo.png */; };
+		ED2BED6316D273A800C05D43 /* patternBgInfo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED2BED5F16D273A800C05D43 /* patternBgInfo@2x.png */; };
 		ED3A406516CD22B900D2A814 /* CountryInfoBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3A406416CD22B900D2A814 /* CountryInfoBackgroundView.m */; };
 		ED3A406716CD42EB00D2A814 /* info_template_landscape~iphone.html in Resources */ = {isa = PBXBuildFile; fileRef = ED3A406616CD42EB00D2A814 /* info_template_landscape~iphone.html */; };
 		ED3A406A16CD55AB00D2A814 /* CountryInfoViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3A406916CD55AB00D2A814 /* CountryInfoViewController_iPhone.m */; };
@@ -740,6 +744,10 @@
 		ED247EC61683ABC90092E185 /* setaNavDir@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setaNavDir@2x.png"; sourceTree = "<group>"; };
 		ED247EC71683ABC90092E185 /* setaNavEsq.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setaNavEsq.png; sourceTree = "<group>"; };
 		ED247EC81683ABC90092E185 /* setaNavEsq@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setaNavEsq@2x.png"; sourceTree = "<group>"; };
+		ED2BED5C16D273A800C05D43 /* patternBgBandeira.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = patternBgBandeira.png; sourceTree = "<group>"; };
+		ED2BED5D16D273A800C05D43 /* patternBgBandeira@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "patternBgBandeira@2x.png"; sourceTree = "<group>"; };
+		ED2BED5E16D273A800C05D43 /* patternBgInfo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = patternBgInfo.png; sourceTree = "<group>"; };
+		ED2BED5F16D273A800C05D43 /* patternBgInfo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "patternBgInfo@2x.png"; sourceTree = "<group>"; };
 		ED3A406316CD22B900D2A814 /* CountryInfoBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryInfoBackgroundView.h; sourceTree = "<group>"; };
 		ED3A406416CD22B900D2A814 /* CountryInfoBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryInfoBackgroundView.m; sourceTree = "<group>"; };
 		ED3A406616CD42EB00D2A814 /* info_template_landscape~iphone.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "info_template_landscape~iphone.html"; sourceTree = "<group>"; };
@@ -2017,6 +2025,10 @@
 				EDA0C3E4167BB39F00CBECC4 /* map@2x.png */,
 				EDFC9D0B16CBC36C00D3B7BE /* map@2x~iphone.png */,
 				EDFC9D0C16CBC36C00D3B7BE /* map~iphone.png */,
+				ED2BED5C16D273A800C05D43 /* patternBgBandeira.png */,
+				ED2BED5D16D273A800C05D43 /* patternBgBandeira@2x.png */,
+				ED2BED5E16D273A800C05D43 /* patternBgInfo.png */,
+				ED2BED5F16D273A800C05D43 /* patternBgInfo@2x.png */,
 				ED0108A01680AC110067F88D /* rotate.png */,
 				ED0108A11680AC110067F88D /* rotate@2x.png */,
 				ED0108B91680D1540067F88D /* separadorAtiveInactive.png */,
@@ -2691,6 +2703,10 @@
 				EDFC9D0F16CBC36C00D3B7BE /* map@2x~iphone.png in Resources */,
 				EDFC9D1016CBC36C00D3B7BE /* map~iphone.png in Resources */,
 				ED3A406716CD42EB00D2A814 /* info_template_landscape~iphone.html in Resources */,
+				ED2BED6016D273A800C05D43 /* patternBgBandeira.png in Resources */,
+				ED2BED6116D273A800C05D43 /* patternBgBandeira@2x.png in Resources */,
+				ED2BED6216D273A800C05D43 /* patternBgInfo.png in Resources */,
+				ED2BED6316D273A800C05D43 /* patternBgInfo@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

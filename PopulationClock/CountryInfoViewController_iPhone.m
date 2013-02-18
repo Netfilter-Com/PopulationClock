@@ -31,6 +31,11 @@
 
 - (void)viewDidLoad
 {
+    // Set the background colors
+    // Load the image for the text background
+    self.leftPanel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"patternBgBandeira"]];
+    self.rightPanel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"patternBgInfo"]];
+    
     // Observe changes to the country selection
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(countrySelectionChanged:)
