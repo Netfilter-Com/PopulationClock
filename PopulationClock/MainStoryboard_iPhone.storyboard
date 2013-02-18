@@ -172,7 +172,7 @@
                                         </connections>
                                     </button>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="wYD-cp-yYH" customClass="CountryCarouselView">
-                                        <rect key="frame" x="0.0" y="171" width="240" height="90"/>
+                                        <rect key="frame" x="0.0" y="165" width="240" height="104"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <connections>
                                             <outlet property="leftArrow" destination="9Vg-0S-Ta4" id="H15-JF-Ixu"/>
@@ -382,10 +382,6 @@
         </class>
         <class className="MapViewController_iPhone" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController_iPhone.h"/>
-            <relationships>
-                <relationship kind="outlet" name="_legend" candidateClass="MapLegendView"/>
-                <relationship kind="outlet" name="_toolbar" candidateClass="UIToolbar"/>
-            </relationships>
         </class>
         <class className="MapViewFlagViewController_iPhone" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewFlagViewController_iPhone.h"/>

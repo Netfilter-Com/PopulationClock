@@ -95,6 +95,12 @@
         UIImageView *flag;
         if ([countryCode isEqualToString:@"world"]) {
             flag = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"globeVertical"]];
+            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+                BOOL iphone5 = [UIScreen mainScreen].bounds.size.height == 568;
+                CGFloat maxHeight = iphone5 ? 104 : 80;
+                CGFloat scale = maxHeight / flag.image.size.height;
+                flag.transform = CGAffineTransformMakeScale(scale, scale);
+            }
         } else {
             // Get the right flag
             NSString *flagName = [NSString stringWithFormat:@"country_flag_%@", countryCode];
