@@ -7,6 +7,7 @@
 //
 
 #import "CountryDetector.h"
+#import "CountryListViewController.h"
 #import "DataManager.h"
 #import "MapImageViewController.h"
 #import "SimulationEngine.h"
@@ -62,6 +63,12 @@
     [self.mapImageView deselectCurrentCountry];
     if (![selection isEqualToString:@"world"]) {
         [self.mapImageView selectCountry:selection maskColor:[UIColor nf_mapMaskColor]];
+    }
+    
+    // Check if we need to unfocus
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone
+        && [notification.object isKindOfClass:[CountryListViewController class]]) {
+        _scrollView.zoomScale = _scrollView.minimumZoomScale;
     }
 }
 
