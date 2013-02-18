@@ -91,12 +91,11 @@
     [_segmentedControl setTitleTextAttributes:attrs forState:UIControlStateNormal];
     [_segmentedControl setTitleTextAttributes:attrs forState:UIControlStateHighlighted];
     
-    // TODO: Images for the iPhone
-    /*UIImage *separator = [UIImage imageNamed:@"separadorAtiveInactive"];
+    UIImage *separator = [UIImage imageNamed:@"separadorAtiveInactive"];
     [_segmentedControl setBackgroundImage:[UIImage imageNamed:@"bgBtHeadInactive"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     [_segmentedControl setBackgroundImage:[UIImage imageNamed:@"bgBtHeadActive"] forState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
     [_segmentedControl setDividerImage:separator forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
-    [_segmentedControl setDividerImage:separator forLeftSegmentState:UIControlStateSelected rightSegmentState:UIControlStateNormal barMetrics:UIBarMetricsDefault];*/
+    [_segmentedControl setDividerImage:separator forLeftSegmentState:UIControlStateSelected rightSegmentState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     
     if (_selectedCountry) {
         _segmentedControl.selectedSegmentIndex = [_selectedCountry isEqualToString:@"world"] ? 0 : 1;
