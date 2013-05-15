@@ -220,34 +220,30 @@
 }
 
 - (void)selectCountry:(NSString *)countryCode maskColor:(UIColor *)color {
-    dispatch_async(_backgroundQueue, ^{
-        // Create the mask
-        UIImage *image = [self maskWithSelectedCountry:countryCode maskColor:color];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            // Create the image view
-            UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-            imageView.tag = TAG_MASK_LAYER;
-            imageView.frame = self.bounds;
-            imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-            
-            // Remove the current mask
-            BOOL hadPreviousSelection = _selectedMask != nil;
-            [_selectedMask removeFromSuperview];
-            _selectedMask = imageView;
-            
-            // Add the new one above all others
-            [self addSubview:imageView];
-            
-            // Animate it unless we're replacing the previous mask
-            if (!hadPreviousSelection) {
-                _selectedMask.alpha = 0;
-                [UIView animateWithDuration:0.3 animations:^{
-                    _selectedMask.alpha = 1;
-                }];
-            }
-        });
-    });
+    // Create the mask
+    UIImage *image = [self maskWithSelectedCountry:countryCode maskColor:color];
+
+    // Create the image view
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    imageView.tag = TAG_MASK_LAYER;
+    imageView.frame = self.bounds;
+    imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    
+    // Remove the current mask
+    BOOL hadPreviousSelection = _selectedMask != nil;
+    [_selectedMask removeFromSuperview];
+    _selectedMask = imageView;
+    
+    // Add the new one above all others
+    [self addSubview:imageView];
+    
+    // Animate it unless we're replacing the previous mask
+    if (!hadPreviousSelection) {
+        _selectedMask.alpha = 0;
+        [UIView animateWithDuration:0.3 animations:^{
+            _selectedMask.alpha = 1;
+        }];
+    }
 }
 
 - (void)deselectCurrentCountry {
