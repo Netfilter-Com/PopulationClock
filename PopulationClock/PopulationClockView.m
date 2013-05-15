@@ -14,10 +14,13 @@
 #define FONT_SIZE 24
 
 @implementation PopulationClockView {
-    long long _currentPopulation;
     UIImage *_baseImage;
     SBTickerView *_tickerViews[4];
+
+    long long _currentPopulation;
     NSString *_selectedCountry;
+
+    dispatch_queue_t _backgroundQueue;
 }
 
 + (instancetype)clock {
@@ -43,6 +46,11 @@
 }
 
 - (void)initialize {
+    // Create the background queue with low priority
+    _backgroundQueue = dispatch_queue_create("br.com.netfilter.PopulationClockView", 0);
+    dispatch_queue_t lowPriorityQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0);
+    dispatch_set_target_queue(_backgroundQueue, lowPriorityQueue);
+
     // Load the base image
     _baseImage = [UIImage imageNamed:@"flap_full"];
     
@@ -75,6 +83,11 @@
 - (void)dealloc {
     // We are no longer observers
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+
+    // Get rid of the background queue
+    if (_backgroundQueue) {
+        dispatch_release(_backgroundQueue);
+    }
 }
 
 - (void)updatePopulationClockAnimated:(BOOL)animated
@@ -136,27 +149,44 @@
         return;
     
     // Save the old population and replace it
-    long long oldPopulation = _currentPopulation;
+    __block long long oldPopulation = _currentPopulation;
     _currentPopulation = population;
-    
-    // Check which of the ticker views should be updated
-    for (int i = 0; i < 4; ++i) {
-        // Get the new number for this slot
-        int number = population % 1000;
-        population /= 1000;
-        
-        // Get the old number
-        int oldNumber = oldPopulation % 1000;
-        oldPopulation /= 1000;
-        
-        // Nothing to do if it shouldn't be updated
-        if (number == oldNumber)
-            continue;
-        
-        // Get a new back image and tick
-        _tickerViews[i].backView = [[UIImageView alloc] initWithImage:[self imageForNumber:number]];
-        [_tickerViews[i] tick:SBTickerViewTickDirectionDown animated:animated completion:nil];
-    }
+
+    dispatch_async(_backgroundQueue, ^{
+        NSMutableArray *images = [NSMutableArray arrayWithCapacity:4];
+
+        // Check which of the ticker views should be updated
+        long long mutablePopulation = population;
+        for (int i = 0; i < 4; ++i) {
+            // Get the new number for this slot
+            int number = mutablePopulation % 1000;
+            mutablePopulation /= 1000;
+            
+            // Get the old number
+            int oldNumber = oldPopulation % 1000;
+            oldPopulation /= 1000;
+            
+            // Nothing to do if it shouldn't be updated
+            if (number == oldNumber) {
+                [images addObject:[NSNull null]];
+                continue;
+            }
+            
+            // Get a new back image
+            images[i] = [self imageForNumber:number];
+        }
+
+        // Update the ticker views
+        dispatch_async(dispatch_get_main_queue(), ^{
+            for (int i = 0; i < 4; ++i) {
+                UIImage *image = images[i];
+                if ((id)image != [NSNull null]) {
+                    _tickerViews[i].backView = [[UIImageView alloc] initWithImage:image];
+                    [_tickerViews[i] tick:SBTickerViewTickDirectionDown animated:animated completion:nil];
+                }
+            }
+        });
+    });
 }
 
 @end
