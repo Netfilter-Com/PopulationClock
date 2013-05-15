@@ -43,8 +43,17 @@ NSString *InAppPurchasePurchasedRemoveAds = @"InAppPurchasePurchasedRemoveAds";
             _retrievingProductData = YES;
             [self requestProductData];
         }
+
+        // Set ourselves as transaction observers
+        [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
     }
     return self;
+}
+
+- (void)dealloc
+{
+    // We're no longer transaction observers
+    [[SKPaymentQueue defaultQueue] removeTransactionObserver:self];
 }
 
 - (BOOL)retrieveProducts {
@@ -72,9 +81,6 @@ NSString *InAppPurchasePurchasedRemoveAds = @"InAppPurchasePurchasedRemoveAds";
     
     // We are no longer retrieving product data
     _retrievingProductData = NO;
-    
-    // Set ourselves as transaction observers
-    [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
     
     // Let the observers know
     [[NSNotificationCenter defaultCenter] postNotificationName:InAppPurchaseManagerRetrievedProducts object:self];

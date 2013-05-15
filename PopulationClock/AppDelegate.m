@@ -37,7 +37,7 @@
         [self.window makeKeyAndVisible];
     }
     
-    // Pre-load the IAP products
+    // Pre-load the IAP products and become a transaction observer
     [InAppPurchaseManager sharedInstance];
     
     // Reset the simulation
