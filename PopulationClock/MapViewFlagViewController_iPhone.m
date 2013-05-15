@@ -8,12 +8,11 @@
 
 #import "DataManager.h"
 #import "MapViewFlagViewController_iPhone.h"
-#import "UIImage+NFResizable.h"
 
 @interface MapViewFlagViewController_iPhone ()
 
 @property (nonatomic, weak) IBOutlet UILabel *label;
-@property (nonatomic, weak) IBOutlet UIImageView *flag;
+@property (nonatomic, weak) IBOutlet UIView *flag;
 
 @end
 
@@ -39,36 +38,42 @@
     if ([selection isEqualToString:@"world"]) {
         // Load the image
         UIImage *image = [UIImage imageNamed:@"globeHoriz"];
-        self.flag.image = image;
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+        [self.flag.superview addSubview:imageView];
+        self.flag = imageView;
         
         // Calculate its new size
         CGFloat scale = 30 / image.size.height;
         CGSize newSize = CGSizeMake(floorf(image.size.width * scale), floorf(image.size.height * scale));
         
-        // Set the frame and content mode
+        // Set the frame
         self.flag.frame = CGRectMake(0, 0, newSize.width, newSize.height);
-        self.flag.contentMode = UIViewContentModeScaleToFill;
         self.flag.backgroundColor = [UIColor clearColor];
     }
     else {
+        // Load the image
         NSString *flagName = [NSString stringWithFormat:@"country_flag_%@", selection];
         UIImage *image = [UIImage imageNamed:flagName];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
         
         // Calculate its new size, including borders
         CGFloat scale = 30 / image.size.height;
         CGSize newSize = CGSizeMake(floorf(image.size.width * scale), floorf(image.size.height * scale));
-        
-        // Calculate the size of the image centered in the
-        // image view by insetting the border width
+
+        // Create the background view
+        UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, newSize.width, newSize.height)];
+        backgroundView.backgroundColor = [UIColor whiteColor];
+        [self.flag.superview addSubview:backgroundView];
+        self.flag = backgroundView;
+
+        // Calculate the size of the image centered in the background view
         CGSize innerSize = newSize;
         innerSize.width -= 4;
         innerSize.height -= 4;
-        
-        // Assign the image to the image view and configure it
-        self.flag.image = [image nf_resizedImageWithSize:innerSize];
-        self.flag.frame = CGRectMake(0, 0, newSize.width, newSize.height);
-        self.flag.contentMode = UIViewContentModeCenter;
-        self.flag.backgroundColor = [UIColor whiteColor];
+
+        // Add the image to the background view
+        imageView.frame = CGRectMake(2, 2, innerSize.width, innerSize.height);
+        [backgroundView addSubview:imageView];
     }
     
     // Update the label
