@@ -139,19 +139,58 @@
     if (isPortrait || UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         NSDictionary *info = [DataManager sharedDataManager].countryData[_selectedCountry];
         substitutions = @{
-            @"%%NAME%%" : info[@"name"],
-            @"%%DESCRIPTION%%" : description,
-            @"%%READ_MORE_LINK%%" : NSLocalizedString(@"[Read more]", @""),
-            @"%%STATS%%" : [[StatsBuilder new] statsStringForCountryCode:_selectedCountry]
+            @"NAME" : info[@"name"],
+            @"DESCRIPTION" : description,
+            @"READ_MORE_LINK" : NSLocalizedString(@"[Read more]", @""),
+            @"STATS" : [[StatsBuilder new] statsStringForCountryCode:_selectedCountry]
         };
     }
     else {
         substitutions = @{ @"%%DESCRIPTION%%" : description };
     }
-    
-    // Perform the template substitutions
-    for (NSString *key in substitutions.allKeys)
-        template = [template stringByReplacingOccurrencesOfString:key withString:substitutions[key]];
+
+    char * const templateC = strdup([template UTF8String]);
+    char *templatePtr = templateC;
+
+    NSMutableString *result = [[NSMutableString alloc] initWithCapacity:template.length * 2];
+
+    // Perform the template substitutions in C because string replacement
+    // with NSStrings is way too slow (probably because of Unicode support)
+    for (;;) {
+        // Find the first delimiter
+        char *begin = strstr(templatePtr, "%%");
+
+        // If there's no first delimiter, just append the remainder
+        if (!begin) {
+            [result appendString:[NSString stringWithCString:templatePtr encoding:NSUTF8StringEncoding]];
+            break;
+        }
+
+        // Find the second delimiter
+        char *end = strstr(begin + 2, "%%");
+        NSAssert(end, @"Malformed template (missing second delimiter)");
+
+        // Zero-terminate the first char so from template to begin - 1
+        // so we have a zero-terminated C string
+        *begin = '\0';
+
+        // Append this to the result string
+        NSString *before = [NSString stringWithCString:templatePtr encoding:NSUTF8StringEncoding];
+        [result appendString:before];
+
+        // Zero-terminate the key and retrieve it
+        *end = '\0';
+        NSString *key = [NSString stringWithCString:begin + 2 encoding:NSUTF8StringEncoding];
+        NSString *replacement = substitutions[key];
+        NSAssert(replacement, @"Replacement not found for key: %@", key);
+        [result appendString:replacement];
+
+        // Advance the pointer to the template
+        templatePtr += end - templatePtr + 2;
+    }
+
+    free(templateC);
+    template = result;
     
     // Load the HTML
     NSURL *baseURL = [NSURL fileURLWithPath:[path stringByDeletingLastPathComponent] isDirectory:YES];
