@@ -20,6 +20,9 @@
 
 - (void)viewDidLoad
 {
+    // Set the mask color for the map
+    self.mapImageView.maskColor = [UIColor nf_mapMaskColor];
+
     // Set up the single tap gesture recognizer
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
     singleTap.numberOfTapsRequired = 1;
@@ -62,7 +65,7 @@
     _selectedCountry = [selection copy];
     [self.mapImageView deselectCurrentCountry];
     if (![selection isEqualToString:@"world"]) {
-        [self.mapImageView selectCountry:selection maskColor:[UIColor nf_mapMaskColor]];
+        [self.mapImageView selectCountry:selection];
     }
     
     // Check if we need to unfocus
@@ -142,7 +145,7 @@
     // Either select the country or deselect the current
     // selection in the map
     if (country) {
-        [self.mapImageView selectCountry:country maskColor:[UIColor nf_mapMaskColor]];
+        [self.mapImageView selectCountry:country];
     } else {
         [self.mapImageView deselectCurrentCountry];
     }

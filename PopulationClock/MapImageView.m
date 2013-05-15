@@ -18,12 +18,18 @@
 @implementation MapImageView {
     CountryCoordinates *_coordinates;
     NSMutableDictionary *_countryColors;
+
     UIImageView *_selectedMask;
+    NSMutableData *_selectedMaskFill;
+
     NSMutableData *_bitmap;
     CGSize _bitmapSize;
     CGFloat _bitmapScale;
+
     dispatch_queue_t _backgroundQueue;
 }
+
+@dynamic maskColor;
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
@@ -69,6 +75,8 @@
         dispatch_release(_backgroundQueue);
 }
 
+#pragma mark - Helper methods
+
 - (uint32_t)RGBAColorValueForColor:(UIColor *)color {
     CGFloat r, g, b, a;
     BOOL res = [color getRed:&r green:&g blue:&b alpha:&a];
@@ -89,6 +97,8 @@
     CGContextRelease(context);
     return image;
 }
+
+#pragma mark - Blinking countries in the map
 
 - (UIImage *)tintedImageForCountries:(NSArray *)countryCodes tintColor:(UIColor *)color {
     // Get a list of color values
@@ -179,27 +189,33 @@
     }];
 }
 
-- (UIImage *)maskWithSelectedCountry:(NSString *)countryCode maskColor:(UIColor *)color {
-    // Create a new bitmap
-    NSMutableData *newBitmap = [NSMutableData dataWithLength:_bitmapSize.width * _bitmapSize.height * 4];
-    
-    // Turn the replacement color into an RGBA color value that
+#pragma mark - Selecting countries in the map
+
+- (void)setMaskColor:(UIColor *)maskColor {
+    // Create the buffer for the fill color
+    _selectedMaskFill = [NSMutableData dataWithLength:_bitmapSize.width * _bitmapSize.height * 4];
+
+    // Turn the replacement color into an ARGB color value that
     // we can use with the Accelerate framework
     CGFloat r, g, b, a;
-    BOOL convertionRes = [color getRed:&r green:&g blue:&b alpha:&a];
+    BOOL convertionRes = [maskColor getRed:&r green:&g blue:&b alpha:&a];
     assert(convertionRes);
     Pixel_8888 replacementColor = { a * 0xff, r * 0xff, g * 0xff, b * 0xff };
-    
-    // Fill the memory with the replacement color using the
-    // Accelerate framework
+
+    // Fill the memory with the replacement color
     vImage_Buffer buffer;
-    buffer.data = newBitmap.mutableBytes;
+    buffer.data = _selectedMaskFill.mutableBytes;
     buffer.width = _bitmapSize.width;
     buffer.height = _bitmapSize.height;
     buffer.rowBytes = _bitmapSize.width * 4;
-    vImage_Error error = vImageBufferFill_ARGB8888(&buffer, replacementColor, kvImageNoFlags);
-    assert(error == kvImageNoError);
-    
+    __unused vImage_Error error = vImageBufferFill_ARGB8888(&buffer, replacementColor, kvImageNoFlags);
+    NSAssert(error == kvImageNoError, @"Got vImage_Error from vImageBufferFill_ARGB8888");
+}
+
+- (UIImage *)maskWithSelectedCountry:(NSString *)countryCode {
+    // Create a new bitmap filled with the selection color
+    NSMutableData *newBitmap = [_selectedMaskFill mutableCopy];
+
     NSString *colorStr = _countryColors[countryCode];
     if (colorStr) {
         // Get the color value for the selected country
@@ -219,16 +235,18 @@
     return [self imageFromBitmapData:newBitmap.mutableBytes];
 }
 
-- (void)selectCountry:(NSString *)countryCode maskColor:(UIColor *)color {
+- (void)selectCountry:(NSString *)countryCode {
+    NSAssert(_selectedMaskFill, @"You must set the selection color before calling selectCountry:");
+
     // Create the mask
-    UIImage *image = [self maskWithSelectedCountry:countryCode maskColor:color];
+    UIImage *image = [self maskWithSelectedCountry:countryCode];
 
     // Create the image view
     UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
     imageView.tag = TAG_MASK_LAYER;
     imageView.frame = self.bounds;
     imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    
+
     // Remove the current mask
     BOOL hadPreviousSelection = _selectedMask != nil;
     [_selectedMask removeFromSuperview];
@@ -258,6 +276,8 @@
         }];
     }
 }
+
+#pragma mark - Flashing icons
 
 - (void)flashIcon:(UIImage *)icon atCountry:(NSString *)countryCode {
     if (self.paused) {
@@ -309,6 +329,8 @@
         }];
     }];
 }
+
+#pragma mark - Pausing the animations
 
 - (void)setPaused:(BOOL)paused
 {

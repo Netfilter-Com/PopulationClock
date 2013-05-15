@@ -10,9 +10,12 @@
 
 @property (nonatomic, assign) BOOL paused;
 
+@property (nonatomic, strong) UIColor *maskColor;
+
 - (void)blinkCountries:(NSArray *)countryCodes color:(UIColor *)color;
 
-- (void)selectCountry:(NSString *)country maskColor:(UIColor *)color;
+- (void)selectCountry:(NSString *)country;
+
 - (void)deselectCurrentCountry;
 
 - (void)flashIcon:(UIImage *)icon atCountry:(NSString *)countryCode;
