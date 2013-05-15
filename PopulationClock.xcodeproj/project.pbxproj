@@ -134,7 +134,6 @@
 		ED3A406516CD22B900D2A814 /* CountryInfoBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3A406416CD22B900D2A814 /* CountryInfoBackgroundView.m */; };
 		ED3A406716CD42EB00D2A814 /* info_template_landscape~iphone.html in Resources */ = {isa = PBXBuildFile; fileRef = ED3A406616CD42EB00D2A814 /* info_template_landscape~iphone.html */; };
 		ED3A406A16CD55AB00D2A814 /* CountryInfoViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3A406916CD55AB00D2A814 /* CountryInfoViewController_iPhone.m */; };
-		ED3A9BE116961A3E007D19DB /* UIImage+NFResizable.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3A9BE016961A3E007D19DB /* UIImage+NFResizable.m */; };
 		ED597E8A167F988000038B75 /* CountryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED597E89167F988000038B75 /* CountryListViewController.m */; };
 		ED597E8E167FA55600038B75 /* TopBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED597E8D167FA55600038B75 /* TopBarView.m */; };
 		ED7769D716C41D0B00BC486F /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED7769D616C41D0B00BC486F /* MainStoryboard_iPhone.storyboard */; };
@@ -798,8 +797,6 @@
 		ED3A406616CD42EB00D2A814 /* info_template_landscape~iphone.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "info_template_landscape~iphone.html"; sourceTree = "<group>"; };
 		ED3A406816CD55AA00D2A814 /* CountryInfoViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryInfoViewController_iPhone.h; sourceTree = "<group>"; };
 		ED3A406916CD55AB00D2A814 /* CountryInfoViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryInfoViewController_iPhone.m; sourceTree = "<group>"; };
-		ED3A9BDF16961A3E007D19DB /* UIImage+NFResizable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+NFResizable.h"; sourceTree = "<group>"; };
-		ED3A9BE016961A3E007D19DB /* UIImage+NFResizable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+NFResizable.m"; sourceTree = "<group>"; };
 		ED597E88167F988000038B75 /* CountryListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryListViewController.h; sourceTree = "<group>"; };
 		ED597E89167F988000038B75 /* CountryListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryListViewController.m; sourceTree = "<group>"; };
 		ED597E8C167FA55600038B75 /* TopBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopBarView.h; sourceTree = "<group>"; };
@@ -1975,8 +1972,6 @@
 				ED597E8D167FA55600038B75 /* TopBarView.m */,
 				ED7769EB16C434B500BC486F /* UIColor+NFAppColors.h */,
 				ED7769EC16C434B600BC486F /* UIColor+NFAppColors.m */,
-				ED3A9BDF16961A3E007D19DB /* UIImage+NFResizable.h */,
-				ED3A9BE016961A3E007D19DB /* UIImage+NFResizable.m */,
 				ED7769E816C4318700BC486F /* UIViewController+NFSharing.h */,
 				ED7769E916C4318700BC486F /* UIViewController+NFSharing.m */,
 			);
@@ -2823,7 +2818,6 @@
 				8248F1CE168CC6BC00717BA7 /* AboutViewController.m in Sources */,
 				EDF8D0821695BF3500FE02B1 /* InAppPurchaseManager.m in Sources */,
 				EDF8D0861695DAAE00FE02B1 /* MBProgressHUD.m in Sources */,
-				ED3A9BE116961A3E007D19DB /* UIImage+NFResizable.m in Sources */,
 				ED0E20AD169719AD005445B7 /* SimulationEngine.m in Sources */,
 				ED7FF18C169B1FD800123037 /* MapLegendView.m in Sources */,
 				ED7FF1B1169B3E1600123037 /* PopulationClockView.m in Sources */,

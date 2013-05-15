@@ -10,7 +10,6 @@
 
 #import "DataManager.h"
 #import "CountryCarouselView.h"
-#import "UIImage+NFResizable.h"
 
 @interface CountryCarouselView ()
 

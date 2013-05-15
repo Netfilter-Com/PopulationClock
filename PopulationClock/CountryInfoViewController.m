@@ -8,7 +8,6 @@
 
 #import "CountryInfoViewController.h"
 #import "DataManager.h"
-#import "UIImage+NFResizable.h"
 
 @implementation CountryInfoViewController {
     IBOutlet __weak UIImageView *_backgroundImageView;
@@ -16,7 +15,7 @@
     IBOutlet __weak UIButton *_portraitArrowLeft;
     IBOutlet __weak UIButton *_portraitArrowRight;
     IBOutlet __weak UIView *_portraitWebViewBackground;
-    IBOutlet __weak UIImageView *_landscapeFlag;
+    IBOutlet __weak UIView *_landscapeFlag;
     IBOutlet __weak UILabel *_landscapeCountryName;
     IBOutlet __weak UIWebView *_webView;
 }
@@ -40,11 +39,10 @@
     NSString *countryCode = info[@"code"];
     if ([countryCode isEqualToString:@"world"]) {
         // Set the globe image
-        _landscapeFlag.image = [UIImage imageNamed:@"globeHoriz"];
-        [_landscapeFlag sizeToFit];
-        
-        // Unset the background color
-        _landscapeFlag.backgroundColor = [UIColor clearColor];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"globeHoriz"]];
+        [_landscapeFlag.superview insertSubview:imageView aboveSubview:_landscapeFlag];
+        [_landscapeFlag removeFromSuperview];
+        _landscapeFlag = imageView;
     }
     else {
         // Get the right flag
@@ -60,12 +58,18 @@
         CGSize innerSize = newSize;
         innerSize.width -= 4;
         innerSize.height -= 4;
-        
-        // Assign the image to the image view and configure it
-        _landscapeFlag.image = [image nf_resizedImageWithSize:innerSize];
-        _landscapeFlag.frame = CGRectMake(0, 0, newSize.width, newSize.height);
-        _landscapeFlag.contentMode = UIViewContentModeCenter;
-        _landscapeFlag.backgroundColor = [UIColor whiteColor];
+
+        // Create the background view
+        UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, newSize.width, newSize.height)];
+        backgroundView.backgroundColor = [UIColor whiteColor];
+        [_landscapeFlag.superview insertSubview:backgroundView aboveSubview:_landscapeFlag];
+        [_landscapeFlag removeFromSuperview];
+        _landscapeFlag = backgroundView;
+
+        // Add the flag image to the background view
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+        imageView.frame = CGRectMake(2, 2, innerSize.width, innerSize.height);
+        [backgroundView addSubview:imageView];
     }
     
     // Change the landscape country name
