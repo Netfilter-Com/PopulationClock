@@ -258,7 +258,7 @@
     // Animate it unless we're replacing the previous mask
     if (!hadPreviousSelection) {
         _selectedMask.alpha = 0;
-        [UIView animateWithDuration:0.3 animations:^{
+        [UIView animateWithDuration:0.2 animations:^{
             _selectedMask.alpha = 1;
         }];
     }
@@ -269,7 +269,7 @@
     if (_selectedMask) {
         UIImageView *mask = _selectedMask;
         _selectedMask = nil;
-        [UIView animateWithDuration:0.3 animations:^{
+        [UIView animateWithDuration:0.2 animations:^{
             mask.alpha = 0;
         } completion:^(BOOL finished) {
             [mask removeFromSuperview];
