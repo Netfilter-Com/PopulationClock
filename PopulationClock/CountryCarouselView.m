@@ -20,7 +20,7 @@
 @end
 
 @implementation CountryCarouselView {
-    UIImageView *_flags[3];
+    UIView *_flags[3];
     NSString *_countryCodes[3];
     CGFloat _layoutWidth;
 }
@@ -92,13 +92,13 @@
         
         // Get the flag into an image view and apply a border and shadow
         // unless we're showing the globe
-        UIImageView *flag;
+        UIView *flag;
         if ([countryCode isEqualToString:@"world"]) {
             flag = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"globeVertical"]];
             if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
                 BOOL iphone5 = [UIScreen mainScreen].bounds.size.height == 568;
                 CGFloat maxHeight = iphone5 ? 104 : 80;
-                CGFloat scale = maxHeight / flag.image.size.height;
+                CGFloat scale = maxHeight / ((UIImageView *)flag).image.size.height;
                 flag.transform = CGAffineTransformMakeScale(scale, scale);
             }
         } else {
@@ -123,13 +123,16 @@
             CGSize innerSize = newSize;
             innerSize.width -= 8;
             innerSize.height -= 8;
-            
-            // Create the image view and configure it
-            flag = [[UIImageView alloc] initWithImage:[image nf_resizedImageWithSize:innerSize]];
-            flag.frame = CGRectMake(0, 0, newSize.width, newSize.height);
-            flag.contentMode = UIViewContentModeCenter;
+
+            // Create the background view
+            flag = [[UIView alloc] initWithFrame:CGRectMake(0, 0, newSize.width, newSize.height)];
             flag.backgroundColor = [UIColor whiteColor];
-            
+
+            // Create the flag image
+            UIImageView *flagImage = [[UIImageView alloc] initWithImage:image];
+            flagImage.frame = CGRectMake(4, 4, innerSize.width, innerSize.height);
+            [flag addSubview:flagImage];
+
             // Add the shadow effect
             if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
                 flag.layer.shadowOffset = CGSizeMake(2, 2);
@@ -183,7 +186,7 @@
     
     // Position the flags
     for (int i = 0; i < 3; ++i) {
-        UIImageView *flag = _flags[i];
+        UIView *flag = _flags[i];
         flag.center = CGPointMake(self.bounds.size.width * (i + 0.5), self.frame.size.height / 2);
     }
 }
