@@ -39,7 +39,10 @@
         // Load the image
         UIImage *image = [UIImage imageNamed:@"globeHoriz"];
         UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-        [self.flag.superview addSubview:imageView];
+
+        // Replace the current flag
+        [self.flag.superview insertSubview:imageView aboveSubview:self.flag];
+        [self.flag removeFromSuperview];
         self.flag = imageView;
         
         // Calculate its new size
@@ -63,7 +66,10 @@
         // Create the background view
         UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, newSize.width, newSize.height)];
         backgroundView.backgroundColor = [UIColor whiteColor];
-        [self.flag.superview addSubview:backgroundView];
+
+        // Replace the current flag
+        [self.flag.superview insertSubview:backgroundView aboveSubview:self.flag];
+        [self.flag removeFromSuperview];
         self.flag = backgroundView;
 
         // Calculate the size of the image centered in the background view
