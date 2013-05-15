@@ -67,6 +67,7 @@
 		ED05A4D8169F246600916AB1 /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = ED05A4BD169F246600916AB1 /* Appirater.m */; };
 		ED05A4D9169F246600916AB1 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ED05A4BF169F246600916AB1 /* AppiraterLocalizable.strings */; };
 		ED05A4DA169F246600916AB1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = ED05A4D1169F246600916AB1 /* README.md */; };
+		ED090B491743F1DD009EB771 /* NFConfigurableTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = ED090B481743F1DD009EB771 /* NFConfigurableTapGestureRecognizer.m */; };
 		ED0E20A216970AE3005445B7 /* colormap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0E20A116970AE3005445B7 /* colormap@2x.png */; };
 		ED0E20AD169719AD005445B7 /* SimulationEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0E20AC169719AD005445B7 /* SimulationEngine.m */; };
 		ED0E20B91697570F005445B7 /* birth.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0E20B71697570F005445B7 /* birth.png */; };
@@ -723,6 +724,8 @@
 		ED05A4D4169F246600916AB1 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
 		ED05A4D5169F246600916AB1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/AppiraterLocalizable.strings"; sourceTree = "<group>"; };
 		ED05A4D6169F246600916AB1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/AppiraterLocalizable.strings"; sourceTree = "<group>"; };
+		ED090B471743F1DD009EB771 /* NFConfigurableTapGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFConfigurableTapGestureRecognizer.h; sourceTree = "<group>"; };
+		ED090B481743F1DD009EB771 /* NFConfigurableTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFConfigurableTapGestureRecognizer.m; sourceTree = "<group>"; };
 		ED0E20A116970AE3005445B7 /* colormap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "colormap@2x.png"; sourceTree = "<group>"; };
 		ED0E20AB169719AD005445B7 /* SimulationEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimulationEngine.h; sourceTree = "<group>"; };
 		ED0E20AC169719AD005445B7 /* SimulationEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimulationEngine.m; sourceTree = "<group>"; };
@@ -1958,6 +1961,8 @@
 				ED993BA4169C8BE1001B2F13 /* ModalDialogViewController.m */,
 				ED8F4E9A16C590A700AC197C /* NFCarouselViewController.h */,
 				ED8F4E9B16C590A700AC197C /* NFCarouselViewController.m */,
+				ED090B471743F1DD009EB771 /* NFConfigurableTapGestureRecognizer.h */,
+				ED090B481743F1DD009EB771 /* NFConfigurableTapGestureRecognizer.m */,
 				ED7FF1AF169B3E1600123037 /* PopulationClockView.h */,
 				ED7FF1B0169B3E1600123037 /* PopulationClockView.m */,
 				ED8F4E6616C5598100AC197C /* SavedStateManager.h */,
@@ -2840,6 +2845,7 @@
 				ED3A406516CD22B900D2A814 /* CountryInfoBackgroundView.m in Sources */,
 				ED3A406A16CD55AB00D2A814 /* CountryInfoViewController_iPhone.m in Sources */,
 				EDF0F5B516CD6DBF001F9262 /* CountryCarouselView.m in Sources */,
+				ED090B491743F1DD009EB771 /* NFConfigurableTapGestureRecognizer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

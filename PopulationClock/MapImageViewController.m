@@ -10,6 +10,7 @@
 #import "CountryListViewController.h"
 #import "DataManager.h"
 #import "MapImageViewController.h"
+#import "NFConfigurableTapGestureRecognizer.h"
 #import "SimulationEngine.h"
 #import "UIColor+NFAppColors.h"
 
@@ -29,8 +30,9 @@
     [self.mapImageView addGestureRecognizer:singleTap];
     
     // Set up the double tap gesture recognizer
-    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
+    NFConfigurableTapGestureRecognizer *doubleTap = [[NFConfigurableTapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
     doubleTap.numberOfTapsRequired = 2;
+    doubleTap.timeout = 0.180;
     [self.mapImageView addGestureRecognizer:doubleTap];
     
     // Make the single tap recognizer require the double tap
@@ -39,7 +41,7 @@
     
     // Create the country detector
     _countryDetector = [CountryDetector new];
-    
+
     // Observe changes to the country selection
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(countrySelectionChanged:) name:CountrySelectionNotification object:nil];
