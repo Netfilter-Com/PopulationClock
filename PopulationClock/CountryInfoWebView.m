@@ -53,20 +53,7 @@
     self.layer.masksToBounds = YES;
     
     // Configure the gradient
-    CAGradientLayer *gradient = (CAGradientLayer *)self.layer;
-    UIColor *finalColor;
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        gradient.startPoint = CGPointMake(0, 0.75);
-        finalColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
-    } else {
-        gradient.startPoint = CGPointMake(0, 0.5);
-        finalColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
-    }
-    gradient.endPoint = CGPointMake(0, 1);
-    gradient.colors = @[
-        (id)[UIColor colorWithRed:0 green:0 blue:0 alpha:0].CGColor,
-        (id)finalColor.CGColor
-    ];
+    [self configureGradient];
     
     // Rasterize this layer
     self.layer.shouldRasterize = YES;
@@ -130,7 +117,7 @@
             };
         }
         else {
-            substitutions = @{ @"%%DESCRIPTION%%" : description };
+            substitutions = @{ @"DESCRIPTION" : description };
         }
 
         char * const templateC = strdup([template UTF8String]);
@@ -184,35 +171,72 @@
     });
 }
 
-- (void)layoutSubviews {
-    // The first time the view is laid out, we don't have metrics
-    if (self.bounds.size.width == 0 || self.bounds.size.height == 0)
-        return;
-    
-    // Set the shadow path
-    CGFloat r = _shadowLayer.shadowRadius;
-    CGMutablePathRef shadowPath = CGPathCreateMutable();
-    CGPoint lines[] = {
-        CGPointMake(-r, -r),
-        CGPointMake(self.bounds.size.width + r, -r),
-        CGPointMake(self.bounds.size.width + r, r),
-        CGPointMake(r, r),
-        CGPointMake(r, self.bounds.size.height + r),
-        CGPointMake(-r, self.bounds.size.height + r),
-        CGPointMake(-r, -r)
-    };
-    CGPathAddLines(shadowPath, NULL, lines, sizeof(lines) / sizeof(CGPoint));
-    _shadowLayer.shadowPath = shadowPath;
-    CGPathRelease(shadowPath);
+- (void)configureGradient {
+    CAGradientLayer *gradient = (CAGradientLayer *)self.layer;
+
+    BOOL isIpad = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad;
 
     UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
     BOOL isPortrait = UIInterfaceOrientationIsPortrait(orientation);
 
-    if (!_hasContent || isPortrait == _contentIsPortrait) {
+    if (isIpad && !isPortrait) {
+        gradient.colors = nil;
+    } else {
+        UIColor *finalColor;
+        if (isIpad) {
+            gradient.startPoint = CGPointMake(0, 0.75);
+            finalColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+        } else {
+            gradient.startPoint = CGPointMake(0, 0.5);
+            finalColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
+        }
+
+        gradient.endPoint = CGPointMake(0, 1);
+        gradient.colors = @[
+            (id)[UIColor colorWithRed:0 green:0 blue:0 alpha:0].CGColor,
+            (id)finalColor.CGColor
+        ];
+    }
+}
+
+- (void)layoutSubviews {
+    // The first time the view is laid out, we don't have metrics
+    if (self.bounds.size.width == 0 || self.bounds.size.height == 0)
+        return;
+
+    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+    BOOL isPortrait = UIInterfaceOrientationIsPortrait(orientation);
+
+    if (isPortrait || UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        // Set the shadow path
+        CGFloat r = _shadowLayer.shadowRadius;
+        CGMutablePathRef shadowPath = CGPathCreateMutable();
+        CGPoint lines[] = {
+            CGPointMake(-r, -r),
+            CGPointMake(self.bounds.size.width + r, -r),
+            CGPointMake(self.bounds.size.width + r, r),
+            CGPointMake(r, r),
+            CGPointMake(r, self.bounds.size.height + r),
+            CGPointMake(-r, self.bounds.size.height + r),
+            CGPointMake(-r, -r)
+        };
+        CGPathAddLines(shadowPath, NULL, lines, sizeof(lines) / sizeof(CGPoint));
+        _shadowLayer.shadowPath = shadowPath;
+        CGPathRelease(shadowPath);
+
+        _shadowLayer.hidden = NO;
+    } else {
+        _shadowLayer.hidden = YES;
+    }
+
+    if (!_hasContent || isPortrait != _contentIsPortrait) {
         // If the interface orientation changed, we have to force an update
         [self updateCountrySelection];
         _contentIsPortrait = isPortrait;
         _hasContent = YES;
+
+        // Configure the gradient
+        [self configureGradient];
 
         // Change the scroll view indicator style
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
