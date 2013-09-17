@@ -44,12 +44,6 @@ NSString *SimulationEngineDeathsKey = @"SimulationEngineDeathsKey";
     return self;
 }
 
-- (void)dealloc {
-    // Release the background queue
-    if (_backgroundQueue)
-        dispatch_release(_backgroundQueue);
-}
-
 - (void)reset {
     // Perform the reset in a background thread so we don't have to synchronize anything
     dispatch_async(_backgroundQueue, ^{

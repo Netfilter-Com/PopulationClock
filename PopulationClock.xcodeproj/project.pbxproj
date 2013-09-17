@@ -40,6 +40,7 @@
 		825C8BD6168B4C9D009D357D /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 825C8BD4168B4C9D009D357D /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		825C8BD7168B4C9D009D357D /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 825C8BD5168B4C9D009D357D /* Twitter.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		8281CBD3169CB2E3008035C3 /* Description.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8281CBD2169CB2E3008035C3 /* Description.strings */; };
+		832487F117E8F59500FE6B17 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 832487F017E8F59500FE6B17 /* Images.xcassets */; };
 		ED0108A21680AC110067F88D /* rotate.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0108A01680AC110067F88D /* rotate.png */; };
 		ED0108A31680AC110067F88D /* rotate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0108A11680AC110067F88D /* rotate@2x.png */; };
 		ED0108A71680CADD0067F88D /* boxRodapeVert.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0108A51680CADD0067F88D /* boxRodapeVert.png */; };
@@ -673,6 +674,7 @@
 		825C8BD4168B4C9D009D357D /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		825C8BD5168B4C9D009D357D /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		8281CBD2169CB2E3008035C3 /* Description.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Description.strings; sourceTree = "<group>"; };
+		832487F017E8F59500FE6B17 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		ED0108A01680AC110067F88D /* rotate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rotate.png; sourceTree = "<group>"; };
 		ED0108A11680AC110067F88D /* rotate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rotate@2x.png"; sourceTree = "<group>"; };
 		ED0108A51680CADD0067F88D /* boxRodapeVert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boxRodapeVert.png; sourceTree = "<group>"; };
@@ -1974,6 +1976,7 @@
 				ED7769EC16C434B600BC486F /* UIColor+NFAppColors.m */,
 				ED7769E816C4318700BC486F /* UIViewController+NFSharing.h */,
 				ED7769E916C4318700BC486F /* UIViewController+NFSharing.m */,
+				832487F017E8F59500FE6B17 /* Images.xcassets */,
 			);
 			path = PopulationClock;
 			sourceTree = "<group>";
@@ -2170,6 +2173,11 @@
 			attributes = {
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = NetFilter;
+				TargetAttributes = {
+					EDA0C39F167BAF1400CBECC4 = {
+						DevelopmentTeam = PWFMZR3KY6;
+					};
+				};
 			};
 			buildConfigurationList = EDA0C39A167BAF1400CBECC4 /* Build configuration list for PBXProject "PopulationClock" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -2599,6 +2607,7 @@
 				ED882D2E168256D10084522F /* country_flag_ru@2x.png in Resources */,
 				ED882D2F168256D10084522F /* country_flag_rw.png in Resources */,
 				ED882D30168256D10084522F /* country_flag_rw@2x.png in Resources */,
+				832487F117E8F59500FE6B17 /* Images.xcassets in Resources */,
 				ED882D31168256D10084522F /* country_flag_sa.png in Resources */,
 				ED882D32168256D10084522F /* country_flag_sa@2x.png in Resources */,
 				ED882D33168256D10084522F /* country_flag_sb.png in Resources */,
@@ -2912,13 +2921,15 @@
 		823085CE168CB79800DA38F8 /* AdHoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PopulationClock/PopulationClock-Prefix.pch";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "PopulationClock/PopulationClock-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libs/AdMob\"",
@@ -2958,19 +2969,22 @@
 		8294F33716D2CBA7002D756F /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PopulationClock/PopulationClock-Prefix.pch";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "PopulationClock/PopulationClock-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libs/AdMob\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -3032,17 +3046,22 @@
 		EDA0C3C5167BAF1400CBECC4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PopulationClock/PopulationClock-Prefix.pch";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "PopulationClock/PopulationClock-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libs/AdMob\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -3051,17 +3070,22 @@
 		EDA0C3C6167BAF1400CBECC4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PopulationClock/PopulationClock-Prefix.pch";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "PopulationClock/PopulationClock-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libs/AdMob\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

@@ -34,20 +34,11 @@ static NSString * const kGameShortURL = @"http://bit.ly/populationclock";
         ];
         UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:items applicationActivities:nil];
         controller.excludedActivityTypes = exclude;
-        [self presentModalViewController:controller animated:animated];
+        [self presentViewController:controller animated:animated completion:Nil];
         return;
     }
     
-    // If we have Twitter support, use that
-    if (NSClassFromString(@"TWTweetComposeViewController")) {
-        TWTweetComposeViewController *controller = [[TWTweetComposeViewController alloc] init];
-        [controller setInitialText:message];
-        [controller addImage:[UIImage imageNamed:@"Icon-72"]];
-        [self presentModalViewController:controller animated:animated];
-        return;
-    }
-    
-    // No deal, this shouldn't normally happen as we target iOS 5
+    // No deal, this shouldn't normally happen as we target iOS 6
     assert(NO);
 }
 

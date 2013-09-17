@@ -69,11 +69,6 @@
     return self;
 }
 
-- (void)dealloc {
-    // Release the background queue
-    if (_backgroundQueue)
-        dispatch_release(_backgroundQueue);
-}
 
 #pragma mark - Helper methods
 

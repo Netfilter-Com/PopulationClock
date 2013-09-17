@@ -83,11 +83,6 @@
 - (void)dealloc {
     // We are no longer observers
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-
-    // Get rid of the background queue
-    if (_backgroundQueue) {
-        dispatch_release(_backgroundQueue);
-    }
 }
 
 - (void)updatePopulationClockAnimated:(BOOL)animated

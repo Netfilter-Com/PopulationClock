@@ -73,11 +73,6 @@
 - (void)dealloc {
     // We are no longer observers
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-
-    // Get rid of the queue
-    if (_backgroundQueue) {
-        dispatch_release(_backgroundQueue);
-    }
 }
 
 - (void)countrySelectionChanged:(NSNotification *)notification {
