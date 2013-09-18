@@ -366,6 +366,10 @@ static inline UIViewAnimationOptions animationOptionsWithCurve(UIViewAnimationCu
                                                                       style:UIBarButtonItemStyleBordered
                                                                      target:self
                                                                      action:@selector(removeAdsButtonTouched:)];
+    UIBarButtonItem *spacer = [[UIBarButtonItem alloc]
+                               initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                               target:nil action:nil];
+    
     
     UIBarButtonItem *shareItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Share", nil)
                                                                   style:UIBarButtonItemStyleBordered
@@ -377,12 +381,17 @@ static inline UIViewAnimationOptions animationOptionsWithCurve(UIViewAnimationCu
                                                                  target:self
                                                                  action:@selector(aboutButtonTouched:)];
     
-    NSMutableArray *items = [NSMutableArray arrayWithCapacity:3];
+    
+    NSMutableArray *items = [NSMutableArray arrayWithCapacity:7];
+    [items addObject:spacer];
     if (![InAppPurchaseManager sharedInstance].adsRemoved) {
         [items addObject:removeAdsItem];
+        [items addObject:spacer];
     }
     [items addObject:shareItem];
+    [items addObject:spacer];
     [items addObject:aboutItem];
+    [items addObject:spacer];
     
     return items;
 }

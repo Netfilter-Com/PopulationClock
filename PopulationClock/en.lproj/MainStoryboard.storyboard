@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="13A584" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="2">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <scenes>
         <!--Country Info View Controller-->
@@ -148,7 +149,7 @@
                                 <rect key="frame" x="20" y="20" width="344" height="339"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="NBB-oD-oAx">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="NBB-oD-oAx">
                                         <rect key="frame" x="0.0" y="44" width="344" height="295"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -203,7 +204,7 @@
             <objects>
                 <viewController id="2" customClass="MainViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5" customClass="MainView">
-                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="f4I-fl-wvI" customClass="MapLegendView">
@@ -267,7 +268,7 @@
                                 </connections>
                             </view>
                             <view opaque="NO" contentMode="scaleToFill" id="P7i-wZ-xLP" customClass="TopBarView">
-                                <rect key="frame" x="0.0" y="400" width="768" height="44"/>
+                                <rect key="frame" x="0.0" y="408" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="barraVert.png" id="kbC-qC-oyu">
@@ -316,8 +317,8 @@
                                     <outlet property="_titleLabel" destination="QhB-k2-gBU" id="bLg-Su-zZe"/>
                                 </connections>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" id="Clf-1b-KYv">
-                                <rect key="frame" x="0.0" y="960" width="768" height="44"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" id="Clf-1b-KYv">
+                                <rect key="frame" x="0.0" y="980" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem title="Remove ads" id="Ax7-ql-JHu">
@@ -339,7 +340,7 @@
                                 </items>
                             </toolbar>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="rB6-lo-KOg">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1044"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -407,10 +408,10 @@
             <objects>
                 <viewController storyboardIdentifier="aboutViewController" id="Wa7-NC-Jj4" customClass="AboutViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="z73-2u-6Tf">
-                        <rect key="frame" x="0.0" y="20" width="360" height="440"/>
+                        <rect key="frame" x="0.0" y="0.0" width="360" height="440"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" barStyle="blackOpaque" id="yo6-Sl-dfB">
+                            <navigationBar contentMode="scaleToFill" barStyle="black" id="yo6-Sl-dfB">
                                 <rect key="frame" x="0.0" y="0.0" width="360" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
@@ -496,67 +497,8 @@
         <image name="setaNavDir.png" width="30" height="47"/>
         <image name="setaNavEsq.png" width="30" height="47"/>
     </resources>
-    <classes>
-        <class className="AboutViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AboutViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="doneButtonTouched:"/>
-                <relationship kind="action" name="netfilterLogoTouched:"/>
-            </relationships>
-        </class>
-        <class className="ClockViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ClockViewController.h"/>
-        </class>
-        <class className="CountryCarouselView" superclassName="UIScrollView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CountryCarouselView.h"/>
-            <relationships>
-                <relationship kind="outlet" name="leftArrow" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="rightArrow" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="CountryInfoBackgroundView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CountryInfoBackgroundView.h"/>
-        </class>
-        <class className="CountryInfoViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CountryInfoViewController.h"/>
-        </class>
-        <class className="CountryInfoWebView" superclassName="UIWebView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CountryInfoWebView.h"/>
-        </class>
-        <class className="CountryListViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CountryListViewController.h"/>
-        </class>
-        <class className="MainView" superclassName="UIScrollView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainView.h"/>
-        </class>
-        <class className="MainViewController" superclassName="ModalDialogViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainViewController.h"/>
-        </class>
-        <class className="MapImageView" superclassName="UIImageView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapImageView.h"/>
-        </class>
-        <class className="MapImageViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapImageViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="mapImageView" candidateClass="MapImageView"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-        <class className="MapLegendView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapLegendView.h"/>
-        </class>
-        <class className="ModalDialogViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ModalDialogViewController.h"/>
-        </class>
-        <class className="PopulationClockView" superclassName="UIImageView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PopulationClockView.h"/>
-        </class>
-        <class className="TopBarView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TopBarView.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
+        <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
