@@ -24,11 +24,16 @@
     [_modeSegmentedControl setTitleTextAttributes:attrs forState:UIControlStateHighlighted];
     
     // Style the segmented control
-    UIImage *separator = [UIImage imageNamed:@"separadorAtiveInactive"];
-    [_modeSegmentedControl setBackgroundImage:[UIImage imageNamed:@"bgBtHeadInactive"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    [_modeSegmentedControl setBackgroundImage:[UIImage imageNamed:@"bgBtHeadActive"] forState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
-    [_modeSegmentedControl setDividerImage:separator forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
-    [_modeSegmentedControl setDividerImage:separator forLeftSegmentState:UIControlStateSelected rightSegmentState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
+        UIImage *separator = [UIImage imageNamed:@"separadorAtiveInactive"];
+        [_modeSegmentedControl setBackgroundImage:[UIImage imageNamed:@"bgBtHeadInactive"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+        [_modeSegmentedControl setBackgroundImage:[UIImage imageNamed:@"bgBtHeadActive"] forState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
+        [_modeSegmentedControl setDividerImage:separator forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
+        [_modeSegmentedControl setDividerImage:separator forLeftSegmentState:UIControlStateSelected rightSegmentState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    } else {
+        [_modeSegmentedControl setTintColor:[UIColor nf_orangeTextColor]];
+    }
+
     
     // Observe changes to the country selection
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(countrySelectionChanged:) name:CountrySelectionNotification object:nil];
