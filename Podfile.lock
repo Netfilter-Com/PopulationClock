@@ -1,0 +1,16 @@
+PODS:
+  - Appirater (2.0.5)
+  - MBProgressHUD (0.9.2)
+  - SBTickerView (1.0.0)
+
+DEPENDENCIES:
+  - Appirater
+  - MBProgressHUD
+  - SBTickerView
+
+SPEC CHECKSUMS:
+  Appirater: e7c0a47fb67ee5041ce8479e6ba960927fb40264
+  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  SBTickerView: 981ebcf79ae8bde172df46467e08e57c6c386eda
+
+COCOAPODS: 0.39.0
