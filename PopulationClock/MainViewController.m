@@ -22,7 +22,7 @@
     
     CGPoint _legendOrigin;
     
-    GADBannerView *_adView;
+//    GADBannerView *_adView;
 }
 
 - (void)loadView {
@@ -72,15 +72,15 @@
     }
     
     // If the user has not purchased the option, show the ads
-    if (!iapmgr.adsRemoved) {
-        AdManager *adManager = [AdManager sharedInstance];
-        adManager.delegate = self;
-        _adView = [adManager adBannerViewWithSize:kGADAdSizeBanner];
-        _adView.rootViewController = self;
-        [(MainView *)self.view setAdView:_adView];
-        [self.view insertSubview:_adView belowSubview:_dimmedView];
-        [adManager doneConfiguringAdBannerView:_adView];
-    }
+//    if (!iapmgr.adsRemoved) {
+//        AdManager *adManager = [AdManager sharedInstance];
+//        adManager.delegate = self;
+//        _adView = [adManager adBannerViewWithSize:kGADAdSizeBanner];
+//        _adView.rootViewController = self;
+//        [(MainView *)self.view setAdView:_adView];
+//        [self.view insertSubview:_adView belowSubview:_dimmedView];
+//        [adManager doneConfiguringAdBannerView:_adView];
+//    }
 }
 
 - (void)legendPanningGestureRecognized:(UIPanGestureRecognizer *)recognizer {
@@ -132,15 +132,15 @@
     }];
 }
 
-- (void)adManagerShouldHideAdView:(AdManager *)manager {
-    // Get rid of the ads once the user has purchased this option
-    [_adView removeFromSuperview];
-    
-    // Get rid of the button too
-    NSMutableArray *toolbarButtons = [_toolbar.items mutableCopy];
-    [toolbarButtons removeObject:_removeAdsButton];
-    _toolbar.items = toolbarButtons;
-}
+//- (void)adManagerShouldHideAdView:(AdManager *)manager {
+//    // Get rid of the ads once the user has purchased this option
+//    [_adView removeFromSuperview];
+//    
+//    // Get rid of the button too
+//    NSMutableArray *toolbarButtons = [_toolbar.items mutableCopy];
+//    [toolbarButtons removeObject:_removeAdsButton];
+//    _toolbar.items = toolbarButtons;
+//}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
     return YES;

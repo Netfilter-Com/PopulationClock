@@ -39,7 +39,7 @@
     NSString *countryNameText = [info[@"name"] uppercaseString];
     
     // Create the attributed string and update the label
-    if (&NSFontAttributeName == NULL) {
+    if (NSFontAttributeName == nil) {
         _countryNameLabel.text = [populationText stringByAppendingString:countryNameText];
     }
     else {
