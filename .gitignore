@@ -3,3 +3,5 @@
 .DS_Store
 *.swp
 *.pyc
+Pods/
+Scripts/.idea/
