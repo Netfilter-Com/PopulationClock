@@ -14,7 +14,7 @@ The project uses the most recent data from these two trusted sources:
 ____
 Besides the iOS app, there are a few Python scripts to execute the following actions:
 
-- Scrap the country descriptions and energy production from the World Factbook.
+- Scrape the country descriptions and energy production from the World Factbook.
 - Download the most recent indicators from World Databank using their JSON API (Some updates are quarterly and others yearly).
 - Generate plist file with all indicators and descriptions to use with Xcode.
 - With population growth data, create colored SVG map.
