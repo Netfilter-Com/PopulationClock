@@ -363,7 +363,7 @@ static inline UIViewAnimationOptions animationOptionsWithCurve(UIViewAnimationCu
 - (NSArray *)extraToolbarItemsForCarouselViewController:(NFCarouselViewController *)controller
 {
     UIBarButtonItem *removeAdsItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Remove ads", nil)
-                                                                      style:UIBarButtonItemStyleBordered
+                                                                      style:UIBarButtonItemStylePlain
                                                                      target:self
                                                                      action:@selector(removeAdsButtonTouched:)];
     UIBarButtonItem *spacer = [[UIBarButtonItem alloc]
@@ -372,12 +372,12 @@ static inline UIViewAnimationOptions animationOptionsWithCurve(UIViewAnimationCu
     
     
     UIBarButtonItem *shareItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Share", nil)
-                                                                  style:UIBarButtonItemStyleBordered
+                                                                  style:UIBarButtonItemStylePlain
                                                                  target:self
                                                                  action:@selector(shareButtonTouched:)];
     
     UIBarButtonItem *aboutItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"About", nil)
-                                                                  style:UIBarButtonItemStyleBordered
+                                                                  style:UIBarButtonItemStylePlain
                                                                  target:self
                                                                  action:@selector(aboutButtonTouched:)];
     

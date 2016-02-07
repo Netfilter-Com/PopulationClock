@@ -45,7 +45,7 @@
     
     // Set text here so we don't have to translate the storyboard
     _navigationBar.topItem.title = NSLocalizedString(@"About Population Clock", @"");
-    _textView.text = NSLocalizedString(@"Real-time events portrayed in this app represent the outcome of a computer simulation based on projected population count and growth, birth and death rates. The statistics used in the simulation cover the years 2007 to 2011 and were retrieved from The World Bank. Statistics for American Samoa, Antigua and Barbuda, Dominica, Faroe Islands, Isle of Man, Holy See, Kiribati, Marshall Islands, Monaco, Northern Mariana Islands, Palau, Saint Kitts and Nevis, South Sudan, Taiwan, Turks and Caicos Islands and Tuvalu were partially or entirely obtained from Wikipedia. Descriptions for each of the countries presented in this app were retrieved from CIA's The World Factbook.\n\nThis app is NOT endorsed by any of the aforementioned institutions.", @"");
+    _textView.text = NSLocalizedString(@"Real-time events portrayed in this app represent the outcome of a computer simulation based on projected population count and growth, birth and death rates. The statistics used in the simulation cover the years 2007 to 2015 and were retrieved from The World Bank. Statistics for American Samoa, Antigua and Barbuda, Dominica, Faroe Islands, Isle of Man, Holy See, Kiribati, Marshall Islands, Monaco, Northern Mariana Islands, Palau, Saint Kitts and Nevis, South Sudan, Taiwan, Turks and Caicos Islands and Tuvalu were partially or entirely obtained from Wikipedia. Descriptions for each of the countries presented in this app were retrieved from CIA's The World Factbook.\n\nThis app is NOT endorsed by any of the aforementioned institutions.", @"");
     
     // Set the navigation bar theme
     NSString *navBarBackgroundName;
@@ -55,7 +55,7 @@
         navBarBackgroundName = @"barraTopo";
     }
     [_navigationBar setBackgroundImage:[UIImage imageNamed:navBarBackgroundName] forBarMetrics:UIBarMetricsDefault];
-    NSDictionary *attrs = @{UITextAttributeTextColor : [UIColor nf_orangeTextColor]};
+    NSDictionary *attrs = @{NSForegroundColorAttributeName : [UIColor nf_orangeTextColor]};
     [_navigationBar setTitleTextAttributes:attrs];
     
     // Set the background color

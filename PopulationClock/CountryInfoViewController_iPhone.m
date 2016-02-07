@@ -83,11 +83,11 @@
         NSLocalizedString(@"World", nil),
         NSLocalizedString(@"Country", nil)
     ]];
-    _segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
+//    _segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
     [_segmentedControl setWidth:125 forSegmentAtIndex:0];
     [_segmentedControl setWidth:125 forSegmentAtIndex:1];
     
-    NSDictionary *attrs = @{UITextAttributeTextColor : [UIColor nf_orangeTextColor]};
+    NSDictionary *attrs = @{NSForegroundColorAttributeName : [UIColor nf_orangeTextColor]};
     [_segmentedControl setTitleTextAttributes:attrs forState:UIControlStateNormal];
     [_segmentedControl setTitleTextAttributes:attrs forState:UIControlStateHighlighted];
     
