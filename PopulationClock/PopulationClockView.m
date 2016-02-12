@@ -129,8 +129,14 @@
     // Draw the text
     NSString *text = [NSString stringWithFormat:@"%03d", number];
     UIFont *font = [UIFont boldSystemFontOfSize:FONT_SIZE];
-    [[UIColor whiteColor] set];
-    [text drawInRect:rect withFont:font lineBreakMode:NSLineBreakByClipping alignment:NSTextAlignmentCenter];
+	
+	NSMutableParagraphStyle *textStyle = [[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy];
+	textStyle.lineBreakMode = NSLineBreakByClipping;
+	textStyle.alignment = NSTextAlignmentCenter;
+	
+	[text drawInRect:rect withAttributes:@{NSFontAttributeName:font,
+										   NSParagraphStyleAttributeName:textStyle,
+										   NSForegroundColorAttributeName: [UIColor whiteColor]}];
     
     // Get and return the new image
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();

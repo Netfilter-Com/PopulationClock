@@ -5,3 +5,4 @@
 *.pyc
 Pods/
 Scripts/.idea/
+*.xcworkspace/xcuserdata/

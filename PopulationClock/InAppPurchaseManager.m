@@ -71,7 +71,7 @@ NSString *InAppPurchasePurchasedRemoveAds = @"InAppPurchasePurchasedRemoveAds";
 
 - (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response {
 #ifdef DEBUG
-    NSLog(@"Successfully retrieved product data for %d product(s)", response.products.count);
+    NSLog(@"Successfully retrieved product data for %lu product(s)", (unsigned long)response.products.count);
 #endif
     
     // Map product names to products

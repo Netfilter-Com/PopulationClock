@@ -24,7 +24,7 @@
         barButtonImage = [barButtonImage resizableImageWithCapInsets:insets];
         [[UIBarButtonItem appearance] setBackgroundImage:barButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     }
-    NSDictionary *attrs = @{UITextAttributeTextColor : [UIColor nf_orangeTextColor]};
+    NSDictionary *attrs = @{NSForegroundColorAttributeName : [UIColor nf_orangeTextColor]};
     [[UIBarButtonItem appearance] setTitleTextAttributes:attrs forState:UIControlStateNormal];
     
     // On the iPhone, we need to manually create the storyboard

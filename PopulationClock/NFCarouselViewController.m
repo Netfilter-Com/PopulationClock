@@ -39,7 +39,7 @@
     NSArray *_orderedControllers;
     NSMutableArray *_controllers;
     
-    int _selectedController;
+    NSInteger _selectedController;
 }
 
 - (id)initWithViewControllers:(NSArray *)viewControllers
@@ -182,7 +182,7 @@
 
 - (void)reorderControllers
 {
-    int middle = _controllers.count / 2;
+    NSInteger middle = _controllers.count / 2;
     while (_selectedController != middle) {
         if (_selectedController-- == 0) {
             _selectedController = _controllers.count - 1;
@@ -208,7 +208,7 @@
         title = @"  Unnamed";
     }
     UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithTitle:title
-                                                                   style:UIBarButtonItemStyleBordered
+                                                                   style:UIBarButtonItemStylePlain
                                                                   target:self
                                                                   action:@selector(rotateRight)];
     [items addObject:buttonItem];
@@ -242,7 +242,7 @@
         title = @"Unnamed  ";
     }
     buttonItem = [[UIBarButtonItem alloc] initWithTitle:title
-                                                  style:UIBarButtonItemStyleBordered
+                                                  style:UIBarButtonItemStylePlain
                                                  target:self
                                                  action:@selector(rotateLeft)];
     [items addObject:buttonItem];
@@ -299,7 +299,7 @@
 - (void)adjustAfterScrolling
 {
     _selectedController = (int)(_scrollView.contentOffset.x / _scrollView.frame.size.width);
-    int middle = _controllers.count / 2;
+    NSInteger middle = _controllers.count / 2;
     
     if (_selectedController != middle) {
         [self reorderControllers];
