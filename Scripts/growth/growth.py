@@ -1,20 +1,40 @@
-from constants import *
+from __future__ import print_function
 from xml.dom import minidom
 import csv
+
+from os import sys, path
+sys.path.append(path.abspath(path.join(path.dirname(__file__), '..')))
+from shared.constants import *
+
 
 MIN_COLOR = (0xff, 0x32, 0x00)
 MAX_COLOR = (0xff, 0xe1, 0x00)
 
+
+def generate_color(rate, rate_rel):
+    color = "#"
+    for i in range(3):
+        component = int(MIN_COLOR[i] + (MAX_COLOR[i] - MIN_COLOR[i]) * rate_rel)
+        component = hex(component)[2:]
+        if len(component) == 1:
+            component = "0" + component
+        color += component
+
+    return color
+
+
 def applyColorToPath(path, color):
     path.setAttribute("fill", color)
-    if path.hasAttribute("stroke"):
-        path.removeAttribute("stroke")
+    # if path.hasAttribute("stroke"):
+    #     path.removeAttribute("stroke")
     if path.hasAttribute("stroke-width"):
-        path.removeAttribute("stroke-width")
-    if path.hasAttribute("stroke-miterlimit"):
-        path.removeAttribute("stroke-miterlimit")
+        path.setAttribute("stroke-width", ".1")
+    #     path.removeAttribute("stroke-width")
+    # if path.hasAttribute("stroke-miterlimit"):
+    #     path.removeAttribute("stroke-miterlimit")
 
-def applyColor(el, color):
+
+def apply_color(el, color):
     # If this is a path, simply apply the color to it
     if el.tagName == "path":
         applyColorToPath(el, color)
@@ -24,6 +44,7 @@ def applyColor(el, color):
     else:
         for path in el.getElementsByTagName("path"):
             applyColorToPath(path, color)
+
 
 def main():
     # Read the input from the CSV to get the colors
@@ -44,7 +65,7 @@ def main():
             elif country3 == "wld":
                 continue
             else:
-                print ">>> Unknown country: " + country3
+                print(">>> Unknown country: " + country3)
                 continue
 
             # Get the most recent data
@@ -57,8 +78,8 @@ def main():
                     break
 
             # Skip countries for which we don't have data
-            if val == None:
-                print ">>> Country with no data: " + country
+            if val is None:
+                print(">>> Country with no data: " + country)
                 continue
 
             # Check if it's the minimum or maximum rate
@@ -71,21 +92,15 @@ def main():
             rates_per_country[country] = val
 
     # Print the minimum and maximum growth rate
-    print "Lowest growth rate: " + str(min_rate)
-    print "Highest growth rate: " + str(max_rate)
+    print("Lowest growth rate:", min_rate)
+    print("Highest growth rate:", max_rate)
 
     # Interpolate the colors
     colors_per_country = {}
     for country in rates_per_country:
         rate = rates_per_country[country]
         rate_rel = (rate - min_rate) / (max_rate - min_rate)
-        color = "#"
-        for i in range(3):
-            component = int(MIN_COLOR[i] + (MAX_COLOR[i] - MIN_COLOR[i]) * rate_rel)
-            component = hex(component)[2:]
-            if len(component) == 1:
-                component = "0" + component
-            color += component
+        color = generate_color(rate, rate_rel)
         colors_per_country[country] = color
 
     # Open the base doc and get the root
@@ -114,11 +129,11 @@ def main():
         new_el = child.cloneNode(True)
 
         # Apply the color, if possible
-        if country != None:
+        if country is not None:
             if country in colors_per_country:
-                applyColor(new_el, colors_per_country[country])
+                apply_color(new_el, colors_per_country[country])
             else:
-                print ">>> Country without color: " + country
+                print(">>> Country without color: ", country)
 
         # Add to the new root
         new_root.appendChild(new_el)
