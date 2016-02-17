@@ -1,4 +1,4 @@
-# PopulationClock ![populationclock](Icon.png)
+# PopulationClock <img src="iTunesArtwork.png" width="48">
 
 
 Population Clock is an iOS tool for learning about geography and demographics.
