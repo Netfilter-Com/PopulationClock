@@ -15,4 +15,4 @@ convert \
     +dither +antialias \
     -density 200 \
     colormap.svg colormap\@2x.png
-rm colormap.svg
+#rm colormap.svg
