@@ -10,6 +10,5 @@
 #import "AdManager.h"
 #import "ModalDialogViewController.h"
 
-//@interface MainViewController : ModalDialogViewController <AboutViewControllerDelegate, AdManagerDelegate>
-@interface MainViewController : ModalDialogViewController <AboutViewControllerDelegate>
+@interface MainViewController : ModalDialogViewController <AboutViewControllerDelegate, AdManagerDelegate>
 @end
