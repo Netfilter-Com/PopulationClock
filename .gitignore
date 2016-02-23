@@ -6,3 +6,4 @@
 Pods/
 Scripts/.idea/
 *.xcworkspace/xcuserdata/
+Podfile.lock

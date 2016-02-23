@@ -63,8 +63,6 @@
 		ED0108CA1680F5430067F88D /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0108C91680F5430067F88D /* Default-Portrait@2x~ipad.png */; };
 		ED0108CC1680F54B0067F88D /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0108CB1680F54B0067F88D /* Default-Landscape~ipad.png */; };
 		ED0108CE1680F5530067F88D /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0108CD1680F5520067F88D /* Default-Landscape@2x~ipad.png */; };
-		ED0108D01680F61D0067F88D /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0108CF1680F61D0067F88D /* Icon-72.png */; };
-		ED0108D21680F6230067F88D /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0108D11680F6230067F88D /* Icon-72@2x.png */; };
 		ED090B491743F1DD009EB771 /* NFConfigurableTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = ED090B481743F1DD009EB771 /* NFConfigurableTapGestureRecognizer.m */; };
 		ED0E20A216970AE3005445B7 /* colormap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0E20A116970AE3005445B7 /* colormap@2x.png */; };
 		ED0E20AD169719AD005445B7 /* SimulationEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0E20AC169719AD005445B7 /* SimulationEngine.m */; };
@@ -135,8 +133,6 @@
 		ED597E8A167F988000038B75 /* CountryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED597E89167F988000038B75 /* CountryListViewController.m */; };
 		ED597E8E167FA55600038B75 /* TopBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED597E8D167FA55600038B75 /* TopBarView.m */; };
 		ED7769D716C41D0B00BC486F /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED7769D616C41D0B00BC486F /* MainStoryboard_iPhone.storyboard */; };
-		ED7769D916C41D9F00BC486F /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = ED7769D816C41D9F00BC486F /* Icon.png */; };
-		ED7769DB16C41DA600BC486F /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED7769DA16C41DA600BC486F /* Icon@2x.png */; };
 		ED7769DE16C4232900BC486F /* StatsBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7769DD16C4232900BC486F /* StatsBuilder.m */; };
 		ED7769E116C429AE00BC486F /* AdManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7769E016C429AE00BC486F /* AdManager.m */; };
 		ED7769EA16C4318800BC486F /* UIViewController+NFSharing.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7769E916C4318700BC486F /* UIViewController+NFSharing.m */; };
@@ -2160,8 +2156,6 @@
 				ED0108CA1680F5430067F88D /* Default-Portrait@2x~ipad.png in Resources */,
 				ED0108CC1680F54B0067F88D /* Default-Landscape~ipad.png in Resources */,
 				ED0108CE1680F5530067F88D /* Default-Landscape@2x~ipad.png in Resources */,
-				ED0108D01680F61D0067F88D /* Icon-72.png in Resources */,
-				ED0108D21680F6230067F88D /* Icon-72@2x.png in Resources */,
 				ED882BDB168256D00084522F /* country_flag_ad.png in Resources */,
 				ED882BDC168256D00084522F /* country_flag_ad@2x.png in Resources */,
 				ED882BDD168256D00084522F /* country_flag_ae.png in Resources */,
@@ -2662,8 +2656,6 @@
 				ED0F6BE6169DCBBA00C34C3A /* barraAbout.png in Resources */,
 				ED0F6BE7169DCBBA00C34C3A /* barraAbout@2x.png in Resources */,
 				ED7769D716C41D0B00BC486F /* MainStoryboard_iPhone.storyboard in Resources */,
-				ED7769D916C41D9F00BC486F /* Icon.png in Resources */,
-				ED7769DB16C41DA600BC486F /* Icon@2x.png in Resources */,
 				EDFC9D0D16CBC36C00D3B7BE /* colormap@2x~iphone.png in Resources */,
 				EDFC9D0E16CBC36C00D3B7BE /* colormap~iphone.png in Resources */,
 				EDFC9D0F16CBC36C00D3B7BE /* map@2x~iphone.png in Resources */,
@@ -2799,6 +2791,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_BITCODE = NO;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -2832,6 +2825,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				ENABLE_BITCODE = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
@@ -2854,6 +2848,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PopulationClock/PopulationClock-Prefix.pch";
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
@@ -2876,6 +2871,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PopulationClock/PopulationClock-Prefix.pch";
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;

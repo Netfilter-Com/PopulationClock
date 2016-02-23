@@ -60,7 +60,7 @@
     // Find the index of the selection
     NSArray *countries = [DataManager sharedDataManager].orderedCountryData;
     NSUInteger index = NSNotFound;
-    for (int i = 0; i < countries.count; ++i) {
+    for (NSInteger i = 0; i < countries.count; ++i) {
         NSDictionary *info = countries[i];
         if ([info[@"code"] isEqualToString:countryCode]) {
             index = i;
@@ -83,7 +83,7 @@
      */
     
     // Change the portrait flags
-    int indices[3] = { index == 0 ? countries.count - 1 : index - 1, index, (index + 1) % countries.count };
+    NSInteger indices[3] = { index == 0 ? countries.count - 1 : index - 1, index, (index + 1) % countries.count };
     for (int i = 0; i < 3; ++i) {
         // Get the country info and country code
         NSDictionary *info = countries[indices[i]];
