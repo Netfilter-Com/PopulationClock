@@ -1,76 +1,80 @@
-from constants import *
+from __future__ import print_function
+from os import path, sys
+sys.path.append(path.abspath(path.join(path.dirname(__file__), '..')))
+
+from shared.constants import *
 from xml.dom import minidom
 import csv
 
 DATA = [
     {
-        "filename" : "BirthRate",
-        "key" : "birthRate"
+        "filename": "BirthRate",
+        "key": "birthRate"
     },
     {
-        "filename" : "BirthsPerWoman",
-        "key" : "birthsPerWoman"
+        "filename": "BirthsPerWoman",
+        "key": "birthsPerWoman"
     },
     {
-        "filename" : "CO2E.KT",
-        "key" : "co2Emissions"
+        "filename": "CO2E.KT",
+        "key": "co2Emissions"
     },
     {
-        "filename" : "DeathRate",
-        "key" : "deathRate"
+        "filename": "DeathRate",
+        "key": "deathRate"
     },
     {
-        "filename" : "GrowthRate",
-        "key" : "growthRate"
+        "filename": "GrowthRate",
+        "key": "growthRate"
     },
     {
-        "filename" : "ElectricityAccess",
-        "key" : "electricityAccess"
+        "filename": "ElectricityAccess",
+        "key": "electricityAccess"
     },
     {
-        "filename" : "EnergyProductionKT",
-        "key" : "energyProduction"
+        "filename": "EnergyProductionKT",
+        "key": "energyProduction"
     },
     {
-        "filename" : "ForestAreaPercent",
-        "key" : "forestArea"
+        "filename": "ForestAreaPercent",
+        "key": "forestArea"
     },
     {
-        "filename" : "GDP.GROWTH",
-        "key" : "gdpGrowth"
+        "filename": "GDP.GROWTH",
+        "key": "gdpGrowth"
     },
     {
-        "filename" : "GDP.PCAP",
-        "key" : "gdpPerCapita"
+        "filename": "GDP.PCAP",
+        "key": "gdpPerCapita"
     },
     {
-        "filename" : "GDP",
-        "key" : "gdp"
+        "filename": "GDP",
+        "key": "gdp"
     },
     {
-        "filename" : "HealthExpensePercentGDP",
-        "key" : "healthExpensePercentGDP"
+        "filename": "HealthExpensePercentGDP",
+        "key": "healthExpensePercentGDP"
     },
     {
-        "filename" : "LifeExpect",
-        "key" : "lifeExpectancy"
+        "filename": "LifeExpect",
+        "key": "lifeExpectancy"
     },
     {
-        "filename" : "MobileUsersPer100",
-        "key" : "mobileUsersPer100"
+        "filename": "MobileUsersPer100",
+        "key": "mobileUsersPer100"
     },
     {
-        "filename" : "PassengerCarPer1000",
-        "key" : "passengerCarPer1000"
+        "filename": "PassengerCarPer1000",
+        "key": "passengerCarPer1000"
     },
     {
-        "filename" : "PercentInternetUsers",
-        "key" : "internetUsers"
+        "filename": "PercentInternetUsers",
+        "key": "internetUsers"
     },
     {
-        "filename" : "TotalPopulation",
-        "key" : "population",
-        "needsYear" : True
+        "filename": "TotalPopulation",
+        "key": "population",
+        "needsYear": True
     }
 ]
 
@@ -78,7 +82,8 @@ processed = {}
 
 mapCountries = []
 
-def readMapCountries():
+
+def read_map_countries():
     # Open the base doc and get the root
     base_doc = minidom.parse("../shared/map.svg")
     root = base_doc.getElementsByTagName("svg")[0]
@@ -87,7 +92,6 @@ def readMapCountries():
     new_root = root.cloneNode(False)
 
     # Enumerate the paths and groups
-    mapa = []
     for child in root.childNodes:
         # Nothing to do if this isn't even an element
         if not isinstance(child, minidom.Element):
@@ -105,7 +109,8 @@ def readMapCountries():
         # Add to the list
         mapCountries.append(country)
 
-def readCSV(d):
+
+def read_csv(d):
     # Open the CSV and parse it
     with open("csv/" + d["filename"] + ".csv", "r") as f:
         reader = csv.reader(f, delimiter=';')
@@ -123,12 +128,12 @@ def readCSV(d):
             elif country3 == "wld":
                 country = "world"
             else:
-                print ">>> Unknown country: " + country3
+                print(">>> Unknown country:", country3)
                 continue
 
             # Ignore countries that are not in the map
             if country != "world" and country not in mapCountries:
-                print ">>> Ignoring country " + country + " (not in the map)"
+                print(">>> Ignoring country", country, "(not in the map)")
                 continue
 
             # Get the most recent data
@@ -143,12 +148,12 @@ def readCSV(d):
                     break
 
             # Skip countries for which we don't have data
-            if val == None:
-                print ">>> Country with no data in " + d["filename"] + ": " + country
+            if val is None:
+                print(">>> Country with no data in", d["filename"] + ":", country)
                 continue
 
             # Add a dict for the country if we don't have one
-            if not country in processed:
+            if country not in processed:
                 processed[country] = {}
 
             # Add this data point
@@ -156,29 +161,30 @@ def readCSV(d):
             if "needsYear" in d and d["needsYear"]:
                 processed[country][d["key"] + "Year"] = year
 
+
 def main():
     # Read the list of countries in the map
-    readMapCountries()
+    read_map_countries()
 
     # Process the CSV files
     for d in DATA:
-        readCSV(d)
+        read_csv(d)
 
     # Warn if there's any country without total population,
     # birth or death rate
     for country in processed.keys():
         ind = processed[country]
         missing = []
-        if not "birthRate" in ind:
+        if "birthRate" not in ind:
             missing.append("birth rate")
-        if not "deathRate" in ind:
+        if "deathRate" not in ind:
             missing.append("death rate")
-        if not "population" in ind:
+        if "population" not in ind:
             missing.append("population")
-        if not "growthRate" in ind:
+        if "growthRate" not in ind:
             missing.append("growth rate")
         if len(missing) > 0:
-            print "Country with missing " + ", ".join(missing) + ": " + country
+            print("Country with missing", ", ".join(missing) + ":", country)
 
     # Create the plist
     doc = minidom.parseString("<plist><dict></dict></plist>")
