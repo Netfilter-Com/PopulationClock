@@ -143,7 +143,7 @@ def main():
         ElectricityAccess       EG.ELC.ACCS.ZS    Access to electricity (% of population)
         EnergyProductionKT      .                 Energy Production
         ForestAreaPercent       AG.LND.FRST.ZS    Forest area (% of land area)
-        GDP                     NY.GDP.MKTP.KN    GDP (constant LCU)
+        GDP                     NY.GDP.MKTP.PP.CD GDP, PPP (current international $)
         GDP.GROWTH              NY.GDP.MKTP.KD.ZG GDP growth (annual %)
         GDP.PCAP                NY.GDP.PCAP.KN    GDP per capita (constant LCU)
         GrowthRate              SP.POP.GROW       Population growth (annual %)
