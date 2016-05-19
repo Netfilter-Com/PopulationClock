@@ -26,7 +26,7 @@
 
 - (void)dealloc
 {
-    // We are no longer observers
+    // We are no longer observing
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -36,7 +36,8 @@
     self.delegate = self;
     
     // Observe changes to the country selection
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(countrySelectionChanged:) name:CountrySelectionNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(countrySelectionChanged:) 
+                                                 name:CountrySelectionNotification object:nil];
 }
 
 - (void)countrySelectionChanged:(NSNotification *)notification
@@ -79,7 +80,7 @@
      * this is that CALayer borders overlap the content. I couldn't get alternatives
      * like drawing a new image with the borders to work as they all got ridiculously
      * blurry. This should be possible, though, so if you can figure out, please
-     * replace this crap with something that doesn't suck as much.
+     * replace this code with something that doesn't suck as much. (FTCL)
      */
     
     // Change the portrait flags
