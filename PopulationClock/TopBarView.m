@@ -18,6 +18,7 @@
 }
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     // Set the label colors for the segmented control
     NSDictionary *attrs = @{NSForegroundColorAttributeName : [UIColor nf_orangeTextColor]};
     [_modeSegmentedControl setTitleTextAttributes:attrs forState:UIControlStateNormal];

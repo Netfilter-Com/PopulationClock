@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		426F43C948B8185CACA4CC4B /* libPods-PopulationClock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 060C153A363F8121468E8527 /* libPods-PopulationClock.a */; };
+		6D0E41A1BB8A88EB51A8FFB2 /* libPods-PopulationClock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 30DED07AB717E8D7FE43650B /* libPods-PopulationClock.a */; };
 		8248F1CE168CC6BC00717BA7 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8248F1CD168CC6BC00717BA7 /* AboutViewController.m */; };
 		825C8B8F168B3B53009D357D /* country_flag_bl.png in Resources */ = {isa = PBXBuildFile; fileRef = 825C8B77168B3B52009D357D /* country_flag_bl.png */; };
 		825C8B90168B3B53009D357D /* country_flag_bl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 825C8B78168B3B52009D357D /* country_flag_bl@2x.png */; };
@@ -627,11 +627,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		060C153A363F8121468E8527 /* libPods-PopulationClock.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PopulationClock.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1D8469C5A757E5681CA547AC /* Pods-PopulationClock.adhoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopulationClock.adhoc.xcconfig"; path = "Pods/Target Support Files/Pods-PopulationClock/Pods-PopulationClock.adhoc.xcconfig"; sourceTree = "<group>"; };
-		384C88AEB89F0F001446ACFB /* Pods-PopulationClock.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopulationClock.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-PopulationClock/Pods-PopulationClock.distribution.xcconfig"; sourceTree = "<group>"; };
-		40FD94AFABFE3095530F6591 /* Pods-PopulationClock.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopulationClock.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopulationClock/Pods-PopulationClock.release.xcconfig"; sourceTree = "<group>"; };
-		4674FACCA7F0B501C3871C1D /* Pods-PopulationClock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopulationClock.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopulationClock/Pods-PopulationClock.debug.xcconfig"; sourceTree = "<group>"; };
+		27FC292071771B679991D81C /* Pods-PopulationClock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopulationClock.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopulationClock/Pods-PopulationClock.debug.xcconfig"; sourceTree = "<group>"; };
+		30DED07AB717E8D7FE43650B /* libPods-PopulationClock.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PopulationClock.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8248F1CC168CC6BC00717BA7 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		8248F1CD168CC6BC00717BA7 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		825C8B77168B3B52009D357D /* country_flag_bl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = country_flag_bl.png; sourceTree = "<group>"; };
@@ -667,6 +664,7 @@
 		825C8BD5168B4C9D009D357D /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		8281CBD2169CB2E3008035C3 /* Description.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Description.strings; sourceTree = "<group>"; };
 		832487F017E8F59500FE6B17 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		9521174D992B9488A5C8C907 /* Pods-PopulationClock.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopulationClock.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopulationClock/Pods-PopulationClock.release.xcconfig"; sourceTree = "<group>"; };
 		ED0108A01680AC110067F88D /* rotate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rotate.png; sourceTree = "<group>"; };
 		ED0108A11680AC110067F88D /* rotate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rotate@2x.png"; sourceTree = "<group>"; };
 		ED0108A51680CADD0067F88D /* boxRodapeVert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boxRodapeVert.png; sourceTree = "<group>"; };
@@ -1306,20 +1304,18 @@
 				EDA0C3A5167BAF1400CBECC4 /* UIKit.framework in Frameworks */,
 				EDA0C3A7167BAF1400CBECC4 /* Foundation.framework in Frameworks */,
 				EDA0C3A9167BAF1400CBECC4 /* CoreGraphics.framework in Frameworks */,
-				426F43C948B8185CACA4CC4B /* libPods-PopulationClock.a in Frameworks */,
+				6D0E41A1BB8A88EB51A8FFB2 /* libPods-PopulationClock.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		888B6EED3B09CBDDF290D5F0 /* Pods */ = {
+		516999B51AF4C26E85FCD8E0 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				4674FACCA7F0B501C3871C1D /* Pods-PopulationClock.debug.xcconfig */,
-				40FD94AFABFE3095530F6591 /* Pods-PopulationClock.release.xcconfig */,
-				384C88AEB89F0F001446ACFB /* Pods-PopulationClock.distribution.xcconfig */,
-				1D8469C5A757E5681CA547AC /* Pods-PopulationClock.adhoc.xcconfig */,
+				27FC292071771B679991D81C /* Pods-PopulationClock.debug.xcconfig */,
+				9521174D992B9488A5C8C907 /* Pods-PopulationClock.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1804,7 +1800,7 @@
 				EDA0C3AB167BAF1400CBECC4 /* Supporting Files */,
 				EDA0C3A3167BAF1400CBECC4 /* Frameworks */,
 				EDA0C3A1167BAF1400CBECC4 /* Products */,
-				888B6EED3B09CBDDF290D5F0 /* Pods */,
+				516999B51AF4C26E85FCD8E0 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1831,7 +1827,7 @@
 				825C8BD0168B44E9009D357D /* SystemConfiguration.framework */,
 				825C8BD5168B4C9D009D357D /* Twitter.framework */,
 				EDA0C3A4167BAF1400CBECC4 /* UIKit.framework */,
-				060C153A363F8121468E8527 /* libPods-PopulationClock.a */,
+				30DED07AB717E8D7FE43650B /* libPods-PopulationClock.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2043,11 +2039,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EDA0C3C4167BAF1400CBECC4 /* Build configuration list for PBXNativeTarget "PopulationClock" */;
 			buildPhases = (
-				677B918A8244C05E389725FB /* Check Pods Manifest.lock */,
+				65D95B5C4FF18651E47ED0A6 /* [CP] Check Pods Manifest.lock */,
 				EDA0C39C167BAF1400CBECC4 /* Sources */,
 				EDA0C39D167BAF1400CBECC4 /* Frameworks */,
 				EDA0C39E167BAF1400CBECC4 /* Resources */,
-				E96DFA44FF2CF741F65D7593 /* Copy Pods Resources */,
+				A1817F091EA9D1375D848D55 /* [CP] Embed Pods Frameworks */,
+				E0973AC44E684F4C17511CB1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2064,7 +2061,7 @@
 		EDA0C397167BAF1400CBECC4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = NetFilter;
 				TargetAttributes = {
 					EDA0C39F167BAF1400CBECC4 = {
@@ -2692,29 +2689,44 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		677B918A8244C05E389725FB /* Check Pods Manifest.lock */ = {
+		65D95B5C4FF18651E47ED0A6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		E96DFA44FF2CF741F65D7593 /* Copy Pods Resources */ = {
+		A1817F091EA9D1375D848D55 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PopulationClock/Pods-PopulationClock-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E0973AC44E684F4C17511CB1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2783,26 +2795,39 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_BITCODE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
@@ -2817,18 +2842,31 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_BITCODE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
@@ -2842,7 +2880,7 @@
 		};
 		EDA0C3C5167BAF1400CBECC4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4674FACCA7F0B501C3871C1D /* Pods-PopulationClock.debug.xcconfig */;
+			baseConfigurationReference = 27FC292071771B679991D81C /* Pods-PopulationClock.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -2865,7 +2903,7 @@
 		};
 		EDA0C3C6167BAF1400CBECC4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 40FD94AFABFE3095530F6591 /* Pods-PopulationClock.release.xcconfig */;
+			baseConfigurationReference = 9521174D992B9488A5C8C907 /* Pods-PopulationClock.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

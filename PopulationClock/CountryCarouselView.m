@@ -32,6 +32,7 @@
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
     // We are our own delegate
     self.delegate = self;
     

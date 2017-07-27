@@ -8,9 +8,9 @@
 
 #import <StoreKit/StoreKit.h>
 
-NSString *InAppPurchaseManagerRetrievedProducts;
-NSString *InAppPurchaseManagerFaieldToRetrieveProducts;
-NSString *InAppPurchasePurchasedRemoveAds;
+extern NSString *InAppPurchaseManagerRetrievedProducts;
+extern NSString *InAppPurchaseManagerFaieldToRetrieveProducts;
+extern NSString *InAppPurchasePurchasedRemoveAds;
 
 @interface InAppPurchaseManager : NSObject <SKPaymentTransactionObserver, SKProductsRequestDelegate>
 

@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 NetFilter. All rights reserved.
 //
 
-NSString * const CountrySelectionNotification;
-NSString * const SelectedCountryKey;
-NSString * const StateRestorationKey;
-NSString * const SelectedCountryNoWorldKey;
+extern NSString * const CountrySelectionNotification;
+extern NSString * const SelectedCountryKey;
+extern NSString * const StateRestorationKey;
+extern NSString * const SelectedCountryNoWorldKey;
 #define SYSTEM_VERSION_LESS_THAN(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 

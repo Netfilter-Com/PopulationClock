@@ -6,10 +6,10 @@
 //  Copyright (c) 2013 NetFilter. All rights reserved.
 //
 
-NSString *SimulationEngineResetNotification;
-NSString *SimulationEngineStepTakenNotification;
-NSString *SimulationEngineBirthsKey;
-NSString *SimulationEngineDeathsKey;
+extern NSString *SimulationEngineResetNotification;
+extern NSString *SimulationEngineStepTakenNotification;
+extern NSString *SimulationEngineBirthsKey;
+extern NSString *SimulationEngineDeathsKey;
 
 @interface SimulationEngine : NSObject
 

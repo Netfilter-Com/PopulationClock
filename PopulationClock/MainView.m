@@ -25,6 +25,7 @@
 }
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     // Configure the scroll view properties
     self.scrollEnabled = NO;
     self.showsHorizontalScrollIndicator = NO;

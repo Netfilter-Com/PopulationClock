@@ -14,6 +14,7 @@
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
     // Set the background color
     self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"debut_light"]];
     

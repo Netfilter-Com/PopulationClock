@@ -149,9 +149,6 @@ def main():
         GrowthRate              SP.POP.GROW       Population growth (annual %)
         HealthExpensePercentGDP SH.XPD.TOTL.ZS    Health expenditure, total (% of GDP)
         LifeExpect              SP.DYN.LE00.IN    Life expectancy at birth, total (years)
-        MobileUsersPer100       IT.CEL.SETS.P2    Mobile cellular subscriptions (per 100 people)
-        PassengerCarPer1000     IS.VEH.PCAR.P3    Passenger cars (per 1,000 people)
-        PercentInternetUsers    IT.NET.USER.P2    Internet users (per 100 people)
         TotalPopulation         SP.POP.TOTL       Population, total
     '''.strip().splitlines()]
 

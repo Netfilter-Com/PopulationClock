@@ -28,6 +28,7 @@
 }
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     // Create the queue for background stuff
     _backgroundQueue = dispatch_queue_create("br.com.netfilter.CountryInfoWebView", 0);
     dispatch_queue_t lowPriorityQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0);

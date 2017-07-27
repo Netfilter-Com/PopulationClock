@@ -1,19 +1,21 @@
 PODS:
-  - Appirater (2.0.5)
-  - Google-Mobile-Ads-SDK (7.6.0)
-  - MBProgressHUD (0.9.2)
+  - Appirater (2.1.2)
+  - Google-Mobile-Ads-SDK (7.21.0)
+  - MBProgressHUD (1.0.0)
   - SBTickerView (1.0.0)
 
 DEPENDENCIES:
   - Appirater
-  - Google-Mobile-Ads-SDK (~> 7.0)
+  - Google-Mobile-Ads-SDK
   - MBProgressHUD
   - SBTickerView
 
 SPEC CHECKSUMS:
-  Appirater: e7c0a47fb67ee5041ce8479e6ba960927fb40264
-  Google-Mobile-Ads-SDK: 0290020329c61183c4685304264b73382bc49fb4
-  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  Appirater: f1c9e53e8b612193e6256144f6a0fd2e31f4340d
+  Google-Mobile-Ads-SDK: 4a6f1b43c8cc0e1e95a3b59d9f52a01671c6f9f3
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   SBTickerView: 981ebcf79ae8bde172df46467e08e57c6c386eda
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 22da9c72d993e3babf42c4e7ce425807a32b2ece
+
+COCOAPODS: 1.2.1
