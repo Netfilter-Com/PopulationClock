@@ -199,7 +199,7 @@ def main():
             v = ind[k]
             outd.appendChild(doc.createElementNS(None, "key"))
             outd.lastChild.appendChild(doc.createTextNode(k))
-            typestr = "integer" if k == "Population" or k.endswith("Year") else "real"
+            typestr = "integer" if k == "population" or k.endswith("Year") else "real"
             if typestr == "integer":
                 v = int(v)
             outd.appendChild(doc.createElementNS(None, typestr))

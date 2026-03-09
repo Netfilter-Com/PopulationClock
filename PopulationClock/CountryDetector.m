@@ -45,11 +45,12 @@
     // The point must be within bounds
     assert(point.x >= 0 && point.x <= 1 && point.y >= 0 && point.y <= 1);
     
-    // Adjust the point to the bitmap size
-    point = CGPointMake(point.x * _bitmapSize.width, point.y * _bitmapSize.height);
+    // Adjust the point to the bitmap size, clamping to valid indices
+    int px = (int)MIN(point.x * _bitmapSize.width, _bitmapSize.width - 1);
+    int py = (int)MIN(point.y * _bitmapSize.height, _bitmapSize.height - 1);
     
     // Get the color at that location
-    int color = ((uint8_t *)_bitmap.bytes)[(int)_bitmapSize.width * (int)point.y + (int)point.x];
+    int color = ((uint8_t *)_bitmap.bytes)[(int)_bitmapSize.width * py + px];
     
     // Look for the color in the index and return the country
     NSString *colorStr = [NSString stringWithFormat:@"%d", color];

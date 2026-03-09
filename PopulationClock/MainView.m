@@ -217,17 +217,20 @@ static inline UIViewAnimationOptions animationOptionsWithCurve(UIViewAnimationCu
         // The toolbar is hidden
         _toolbar.alpha = 0;
         
-        // The first panel is 320px wide
-        frame = CGRectMake(0, _navigationBar.frame.origin.y + _navigationBar.frame.size.height, 320, 0);
+        // Calculate proportional panel width (each panel gets 1/3 of the width)
+        CGFloat panelWidth = roundf(self.bounds.size.width / 3.0);
+        
+        // The first panel
+        frame = CGRectMake(0, _navigationBar.frame.origin.y + _navigationBar.frame.size.height, panelWidth, 0);
         frame.size.height = self.bounds.size.height - frame.origin.y;
         _panel1.frame = frame;
         
-        // The second panel is also 320px wide, with a 1px space in between
-        frame.origin.x += 320 + 1;
+        // The second panel, with a 1px space in between
+        frame.origin.x += panelWidth + 1;
         _panel2.frame = frame;
         
         // The third panel consumes the remaining space
-        frame.origin.x += 320;
+        frame.origin.x += panelWidth;
         frame.size.width = self.bounds.size.width - frame.origin.x;
         _panel3.frame = frame;
     }
