@@ -14,6 +14,7 @@
 #import "StatsBuilder.h"
 
 @implementation CountryInfoWebView {
+    WKWebView *_webView;
     NSString *_selectedCountry;
     CALayer *_shadowLayer;
 
@@ -46,7 +47,7 @@
     dispatch_set_target_queue(_backgroundQueue, lowPriorityQueue);
 
     // Disable bouncing
-    self.scrollView.bounces = NO;
+    _webView.scrollView.bounces = NO;
     
     // Observe changes to the country selection
     [[NSNotificationCenter defaultCenter] addObserver:self

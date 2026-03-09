@@ -10,7 +10,6 @@
 
 @interface CountryInfoWebView : UIView
 
-@property (nonatomic, readonly) WKWebView *webView;
 @property (nonatomic, readonly) UIScrollView *scrollView;
 
 - (void)loadHTMLString:(NSString *)string baseURL:(NSURL *)baseURL;
