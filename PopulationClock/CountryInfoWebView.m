@@ -7,12 +7,14 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
+#import <WebKit/WebKit.h>
 
 #import "CountryInfoWebView.h"
 #import "DataManager.h"
 #import "StatsBuilder.h"
 
 @implementation CountryInfoWebView {
+    WKWebView *_webView;
     NSString *_selectedCountry;
     CALayer *_shadowLayer;
 
@@ -29,19 +31,23 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+
+    // Create the internal WKWebView
+    WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
+    _webView = [[WKWebView alloc] initWithFrame:self.bounds configuration:config];
+    _webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    _webView.opaque = NO;
+    _webView.backgroundColor = [UIColor clearColor];
+    _webView.scrollView.backgroundColor = [UIColor clearColor];
+    [self addSubview:_webView];
+
     // Create the queue for background stuff
     _backgroundQueue = dispatch_queue_create("br.com.netfilter.CountryInfoWebView", 0);
     dispatch_queue_t lowPriorityQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0);
     dispatch_set_target_queue(_backgroundQueue, lowPriorityQueue);
 
     // Disable bouncing
-    self.scrollView.bounces = NO;
-    
-    // Remove some random shadows (where does this come from?)
-    for (UIView *subview in self.scrollView.subviews) {
-        if ([subview isKindOfClass:[UIImageView class]])
-            subview.hidden = YES;
-    }
+    _webView.scrollView.bounces = NO;
     
     // Observe changes to the country selection
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -69,6 +75,14 @@
     _shadowLayer.shouldRasterize = YES;
     _shadowLayer.rasterizationScale = [UIScreen mainScreen].scale;
     [self.layer addSublayer:_shadowLayer];
+}
+
+- (UIScrollView *)scrollView {
+    return _webView.scrollView;
+}
+
+- (void)loadHTMLString:(NSString *)string baseURL:(NSURL *)baseURL {
+    [_webView loadHTMLString:string baseURL:baseURL];
 }
 
 - (void)dealloc {

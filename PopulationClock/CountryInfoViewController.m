@@ -7,6 +7,7 @@
 //
 
 #import "CountryInfoViewController.h"
+#import "CountryInfoWebView.h"
 #import "DataManager.h"
 
 @implementation CountryInfoViewController {
@@ -17,7 +18,7 @@
     IBOutlet __weak UIView *_portraitWebViewBackground;
     IBOutlet __weak UIView *_landscapeFlag;
     IBOutlet __weak UILabel *_landscapeCountryName;
-    IBOutlet __weak UIWebView *_webView;
+    IBOutlet __weak CountryInfoWebView *_webView;
 }
 
 - (void)dealloc {

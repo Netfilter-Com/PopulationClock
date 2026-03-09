@@ -17,13 +17,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Style all toolbar buttons
-    if (SYSTEM_VERSION_LESS_THAN(@"7.0"))
-    {
-        UIImage *barButtonImage = [UIImage imageNamed:@"barBtn"];
-        UIEdgeInsets insets = UIEdgeInsetsMake(0, (barButtonImage.size.width - 1) / 2, 0, (barButtonImage.size.width - 1) / 2);
-        barButtonImage = [barButtonImage resizableImageWithCapInsets:insets];
-        [[UIBarButtonItem appearance] setBackgroundImage:barButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    }
     NSDictionary *attrs = @{NSForegroundColorAttributeName : [UIColor nf_orangeTextColor]};
     [[UIBarButtonItem appearance] setTitleTextAttributes:attrs forState:UIControlStateNormal];
     
