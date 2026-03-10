@@ -34,7 +34,7 @@ class Report:
     date = (2000, datetime.datetime.now().year)
     format = 'json'
     page_limit = 10000
-    url = 'http://api.worldbank.org/countries/all/indicators/{indicator}?'
+    url = 'https://api.worldbank.org/v2/countries/all/indicators/{indicator}?'
 
     @classmethod
     def from_string(cls, string):
@@ -79,7 +79,6 @@ class Report:
             if meta.pages == params.page:
                 break
             params.page += 1
-            break  # TODO REMOVE THIS --- FOR TESTING ONLY
 
         meta.indicator = data[0].indicator
         print(len(data), meta.indicator.value)

@@ -288,10 +288,10 @@
     UIImageView *imageView = [[UIImageView alloc] initWithImage:icon];
     imageView.tag = TAG_ICON_LAYER;
     
-    // Resize it
+    // Resize it proportionally to the view height (ratio derived from original 20px / 768pt iPad height)
     CGFloat iconScaleFactor = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 1 : 1.2;
     CGRect frame = imageView.frame;
-    frame.size.height = self.bounds.size.height * (20 / 768.0) * iconScaleFactor;
+    frame.size.height = self.bounds.size.height * 0.026 * iconScaleFactor;
     frame.size.width = icon.size.width * frame.size.height / icon.size.height * iconScaleFactor;
     imageView.frame = frame;
     

@@ -97,8 +97,9 @@
         if ([countryCode isEqualToString:@"world"]) {
             flag = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"globeVertical"]];
             if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-                BOOL iphone5 = [UIScreen mainScreen].bounds.size.height == 568;
-                CGFloat maxHeight = iphone5 ? 104 : 80;
+                CGFloat screenHeight = MAX([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+                // Ratio derived from original iPhone 5 target: 104px / 568pt screen height
+                CGFloat maxHeight = roundf(screenHeight * 0.183);
                 CGFloat scale = maxHeight / ((UIImageView *)flag).image.size.height;
                 flag.transform = CGAffineTransformMakeScale(scale, scale);
             }
@@ -111,10 +112,10 @@
             CGFloat maxHeight;
             if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
                 maxHeight = 126;
-            } else if ([UIScreen mainScreen].bounds.size.height == 568) {
-                maxHeight = 72;
             } else {
-                maxHeight = 64;
+                CGFloat screenHeight = MAX([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+                // Ratio derived from original iPhone 5 target: 72px / 568pt screen height
+                maxHeight = roundf(screenHeight * 0.127);
             }
             CGFloat scale = maxHeight / image.size.height;
             CGSize newSize = CGSizeMake(floorf(image.size.width * scale), floorf(image.size.height * scale));

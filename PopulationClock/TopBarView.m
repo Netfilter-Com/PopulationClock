@@ -70,15 +70,16 @@
         // Resize the mode segmented control
         [_modeSegmentedControl sizeToFit];
         
-        // Position it
-        _modeSegmentedControl.center = CGPointMake(160, self.bounds.size.height / 2);
+        // Position it in the left third of the bar
+        CGFloat panelWidth = roundf(self.bounds.size.width / 3.0);
+        _modeSegmentedControl.center = CGPointMake(panelWidth / 2.0, self.bounds.size.height / 2);
         
         // Resize the title label
         _titleLabel.font = [UIFont boldSystemFontOfSize:24];
         [_titleLabel sizeToFit];
         
-        // Position it
-        _titleLabel.center = CGPointMake(320 + 1 + 320, self.bounds.size.height / 2);
+        // Position it centered in the right two-thirds of the bar
+        _titleLabel.center = CGPointMake(panelWidth + (self.bounds.size.width - panelWidth) / 2.0, self.bounds.size.height / 2);
         
         // The rotate label and image view are visible
         _rotateLabel.alpha = 1;
@@ -90,7 +91,7 @@
         
         // Resize the mode segmented control
         CGRect frame = _modeSegmentedControl.frame;
-        frame.size.width = 320;
+        frame.size.width = roundf(self.bounds.size.width / 2.0);
         _modeSegmentedControl.frame = frame;
         
         // Position it

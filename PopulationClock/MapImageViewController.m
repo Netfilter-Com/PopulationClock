@@ -119,8 +119,8 @@
     // Find the touch center
     CGPoint center = [recognizer locationInView:self.mapImageView];
     
-    // Normalize the point
-    center = CGPointMake(center.x / _scrollView.frame.size.width, center.y / _scrollView.frame.size.height);
+    // Normalize the point relative to the map image view's own coordinate space
+    center = CGPointMake(center.x / self.mapImageView.bounds.size.width, center.y / self.mapImageView.bounds.size.height);
     
     // If the view controller was autorotating, the scroll view we're using to normalize the
     // center of the touch may have a different size already. If that's the case, we'll get
