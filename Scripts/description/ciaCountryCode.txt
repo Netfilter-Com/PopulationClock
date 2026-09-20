@@ -260,6 +260,7 @@ United Arab Emirates;AE;AE;ARE;784;ARE;.ae
 United Kingdom;UK;GB;GBR;826;GBR;.uk;
 United States;US;US;USA;840;USA;.us
 United States Minor Outlying Islands;-;UM;UMI;581;-;.um;
+Uruguay;UY;UY;URY;858;URY;.uy
 Uzbekistan;UZ;UZ;UZB;860;UZB;.uz
 Vanuatu;NH;VU;VUT;548;VUT;.vu
 Venezuela;VE;VE;VEN;862;VEN;.ve

@@ -1,12 +1,9 @@
-platform :ios, '13.0'
+platform :ios, '15.0'
 #use_frameworks!
 source 'https://github.com/CocoaPods/Specs.git'
 
 target 'PopulationClock' do
-pod 'Google-Mobile-Ads-SDK' 
-pod 'Appirater'
-pod 'MBProgressHUD'
+pod 'MBProgressHUD', '~> 1.2'
 pod 'SBTickerView'
 
 end
-

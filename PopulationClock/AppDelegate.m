@@ -6,12 +6,18 @@
 //  Copyright (c) 2012 NetFilter. All rights reserved.
 //
 
+#import <StoreKit/StoreKit.h>
+
 #import "AppDelegate.h"
-#import "Appirater.h"
 #import "InAppPurchaseManager.h"
 #import "NFCarouselViewController.h"
 #import "SimulationEngine.h"
 #import "UIColor+NFAppColors.h"
+
+#define REVIEW_PROMPT_FIRST_USE_DATE_KEY @"ReviewPromptFirstUseDate"
+#define REVIEW_PROMPT_USE_COUNT_KEY @"ReviewPromptUseCount"
+#define REVIEW_PROMPT_MIN_DAYS 5
+#define REVIEW_PROMPT_MIN_USES 7
 
 @implementation AppDelegate
 
@@ -38,20 +44,38 @@
     
     // Reset the simulation
     [[SimulationEngine sharedInstance] reset];
-    
-    // Set up appirater
-    [Appirater setAppId:@"590689957"];
-    [Appirater setDaysUntilPrompt:5];
-    [Appirater setUsesUntilPrompt:7];
-    [Appirater setTimeBeforeReminding:20];
-    [Appirater appEnteredForeground:YES];
-    
+
+    // Ask for a review once the user has had enough time with the app
+    [self requestReviewIfAppropriate];
+
     return YES;
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Reset the simulation
     [[SimulationEngine sharedInstance] reset];
+}
+
+- (void)requestReviewIfAppropriate {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+    NSDate *firstUseDate = [defaults objectForKey:REVIEW_PROMPT_FIRST_USE_DATE_KEY];
+    if (!firstUseDate) {
+        firstUseDate = [NSDate date];
+        [defaults setObject:firstUseDate forKey:REVIEW_PROMPT_FIRST_USE_DATE_KEY];
+    }
+
+    NSInteger useCount = [defaults integerForKey:REVIEW_PROMPT_USE_COUNT_KEY] + 1;
+    [defaults setInteger:useCount forKey:REVIEW_PROMPT_USE_COUNT_KEY];
+    [defaults synchronize];
+
+    NSTimeInterval daysSinceFirstUse = [[NSDate date] timeIntervalSinceDate:firstUseDate] / (60 * 60 * 24);
+    if (daysSinceFirstUse >= REVIEW_PROMPT_MIN_DAYS && useCount >= REVIEW_PROMPT_MIN_USES) {
+        UIWindowScene *scene = self.window.windowScene;
+        if (scene) {
+            [SKStoreReviewController requestReviewInScene:scene];
+        }
+    }
 }
 
 @end

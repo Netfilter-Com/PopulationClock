@@ -1,4 +1,3 @@
-from __future__ import print_function
 from os import path, sys
 sys.path.append(path.abspath(path.join(path.dirname(__file__), '..')))
 
@@ -32,8 +31,8 @@ DATA = [
         "key": "electricityAccess"
     },
     {
-        "filename": "EnergyProductionKT",
-        "key": "energyProduction"
+        "filename": "ElectricityConsumption",
+        "key": "electricityConsumption"
     },
     {
         "filename": "ForestAreaPercent",
@@ -62,10 +61,6 @@ DATA = [
     {
         "filename": "MobileUsersPer100",
         "key": "mobileUsersPer100"
-    },
-    {
-        "filename": "PassengerCarPer1000",
-        "key": "passengerCarPer1000"
     },
     {
         "filename": "PercentInternetUsers",
@@ -170,21 +165,17 @@ def main():
     for d in DATA:
         read_csv(d)
 
-    # Warn if there's any country without total population,
-    # birth or death rate
-    for country in processed.keys():
+    # Drop any country missing total population, birth rate, death rate
+    # or growth rate - the app's SimulationEngine and country list assume
+    # every entry has all four (e.g. it indexes a year cache by
+    # populationYear, which throws if that key is absent)
+    required = ("birthRate", "deathRate", "population", "growthRate")
+    for country in list(processed.keys()):
         ind = processed[country]
-        missing = []
-        if "birthRate" not in ind:
-            missing.append("birth rate")
-        if "deathRate" not in ind:
-            missing.append("death rate")
-        if "population" not in ind:
-            missing.append("population")
-        if "growthRate" not in ind:
-            missing.append("growth rate")
-        if len(missing) > 0:
-            print("Country with missing", ", ".join(missing) + ":", country)
+        missing = [f for f in required if f not in ind]
+        if missing:
+            print("Country with missing", ", ".join(missing) + ", dropping:", country)
+            del processed[country]
 
     # Create the plist
     doc = minidom.parseString("<plist><dict></dict></plist>")

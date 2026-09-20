@@ -10,8 +10,6 @@
 
 #import "CountryListViewController.h"
 #import "DataManager.h"
-#import "InAppPurchaseManager.h"
-#import "MBProgressHUD.h"
 #import "UIColor+NFAppColors.h"
 #import "UIViewController+NFSharing.h"
 
@@ -55,8 +53,6 @@
     
     int _numKeyboardsShowing;
     CGSize _keyboardSize;
-    
-    GADBannerView *_adView;
 }
 
 - (void)dealloc {
@@ -106,24 +102,6 @@
         // Add observers to the keyboard events
         [nc addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
         [nc addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-        
-        // Add the ad banner
-        AdManager *adManager = [AdManager sharedInstance];
-        adManager.delegate = self;
-        _adView = [adManager adBannerViewWithSize:kGADAdSizeBanner];
-        if (_adView) {
-            _adView.alpha = 0.0f;
-            _adView.delegate = self;
-            _adView.rootViewController = self;
-            [self.view addSubview:_adView];
-            [adManager doneConfiguringAdBannerView:_adView];
-            
-            CGRect frame = _adView.frame;
-            frame.origin.x = self.view.bounds.size.width - frame.size.width;
-            frame.origin.y = self.view.bounds.size.height - frame.size.height;
-            _adView.frame = frame;
-            _adView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
-        }
     }
 }
 
@@ -184,8 +162,7 @@ static inline UIViewAnimationOptions animationOptionsWithCurve(UIViewAnimationCu
     _keyboardSize = [notification.userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     
     // The keyboard size doesn't follow the orientation
-    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
-    if (UIInterfaceOrientationIsLandscape(orientation)) {
+    if (self.view.bounds.size.width > self.view.bounds.size.height) {
         CGFloat tmp = _keyboardSize.width;
         _keyboardSize.width = _keyboardSize.height;
         _keyboardSize.height = tmp;
@@ -218,8 +195,7 @@ static inline UIViewAnimationOptions animationOptionsWithCurve(UIViewAnimationCu
         return;
     
     // We have a different background image depending on the orientation
-    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
-    if (UIInterfaceOrientationIsLandscape(orientation))
+    if (self.view.bounds.size.width > self.view.bounds.size.height)
         _backgroundImageView.image = [UIImage imageNamed:@"bgListaHoriz"];
     else
         _backgroundImageView.image = [UIImage imageNamed:@"bgListaVert"];
@@ -362,56 +338,32 @@ static inline UIViewAnimationOptions animationOptionsWithCurve(UIViewAnimationCu
 
 - (NSArray *)extraToolbarItemsForCarouselViewController:(NFCarouselViewController *)controller
 {
-    UIBarButtonItem *removeAdsItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Remove ads", nil)
-                                                                      style:UIBarButtonItemStylePlain
-                                                                     target:self
-                                                                     action:@selector(removeAdsButtonTouched:)];
+    // There are no more ads to remove, so the "Remove ads" purchase is
+    // no longer offered here - see InAppPurchaseManager
     UIBarButtonItem *spacer = [[UIBarButtonItem alloc]
                                initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                target:nil action:nil];
-    
-    
+
+
     UIBarButtonItem *shareItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Share", nil)
                                                                   style:UIBarButtonItemStylePlain
                                                                  target:self
                                                                  action:@selector(shareButtonTouched:)];
-    
+
     UIBarButtonItem *aboutItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"About", nil)
                                                                   style:UIBarButtonItemStylePlain
                                                                  target:self
                                                                  action:@selector(aboutButtonTouched:)];
-    
-    
-    NSMutableArray *items = [NSMutableArray arrayWithCapacity:7];
+
+
+    NSMutableArray *items = [NSMutableArray arrayWithCapacity:5];
     [items addObject:spacer];
-    if (![InAppPurchaseManager sharedInstance].adsRemoved) {
-        [items addObject:removeAdsItem];
-        [items addObject:spacer];
-    }
     [items addObject:shareItem];
     [items addObject:spacer];
     [items addObject:aboutItem];
     [items addObject:spacer];
-    
-    return items;
-}
 
-- (void)removeAdsButtonTouched:(id)sender
-{
-    // Show the HUD
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:window animated:YES];
-    hud.labelText = NSLocalizedString(@"Contacting the App Store", @"");
-    hud.dimBackground = YES;
-    
-    // Purchase the option to remove ads
-    [[InAppPurchaseManager sharedInstance] purchaseRemoveAdsWithCallback:^(BOOL purchased) {
-        [MBProgressHUD hideHUDForView:window animated:YES];
-        if (purchased) {
-            NFCarouselViewController *controller = (NFCarouselViewController *)self.parentViewController;
-            [controller updateToolbarButtons];
-        }
-    }];
+    return items;
 }
 
 - (void)shareButtonTouched:(id)sender
@@ -429,18 +381,6 @@ static inline UIViewAnimationOptions animationOptionsWithCurve(UIViewAnimationCu
 - (void)aboutViewControllerDone:(AboutViewController *)controller
 {
     [(ModalDialogViewController *)self.parentViewController dismissCurrentModalDialogViewController];
-}
-
-- (void)adViewDidReceiveAd:(GADBannerView *)view
-{
-    [UIView animateWithDuration:0.3 animations:^{
-        _adView.alpha = 1.0f;
-    }];
-}
-
-- (void)adManagerShouldHideAdView:(AdManager *)manager
-{
-    [_adView removeFromSuperview];
 }
 
 @end

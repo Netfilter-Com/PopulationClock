@@ -1,5 +1,9 @@
-from constants import *
+import sys
+from os import path
 from xml.dom import minidom
+
+sys.path.append(path.abspath(path.join(path.dirname(__file__), '..')))
+from shared.constants import *
 
 def applyColorToPath(path, color):
     path.setAttribute("fill", color)

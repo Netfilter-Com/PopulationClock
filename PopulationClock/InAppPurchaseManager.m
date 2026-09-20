@@ -9,7 +9,7 @@
 #import "InAppPurchaseManager.h"
 
 NSString *InAppPurchaseManagerRetrievedProducts = @"InAppPurchaseManagerRetrievedProducts";
-NSString *InAppPurchaseManagerFaieldToRetrieveProducts = @"InAppPurchaseManagerFaieldToRetrieveProducts";
+NSString *InAppPurchaseManagerFailedToRetrieveProducts = @"InAppPurchaseManagerFailedToRetrieveProducts";
 NSString *InAppPurchasePurchasedRemoveAds = @"InAppPurchasePurchasedRemoveAds";
 
 #define REMOVE_ADS_PRODUCT_NAME @"REMOVE_ADS_POPCLOCK"
@@ -95,7 +95,7 @@ NSString *InAppPurchasePurchasedRemoveAds = @"InAppPurchasePurchasedRemoveAds";
     _retrievingProductData = NO;
     
     // Let the observers know
-    [[NSNotificationCenter defaultCenter] postNotificationName:InAppPurchaseManagerFaieldToRetrieveProducts object:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:InAppPurchaseManagerFailedToRetrieveProducts object:self];
 }
 
 - (NSString *)priceForProduct:(NSString *)identifier {

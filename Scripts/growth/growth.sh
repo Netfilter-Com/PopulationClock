@@ -2,4 +2,4 @@
 
 set -e
 
-PYTHONPATH=../shared python growth.py
+python3 growth.py

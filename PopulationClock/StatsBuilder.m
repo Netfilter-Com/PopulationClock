@@ -97,11 +97,7 @@ static NSString * const StatFormat = @"<div class=\"metric\"><span class=\"key\"
 }
 
 - (NSString *)formatCO2Emissions:(NSNumber *)number {
-    return [self formatBigNumber:@(number.floatValue * 1e3)];
-}
-
-- (NSString *)formatEnergyProduction:(NSNumber *)number {
-    return [self formatBigNumber:@(number.floatValue * 1e3)];
+    return [self formatBigNumber:number];
 }
 
 - (NSString *)statsStringForCountryCode:(NSString *)countryCode
@@ -123,18 +119,13 @@ static NSString * const StatFormat = @"<div class=\"metric\"><span class=\"key\"
     ADD_STAT(@"birthRate", NSLocalizedString(@"Crude birth rate (per 1,000 people)", @""), formatSmallNumber);
     ADD_STAT(@"deathRate", NSLocalizedString(@"Crude death rate (per 1,000 people)", @""), formatSmallNumber);
     ADD_STAT(@"growthRate", NSLocalizedString(@"Annual population growth", @""), formatPercentage);
-    ADD_STAT(@"healthExpensePercentGDP", NSLocalizedString(@"Health expenditure (% GDP)", @""), formatPercentage);
-    ADD_STAT(@"literacyRate", NSLocalizedString(@"Literacy rate", @""), formatPercentage);
-    ADD_STAT(@"govtEducationExpensePercentGDP", NSLocalizedString(@"Govt. education expenditure (% GDP)", @""), formatPercentage);
-    ADD_STAT(@"unemploymentRate", NSLocalizedString(@"Unenmployment rate", @""), formatPercentage);
+    ADD_STAT(@"healthExpensePercentGDP", NSLocalizedString(@"Current health expenditure (% GDP)", @""), formatPercentage);
     ADD_STAT(@"electricityAccess", NSLocalizedString(@"Access to electricity", @""), formatPercentage);
-    ADD_STAT(@"co2Emissions", NSLocalizedString(@"CO<sub>2</sub> emissions (kg/yr)", @""), formatCO2Emissions);
+    ADD_STAT(@"co2Emissions", NSLocalizedString(@"CO<sub>2</sub> emissions (kt)", @""), formatCO2Emissions);
     ADD_STAT(@"forestArea", NSLocalizedString(@"Forest area (% of land area)", @""), formatPercentage);
-    ADD_STAT(@"energyProduction", NSLocalizedString(@"Energy prod. (kg of oil equiv.)", @""), formatEnergyProduction);
+    ADD_STAT(@"electricityConsumption", NSLocalizedString(@"Electricity consumption (kWh)", @""), formatBigNumber);
     ADD_STAT(@"internetUsers", NSLocalizedString(@"Internet users", @""), formatPercentage);
     ADD_STAT(@"mobileUsersPer100", NSLocalizedString(@"Mobile phones (per 100 people)", @""), formatSmallNumber);
-    ADD_STAT(@"passengerCarPer1000", NSLocalizedString(@"Passenger cars (per 1,000 people)", @""), formatSmallNumber);
-    ADD_STAT(@"roadsPaved", NSLocalizedString(@"Roads paved", @""), formatPercentage);
 #undef ADD_STAT
     
     return stats;

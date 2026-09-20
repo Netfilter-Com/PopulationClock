@@ -9,12 +9,12 @@ ____
 The project uses the most recent data from these two trusted sources:
 
 - [World Development Indicators - The World Bank](http://databank.worldbank.org/)
-- [The World Factbook - CIA](https://www.cia.gov/library/publications/the-world-factbook/)
+- [The World Factbook - CIA](https://www.cia.gov/the-world-factbook/)
 
 ____
 Besides the iOS app, there are a few Python scripts to execute the following actions:
 
-- Scrape the country descriptions and energy production from the World Factbook.
+- Scrape the country descriptions and electricity consumption from the World Factbook.
 - Download the most recent indicators from World Databank using their JSON API (Some updates are quarterly and others yearly).
 - Generate plist file with all indicators and descriptions to use with Xcode.
 - With population growth data, create colored SVG map.
@@ -27,16 +27,15 @@ Here is a list of the metrics displayed in the app. Some countries do not have a
 - Birth rate, crude (per 1,000 people)
 - CO2 emissions (kt)
 - Death rate, crude (per 1,000 people)
-- Energy Production (kWh)
+- Electricity consumption (kWh)
 - Fertility rate, total (births per woman)
 - Forest area (% of land area)
 - GDP (constant LCU)
 - GDP growth (annual %)
 - GDP per capita (constant LCU)
-- Health expenditure, total (% of GDP)
-- Internet users (per 100 people)
+- Current health expenditure (% of GDP)
+- Internet users (% of population)
 - Life expectancy at birth, total (years)
 - Mobile cellular subscriptions (per 100 people)
-- Passenger cars (per 1,000 people)
 - Population growth (annual %)
 - Population, total

@@ -13,8 +13,6 @@
 
 @interface MainView : UIScrollView
 
-@property (nonatomic, weak) UIView *adView;
-
 - (void)addMapImageViewController:(MapImageViewController *)controller;
 - (void)addClockViewController:(ClockViewController *)controller;
 - (void)addCountryListViewController:(CountryListViewController *)controller;

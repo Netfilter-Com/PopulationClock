@@ -33,19 +33,20 @@ class Report:
     dir = 'csv'
     date = (2000, datetime.datetime.now().year)
     format = 'json'
-    page_limit = 10000
-    url = 'https://api.worldbank.org/v2/countries/all/indicators/{indicator}?'
+    page_limit = 20000
+    url = 'https://api.worldbank.org/v2/country/all/indicator/{indicator}?'
 
     @classmethod
     def from_string(cls, string):
         args = re.search(r'^\s*([\w\.]+)\s+([\w\.]+)\s*(.*)$', string).groups()
         return cls(*args)
 
-    def __init__(self, file, indicator, full_name, worldbank=True):
+    def __init__(self, file, indicator, full_name, worldbank=True, multiplier=1):
         self.full_name = full_name
         self.indicator = indicator
         self.file = file
         self.worldbank = worldbank
+        self.multiplier = multiplier
         self.meta = DictObj()
 
     @property
@@ -113,43 +114,62 @@ class Report:
                 continue
             recent.append(max(group, key=yearfunc))
 
-        for r in recent:
-            r.pop('indicator')
-
         if not recent:
             print('- Nothing to do:', self.full_name)
             return
 
+        # Label the column with the most recent year actually present in
+        # the selected data, not the year the pipeline happens to run in -
+        # WDI lags behind the current year by a year or two for most
+        # indicators.
+        years_present = [int(el.date) for el in recent if el.value is not None]
+        year = max(years_present) if years_present else self.date[-1]
+
+        for r in recent:
+            r.pop('indicator')
+
         with open(self.file_path, 'w') as file:
             writer = csv.writer(file, delimiter=';')
-            writer.writerow(['Country Code', self.date[-1]])
+            writer.writerow(['Country Code', year])
 
             for el in recent:
                 try:
                     code = countries[el.country.id].code(3, 'upper')
                 except KeyError:
                     code = 'WLD'
-                writer.writerow([code, el.value if el.value is not None else ''])
+                value = el.value
+                if value is not None and self.multiplier != 1:
+                    value = float(value) * self.multiplier
+                writer.writerow([code, value if value is not None else ''])
 
 
 def main():
     reports = [Report.from_string(x) for x in '''
-        BirthRate               SP.DYN.CBRT.IN    Birth rate, crude (per 1,000 people)
-        BirthsPerWoman          SP.DYN.TFRT.IN    Fertility rate, total (births per woman)
-        CO2E.KT                 EN.ATM.CO2E.KT    CO2 emissions (kt)
-        DeathRate               SP.DYN.CDRT.IN    Death rate, crude (per 1,000 people)
-        Description             .                 Country Description
-        ElectricityAccess       EG.ELC.ACCS.ZS    Access to electricity (% of population)
-        EnergyProductionKT      .                 Energy Production
-        ForestAreaPercent       AG.LND.FRST.ZS    Forest area (% of land area)
-        GDP                     NY.GDP.MKTP.PP.CD GDP, PPP (current international $)
-        GDP.GROWTH              NY.GDP.MKTP.KD.ZG GDP growth (annual %)
-        GDP.PCAP                NY.GDP.PCAP.KN    GDP per capita (constant LCU)
-        GrowthRate              SP.POP.GROW       Population growth (annual %)
-        HealthExpensePercentGDP SH.XPD.TOTL.ZS    Health expenditure, total (% of GDP)
-        LifeExpect              SP.DYN.LE00.IN    Life expectancy at birth, total (years)
-        TotalPopulation         SP.POP.TOTL       Population, total
+        BirthRate               SP.DYN.CBRT.IN       Birth rate, crude (per 1,000 people)
+        BirthsPerWoman          SP.DYN.TFRT.IN       Fertility rate, total (births per woman)
+        CO2E.KT                 EN.GHG.CO2.MT.CE.AR5 CO2 emissions (kt)
+        DeathRate               SP.DYN.CDRT.IN       Death rate, crude (per 1,000 people)
+        Description             .                    Country Description
+        ElectricityAccess       EG.ELC.ACCS.ZS       Access to electricity (% of population)
+        ElectricityConsumption  .                    Electricity Consumption
+        ForestAreaPercent       AG.LND.FRST.ZS       Forest area (% of land area)
+        GDP                     NY.GDP.MKTP.PP.CD    GDP, PPP (current international $)
+        GDP.GROWTH              NY.GDP.MKTP.KD.ZG    GDP growth (annual %)
+        GDP.PCAP                NY.GDP.PCAP.KN       GDP per capita (constant LCU)
+        GrowthRate              SP.POP.GROW          Population growth (annual %)
+        HealthExpensePercentGDP SH.XPD.CHEX.GD.ZS    Current health expenditure (% of GDP)
+        LifeExpect              SP.DYN.LE00.IN       Life expectancy at birth, total (years)
+        MobileUsersPer100       IT.CEL.SETS.P2       Mobile cellular subscriptions (per 100 people)
+        PercentInternetUsers    IT.NET.USER.ZS       Individuals using the Internet (% of population)
+        TotalPopulation         SP.POP.TOTL          Population, total
     '''.strip().splitlines()]
+
+    # EN.GHG.CO2.MT.CE.AR5 is reported in Mt CO2e; the old EN.ATM.CO2E.KT
+    # indicator (now deleted from WDI) was in kt. Multiply to preserve
+    # the existing kt-based formatCO2Emissions behavior in the app.
+    for r in reports:
+        if r.file == 'CO2E.KT':
+            r.multiplier = 1000
 
     for r in reports:
         r.generate_csv()

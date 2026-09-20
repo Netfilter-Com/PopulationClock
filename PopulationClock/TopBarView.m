@@ -62,8 +62,7 @@
         return;
     
     // We have a different layout depending on the orientation
-    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
-    if (UIInterfaceOrientationIsLandscape(orientation)) {
+    if (self.bounds.size.width > self.bounds.size.height) {
         // Set the background image
         _backgroundImageView.image = [UIImage imageNamed:@"barraHoriz"];
         

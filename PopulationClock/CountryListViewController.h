@@ -7,12 +7,9 @@
 //
 
 #import "AboutViewController.h"
-#import "AdManager.h"
 #import "NFCarouselViewController.h"
 
 @interface CountryListViewController : UIViewController <AboutViewControllerDelegate,
-														 AdManagerDelegate,
-														 GADBannerViewDelegate,
 														 NFCarouselDataSource,
 														 UITableViewDataSource,
 														 UITableViewDelegate,

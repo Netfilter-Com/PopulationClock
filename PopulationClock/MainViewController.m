@@ -19,10 +19,8 @@
     IBOutlet __weak UIToolbar *_toolbar;
     IBOutlet __weak UIBarButtonItem *_removeAdsButton;
     IBOutlet __weak UIView *_dimmedView;
-    
+
     CGPoint _legendOrigin;
-    
-    GADBannerView *_adView;
 }
 
 - (void)loadView {
@@ -60,27 +58,12 @@
     
     // Load the selected country from the saved state
     [SavedStateManager sharedInstance];
-    
-    // If the user has purchased the option to remove ads or if he is
-    // not able to purchase this option, get rid of the button
-    InAppPurchaseManager *iapmgr = [InAppPurchaseManager sharedInstance];
-    if (iapmgr.adsRemoved || !iapmgr.canMakePayments) {
-        // Get rid of the button
-        NSMutableArray *toolbarButtons = [_toolbar.items mutableCopy];
-        [toolbarButtons removeObject:_removeAdsButton];
-        _toolbar.items = toolbarButtons;
-    }
-    
-    // If the user has not purchased the option, show the ads
-    if (!iapmgr.adsRemoved) {
-        AdManager *adManager = [AdManager sharedInstance];
-        adManager.delegate = self;
-        _adView = [adManager adBannerViewWithSize:kGADAdSizeBanner];
-        _adView.rootViewController = self;
-        [(MainView *)self.view setAdView:_adView];
-        [self.view insertSubview:_adView belowSubview:_dimmedView];
-        [adManager doneConfiguringAdBannerView:_adView];
-    }
+
+    // There are no more ads to remove, so the purchase is restore-only
+    // now (see InAppPurchaseManager) - never show the "Remove ads" button
+    NSMutableArray *toolbarButtons = [_toolbar.items mutableCopy];
+    [toolbarButtons removeObject:_removeAdsButton];
+    _toolbar.items = toolbarButtons;
 }
 
 - (void)legendPanningGestureRecognized:(UIPanGestureRecognizer *)recognizer {
@@ -123,23 +106,14 @@
 - (IBAction)purchaseButtonTouched:(id)sender {
     // Show the HUD
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = NSLocalizedString(@"Contacting the App Store", @"");
-    hud.dimBackground = YES;
+    hud.label.text = NSLocalizedString(@"Contacting the App Store", @"");
+    hud.backgroundView.style = MBProgressHUDBackgroundStyleSolidColor;
+    hud.backgroundView.color = [UIColor colorWithWhite:0 alpha:0.2];
     
     // Purchase the option to remove ads
     [[InAppPurchaseManager sharedInstance] purchaseRemoveAdsWithCallback:^(BOOL purchased) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     }];
-}
-
-- (void)adManagerShouldHideAdView:(AdManager *)manager {
-    // Get rid of the ads once the user has purchased this option
-    [_adView removeFromSuperview];
-    
-    // Get rid of the button too
-    NSMutableArray *toolbarButtons = [_toolbar.items mutableCopy];
-    [toolbarButtons removeObject:_removeAdsButton];
-    _toolbar.items = toolbarButtons;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
