@@ -7,8 +7,7 @@
 //
 
 #import "AboutViewController.h"
-#import "AdManager.h"
 #import "ModalDialogViewController.h"
 
-@interface MainViewController : ModalDialogViewController <AboutViewControllerDelegate, AdManagerDelegate>
+@interface MainViewController : ModalDialogViewController <AboutViewControllerDelegate>
 @end

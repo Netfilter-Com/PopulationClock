@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 import re
 from xml.dom import minidom
@@ -16,9 +16,9 @@ def main():
                 continue
 
             # Extract the info we need
-            match = re.match("([A-Z]{2}); [^;]+; ([-]?\d+\.\d+); ([-]?\d+\.\d+)", line)
+            match = re.match(r"([A-Z]{2}); [^;]+; ([-]?\d+\.\d+); ([-]?\d+\.\d+)", line)
             if match == None:
-                print ">>> Error parsing line: " + line
+                print(">>> Error parsing line: " + line)
                 continue
 
             # Store everything in a list

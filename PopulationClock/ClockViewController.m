@@ -63,8 +63,7 @@
         return;
     
     // We have a different background image depending on the orientation
-    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
-    if (UIInterfaceOrientationIsLandscape(orientation))
+    if (self.view.bounds.size.width > self.view.bounds.size.height)
         _backgroundImageView.image = [UIImage imageNamed:@"bgClockHoriz"];
     else
         _backgroundImageView.image = [UIImage imageNamed:@"bgClockVert"];

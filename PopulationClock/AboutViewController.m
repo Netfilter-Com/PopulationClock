@@ -81,12 +81,12 @@
 
 - (IBAction)netfilterLogoTouched:(id)sender {
     NSURL *url = [NSURL URLWithString:@"http://www.netfilter.com/"];
-    [[UIApplication sharedApplication] openURL:url];
+    [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
 }
 
 - (IBAction)maquinarioLogoTouched:(id)sender {
     NSURL *url = [NSURL URLWithString:@"http://estudiomaquinario.com.br/"];
-    [[UIApplication sharedApplication] openURL:url];
+    [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
 }
 
 @end

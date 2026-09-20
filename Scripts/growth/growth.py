@@ -1,8 +1,8 @@
-from __future__ import print_function
 from xml.dom import minidom
 import csv
+import sys
+from os import path
 
-from os import sys, path
 sys.path.append(path.abspath(path.join(path.dirname(__file__), '..')))
 from shared.constants import *
 
@@ -51,7 +51,7 @@ def main():
     min_rate = 9999
     max_rate = -9999
     rates_per_country = {}
-    with open("../shared/growth_2011.csv", "r") as f:
+    with open("../data/csv/GrowthRate.csv", "r") as f:
         reader = csv.reader(f, delimiter=';')
         for row in reader:
             # Handle the header row

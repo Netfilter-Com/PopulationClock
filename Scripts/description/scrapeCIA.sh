@@ -2,4 +2,4 @@
 
 set -e
 
-PYTHONPATH=../shared python scrapCIA.py
+python3 scrapeCIA.py > Description.strings

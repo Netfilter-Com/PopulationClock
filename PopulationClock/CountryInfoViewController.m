@@ -107,8 +107,7 @@
         return;
     
     // We have a different background image depending on the orientation
-    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
-    if (UIInterfaceOrientationIsLandscape(orientation)) {
+    if (self.view.bounds.size.width > self.view.bounds.size.height) {
         // Set the background image
         _backgroundImageView.image = [UIImage imageNamed:@"bgInfoPaisHoriz"];
         

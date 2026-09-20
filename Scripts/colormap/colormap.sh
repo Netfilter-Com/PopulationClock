@@ -2,7 +2,7 @@
 
 set -e
 
-PYTHONPATH=../shared python colormap.py
+python3 colormap.py
 convert \
     -background black \
     -flatten -depth 8 \

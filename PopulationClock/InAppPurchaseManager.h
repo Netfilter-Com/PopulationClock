@@ -8,8 +8,12 @@
 
 #import <StoreKit/StoreKit.h>
 
+// TODO: StoreKit 2 (Transaction / Product.products(for:)) is Swift-only.
+// Migrating off StoreKit 1 here requires introducing Swift to this
+// otherwise all-Objective-C project, which is out of scope for now.
+
 extern NSString *InAppPurchaseManagerRetrievedProducts;
-extern NSString *InAppPurchaseManagerFaieldToRetrieveProducts;
+extern NSString *InAppPurchaseManagerFailedToRetrieveProducts;
 extern NSString *InAppPurchasePurchasedRemoveAds;
 
 @interface InAppPurchaseManager : NSObject <SKPaymentTransactionObserver, SKProductsRequestDelegate>

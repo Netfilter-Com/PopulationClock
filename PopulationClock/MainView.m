@@ -99,8 +99,7 @@ static inline UIViewAnimationOptions animationOptionsWithCurve(UIViewAnimationCu
     CGSize kbSize = [notification.userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     
     // The keyboard size doesn't follow the orientation
-    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
-    if (UIInterfaceOrientationIsLandscape(orientation)) {
+    if (self.bounds.size.width > self.bounds.size.height) {
         CGFloat tmp = kbSize.width;
         kbSize.width = kbSize.height;
         kbSize.height = tmp;
@@ -189,13 +188,7 @@ static inline UIViewAnimationOptions animationOptionsWithCurve(UIViewAnimationCu
     frame.origin.x = 0;
     frame.origin.y = mapSize.height - MAP_NAVIGATION_BAR_OVERLAP_PIXELS;
     _navigationBar.frame = frame;
-    
-    // Position the ad banner view
-    frame = _adView.frame;
-    frame.origin.x = self.bounds.size.width - _adView.frame.size.width;
-    frame.origin.y = _navigationBar.frame.origin.y - _adView.frame.size.height;
-    _adView.frame = frame;
-    
+
     if (_notFirstLayout) {
         // Position the legend
         CGSize newMapSize = _scrollView.frame.size;

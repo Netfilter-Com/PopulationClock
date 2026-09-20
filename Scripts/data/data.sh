@@ -2,4 +2,4 @@
 
 set -e
 
-PYTHONPATH=../shared python data.py
+python3 data.py

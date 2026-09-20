@@ -103,8 +103,7 @@
     if (!_selectedCountry)
         return;
 
-    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
-    BOOL isPortrait = UIInterfaceOrientationIsPortrait(orientation);
+    BOOL isPortrait = self.bounds.size.height >= self.bounds.size.width;
 
     dispatch_async(_backgroundQueue, ^{
         // Load the right template depending on the orientation
@@ -186,8 +185,7 @@
 
     BOOL isIpad = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad;
 
-    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
-    BOOL isPortrait = UIInterfaceOrientationIsPortrait(orientation);
+    BOOL isPortrait = self.bounds.size.height >= self.bounds.size.width;
 
     if (isIpad && !isPortrait) {
         gradient.colors = nil;
@@ -214,8 +212,7 @@
     if (self.bounds.size.width == 0 || self.bounds.size.height == 0)
         return;
 
-    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
-    BOOL isPortrait = UIInterfaceOrientationIsPortrait(orientation);
+    BOOL isPortrait = self.bounds.size.height >= self.bounds.size.width;
 
     if (isPortrait || UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         // Set the shadow path
