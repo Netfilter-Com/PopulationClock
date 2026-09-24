@@ -8,6 +8,8 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
+@property (assign, nonatomic) BOOL reviewRequestedThisLaunch;
+
+- (void)requestReviewIfAppropriateInScene:(UIWindowScene *)scene;
 
 @end

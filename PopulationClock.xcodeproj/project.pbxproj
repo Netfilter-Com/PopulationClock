@@ -591,6 +591,7 @@
 		EDA0C3A9167BAF1400CBECC4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA0C3A8167BAF1400CBECC4 /* CoreGraphics.framework */; };
 		EDA0C3B1167BAF1400CBECC4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA0C3B0167BAF1400CBECC4 /* main.m */; };
 		EDA0C3B5167BAF1400CBECC4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA0C3B4167BAF1400CBECC4 /* AppDelegate.m */; };
+		5CE000012D9A000100A1B2C3 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE000022D9A000100A1B2C3 /* SceneDelegate.m */; };
 		EDA0C3BE167BAF1400CBECC4 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDA0C3BC167BAF1400CBECC4 /* MainStoryboard.storyboard */; };
 		EDA0C3D6167BB23800CBECC4 /* CountryCoordinates.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA0C3CD167BB23800CBECC4 /* CountryCoordinates.m */; };
 		EDA0C3D7167BB23800CBECC4 /* CountryDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA0C3CF167BB23800CBECC4 /* CountryDetector.m */; };
@@ -1233,6 +1234,8 @@
 		EDA0C3B2167BAF1400CBECC4 /* PopulationClock-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PopulationClock-Prefix.pch"; sourceTree = "<group>"; };
 		EDA0C3B3167BAF1400CBECC4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		EDA0C3B4167BAF1400CBECC4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		5CE000022D9A000100A1B2C3 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		5CE000032D9A000100A1B2C3 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		EDA0C3BD167BAF1400CBECC4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		EDA0C3CC167BB23800CBECC4 /* CountryCoordinates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryCoordinates.h; sourceTree = "<group>"; };
 		EDA0C3CD167BB23800CBECC4 /* CountryCoordinates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryCoordinates.m; sourceTree = "<group>"; };
@@ -1818,6 +1821,8 @@
 				8248F1CD168CC6BC00717BA7 /* AboutViewController.m */,
 				EDA0C3B3167BAF1400CBECC4 /* AppDelegate.h */,
 				EDA0C3B4167BAF1400CBECC4 /* AppDelegate.m */,
+				5CE000032D9A000100A1B2C3 /* SceneDelegate.h */,
+				5CE000022D9A000100A1B2C3 /* SceneDelegate.m */,
 				ED23C58E1680A43E00005C5F /* ClockViewController.h */,
 				ED23C58F1680A43E00005C5F /* ClockViewController.m */,
 				EDF0F5B316CD6DBE001F9262 /* CountryCarouselView.h */,
@@ -2682,6 +2687,7 @@
 			files = (
 				EDA0C3B1167BAF1400CBECC4 /* main.m in Sources */,
 				EDA0C3B5167BAF1400CBECC4 /* AppDelegate.m in Sources */,
+				5CE000012D9A000100A1B2C3 /* SceneDelegate.m in Sources */,
 				EDA0C3D6167BB23800CBECC4 /* CountryCoordinates.m in Sources */,
 				EDA0C3D7167BB23800CBECC4 /* CountryDetector.m in Sources */,
 				EDA0C3D8167BB23800CBECC4 /* MainView.m in Sources */,
