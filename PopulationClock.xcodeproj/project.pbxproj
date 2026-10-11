@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED882AA0A0A0A0A0A0A0A0B1 /* country_flag_aq.png in Resources */ = {isa = PBXBuildFile; fileRef = ED882AA0A0A0A0A0A0A0A0A1 /* country_flag_aq.png */; };
+		ED882AA0A0A0A0A0A0A0A0B2 /* country_flag_aq@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED882AA0A0A0A0A0A0A0A0A2 /* country_flag_aq@2x.png */; };
 		6D0E41A1BB8A88EB51A8FFB2 /* libPods-PopulationClock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 30DED07AB717E8D7FE43650B /* libPods-PopulationClock.a */; };
 		8248F1CE168CC6BC00717BA7 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8248F1CD168CC6BC00717BA7 /* AboutViewController.m */; };
 		825C8B8F168B3B53009D357D /* country_flag_bl.png in Resources */ = {isa = PBXBuildFile; fileRef = 825C8B77168B3B52009D357D /* country_flag_bl.png */; };
@@ -620,6 +622,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ED882AA0A0A0A0A0A0A0A0A1 /* country_flag_aq.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = country_flag_aq.png; sourceTree = "<group>"; };
+		ED882AA0A0A0A0A0A0A0A0A2 /* country_flag_aq@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "country_flag_aq@2x.png"; sourceTree = "<group>"; };
 		27FC292071771B679991D81C /* Pods-PopulationClock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopulationClock.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopulationClock/Pods-PopulationClock.debug.xcconfig"; sourceTree = "<group>"; };
 		30DED07AB717E8D7FE43650B /* libPods-PopulationClock.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PopulationClock.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		446EC4135FA9F7200B59D31E /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
@@ -1315,6 +1319,8 @@
 				ED882A28168256D00084522F /* country_flag_af@2x.png */,
 				ED882A29168256D00084522F /* country_flag_ag.png */,
 				ED882A2A168256D00084522F /* country_flag_ag@2x.png */,
+				ED882AA0A0A0A0A0A0A0A0A1 /* country_flag_aq.png */,
+				ED882AA0A0A0A0A0A0A0A0A2 /* country_flag_aq@2x.png */,
 				ED882A2B168256D00084522F /* country_flag_ai.png */,
 				ED882A2C168256D00084522F /* country_flag_ai@2x.png */,
 				ED882A2D168256D00084522F /* country_flag_al.png */,
@@ -2135,6 +2141,8 @@
 				ED882BE0168256D00084522F /* country_flag_af@2x.png in Resources */,
 				ED882BE1168256D00084522F /* country_flag_ag.png in Resources */,
 				ED882BE2168256D00084522F /* country_flag_ag@2x.png in Resources */,
+				ED882AA0A0A0A0A0A0A0A0B1 /* country_flag_aq.png in Resources */,
+				ED882AA0A0A0A0A0A0A0A0B2 /* country_flag_aq@2x.png in Resources */,
 				ED882BE3168256D00084522F /* country_flag_ai.png in Resources */,
 				ED882BE4168256D00084522F /* country_flag_ai@2x.png in Resources */,
 				ED882BE5168256D00084522F /* country_flag_al.png in Resources */,

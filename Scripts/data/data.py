@@ -77,6 +77,19 @@ processed = {}
 
 mapCountries = []
 
+# Entries that have no World Bank data and are not in the map, so they can't
+# come from the CSVs. Antarctica has no permanent population: the figure is
+# the approximate number of people wintering at research stations.
+MANUAL_COUNTRIES = {
+    "aq": {
+        "birthRate": 0.0,
+        "deathRate": 0.0,
+        "growthRate": 0.0,
+        "population": 1000,
+        "populationYearValue": 2025,
+    },
+}
+
 
 def read_map_countries():
     # Open the base doc and get the root
@@ -176,6 +189,12 @@ def main():
         if missing:
             print("Country with missing", ", ".join(missing) + ", dropping:", country)
             del processed[country]
+
+    # Add the manually maintained entries
+    for country, ind in MANUAL_COUNTRIES.items():
+        ind = dict(ind)
+        ind["populationYear"] = ind.pop("populationYearValue")
+        processed[country] = ind
 
     # Create the plist
     doc = minidom.parseString("<plist><dict></dict></plist>")
