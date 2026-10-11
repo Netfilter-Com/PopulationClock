@@ -55,7 +55,10 @@
         navBarBackgroundName = @"barraTopo";
     }
     [_navigationBar setBackgroundImage:[UIImage imageNamed:navBarBackgroundName] forBarMetrics:UIBarMetricsDefault];
-    NSDictionary *attrs = @{NSForegroundColorAttributeName : [UIColor nf_orangeTextColor]};
+    NSDictionary *attrs = @{
+        NSForegroundColorAttributeName : [UIColor nf_orangeTextColor],
+        NSFontAttributeName : [UIFont boldSystemFontOfSize:17]
+    };
     [_navigationBar setTitleTextAttributes:attrs];
     
     // Set the background color

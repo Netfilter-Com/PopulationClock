@@ -21,8 +21,13 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Style all toolbar buttons
-    NSDictionary *attrs = @{NSForegroundColorAttributeName : [UIColor nf_orangeTextColor]};
+    // Style all toolbar buttons. The font size is fixed on purpose: the button
+    // artwork and the toolbar layout don't grow with the user's text size, so
+    // letting the system font scale would clip the titles.
+    NSDictionary *attrs = @{
+        NSForegroundColorAttributeName : [UIColor nf_orangeTextColor],
+        NSFontAttributeName : [UIFont systemFontOfSize:17]
+    };
     [[UIBarButtonItem appearance] setTitleTextAttributes:attrs forState:UIControlStateNormal];
     
     // Pre-load the IAP products and become a transaction observer
