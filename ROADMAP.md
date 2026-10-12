@@ -1,7 +1,7 @@
 # Population Clock — Roadmap
 
 **Status:** approved by the project owner, 2026-10-11.
-**Current release:** 2.1.0 (in App Store review). Adds Antarctica, refreshed flags, larger-text fixes.
+**Current release:** 2.1.0 (live on the App Store). Adds Antarctica, refreshed flags, larger-text fixes.
 
 Items are marked **verified** when checked against the repo or the app, and
 **to verify** when they are a hypothesis that must be confirmed first.
@@ -32,7 +32,7 @@ Consolidates the previously proposed 2.1.1, 2.2 and 2.3.
   - `info_template_landscape~iphone.html` has `margin: 8px 12px`, and the portrait template uses a fixed 280 px centered column, so both should be fine. Confirm on device, including a small iPhone and Display Zoom.
   - Fix: same margin/padding as the iPhone template, plus `env(safe-area-inset-*)` already present; use a `max-width` column instead of the fixed 280 px.
 - [x] **About text is stale.** It says the statistics cover 2007–2015, but `Resources/data.plist` has all 210 entries at 2025. *(verified)*
-- [ ] **Antarctica note.** Make clear in the country description or About text that its population is an estimate. *(2.1.0 mentions it in About only)*
+- [x] **Antarctica note.** The country description now says the population is an estimate of people wintering at research stations.
 - [ ] **Screens not checked with large text:** Country list, About, country info. *(to verify in the simulator; do it in the same screenshot pass as the dark-mode and margin items)*
 - [ ] **Stats panel in landscape** appeared cut off under the notch in a simulator screenshot. *(to verify)*
 - [ ] **Any flag still off in tone** after the 2.1.0 refresh. Flags were re-rendered from flagcdn.com. Left as is on purpose: Antarctica (drawn for the app), Afghanistan (owner's decision), Martinique (official French tricolor).
@@ -44,8 +44,8 @@ Consolidates the previously proposed 2.1.1, 2.2 and 2.3.
 - [ ] **Automated tests.** The repo has none. Start with data integrity (every country has a flag, name and colormap entry) and a large-text capture test.
 
 ### Localization (pt-BR)
-- [x] UI strings, country names and About text in Brazilian Portuguese (`PopulationClock/pt-BR.lproj`). *(checked on iPad in pt-BR; iPhone and the stats panel still to check. App Store notes pending)*
-- [x] Country descriptions: **keep the English CIA World Factbook text** (owner's decision). The About text should say so in pt-BR. *(to add)*
+- [x] UI strings, country names and About text in Brazilian Portuguese (`PopulationClock/pt-BR.lproj`). *(checked on iPad and on the iPhone main screen in pt-BR; iPhone Info/List panes not seen. App Store text drafted in `AppStore/pt-BR.md`)*
+- [x] Country descriptions: **keep the English CIA World Factbook text** (owner's decision). The pt-BR About text says so.
 
 ### Content and data
 - [ ] **Country descriptions** came from a scraper whose source URL has been dead since 2021. Decide whether to move to a live source or accept the current text. *(to verify what is current)*
