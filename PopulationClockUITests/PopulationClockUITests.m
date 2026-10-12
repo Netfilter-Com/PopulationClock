@@ -183,14 +183,14 @@
 
 #pragma mark - iPad landscape
 
-- (void)testIPadLandscape {
+- (void)iPadLandscapeWithLanguage:(NSString *)language tag:(NSString *)tag {
     if ([UIDevice currentDevice].userInterfaceIdiom != UIUserInterfaceIdiomPad) {
         return;
     }
     [XCUIDevice sharedDevice].orientation = UIDeviceOrientationLandscapeLeft;
-    XCUIApplication *app = [self launchWithLanguage:@"en" contentSize:nil];
+    XCUIApplication *app = [self launchWithLanguage:language contentSize:nil];
     [NSThread sleepForTimeInterval:3.0];
-    [self capture:@"01_main" tag:@"ipad_landscape"];
+    [self capture:@"01_main" tag:tag];
 
     [self tapSegment:app titles:@[ @"Country", @"País" ]];
     XCUIElement *cell = app.tables.cells.allElementsBoundByIndex[6];
@@ -198,12 +198,28 @@
         [cell tap];
         [NSThread sleepForTimeInterval:1.5];
     }
-    [self capture:@"02_country" tag:@"ipad_landscape"];
+    [self capture:@"02_country" tag:tag];
+
+    // The top bar buttons must not be covered by the title
+    XCUIElement *share = app.buttons[[language isEqualToString:@"pt-BR"] ? @"Compartilhar" : @"Share"];
+    XCUIElement *title = app.staticTexts[[language isEqualToString:@"pt-BR"] ? @"Relógio da População" : @"Population Clock"];
+    if (share.exists && title.exists) {
+        XCTAssertFalse(CGRectIntersectsRect(share.frame, title.frame),
+                       @"Share %@ overlaps the title %@", NSStringFromCGRect(share.frame), NSStringFromCGRect(title.frame));
+    }
 
     if ([self tapButtonIn:app containing:@[ @"About", @"Sobre" ]]) {
-        [self capture:@"03_about" tag:@"ipad_landscape"];
+        [self capture:@"03_about" tag:tag];
     }
     [XCUIDevice sharedDevice].orientation = UIDeviceOrientationPortrait;
+}
+
+- (void)testIPadLandscape {
+    [self iPadLandscapeWithLanguage:@"en" tag:@"ipad_landscape"];
+}
+
+- (void)testIPadLandscapePortuguese {
+    [self iPadLandscapeWithLanguage:@"pt-BR" tag:@"ipad_landscape_pt"];
 }
 
 #pragma mark - Walkthrough

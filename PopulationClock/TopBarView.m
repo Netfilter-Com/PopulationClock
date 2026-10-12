@@ -114,13 +114,6 @@
         CGFloat panelWidth = roundf(self.bounds.size.width / 3.0);
         _modeSegmentedControl.center = CGPointMake(panelWidth / 2.0, self.bounds.size.height / 2);
         
-        // Resize the title label
-        _titleLabel.font = [UIFont boldSystemFontOfSize:24];
-        [_titleLabel sizeToFit];
-        
-        // Position it centered in the right two-thirds of the bar
-        _titleLabel.center = CGPointMake(panelWidth + (self.bounds.size.width - panelWidth) / 2.0, self.bounds.size.height / 2);
-        
         // The rotate label and image view are visible
         _rotateLabel.alpha = 1;
         _rotateImageView.alpha = 1;
@@ -136,6 +129,30 @@
             button.hidden = NO;
             right = buttonFrame.origin.x;
         }
+        
+        // Resize the title label
+        _titleLabel.font = [UIFont boldSystemFontOfSize:24];
+        [_titleLabel sizeToFit];
+        
+        // It goes centered in the right two-thirds of the bar, unless that
+        // would run over the buttons (translated titles are longer): then it
+        // takes the space between the segmented control's panel and the
+        // buttons, and shrinks if even that is not enough
+        CGFloat minX = panelWidth + 8;
+        CGFloat maxX = right - 8;
+        CGRect titleFrame = _titleLabel.frame;
+        if (titleFrame.size.width > maxX - minX) {
+            _titleLabel.adjustsFontSizeToFitWidth = YES;
+            _titleLabel.minimumScaleFactor = 0.6;
+            titleFrame.size.width = maxX - minX;
+        }
+        CGFloat centerX = panelWidth + (self.bounds.size.width - panelWidth) / 2.0;
+        CGFloat halfWidth = titleFrame.size.width / 2.0;
+        centerX = MIN(centerX, maxX - halfWidth);
+        centerX = MAX(centerX, minX + halfWidth);
+        titleFrame.origin.x = centerX - halfWidth;
+        titleFrame.origin.y = (self.bounds.size.height - titleFrame.size.height) / 2.0;
+        _titleLabel.frame = titleFrame;
     }
     else {
         // Set the background image
