@@ -35,6 +35,7 @@ Consolidates the previously proposed 2.1.1, 2.2 and 2.3.
 - [x] **Antarctica note.** The country description now says the population is an estimate of people wintering at research stations.
 - [ ] **Screens not checked with large text:** Country list, About, country info. *(to verify in the simulator; do it in the same screenshot pass as the dark-mode and margin items)*
 - [x] **About dialog cut off on iPhone.** Found by the UI walkthrough: the dialog was sized as portrait in a landscape screen, so its text and Done button were off-screen. Fixed in `AboutViewController.loadView`.
+- [x] **About text did not fit** (longer pt-BR text hid the last paragraph on iPhone and iPad). The dialog is larger on iPad and the box taller on iPhone.
 - [ ] **Stats panel in landscape** appeared cut off under the notch in a simulator screenshot. *(to verify)*
 - [ ] **Any flag still off in tone** after the 2.1.0 refresh. Flags were re-rendered from flagcdn.com. Left as is on purpose: Antarctica (drawn for the app), Afghanistan (owner's decision), Martinique (official French tricolor).
 
@@ -42,7 +43,7 @@ Consolidates the previously proposed 2.1.1, 2.2 and 2.3.
 - [ ] **Dynamic Type** where the layout allows it (country list, About, country description). 2.1.0 only stops clipping by fixing sizes.
 - [ ] **VoiceOver:** labels for flags, the clock, the Info/List buttons and the map. The map is a tappable image with no accessible equivalent today.
 - [ ] **Auto Layout** in place of hard-coded frames on the screens most affected (iPad, landscape, Display Zoom).
-- [ ] **Automated tests.** *(UI walkthrough done: `PopulationClockUITests`, scheme `PopulationClockUITests`, 4 scenarios: en/pt-BR x default/largest accessibility size, captures every main screen. Run with `TEST_RUNNER_SCREENSHOT_DIR=<dir> xcodebuild test -workspace PopulationClock.xcworkspace -scheme PopulationClockUITests -destination 'id=<simulator>'`.)* Still missing: data integrity (every country has a flag, name and colormap entry) and iPad runs.
+- [ ] **Automated tests.** *(UI walkthrough done: `PopulationClockUITests`, scheme `PopulationClockUITests`, 4 scenarios: en/pt-BR x default/largest accessibility size, captures every main screen. Run with `TEST_RUNNER_SCREENSHOT_DIR=<dir> xcodebuild test -workspace PopulationClock.xcworkspace -scheme PopulationClockUITests -destination 'id=<simulator>'`.)* iPad runs pass too. Still missing: data integrity (every country has a flag, name and colormap entry).
 
 ### Localization (pt-BR)
 - [x] UI strings, country names and About text in Brazilian Portuguese (`PopulationClock/pt-BR.lproj`). *(checked on iPad and on the iPhone main screen in pt-BR; iPhone Info/List panes not seen. App Store text drafted in `AppStore/pt-BR.md`)*

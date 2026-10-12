@@ -11,6 +11,11 @@
 #import "AboutViewController.h"
 #import "UIColor+NFAppColors.h"
 
+// The text no longer fits the storyboard's 360x440 dialog on iPad (translations
+// are longer), so the dialog is made bigger and the content is stretched
+static const CGFloat kPadExtraWidth = 100;
+static const CGFloat kPadExtraHeight = 150;
+
 @implementation AboutViewController {
     IBOutlet __weak UINavigationBar *_navigationBar;
     IBOutlet __weak UIImageView *_textBackground;
@@ -24,7 +29,7 @@
     // view size, overriding the free form in the storyboard
     if (self.isViewLoaded) {
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-            self.view.bounds = CGRectMake(0, 0, 360, 440);
+            self.view.bounds = CGRectMake(0, 0, 360 + kPadExtraWidth, 440 + kPadExtraHeight);
         } else {
             // The iPhone app is landscape-only. UIScreen bounds follow the
             // interface orientation, so take the long side as the width
@@ -38,6 +43,40 @@
 }
 
 - (void)viewDidLoad {
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        // Lay the content out for the bigger dialog. Absolute frames on
+        // purpose: the autoresizing masks may already have resized the
+        // subviews when the bounds were changed in loadView
+        CGFloat dw = kPadExtraWidth;
+        CGFloat dh = kPadExtraHeight;
+        _navigationBar.frame = CGRectMake(0, 0, 360 + dw, 44);
+        _textBackground.frame = CGRectMake(35, 79, 290 + dw, 260 + dh);
+        _textView.frame = CGRectMake(45, 86, 270 + dw, 246 + dh);
+        
+        // The two logo buttons, left (NetFilter) then right (Maquinário)
+        NSMutableArray *buttons = [NSMutableArray array];
+        for (UIView *subview in self.view.subviews) {
+            if ([subview isKindOfClass:[UIButton class]]) {
+                [buttons addObject:subview];
+            }
+        }
+        if (buttons.count == 2) {
+            ((UIView *)buttons[0]).frame = CGRectMake(35, 366 + dh, 114, 39);
+            ((UIView *)buttons[1]).frame = CGRectMake(196 + dw, 357 + dh, 129, 48);
+        }
+    }
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        // There is free space between the text box and the logos in
+        // landscape, and the last paragraph was hidden below the fold
+        CGRect frame = _textBackground.frame;
+        frame.size.height += 70;
+        _textBackground.frame = frame;
+        frame = _textView.frame;
+        frame.size.height += 70;
+        _textView.frame = frame;
+    }
+    
     // Size to fit the navigation bar to correct
     // it for the landscape orientation
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
