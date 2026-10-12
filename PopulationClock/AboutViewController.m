@@ -14,7 +14,7 @@
 // The text no longer fits the storyboard's 360x440 dialog on iPad (translations
 // are longer), so the dialog is made bigger and the content is stretched
 static const CGFloat kPadExtraWidth = 100;
-static const CGFloat kPadExtraHeight = 150;
+static const CGFloat kPadExtraHeight = 215;
 
 @implementation AboutViewController {
     IBOutlet __weak UINavigationBar *_navigationBar;
@@ -70,10 +70,10 @@ static const CGFloat kPadExtraHeight = 150;
         // There is free space between the text box and the logos in
         // landscape, and the last paragraph was hidden below the fold
         CGRect frame = _textBackground.frame;
-        frame.size.height += 70;
+        frame.size.height += 85;
         _textBackground.frame = frame;
         frame = _textView.frame;
-        frame.size.height += 70;
+        frame.size.height += 85;
         _textView.frame = frame;
     }
     
@@ -93,7 +93,8 @@ static const CGFloat kPadExtraHeight = 150;
     
     // Follow the user's text size; the box scrolls, so it can grow a lot
     _textView.font = [[UIFontMetrics metricsForTextStyle:UIFontTextStyleBody]
-                      scaledFontForFont:[UIFont systemFontOfSize:14] maximumPointSize:40];
+                      scaledFontForFont:[UIFont systemFontOfSize:(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? 13 : 14)]
+                      maximumPointSize:40];
     _textView.adjustsFontForContentSizeCategory = YES;
     
     // The logo buttons have no title
