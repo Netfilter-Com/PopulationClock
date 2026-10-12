@@ -43,7 +43,7 @@ Consolidates the previously proposed 2.1.1, 2.2 and 2.3.
 - [x] **Dynamic Type.** Country list, search field, About text, clock label and the description/statistics panel follow the user's text size (the panel up to 30 px, the list up to 30 pt). Artwork-bound items stay fixed on purpose: toolbar buttons, segmented control, map legend and the flip-clock digits.
 - [x] **VoiceOver.** The clock reads as one element ("Population of Brazil", value = the number); the map has a label, a hint to use the list and the selected country as value; flags are named; arrows, carousel buttons and the logo links have labels; choosing a country from the list announces it. Covered by `testVoiceOverLabels`. *(Not yet tried with a real VoiceOver session on a device: the order of the elements and how often the clock value is read should be checked by ear.)*
 - [ ] **Auto Layout** in place of hard-coded frames on the screens most affected (iPad, landscape, Display Zoom).
-- [ ] **Automated tests.** *(UI walkthrough done: `PopulationClockUITests`, scheme `PopulationClockUITests`, 4 scenarios: en/pt-BR x default/largest accessibility size, captures every main screen. Run with `TEST_RUNNER_SCREENSHOT_DIR=<dir> xcodebuild test -workspace PopulationClock.xcworkspace -scheme PopulationClockUITests -destination 'id=<simulator>'`.)* iPad runs pass too. Still missing: data integrity (every country has a flag, name and colormap entry).
+- [ ] **Automated tests.** *(UI walkthrough done: `PopulationClockUITests`, scheme `PopulationClockUITests`, 4 scenarios: en/pt-BR x default/largest accessibility size, captures every main screen. Run with `TEST_RUNNER_SCREENSHOT_DIR=<dir> xcodebuild test -workspace PopulationClock.xcworkspace -scheme PopulationClockUITests -destination 'id=<simulator>'`.)* iPad runs pass too. Data integrity is covered by `python3 Scripts/check_data.py` (flag 1x/2x in the project, name, description, coordinates, numbers, pt-BR strings; exit 1 on errors). It is not wired into Xcode Cloud.
 
 ### Localization (pt-BR)
 - [x] UI strings, country names and About text in Brazilian Portuguese (`PopulationClock/pt-BR.lproj`). *(checked on iPad and on the iPhone main screen in pt-BR; iPhone Info/List panes not seen. App Store text drafted in `AppStore/pt-BR.md`)*
@@ -52,6 +52,8 @@ Consolidates the previously proposed 2.1.1, 2.2 and 2.3.
 ### Content and data
 - [ ] **Country descriptions** came from a scraper whose source URL has been dead since 2021. Decide whether to move to a live source or accept the current text. *(to verify what is current)*
 - [ ] **Single yearly data update script** (World Bank) with a report of what changed. Antarctica and other manual entries live in `MANUAL_COUNTRIES` in `Scripts/data/data.py`.
+- [ ] **Taiwan and Holy See have no data.** The 2025 World Bank refresh dropped them (commit 3672dec), so they are in the About text and have names and flags, but are not listed. Add them as manual entries (like Antarctica) or remove them from the About text. *(needs the owner's numbers)*
+- [ ] **18 territories have a map polygon but no data** (Anguilla, Saint Barthélemy, Cook Islands, Falklands, Guernsey, Gibraltar, Jersey, Montserrat, Nauru, Niue, Saint Pierre and Miquelon, Pitcairn, Saint Helena, British Virgin Islands, Wallis and Futuna, Mayotte, plus Taiwan and Holy See above): tapping them selects nothing. Listed by `check_data.py`.
 - [ ] **Small territories without a map polygon.** Only Antarctica is handled (`Scripts/colormap/add_antarctica.sh`). Audit the rest. *(to verify)*
 
 ## 3.0 — new features
