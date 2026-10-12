@@ -52,8 +52,8 @@ Consolidates the previously proposed 2.1.1, 2.2 and 2.3.
 - [x] Country descriptions: **keep the English CIA World Factbook text** (owner's decision). The pt-BR About text says so.
 
 ### Content and data
-- [ ] **Country descriptions** came from a scraper whose source URL has been dead since 2021. Decide whether to move to a live source or accept the current text. *(to verify what is current)*
-- [ ] **Single yearly data update script** (World Bank) with a report of what changed. Antarctica and other manual entries live in `MANUAL_COUNTRIES` in `Scripts/data/data.py`.
+- [x] **Country descriptions (CIA World Factbook).** *(decided 2026-10-12)* The CIA discontinued the Factbook in February 2026 and removed the site; the last public snapshot is from 2026-01-23. The text is frozen: `Resources/Description.strings` is now the source of truth (HTML cleaned up, Antarctica note added) and `scrapeCIA.py` is legacy and refuses to run without `--force`. The About text says the source was discontinued. Whether to move to a living source is deferred to 3.0.
+- [ ] **Single yearly data update script** (World Bank) with a report of what changed. `get_data.py` + `data.py` already do the work; what is missing is one command with a before/after diff. Electricity consumption now comes from the World Bank (kWh per capita x population, 147 countries), with the frozen Factbook figure as fallback for 51 countries the World Bank lacks. Manual entries live in `MANUAL_COUNTRIES` in `Scripts/data/data.py`.
 - [x] **Taiwan, Holy See and 15 small territories** now have manual entries in `MANUAL_COUNTRIES` (rounded estimates, 2021-2024; the About text says so). *(figures to be validated by the owner)* Mayotte stays without data because the app has no description text for it.
 - [ ] **Small territories without a map polygon.** Only Antarctica is handled (`Scripts/colormap/add_antarctica.sh`). Audit the rest. *(to verify)*
 

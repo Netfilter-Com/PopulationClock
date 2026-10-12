@@ -31,8 +31,18 @@ DATA = [
         "key": "electricityAccess"
     },
     {
-        "filename": "ElectricityConsumption",
+        # Frozen snapshot of the CIA World Factbook (discontinued in
+        # February 2026). Only used for countries the World Bank has no
+        # per capita figure for; the entry below overrides it
+        "filename": "ElectricityConsumptionFactbook",
         "key": "electricityConsumption"
+    },
+    {
+        # Not stored as is: data.py turns it into the total consumption
+        # (kWh) by multiplying by the population. The CIA World Factbook,
+        # which this used to come from, was discontinued in February 2026
+        "filename": "ElectricityPerCapita",
+        "key": "electricityPerCapita"
     },
     {
         "filename": "ForestAreaPercent",
@@ -300,6 +310,12 @@ def main():
     # Process the CSV files
     for d in DATA:
         read_csv(d)
+
+    # Total electricity consumption (kWh) = per capita consumption x population
+    for ind in processed.values():
+        per_capita = ind.pop("electricityPerCapita", None)
+        if per_capita is not None and "population" in ind:
+            ind["electricityConsumption"] = per_capita * ind["population"]
 
     # Drop any country missing total population, birth rate, death rate
     # or growth rate - the app's SimulationEngine and country list assume

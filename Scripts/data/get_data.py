@@ -151,7 +151,7 @@ def main():
         DeathRate               SP.DYN.CDRT.IN       Death rate, crude (per 1,000 people)
         Description             .                    Country Description
         ElectricityAccess       EG.ELC.ACCS.ZS       Access to electricity (% of population)
-        ElectricityConsumption  .                    Electricity Consumption
+        ElectricityPerCapita    EG.USE.ELEC.KH.PC    Electric power consumption (kWh per capita)
         ForestAreaPercent       AG.LND.FRST.ZS       Forest area (% of land area)
         GDP                     NY.GDP.MKTP.PP.CD    GDP, PPP (current international $)
         GDP.GROWTH              NY.GDP.MKTP.KD.ZG    GDP growth (annual %)

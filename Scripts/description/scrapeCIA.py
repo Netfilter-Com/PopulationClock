@@ -6,10 +6,16 @@
     https://github.com/factbook/factbook.json (the Factbook's own site
     has been JS-rendered and un-scrapable since the 2021 redesign).
 
+    LEGACY: the CIA discontinued the World Factbook in February 2026, so
+    there is nothing new to fetch, and Resources/Description.strings is now
+    the source of truth (it has been cleaned up by hand and has one added
+    note, for Antarctica, that a re-run would erase). Running this script
+    overwrites those edits, so it refuses to run without --force.
+
     Prints the country descriptions in .strings format to stdout
-    (run as: python3 scrapeCIA.py > ../../Resources/Description.strings)
-    and, as a side effect, writes
-    ../data/csv/ElectricityConsumption.csv for the data pipeline.
+    (python3 scrapeCIA.py --force > Description.strings). The electricity
+    consumption it used to write is now derived from the World Bank
+    (see ../data/data.py).
 
     factbook.json keys its files by the CIA's own two-letter GEC/FIPS
     country codes, not ISO 3166-1 alpha-2 (e.g. "gm" is Germany,
@@ -107,6 +113,10 @@ def parse_electricity_kwh(text):
 
 
 def main():
+    if '--force' not in sys.argv:
+        sys.exit('The World Factbook was discontinued and Resources/Description.strings '
+                 'has manual edits. Run with --force if you really want to re-fetch it.')
+
     iso_to_gec = load_iso_to_gec()
     region_index = build_region_index()
 
@@ -118,8 +128,6 @@ def main():
         iso2 = country.code(2).upper()
         gec = iso_to_gec.get(iso2)
         targets.append((country.code(2), gec, country.code(3, 'upper')))
-
-    electricity_rows = []
 
     for iso2_key, gec, iso3 in targets:
         if not gec:
@@ -143,17 +151,6 @@ def main():
         else:
             print('>>> No description for:', iso2_key, file=sys.stderr)
 
-        consumption_text = data.get('Energy', {}).get('Electricity', {}).get('consumption', {}).get('text')
-        kwh = parse_electricity_kwh(consumption_text)
-        if kwh is not None:
-            electricity_rows.append((iso3, kwh))
-
-    csv_path = path.join(path.dirname(__file__), '..', 'data', 'csv', 'ElectricityConsumption.csv')
-    with open(csv_path, 'w') as f:
-        writer = csv.writer(f, delimiter=';')
-        writer.writerow(['Country Code', datetime.datetime.now().year])
-        for iso3, kwh in electricity_rows:
-            writer.writerow([iso3, kwh])
 
 
 if __name__ == '__main__':
