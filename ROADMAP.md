@@ -1,7 +1,7 @@
 # Population Clock — Roadmap
 
 **Status:** approved by the project owner, 2026-10-11.
-**Current release:** 2.1.0 (live on the App Store). Adds Antarctica, refreshed flags, larger-text fixes.
+**Current release:** 2.1.0 (live on the App Store). 2.2.0 is built from this branch.
 
 Items are marked **verified** when checked against the repo or the app, and
 **to verify** when they are a hypothesis that must be confirmed first.
