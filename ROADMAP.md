@@ -20,18 +20,18 @@ Items are marked **verified** when checked against the repo or the app, and
 Consolidates the previously proposed 2.1.1, 2.2 and 2.3.
 
 ### Corrections
-- [ ] **Texts unreadable in dark mode.** *(cause verified in code; extent to verify with screenshots)*
+- [ ] **Texts unreadable in dark mode.** *(About text and search field fixed; rest to verify)* *(cause verified in code; extent to verify with screenshots)*
   The app forces dark (`UIUserInterfaceStyle = Dark` in `PopulationClock-Info.plist`), but most of the artwork is light (`debut_light`, `aboutBox`, `patternBgInfo`). Any text that uses a system color therefore renders light on light.
   - **About:** the `UITextView` in the storyboard never sets a text color, so it takes the dark-mode default (white) over the light `aboutBox` background. *(verified in code)*
   - **Country list:** cell titles are fixed gray (`#58595b`) and fine, but the search field, its placeholder and the "no results" state use system colors. *(to verify)*
   - **Alerts, HUD and any other system UI** shown over the light panels. *(to verify)*
   - **Decision to make:** keep forcing dark and set explicit colors where the artwork is light (small, safe), or move to a real light/dark theme (needs dark artwork; belongs in 3.0). Recommendation: explicit colors in 2.2.
-- [ ] **Country description (CIA Factbook text) has no margins on iPad.** *(reported by the owner on iPad; cause verified in code)*
+- [x] **Country description (CIA Factbook text) has no margins on iPad.** *(fixed in `info_template_landscape.html`; iPad portrait still to check)* *(reported by the owner on iPad; cause verified in code)*
   The text is the expanded description in the info panel (`info_template_*.html`, "[Read more]" expands it in place).
   - `info_template_landscape.html` (iPad landscape): `body` has no margin and `p` has no padding, so the text touches the panel edges. This matches the report. *(verified in code)* Check iPad portrait too, which uses the 280 px column.
   - `info_template_landscape~iphone.html` has `margin: 8px 12px`, and the portrait template uses a fixed 280 px centered column, so both should be fine. Confirm on device, including a small iPhone and Display Zoom.
   - Fix: same margin/padding as the iPhone template, plus `env(safe-area-inset-*)` already present; use a `max-width` column instead of the fixed 280 px.
-- [ ] **About text is stale.** It says the statistics cover 2007–2015, but `Resources/data.plist` has all 210 entries at 2025. *(verified)*
+- [x] **About text is stale.** It says the statistics cover 2007–2015, but `Resources/data.plist` has all 210 entries at 2025. *(verified)*
 - [ ] **Antarctica note.** Make clear in the country description or About text that its population is an estimate. *(2.1.0 mentions it in About only)*
 - [ ] **Screens not checked with large text:** Country list, About, country info. *(to verify in the simulator; do it in the same screenshot pass as the dark-mode and margin items)*
 - [ ] **Stats panel in landscape** appeared cut off under the notch in a simulator screenshot. *(to verify)*

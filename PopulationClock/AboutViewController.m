@@ -45,7 +45,11 @@
     
     // Set text here so we don't have to translate the storyboard
     _navigationBar.topItem.title = NSLocalizedString(@"About Population Clock", @"");
-    _textView.text = NSLocalizedString(@"Real-time events portrayed in this app represent the outcome of a computer simulation based on projected population count and growth, birth and death rates. The statistics used in the simulation cover the years 2007 to 2015 and were retrieved from The World Bank. Statistics for American Samoa, Antarctica (an estimate of the people wintering at research stations), Antigua and Barbuda, Dominica, Faroe Islands, Isle of Man, Holy See, Kiribati, Marshall Islands, Monaco, Northern Mariana Islands, Palau, Saint Kitts and Nevis, South Sudan, Taiwan, Turks and Caicos Islands and Tuvalu were partially or entirely obtained from Wikipedia. Descriptions for each of the countries presented in this app were retrieved from CIA's The World Factbook. The Antarctica flag is the unofficial one in common use, not an official flag.\n\nThis app is NOT endorsed by any of the aforementioned institutions.", @"");
+    _textView.text = NSLocalizedString(@"Real-time events portrayed in this app represent the outcome of a computer simulation based on projected population count and growth, birth and death rates. The statistics used in the simulation are from 2025 and were retrieved from The World Bank. Statistics for American Samoa, Antarctica (an estimate of the people wintering at research stations), Antigua and Barbuda, Dominica, Faroe Islands, Isle of Man, Holy See, Kiribati, Marshall Islands, Monaco, Northern Mariana Islands, Palau, Saint Kitts and Nevis, South Sudan, Taiwan, Turks and Caicos Islands and Tuvalu were partially or entirely obtained from Wikipedia. Descriptions for each of the countries presented in this app were retrieved from CIA's The World Factbook. The Antarctica flag is the unofficial one in common use, not an official flag.\n\nThis app is NOT endorsed by any of the aforementioned institutions.", @"");
+    
+    // The app is forced to dark mode but the box behind the text is light,
+    // so the default (white) text color would be unreadable
+    _textView.textColor = [UIColor colorWithRed:0x40/255.0 green:0x40/255.0 blue:0x40/255.0 alpha:1];
     
     // Set the navigation bar theme
     NSString *navBarBackgroundName;
