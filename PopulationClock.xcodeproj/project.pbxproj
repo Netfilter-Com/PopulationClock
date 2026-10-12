@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		ED882AA0A0A0A0A0A0A0A0B1 /* country_flag_aq.png in Resources */ = {isa = PBXBuildFile; fileRef = ED882AA0A0A0A0A0A0A0A0A1 /* country_flag_aq.png */; };
-		ED882AA0A0A0A0A0A0A0A0B2 /* country_flag_aq@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED882AA0A0A0A0A0A0A0A0A2 /* country_flag_aq@2x.png */; };
+		170B0DB79EF86A6E0993E5B2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25AA1E5C755565B2E2BA234E /* Foundation.framework */; };
+		4B70F04E26CEE5F3B6F5A360 /* PopulationClockUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A6250B4F1E21A76BB7BF81 /* PopulationClockUITests.m */; };
+		5CE000012D9A000100A1B2C3 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE000022D9A000100A1B2C3 /* SceneDelegate.m */; };
 		6D0E41A1BB8A88EB51A8FFB2 /* libPods-PopulationClock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 30DED07AB717E8D7FE43650B /* libPods-PopulationClock.a */; };
 		8248F1CE168CC6BC00717BA7 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8248F1CD168CC6BC00717BA7 /* AboutViewController.m */; };
 		825C8B8F168B3B53009D357D /* country_flag_bl.png in Resources */ = {isa = PBXBuildFile; fileRef = 825C8B77168B3B52009D357D /* country_flag_bl.png */; };
@@ -138,6 +139,11 @@
 		ED7FF1AD169B34F500123037 /* flap_full.png in Resources */ = {isa = PBXBuildFile; fileRef = ED7FF1A7169B34F400123037 /* flap_full.png */; };
 		ED7FF1AE169B34F500123037 /* flap_full@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED7FF1A8169B34F400123037 /* flap_full@2x.png */; };
 		ED7FF1B1169B3E1600123037 /* PopulationClockView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7FF1B0169B3E1600123037 /* PopulationClockView.m */; };
+		ED882AA0A0A0A0A0A0A0A0B1 /* country_flag_aq.png in Resources */ = {isa = PBXBuildFile; fileRef = ED882AA0A0A0A0A0A0A0A0A1 /* country_flag_aq.png */; };
+		ED882AA0A0A0A0A0A0A0A0B2 /* country_flag_aq@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED882AA0A0A0A0A0A0A0A0A2 /* country_flag_aq@2x.png */; };
+		ED882AB0A0A0A0A0A0A0A0C3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ED882AB0A0A0A0A0A0A0A0C1 /* Localizable.strings */; };
+		ED882AB0A0A0A0A0A0A0A0E3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ED882AB0A0A0A0A0A0A0A0E1 /* InfoPlist.strings */; };
+		ED882AC0A0A0A0A0A0A0A0F3 /* UIView+NFLocalization.m in Sources */ = {isa = PBXBuildFile; fileRef = ED882AC0A0A0A0A0A0A0A0F2 /* UIView+NFLocalization.m */; };
 		ED882BDB168256D00084522F /* country_flag_ad.png in Resources */ = {isa = PBXBuildFile; fileRef = ED882A23168256D00084522F /* country_flag_ad.png */; };
 		ED882BDC168256D00084522F /* country_flag_ad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED882A24168256D00084522F /* country_flag_ad@2x.png */; };
 		ED882BDD168256D00084522F /* country_flag_ae.png in Resources */ = {isa = PBXBuildFile; fileRef = ED882A25168256D00084522F /* country_flag_ae.png */; };
@@ -593,7 +599,6 @@
 		EDA0C3A9167BAF1400CBECC4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA0C3A8167BAF1400CBECC4 /* CoreGraphics.framework */; };
 		EDA0C3B1167BAF1400CBECC4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA0C3B0167BAF1400CBECC4 /* main.m */; };
 		EDA0C3B5167BAF1400CBECC4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA0C3B4167BAF1400CBECC4 /* AppDelegate.m */; };
-		5CE000012D9A000100A1B2C3 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE000022D9A000100A1B2C3 /* SceneDelegate.m */; };
 		EDA0C3BE167BAF1400CBECC4 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDA0C3BC167BAF1400CBECC4 /* MainStoryboard.storyboard */; };
 		EDA0C3D6167BB23800CBECC4 /* CountryCoordinates.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA0C3CD167BB23800CBECC4 /* CountryCoordinates.m */; };
 		EDA0C3D7167BB23800CBECC4 /* CountryDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA0C3CF167BB23800CBECC4 /* CountryDetector.m */; };
@@ -619,17 +624,27 @@
 		EDFC9D0F16CBC36C00D3B7BE /* map@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = EDFC9D0B16CBC36C00D3B7BE /* map@2x~iphone.png */; };
 		EDFC9D1016CBC36C00D3B7BE /* map~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = EDFC9D0C16CBC36C00D3B7BE /* map~iphone.png */; };
 		EDFC9D1316CBC8A800D3B7BE /* MapViewFlagViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFC9D1216CBC8A800D3B7BE /* MapViewFlagViewController_iPhone.m */; };
-		ED882AB0A0A0A0A0A0A0A0C3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ED882AB0A0A0A0A0A0A0A0C1 /* Localizable.strings */; };
-		ED882AB0A0A0A0A0A0A0A0E3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ED882AB0A0A0A0A0A0A0A0E1 /* InfoPlist.strings */; };
-		ED882AC0A0A0A0A0A0A0A0F3 /* UIView+NFLocalization.m in Sources */ = {isa = PBXBuildFile; fileRef = ED882AC0A0A0A0A0A0A0A0F2 /* UIView+NFLocalization.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		782184B9FEE3DB7372BACEE0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EDA0C397167BAF1400CBECC4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EDA0C39F167BAF1400CBECC4;
+			remoteInfo = PopulationClock;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		ED882AA0A0A0A0A0A0A0A0A1 /* country_flag_aq.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = country_flag_aq.png; sourceTree = "<group>"; };
-		ED882AA0A0A0A0A0A0A0A0A2 /* country_flag_aq@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "country_flag_aq@2x.png"; sourceTree = "<group>"; };
+		07A6250B4F1E21A76BB7BF81 /* PopulationClockUITests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = PopulationClockUITests.m; sourceTree = "<group>"; };
+		25AA1E5C755565B2E2BA234E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		27FC292071771B679991D81C /* Pods-PopulationClock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopulationClock.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopulationClock/Pods-PopulationClock.debug.xcconfig"; sourceTree = "<group>"; };
 		30DED07AB717E8D7FE43650B /* libPods-PopulationClock.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PopulationClock.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		446EC4135FA9F7200B59D31E /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		5CE000022D9A000100A1B2C3 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		5CE000032D9A000100A1B2C3 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		71008877B238A84E8A855F94 /* PopulationClockUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PopulationClockUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8248F1CC168CC6BC00717BA7 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		8248F1CD168CC6BC00717BA7 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		825C8B77168B3B52009D357D /* country_flag_bl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = country_flag_bl.png; sourceTree = "<group>"; };
@@ -904,6 +919,8 @@
 		ED882A9E168256D00084522F /* country_flag_fi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "country_flag_fi@2x.png"; sourceTree = "<group>"; };
 		ED882A9F168256D00084522F /* country_flag_fj.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = country_flag_fj.png; sourceTree = "<group>"; };
 		ED882AA0168256D00084522F /* country_flag_fj@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "country_flag_fj@2x.png"; sourceTree = "<group>"; };
+		ED882AA0A0A0A0A0A0A0A0A1 /* country_flag_aq.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = country_flag_aq.png; sourceTree = "<group>"; };
+		ED882AA0A0A0A0A0A0A0A0A2 /* country_flag_aq@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "country_flag_aq@2x.png"; sourceTree = "<group>"; };
 		ED882AA1168256D00084522F /* country_flag_fk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = country_flag_fk.png; sourceTree = "<group>"; };
 		ED882AA2168256D00084522F /* country_flag_fk@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "country_flag_fk@2x.png"; sourceTree = "<group>"; };
 		ED882AA3168256D00084522F /* country_flag_fm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = country_flag_fm.png; sourceTree = "<group>"; };
@@ -920,6 +937,9 @@
 		ED882AAE168256D00084522F /* country_flag_gd@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "country_flag_gd@2x.png"; sourceTree = "<group>"; };
 		ED882AAF168256D00084522F /* country_flag_ge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = country_flag_ge.png; sourceTree = "<group>"; };
 		ED882AB0168256D00084522F /* country_flag_ge@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "country_flag_ge@2x.png"; sourceTree = "<group>"; };
+		ED882AB0A0A0A0A0A0A0A0C2 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		ED882AB0A0A0A0A0A0A0A0D1 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/MainStoryboard.strings"; sourceTree = "<group>"; };
+		ED882AB0A0A0A0A0A0A0A0E2 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		ED882AB1168256D00084522F /* country_flag_gh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = country_flag_gh.png; sourceTree = "<group>"; };
 		ED882AB2168256D00084522F /* country_flag_gh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "country_flag_gh@2x.png"; sourceTree = "<group>"; };
 		ED882AB3168256D00084522F /* country_flag_gi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = country_flag_gi.png; sourceTree = "<group>"; };
@@ -936,6 +956,8 @@
 		ED882ABE168256D00084522F /* country_flag_gr@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "country_flag_gr@2x.png"; sourceTree = "<group>"; };
 		ED882ABF168256D00084522F /* country_flag_gs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = country_flag_gs.png; sourceTree = "<group>"; };
 		ED882AC0168256D00084522F /* country_flag_gs@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "country_flag_gs@2x.png"; sourceTree = "<group>"; };
+		ED882AC0A0A0A0A0A0A0A0F1 /* UIView+NFLocalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+NFLocalization.h"; sourceTree = "<group>"; };
+		ED882AC0A0A0A0A0A0A0A0F2 /* UIView+NFLocalization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+NFLocalization.m"; sourceTree = "<group>"; };
 		ED882AC1168256D00084522F /* country_flag_gt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = country_flag_gt.png; sourceTree = "<group>"; };
 		ED882AC2168256D00084522F /* country_flag_gt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "country_flag_gt@2x.png"; sourceTree = "<group>"; };
 		ED882AC3168256D00084522F /* country_flag_gu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = country_flag_gu.png; sourceTree = "<group>"; };
@@ -1241,8 +1263,6 @@
 		EDA0C3B2167BAF1400CBECC4 /* PopulationClock-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PopulationClock-Prefix.pch"; sourceTree = "<group>"; };
 		EDA0C3B3167BAF1400CBECC4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		EDA0C3B4167BAF1400CBECC4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		5CE000022D9A000100A1B2C3 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		5CE000032D9A000100A1B2C3 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		EDA0C3BD167BAF1400CBECC4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		EDA0C3CC167BB23800CBECC4 /* CountryCoordinates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryCoordinates.h; sourceTree = "<group>"; };
 		EDA0C3CD167BB23800CBECC4 /* CountryCoordinates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryCoordinates.m; sourceTree = "<group>"; };
@@ -1278,14 +1298,17 @@
 		EDFC9D0C16CBC36C00D3B7BE /* map~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map~iphone.png"; sourceTree = "<group>"; };
 		EDFC9D1116CBC8A800D3B7BE /* MapViewFlagViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewFlagViewController_iPhone.h; sourceTree = "<group>"; };
 		EDFC9D1216CBC8A800D3B7BE /* MapViewFlagViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewFlagViewController_iPhone.m; sourceTree = "<group>"; };
-		ED882AB0A0A0A0A0A0A0A0C2 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		ED882AB0A0A0A0A0A0A0A0D1 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/MainStoryboard.strings"; sourceTree = "<group>"; };
-		ED882AB0A0A0A0A0A0A0A0E2 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		ED882AC0A0A0A0A0A0A0A0F1 /* UIView+NFLocalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+NFLocalization.h"; sourceTree = "<group>"; };
-		ED882AC0A0A0A0A0A0A0A0F2 /* UIView+NFLocalization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+NFLocalization.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3EC7A11DA25D0D3A9A54B75D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				170B0DB79EF86A6E0993E5B2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EDA0C39D167BAF1400CBECC4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1314,6 +1337,14 @@
 				9521174D992B9488A5C8C907 /* Pods-PopulationClock.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		7B09AD2B8A9E845F5FD865AA /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				25AA1E5C755565B2E2BA234E /* Foundation.framework */,
+			);
+			name = iOS;
 			sourceTree = "<group>";
 		};
 		ED882A22168256D00084522F /* Flags */ = {
@@ -1799,6 +1830,7 @@
 				EDA0C3A3167BAF1400CBECC4 /* Frameworks */,
 				EDA0C3A1167BAF1400CBECC4 /* Products */,
 				516999B51AF4C26E85FCD8E0 /* Pods */,
+				FC5512F49474F117CC070368 /* PopulationClockUITests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1806,6 +1838,7 @@
 			isa = PBXGroup;
 			children = (
 				EDA0C3A0167BAF1400CBECC4 /* PopulationClock.app */,
+				71008877B238A84E8A855F94 /* PopulationClockUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1824,6 +1857,7 @@
 				EDA0C3A4167BAF1400CBECC4 /* UIKit.framework */,
 				825C8BD9168B4C9E009D357D /* WebKit.framework */,
 				30DED07AB717E8D7FE43650B /* libPods-PopulationClock.a */,
+				7B09AD2B8A9E845F5FD865AA /* iOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2027,9 +2061,36 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		FC5512F49474F117CC070368 /* PopulationClockUITests */ = {
+			isa = PBXGroup;
+			children = (
+				07A6250B4F1E21A76BB7BF81 /* PopulationClockUITests.m */,
+			);
+			name = PopulationClockUITests;
+			path = PopulationClockUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		3F306BACFF39CFF3D2AF958E /* PopulationClockUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46B0FE3DF50191B0D747A546 /* Build configuration list for PBXNativeTarget "PopulationClockUITests" */;
+			buildPhases = (
+				8EEE68F3E5E4C5E95FDF672A /* Sources */,
+				3EC7A11DA25D0D3A9A54B75D /* Frameworks */,
+				47A965D2A3177B9D7DAFC69D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3A9BBA7F2300FF4FD809CE04 /* PBXTargetDependency */,
+			);
+			name = PopulationClockUITests;
+			productName = PopulationClockUITests;
+			productReference = 71008877B238A84E8A855F94 /* PopulationClockUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		EDA0C39F167BAF1400CBECC4 /* PopulationClock */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EDA0C3C4167BAF1400CBECC4 /* Build configuration list for PBXNativeTarget "PopulationClock" */;
@@ -2098,11 +2159,19 @@
 			projectRoot = "";
 			targets = (
 				EDA0C39F167BAF1400CBECC4 /* PopulationClock */,
+				3F306BACFF39CFF3D2AF958E /* PopulationClockUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		47A965D2A3177B9D7DAFC69D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EDA0C39E167BAF1400CBECC4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2704,6 +2773,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8EEE68F3E5E4C5E95FDF672A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B70F04E26CEE5F3B6F5A360 /* PopulationClockUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EDA0C39C167BAF1400CBECC4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2747,16 +2824,16 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		EDA0C3BC167BAF1400CBECC4 /* MainStoryboard.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EDA0C3BD167BAF1400CBECC4 /* en */,
-				ED882AB0A0A0A0A0A0A0A0D1 /* pt-BR */,
-			);
-			name = MainStoryboard.storyboard;
-			sourceTree = "<group>";
+/* Begin PBXTargetDependency section */
+		3A9BBA7F2300FF4FD809CE04 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PopulationClock;
+			target = EDA0C39F167BAF1400CBECC4 /* PopulationClock */;
+			targetProxy = 782184B9FEE3DB7372BACEE0 /* PBXContainerItemProxy */;
 		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
 		ED882AB0A0A0A0A0A0A0A0C1 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -2773,9 +2850,53 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
+		EDA0C3BC167BAF1400CBECC4 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EDA0C3BD167BAF1400CBECC4 /* en */,
+				ED882AB0A0A0A0A0A0A0A0D1 /* pt-BR */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		4AF542B48B45D5E4EFE14CC0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PWFMZR3KY6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.netfilter.PopulationClockUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PopulationClock;
+			};
+			name = Debug;
+		};
+		E499C7A2D842CF733E73263A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PWFMZR3KY6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.netfilter.PopulationClockUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PopulationClock;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		EDA0C3C2167BAF1400CBECC4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2916,6 +3037,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		46B0FE3DF50191B0D747A546 /* Build configuration list for PBXNativeTarget "PopulationClockUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E499C7A2D842CF733E73263A /* Release */,
+				4AF542B48B45D5E4EFE14CC0 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		EDA0C39A167BAF1400CBECC4 /* Build configuration list for PBXProject "PopulationClock" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

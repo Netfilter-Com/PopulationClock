@@ -26,8 +26,13 @@
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
             self.view.bounds = CGRectMake(0, 0, 360, 440);
         } else {
+            // The iPhone app is landscape-only. UIScreen bounds follow the
+            // interface orientation, so take the long side as the width
+            // instead of assuming a portrait-sized screen
             CGSize winSize = [UIScreen mainScreen].bounds.size;
-            self.view.bounds = CGRectMake(0, 0, winSize.height - 60, winSize.width - 32);
+            CGFloat longSide = MAX(winSize.width, winSize.height);
+            CGFloat shortSide = MIN(winSize.width, winSize.height);
+            self.view.bounds = CGRectMake(0, 0, longSide - 60, shortSide - 32);
         }
     }
 }

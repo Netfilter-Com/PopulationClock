@@ -10,6 +10,7 @@
 #import "DataManager.h"
 #import "PopulationClockView.h"
 #import "UIColor+NFAppColors.h"
+#import "UIView+NFLocalization.h"
 
 @interface CountryInfoViewController_iPhone ()
 
@@ -31,6 +32,9 @@
 
 - (void)viewDidLoad
 {
+    // The iPhone storyboard is not localized
+    [self.view nf_localizeTexts];
+    
     // Set the background colors
     // Load the image for the text background
     self.leftPanel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"patternBgBandeira"]];

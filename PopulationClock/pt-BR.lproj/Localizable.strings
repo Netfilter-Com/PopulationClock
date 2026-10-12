@@ -6,6 +6,7 @@
 "Population Clock" = "Relógio da População";
 "About Population Clock" = "Sobre o Relógio da População";
 "POPULATION: " = "POPULAÇÃO: ";
+"POPULATION:" = "POPULAÇÃO:";
 "Population growth" = "Crescimento populacional";
 "Births" = "Nascem";
 "Deaths" = "Morrem";
