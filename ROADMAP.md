@@ -45,7 +45,7 @@ Consolidates the previously proposed 2.1.1, 2.2 and 2.3.
 
 ### Localization (pt-BR)
 - [x] UI strings, country names and About text in Brazilian Portuguese (`PopulationClock/pt-BR.lproj`). *(checked on iPad in pt-BR; iPhone and the stats panel still to check. App Store notes pending)*
-- [ ] Country descriptions: decide between keeping the English CIA World Factbook text and translating it.
+- [x] Country descriptions: **keep the English CIA World Factbook text** (owner's decision). The About text should say so in pt-BR. *(to add)*
 
 ### Content and data
 - [ ] **Country descriptions** came from a scraper whose source URL has been dead since 2021. Decide whether to move to a live source or accept the current text. *(to verify what is current)*
