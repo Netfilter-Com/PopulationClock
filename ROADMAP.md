@@ -23,7 +23,7 @@ Consolidates the previously proposed 2.1.1, 2.2 and 2.3.
 - [ ] **Texts unreadable in dark mode.** *(About text and search field fixed; rest to verify)* *(cause verified in code; extent to verify with screenshots)*
   The app forces dark (`UIUserInterfaceStyle = Dark` in `PopulationClock-Info.plist`), but most of the artwork is light (`debut_light`, `aboutBox`, `patternBgInfo`). Any text that uses a system color therefore renders light on light.
   - **About:** the `UITextView` in the storyboard never sets a text color, so it takes the dark-mode default (white) over the light `aboutBox` background. *(verified in code)*
-  - **Country list:** cell titles are fixed gray (`#58595b`) and fine, but the search field, its placeholder and the "no results" state use system colors. *(to verify)*
+  - **Country list:** gray titles on black cells were nearly unreadable, and the search field placeholder was white on white. *(fixed: transparent cells over the light pattern, explicit search colors; iPad screenshot checked)*
   - **Alerts, HUD and any other system UI** shown over the light panels. *(to verify)*
   - **Decision to make:** keep forcing dark and set explicit colors where the artwork is light (small, safe), or move to a real light/dark theme (needs dark artwork; belongs in 3.0). Recommendation: explicit colors in 2.2.
 - [x] **Country description (CIA Factbook text) has no margins on iPad.** *(fixed in `info_template_landscape.html`; iPad portrait still to check)* *(reported by the owner on iPad; cause verified in code)*

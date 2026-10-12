@@ -252,6 +252,10 @@ static inline UIViewAnimationOptions animationOptionsWithCurve(UIViewAnimationCu
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"country"];
         
+        // Dark mode gives cells a black background; the artwork is a light
+        // pattern behind the table, which is what the gray text was drawn for
+        cell.backgroundColor = [UIColor clearColor];
+        
         // Set the text color and font size
         cell.textLabel.textColor = [UIColor colorWithRed:0x58/255.0 green:0x59/255.0 blue:0x5b/255.0 alpha:1];
         cell.textLabel.font = [UIFont boldSystemFontOfSize:17];
