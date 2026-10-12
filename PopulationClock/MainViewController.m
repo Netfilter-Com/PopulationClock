@@ -12,6 +12,7 @@
 #import "MainViewController.h"
 #import "MBProgressHUD.h"
 #import "SavedStateManager.h"
+#import "UIView+NFLocalization.h"
 #import "UIViewController+NFSharing.h"
 
 @implementation MainViewController {
@@ -53,6 +54,9 @@
 }
 
 - (void)viewDidLoad {
+    // The iPad storyboard texts are in English; translate them
+    [self.view nf_localizeTexts];
+    
     // Set up pan gesture recognizers for the legend
     [_legend addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(legendPanningGestureRecognized:)]];
     

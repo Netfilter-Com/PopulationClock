@@ -79,7 +79,7 @@
     // Create the segmented control items
     NSMutableArray *items = [NSMutableArray arrayWithCapacity:_controllers.count];
     for (UIViewController *controller in _controllers) {
-        NSString *title = controller.title;
+        NSString *title = [self localizedTitleForController:controller];
         if (!title) {
             title = @"Unnamed";
         }
@@ -115,6 +115,18 @@
     
     // Update the toolbar buttons
     [self updateToolbarButtons];
+}
+
+#pragma mark -
+
+- (NSString *)localizedTitleForController:(UIViewController *)controller
+{
+    // The iPhone storyboard is not localized, so look the title up here
+    NSString *title = controller.title;
+    if (!title) {
+        return nil;
+    }
+    return [[NSBundle mainBundle] localizedStringForKey:title value:title table:nil];
 }
 
 #pragma mark -
@@ -200,7 +212,7 @@
     NSMutableArray *items = [NSMutableArray arrayWithCapacity:5];
     
     // Create and add the button to the list
-    NSString *title = ((UIViewController *)_controllers[_selectedController - 1]).title;
+    NSString *title = [self localizedTitleForController:_controllers[_selectedController - 1]];
     if (title) {
         // This is an ugly, ugly hack to avoid fixing the artwork
         title = [@"  " stringByAppendingString:title];
@@ -234,7 +246,7 @@
     }
     
     // Create and add the button to the list
-    title = ((UIViewController *)_controllers[_selectedController + 1]).title;
+    title = [self localizedTitleForController:_controllers[_selectedController + 1]];
     if (title) {
         // This is an ugly, ugly hack to avoid fixing the artwork
         title = [title stringByAppendingString:@"  "];

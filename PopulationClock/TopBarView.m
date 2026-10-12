@@ -26,6 +26,10 @@
     
     // Style the segmented control
     [_modeSegmentedControl setTintColor:[UIColor nf_orangeTextColor]];
+    
+    // Translations of this hint can be longer than the English one
+    _rotateLabel.adjustsFontSizeToFitWidth = YES;
+    _rotateLabel.minimumScaleFactor = 0.7;
 
     
     // Observe changes to the country selection

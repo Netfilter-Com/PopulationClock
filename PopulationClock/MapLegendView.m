@@ -63,6 +63,7 @@
     _titleLabel.text = NSLocalizedString(@"Population growth", @"");
     _birthsLabel.text = NSLocalizedString(@"Births", @"");
     _deathsLabel.text = NSLocalizedString(@"Deaths", @"");
+    [_birthsLabel sizeToFit];
     
     // Realign the deaths label
     [_deathsLabel sizeToFit];

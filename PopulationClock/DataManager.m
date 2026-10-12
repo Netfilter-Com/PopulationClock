@@ -308,7 +308,7 @@
         else if ([info2[@"code"] isEqualToString:@"world"])
             return NSOrderedDescending;
         else
-            return [info1[@"name"] compare:info2[@"name"] options:NSCaseInsensitiveSearch];
+            return [info1[@"name"] localizedCaseInsensitiveCompare:info2[@"name"]];
     }];
     
     return self;

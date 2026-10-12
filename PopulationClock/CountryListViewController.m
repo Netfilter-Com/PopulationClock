@@ -96,7 +96,7 @@
     UIColor *searchTextColor = [UIColor colorWithRed:0x40/255.0 green:0x40/255.0 blue:0x40/255.0 alpha:1];
     _searchTextField.textColor = searchTextColor;
     _searchTextField.attributedPlaceholder = [[NSAttributedString alloc]
-        initWithString:_searchTextField.placeholder ?: @""
+        initWithString:NSLocalizedString(@"Search", @"")
             attributes:@{ NSForegroundColorAttributeName : [UIColor colorWithRed:0x8a/255.0 green:0x8a/255.0 blue:0x8e/255.0 alpha:1] }];
     
     // Set up to receive text change notifications about changes to the search text field

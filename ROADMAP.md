@@ -44,7 +44,7 @@ Consolidates the previously proposed 2.1.1, 2.2 and 2.3.
 - [ ] **Automated tests.** The repo has none. Start with data integrity (every country has a flag, name and colormap entry) and a large-text capture test.
 
 ### Localization (pt-BR)
-- [ ] UI strings, country names, About text and App Store notes in Brazilian Portuguese.
+- [x] UI strings, country names and About text in Brazilian Portuguese (`PopulationClock/pt-BR.lproj`). *(checked on iPad in pt-BR; iPhone and the stats panel still to check. App Store notes pending)*
 - [ ] Country descriptions: decide between keeping the English CIA World Factbook text and translating it.
 
 ### Content and data

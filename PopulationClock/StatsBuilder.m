@@ -15,18 +15,26 @@ static NSString * const StatFormat = @"<div class=\"metric\"><span class=\"key\"
 
 - (void)adjustBigNumber:(NSNumber **)number suffix:(NSString **)suffix {
     // We want to divide into millions, billions and trillions
+    // Some languages (Portuguese, for one) inflect the unit, so there is a
+    // separate plural key; English falls back to the singular form
     float val = (*number).floatValue;
     if (val >= 1e12) {
         val /= 1e12;
-        *suffix = NSLocalizedString(@" trillion", @"");
+        *suffix = val >= 2
+            ? NSLocalizedStringWithDefaultValue(@" trillions", nil, [NSBundle mainBundle], @" trillion", @"")
+            : NSLocalizedString(@" trillion", @"");
     }
     else if (val >= 1e9) {
         val /= 1e9;
-        *suffix = NSLocalizedString(@" billion", @"");
+        *suffix = val >= 2
+            ? NSLocalizedStringWithDefaultValue(@" billions", nil, [NSBundle mainBundle], @" billion", @"")
+            : NSLocalizedString(@" billion", @"");
     }
     else if (val >= 1e6) {
         val /= 1e6;
-        *suffix = NSLocalizedString(@" million", @"");
+        *suffix = val >= 2
+            ? NSLocalizedStringWithDefaultValue(@" millions", nil, [NSBundle mainBundle], @" million", @"")
+            : NSLocalizedString(@" million", @"");
     }
     else {
         *suffix = @"";

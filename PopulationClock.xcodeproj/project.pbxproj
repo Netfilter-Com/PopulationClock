@@ -619,6 +619,9 @@
 		EDFC9D0F16CBC36C00D3B7BE /* map@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = EDFC9D0B16CBC36C00D3B7BE /* map@2x~iphone.png */; };
 		EDFC9D1016CBC36C00D3B7BE /* map~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = EDFC9D0C16CBC36C00D3B7BE /* map~iphone.png */; };
 		EDFC9D1316CBC8A800D3B7BE /* MapViewFlagViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = EDFC9D1216CBC8A800D3B7BE /* MapViewFlagViewController_iPhone.m */; };
+		ED882AB0A0A0A0A0A0A0A0C3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ED882AB0A0A0A0A0A0A0A0C1 /* Localizable.strings */; };
+		ED882AB0A0A0A0A0A0A0A0E3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ED882AB0A0A0A0A0A0A0A0E1 /* InfoPlist.strings */; };
+		ED882AC0A0A0A0A0A0A0A0F3 /* UIView+NFLocalization.m in Sources */ = {isa = PBXBuildFile; fileRef = ED882AC0A0A0A0A0A0A0A0F2 /* UIView+NFLocalization.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1275,6 +1278,11 @@
 		EDFC9D0C16CBC36C00D3B7BE /* map~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map~iphone.png"; sourceTree = "<group>"; };
 		EDFC9D1116CBC8A800D3B7BE /* MapViewFlagViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewFlagViewController_iPhone.h; sourceTree = "<group>"; };
 		EDFC9D1216CBC8A800D3B7BE /* MapViewFlagViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewFlagViewController_iPhone.m; sourceTree = "<group>"; };
+		ED882AB0A0A0A0A0A0A0A0C2 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		ED882AB0A0A0A0A0A0A0A0D1 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/MainStoryboard.strings"; sourceTree = "<group>"; };
+		ED882AB0A0A0A0A0A0A0A0E2 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		ED882AC0A0A0A0A0A0A0A0F1 /* UIView+NFLocalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+NFLocalization.h"; sourceTree = "<group>"; };
+		ED882AC0A0A0A0A0A0A0A0F2 /* UIView+NFLocalization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+NFLocalization.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1855,6 +1863,8 @@
 				EDF8D0811695BF3500FE02B1 /* InAppPurchaseManager.m */,
 				825C8BDB168B4C9F009D357D /* LaunchScreen.storyboard */,
 				EDA0C3BC167BAF1400CBECC4 /* MainStoryboard.storyboard */,
+				ED882AB0A0A0A0A0A0A0A0C1 /* Localizable.strings */,
+				ED882AB0A0A0A0A0A0A0A0E1 /* InfoPlist.strings */,
 				ED7769D616C41D0B00BC486F /* MainStoryboard_iPhone.storyboard */,
 				EDA0C3D0167BB23800CBECC4 /* MainView.h */,
 				EDA0C3D1167BB23800CBECC4 /* MainView.m */,
@@ -1889,6 +1899,8 @@
 				ED597E8D167FA55600038B75 /* TopBarView.m */,
 				ED7769EB16C434B500BC486F /* UIColor+NFAppColors.h */,
 				ED7769EC16C434B600BC486F /* UIColor+NFAppColors.m */,
+				ED882AC0A0A0A0A0A0A0A0F1 /* UIView+NFLocalization.h */,
+				ED882AC0A0A0A0A0A0A0A0F2 /* UIView+NFLocalization.m */,
 				ED7769E816C4318700BC486F /* UIViewController+NFSharing.h */,
 				ED7769E916C4318700BC486F /* UIViewController+NFSharing.m */,
 				832487F017E8F59500FE6B17 /* Images.xcassets */,
@@ -2057,6 +2069,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				"pt-BR",
 				ca,
 				cs,
 				da,
@@ -2096,6 +2109,8 @@
 			files = (
 				ADA7338F3AA114A5826BDFD1 /* PrivacyInfo.xcprivacy in Resources */,
 				EDA0C3BE167BAF1400CBECC4 /* MainStoryboard.storyboard in Resources */,
+				ED882AB0A0A0A0A0A0A0A0C3 /* Localizable.strings in Resources */,
+				ED882AB0A0A0A0A0A0A0A0E3 /* InfoPlist.strings in Resources */,
 				825C8BDA168B4C9F009D357D /* LaunchScreen.storyboard in Resources */,
 				EDA0C3E0167BB2F800CBECC4 /* colormap.plist in Resources */,
 				EDA0C3E1167BB2F800CBECC4 /* colormap.png in Resources */,
@@ -2717,6 +2732,7 @@
 				ED7769DE16C4232900BC486F /* StatsBuilder.m in Sources */,
 				ED7769EA16C4318800BC486F /* UIViewController+NFSharing.m in Sources */,
 				ED7769ED16C434B600BC486F /* UIColor+NFAppColors.m in Sources */,
+				ED882AC0A0A0A0A0A0A0A0F3 /* UIView+NFLocalization.m in Sources */,
 				ED7769F016C43A4700BC486F /* MapImageViewController.m in Sources */,
 				ED8F4E6816C5598100AC197C /* SavedStateManager.m in Sources */,
 				ED8F4E9C16C590A700AC197C /* NFCarouselViewController.m in Sources */,
@@ -2736,8 +2752,25 @@
 			isa = PBXVariantGroup;
 			children = (
 				EDA0C3BD167BAF1400CBECC4 /* en */,
+				ED882AB0A0A0A0A0A0A0A0D1 /* pt-BR */,
 			);
 			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+		ED882AB0A0A0A0A0A0A0A0C1 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ED882AB0A0A0A0A0A0A0A0C2 /* pt-BR */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		ED882AB0A0A0A0A0A0A0A0E1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ED882AB0A0A0A0A0A0A0A0E2 /* pt-BR */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
