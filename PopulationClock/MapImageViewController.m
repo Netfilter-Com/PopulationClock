@@ -24,6 +24,12 @@
     // Set the mask color for the map
     self.mapImageView.maskColor = [UIColor nf_mapMaskColor];
 
+    // The map is a picture: VoiceOver users pick the country from the list
+    self.mapImageView.isAccessibilityElement = YES;
+    self.mapImageView.accessibilityTraits = UIAccessibilityTraitImage;
+    self.mapImageView.accessibilityLabel = NSLocalizedString(@"World map", @"");
+    self.mapImageView.accessibilityHint = NSLocalizedString(@"Use the country list to choose a country", @"");
+
     // Set up the single tap gesture recognizer
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
     singleTap.numberOfTapsRequired = 1;
@@ -65,6 +71,7 @@
     // Perform the selection
     NSString *selection = notification.userInfo[SelectedCountryKey];
     _selectedCountry = [selection copy];
+    [self updateAccessibilityForSelection:selection announce:[notification.object isKindOfClass:[CountryListViewController class]]];
     [self.mapImageView deselectCurrentCountry];
     if (![selection isEqualToString:@"world"]) {
         [self.mapImageView selectCountry:selection];
@@ -74,6 +81,17 @@
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone
         && [notification.object isKindOfClass:[CountryListViewController class]]) {
         _scrollView.zoomScale = _scrollView.minimumZoomScale;
+    }
+}
+
+- (void)updateAccessibilityForSelection:(NSString *)selection announce:(BOOL)announce
+{
+    NSDictionary *info = [DataManager sharedDataManager].countryData[selection];
+    BOOL isCountry = info && ![selection isEqualToString:@"world"];
+    self.mapImageView.accessibilityValue = isCountry ? info[@"name"] : nil;
+    if (isCountry && announce) {
+        NSString *text = [NSString stringWithFormat:NSLocalizedString(@"%@ selected", @""), info[@"name"]];
+        UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, text);
     }
 }
 
@@ -155,6 +173,7 @@
     // Save the selection
     NSString *selection = country ? country : @"world";
     _selectedCountry = selection;
+    [self updateAccessibilityForSelection:selection announce:NO];
     
     // Let others know about this selection
     [[NSNotificationCenter defaultCenter] postNotificationName:CountrySelectionNotification object:self userInfo:@{SelectedCountryKey : selection}];

@@ -55,6 +55,12 @@
                                                  name:CountrySelectionNotification
                                                object:nil];
     
+    // The page follows the user's text size, so reload it when that changes
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(contentSizeCategoryChanged:)
+                                                 name:UIContentSizeCategoryDidChangeNotification
+                                               object:nil];
+    
     // Set the rounded corners
     self.layer.cornerRadius = 2.0f;
     self.layer.masksToBounds = YES;
@@ -88,6 +94,10 @@
 - (void)dealloc {
     // We are no longer observers
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)contentSizeCategoryChanged:(NSNotification *)notification {
+    [self updateCountrySelection];
 }
 
 - (void)countrySelectionChanged:(NSNotification *)notification {

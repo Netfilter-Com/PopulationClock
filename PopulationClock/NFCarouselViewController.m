@@ -223,6 +223,7 @@
                                                                    style:UIBarButtonItemStylePlain
                                                                   target:self
                                                                   action:@selector(rotateRight)];
+    buttonItem.accessibilityLabel = [title stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     [items addObject:buttonItem];
     
     // Style it
@@ -257,6 +258,7 @@
                                                   style:UIBarButtonItemStylePlain
                                                  target:self
                                                  action:@selector(rotateLeft)];
+    buttonItem.accessibilityLabel = [title stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     [items addObject:buttonItem];
     
     // Style it

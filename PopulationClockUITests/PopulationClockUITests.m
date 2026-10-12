@@ -97,6 +97,44 @@
     XCTFail(@"No segment with any of the titles %@", titles);
 }
 
+#pragma mark - VoiceOver
+
+// Finds an element by its accessibility label, whatever its type
+- (XCUIElement *)elementLabeled:(NSString *)label in:(XCUIApplication *)app {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"label == %@", label];
+    return [[app descendantsMatchingType:XCUIElementTypeAny] matchingPredicate:predicate].firstMatch;
+}
+
+- (void)testVoiceOverLabels {
+    XCUIApplication *app = [self launchWithLanguage:@"en" contentSize:nil];
+    [NSThread sleepForTimeInterval:3.0];
+    BOOL isPad = [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad;
+
+    // The map is not a silent picture
+    XCTAssertTrue([self elementLabeled:@"World map" in:app].exists, @"map has no accessibility label");
+
+    if (!isPad) {
+        // Go to the Info pane, where the clock and the flag live
+        [self tapButtonIn:app containing:@[ @"Info" ]];
+    }
+
+    // The clock is one element, with the population as its value
+    NSPredicate *clockPredicate = [NSPredicate predicateWithFormat:@"label BEGINSWITH %@", @"Population of "];
+    XCUIElement *clock = [[app descendantsMatchingType:XCUIElementTypeAny] matchingPredicate:clockPredicate].firstMatch;
+    XCTAssertTrue(clock.exists, @"clock has no accessibility label");
+    NSString *value = [clock.value description];
+    XCTAssertTrue(value.length > 0 && [value rangeOfString:@"0"].location != NSNotFound, @"clock value is %@", value);
+
+    // The arrows have names
+    XCTAssertTrue([self elementLabeled:@"Next country" in:app].exists, @"right arrow has no label");
+    XCTAssertTrue([self elementLabeled:@"Previous country" in:app].exists, @"left arrow has no label");
+
+    // The carousel toolbar buttons are not read with their padding spaces
+    if (!isPad) {
+        XCTAssertTrue(app.buttons[@"Map"].exists, @"carousel button label includes padding");
+    }
+}
+
 #pragma mark - Walkthrough
 
 - (void)walkthroughWithLanguage:(NSString *)language contentSize:(NSString *)contentSize tag:(NSString *)tag {

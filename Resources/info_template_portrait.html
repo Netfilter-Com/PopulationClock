@@ -15,6 +15,8 @@ jQuery.fn.shorten=function(e){var t={showChars:100,ellipsesText:"…",moreText:"
     -webkit-user-select: none;
 }
 body {
+    /* Follow Dynamic Type, but not past the point where the panel is unusable */
+    font-size: min(1em, 30px);
     background-color: transparent;
     margin-top: 30px; /* this is 35px - #name's padding-top / 2 */
     margin-bottom: 80px;
@@ -38,9 +40,15 @@ body {
         background: url(infoPaisNome@2x.png) no-repeat center center;
     }
 }
+html {
+    /* The base size is the user's body text size; the sizes below are em
+       relative to it (17px is the default) so they follow Dynamic Type */
+    font: -apple-system-body;
+    -webkit-text-size-adjust: 100%;
+}
 #description {
     font-family: "HelveticaNeue-Light";
-    font-size: 15px;
+    font-size: 0.882em; /* 15px at the default size */
     line-height: 150%;
     color: #040404;
     width: 280px;
@@ -50,7 +58,7 @@ body {
 }
 #description a {
     font-family: "HelveticaNeue-Medium";
-    font-size: 12px;
+    font-size: 0.8em;
     text-decoration: none;
     white-space: nowrap;
     color: #e8aa1d;
@@ -63,7 +71,7 @@ body {
     margin-bottom: 22px;
 }
 .metric {
-    font-size: 14px;
+    font-size: 0.824em; /* 14px at the default size */
     color: #4c4c4c;
     width: 280px;
     margin: 0 auto;

@@ -31,6 +31,12 @@
 
 @dynamic maskColor;
 
+- (BOOL)accessibilityActivate {
+    // A double tap from VoiceOver would otherwise tap the center of the map
+    // and pick whatever country happens to be there
+    return YES;
+}
+
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {

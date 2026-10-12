@@ -15,21 +15,27 @@ jQuery.fn.shorten=function(e){var t={showChars:100,ellipsesText:"…",moreText:"
     -webkit-user-select: none;
 }
 body {
+    /* Follow Dynamic Type, but not past the point where the panel is unusable */
+    font-size: min(1em, 30px);
     background-color: transparent;
     margin: 8px 12px;
     padding-left: env(safe-area-inset-left);
     padding-right: env(safe-area-inset-right);
 }
+html {
+    font: -apple-system-body;
+    -webkit-text-size-adjust: 100%;
+}
 #description {
     font-family: "HelveticaNeue-Light";
-    font-size: 14px;
+    font-size: 0.824em; /* 14px at the default size */
     line-height: 150%;
     color: #040404;
     margin-bottom: 15px;
 }
 #description a {
     font-family: "HelveticaNeue-Medium";
-    font-size: 12px;
+    font-size: 0.8em;
     text-decoration: none;
     white-space: nowrap;
     color: #e8aa1d;
@@ -45,7 +51,7 @@ body {
     margin: 0 auto;
     margin-bottom: 5px;
     color: #4c4c4c;
-    font-size: 10px;
+    font-size: 0.65em; /* 11px at the default size */
 }
 .metric .key {
     font-family: "HelveticaNeue-CondensedBold";

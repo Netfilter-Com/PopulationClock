@@ -40,8 +40,8 @@ Consolidates the previously proposed 2.1.1, 2.2 and 2.3.
 - [ ] **Any flag still off in tone** after the 2.1.0 refresh. Flags were re-rendered from flagcdn.com. Left as is on purpose: Antarctica (drawn for the app), Afghanistan (owner's decision), Martinique (official French tricolor).
 
 ### Accessibility and layout
-- [ ] **Dynamic Type** where the layout allows it (country list, About, country description). 2.1.0 only stops clipping by fixing sizes.
-- [ ] **VoiceOver:** labels for flags, the clock, the Info/List buttons and the map. The map is a tappable image with no accessible equivalent today.
+- [x] **Dynamic Type.** Country list, search field, About text, clock label and the description/statistics panel follow the user's text size (the panel up to 30 px, the list up to 30 pt). Artwork-bound items stay fixed on purpose: toolbar buttons, segmented control, map legend and the flip-clock digits.
+- [x] **VoiceOver.** The clock reads as one element ("Population of Brazil", value = the number); the map has a label, a hint to use the list and the selected country as value; flags are named; arrows, carousel buttons and the logo links have labels; choosing a country from the list announces it. Covered by `testVoiceOverLabels`. *(Not yet tried with a real VoiceOver session on a device: the order of the elements and how often the clock value is read should be checked by ear.)*
 - [ ] **Auto Layout** in place of hard-coded frames on the screens most affected (iPad, landscape, Display Zoom).
 - [ ] **Automated tests.** *(UI walkthrough done: `PopulationClockUITests`, scheme `PopulationClockUITests`, 4 scenarios: en/pt-BR x default/largest accessibility size, captures every main screen. Run with `TEST_RUNNER_SCREENSHOT_DIR=<dir> xcodebuild test -workspace PopulationClock.xcworkspace -scheme PopulationClockUITests -destination 'id=<simulator>'`.)* iPad runs pass too. Still missing: data integrity (every country has a flag, name and colormap entry).
 

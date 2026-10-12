@@ -39,6 +39,10 @@
     // Observe changes to the country selection
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(countrySelectionChanged:) 
                                                  name:CountrySelectionNotification object:nil];
+    
+    // The arrows are pictures
+    self.leftArrow.accessibilityLabel = NSLocalizedString(@"Previous country", @"");
+    self.rightArrow.accessibilityLabel = NSLocalizedString(@"Next country", @"");
 }
 
 - (void)countrySelectionChanged:(NSNotification *)notification
@@ -143,6 +147,15 @@
                 flag.layer.shouldRasterize = YES;
                 flag.layer.rasterizationScale = [UIScreen mainScreen].scale;
             }
+        }
+        
+        // Only the flag in the middle is the current selection
+        flag.isAccessibilityElement = (i == 1);
+        flag.accessibilityTraits = UIAccessibilityTraitImage;
+        if ([countryCode isEqualToString:@"world"]) {
+            flag.accessibilityLabel = info[@"name"];
+        } else {
+            flag.accessibilityLabel = [NSString stringWithFormat:NSLocalizedString(@"Flag of %@", @""), info[@"name"]];
         }
         
         // Save the flag and country code

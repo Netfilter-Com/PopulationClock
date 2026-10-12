@@ -91,6 +91,26 @@ static const CGFloat kPadExtraHeight = 150;
     _navigationBar.topItem.title = NSLocalizedString(@"About Population Clock", @"");
     _textView.text = NSLocalizedString(@"Real-time events portrayed in this app represent the outcome of a computer simulation based on projected population count and growth, birth and death rates. The statistics used in the simulation are from 2025 and were retrieved from The World Bank. Statistics for American Samoa, Antarctica (an estimate of the people wintering at research stations), Antigua and Barbuda, Dominica, Faroe Islands, Isle of Man, Holy See, Kiribati, Marshall Islands, Monaco, Northern Mariana Islands, Palau, Saint Kitts and Nevis, South Sudan, Taiwan, Turks and Caicos Islands and Tuvalu were partially or entirely obtained from Wikipedia. Descriptions for each of the countries presented in this app were retrieved from CIA's The World Factbook. The Antarctica flag is the unofficial one in common use, not an official flag.\n\nThis app is NOT endorsed by any of the aforementioned institutions.", @"");
     
+    // Follow the user's text size; the box scrolls, so it can grow a lot
+    _textView.font = [[UIFontMetrics metricsForTextStyle:UIFontTextStyleBody]
+                      scaledFontForFont:[UIFont systemFontOfSize:14] maximumPointSize:40];
+    _textView.adjustsFontForContentSizeCategory = YES;
+    
+    // The logo buttons have no title
+    NSMutableArray *logoButtons = [NSMutableArray array];
+    for (UIView *subview in self.view.subviews) {
+        if ([subview isKindOfClass:[UIButton class]]) {
+            [logoButtons addObject:subview];
+        }
+    }
+    if (logoButtons.count == 2) {
+        ((UIView *)logoButtons[0]).accessibilityLabel = NSLocalizedString(@"NetFilter website", @"");
+        ((UIView *)logoButtons[1]).accessibilityLabel = NSLocalizedString(@"Maquinário website", @"");
+        for (UIView *button in logoButtons) {
+            button.accessibilityTraits = UIAccessibilityTraitLink;
+        }
+    }
+    
     // The app is forced to dark mode but the box behind the text is light,
     // so the default (white) text color would be unreadable
     _textView.textColor = [UIColor colorWithRed:0x40/255.0 green:0x40/255.0 blue:0x40/255.0 alpha:1];

@@ -81,7 +81,11 @@
     
     // Set the table view background and row height
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"debut_light"]];
-    _tableView.rowHeight = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 44 : 36;
+    [self updateRowHeight];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(contentSizeCategoryChanged:)
+                                                 name:UIContentSizeCategoryDidChangeNotification
+                                               object:nil];
     
     // Style the search background
     _searchBackground.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"debut_light"]];
@@ -95,6 +99,10 @@
     // both the typed text and the placeholder white on white
     UIColor *searchTextColor = [UIColor colorWithRed:0x40/255.0 green:0x40/255.0 blue:0x40/255.0 alpha:1];
     _searchTextField.textColor = searchTextColor;
+    // The search field has a fixed height, so it gets a tighter limit
+    _searchTextField.font = [[UIFontMetrics metricsForTextStyle:UIFontTextStyleBody]
+                             scaledFontForFont:[UIFont systemFontOfSize:17] maximumPointSize:22];
+    _searchTextField.adjustsFontForContentSizeCategory = YES;
     _searchTextField.attributedPlaceholder = [[NSAttributedString alloc]
         initWithString:NSLocalizedString(@"Search", @"")
             attributes:@{ NSForegroundColorAttributeName : [UIColor colorWithRed:0x8a/255.0 green:0x8a/255.0 blue:0x8e/255.0 alpha:1] }];
@@ -242,6 +250,25 @@ static inline UIViewAnimationOptions animationOptionsWithCurve(UIViewAnimationCu
 
 #pragma mark -
 
+// The list rows are artwork-sized, so the text scales up to a limit
+- (UIFont *)scaledFontForListWithSize:(CGFloat)size bold:(BOOL)bold {
+    UIFont *font = bold ? [UIFont boldSystemFontOfSize:size] : [UIFont systemFontOfSize:size];
+    return [[UIFontMetrics metricsForTextStyle:UIFontTextStyleBody] scaledFontForFont:font maximumPointSize:30];
+}
+
+- (void)updateRowHeight {
+    CGFloat base = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 44 : 36;
+    _tableView.rowHeight = ceil([[UIFontMetrics metricsForTextStyle:UIFontTextStyleBody]
+                                 scaledValueForValue:base compatibleWithTraitCollection:self.traitCollection]);
+}
+
+- (void)contentSizeCategoryChanged:(NSNotification *)notification {
+    [self updateRowHeight];
+    [_tableView reloadData];
+}
+
+#pragma mark -
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _searchResult ? _searchResult.count : _countries.count;
 }
@@ -258,7 +285,11 @@ static inline UIViewAnimationOptions animationOptionsWithCurve(UIViewAnimationCu
         
         // Set the text color and font size
         cell.textLabel.textColor = [UIColor colorWithRed:0x58/255.0 green:0x59/255.0 blue:0x5b/255.0 alpha:1];
-        cell.textLabel.font = [UIFont boldSystemFontOfSize:17];
+        cell.textLabel.font = [self scaledFontForListWithSize:17 bold:YES];
+        cell.textLabel.adjustsFontForContentSizeCategory = YES;
+        // Long names shrink instead of wrapping so the rows keep their height
+        cell.textLabel.adjustsFontSizeToFitWidth = YES;
+        cell.textLabel.minimumScaleFactor = 0.6;
         
         // Style the selected view
         cell.selectedBackgroundView = [[CountryListSelectedBackgroundView alloc] initWithFrame:cell.bounds];

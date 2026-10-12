@@ -14,6 +14,7 @@
     IBOutlet __weak UIImageView *_backgroundImageView;
     IBOutlet __weak UILabel *_countryNameLabel;
     NSString *_selectedCountry;
+    NSString *_lastSelection;
 }
 
 - (void)dealloc {
@@ -22,6 +23,15 @@
 }
 
 - (void)viewDidLoad {
+    // The clock view announces the country and the population by itself
+    _countryNameLabel.isAccessibilityElement = NO;
+    
+    // Redo the label with the new size when the user changes the text size
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(contentSizeCategoryChanged:)
+                                                 name:UIContentSizeCategoryDidChangeNotification
+                                               object:nil];
+    
     // Observe changes to the country selection
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(countrySelectionChanged:)
@@ -29,25 +39,36 @@
                                                object:nil];
 }
 
+- (void)contentSizeCategoryChanged:(NSNotification *)notification {
+    if (_lastSelection) {
+        [self updateLabelForSelection:_lastSelection];
+    }
+}
+
 - (void)countrySelectionChanged:(NSNotification *)notification {
-    // Get the selection
-    NSString *selection = notification.userInfo[SelectedCountryKey];
+    [self updateLabelForSelection:notification.userInfo[SelectedCountryKey]];
+}
+
+- (void)updateLabelForSelection:(NSString *)selection {
+    _lastSelection = selection;
     
     // Get the text we'll use in the label
     NSDictionary *info = [DataManager sharedDataManager].countryData[selection];
     NSString *populationText = NSLocalizedString(@"POPULATION: ", @"");
     NSString *countryNameText = [info[@"name"] uppercaseString];
     
-    // Create the attributed string and update the label
+    // Create the attributed string and update the label; the sizes follow
+    // the user's text size up to a limit that keeps the clock layout intact
+    UIFontMetrics *metrics = [UIFontMetrics metricsForTextStyle:UIFontTextStyleBody];
     if (NSFontAttributeName == nil) {
         _countryNameLabel.text = [populationText stringByAppendingString:countryNameText];
     }
     else {
         NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:populationText attributes:@{
-            NSFontAttributeName : [UIFont systemFontOfSize:16]
+            NSFontAttributeName : [metrics scaledFontForFont:[UIFont systemFontOfSize:16] maximumPointSize:24]
         }];
         NSAttributedString *nameAttr = [[NSAttributedString alloc] initWithString:countryNameText attributes:@{
-            NSFontAttributeName : [UIFont boldSystemFontOfSize:16]
+            NSFontAttributeName : [metrics scaledFontForFont:[UIFont boldSystemFontOfSize:16] maximumPointSize:24]
         }];
         [str appendAttributedString:nameAttr];
          _countryNameLabel.attributedText = str;

@@ -85,6 +85,19 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+- (void)updateAccessibilityForPopulation:(long long)population
+{
+    // The ticker digits are images, so describe the whole clock as one element
+    NSDictionary *info = [DataManager sharedDataManager].countryData[_selectedCountry];
+    NSString *name = info[@"name"] ?: @"";
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    formatter.numberStyle = NSNumberFormatterDecimalStyle;
+    self.isAccessibilityElement = YES;
+    self.accessibilityTraits = UIAccessibilityTraitUpdatesFrequently;
+    self.accessibilityLabel = [NSString stringWithFormat:NSLocalizedString(@"Population of %@", @""), name];
+    self.accessibilityValue = [formatter stringFromNumber:@(population)];
+}
+
 - (void)updatePopulationClockAnimated:(BOOL)animated
 {
     NSNumber *number = [SimulationEngine sharedInstance].populationPerCountry[_selectedCountry];
@@ -145,13 +158,16 @@
 }
 
 - (void)setPopulation:(long long)population animated:(BOOL)animated {
-    // Nothing to do if the population didn't change
-    if (population == _currentPopulation)
+    // Nothing to do if the population didn't change (but the country may have)
+    if (population == _currentPopulation) {
+        [self updateAccessibilityForPopulation:population];
         return;
+    }
     
     // Save the old population and replace it
     __block long long oldPopulation = _currentPopulation;
     _currentPopulation = population;
+    [self updateAccessibilityForPopulation:population];
 
     dispatch_async(_backgroundQueue, ^{
         NSMutableArray *images = [NSMutableArray arrayWithCapacity:4];
