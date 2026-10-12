@@ -135,6 +135,31 @@
     }
 }
 
+#pragma mark - iPad landscape
+
+- (void)testIPadLandscape {
+    if ([UIDevice currentDevice].userInterfaceIdiom != UIUserInterfaceIdiomPad) {
+        return;
+    }
+    [XCUIDevice sharedDevice].orientation = UIDeviceOrientationLandscapeLeft;
+    XCUIApplication *app = [self launchWithLanguage:@"en" contentSize:nil];
+    [NSThread sleepForTimeInterval:3.0];
+    [self capture:@"01_main" tag:@"ipad_landscape"];
+
+    [self tapSegment:app titles:@[ @"Country", @"País" ]];
+    XCUIElement *cell = app.tables.cells.allElementsBoundByIndex[6];
+    if (cell.exists) {
+        [cell tap];
+        [NSThread sleepForTimeInterval:1.5];
+    }
+    [self capture:@"02_country" tag:@"ipad_landscape"];
+
+    if ([self tapButtonIn:app containing:@[ @"About", @"Sobre" ]]) {
+        [self capture:@"03_about" tag:@"ipad_landscape"];
+    }
+    [XCUIDevice sharedDevice].orientation = UIDeviceOrientationPortrait;
+}
+
 #pragma mark - Walkthrough
 
 - (void)walkthroughWithLanguage:(NSString *)language contentSize:(NSString *)contentSize tag:(NSString *)tag {
