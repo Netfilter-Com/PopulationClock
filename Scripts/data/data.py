@@ -79,7 +79,11 @@ mapCountries = []
 
 # Entries that have no World Bank data and are not in the map, so they can't
 # come from the CSVs. Antarctica has no permanent population: the figure is
-# the approximate number of people wintering at research stations.
+# the approximate number of people wintering at research stations. The other
+# entries are small territories (and Taiwan and the Holy See) that the World
+# Bank does not report: rounded figures from public national statistics
+# offices and encyclopedias for the year given, meant as estimates. Mayotte is
+# left out on purpose because the app has no description text for it.
 MANUAL_COUNTRIES = {
     "aq": {
         "birthRate": 0.0,
@@ -87,6 +91,125 @@ MANUAL_COUNTRIES = {
         "growthRate": 0.0,
         "population": 1000,
         "populationYearValue": 2025,
+    },
+    "tw": {
+        "birthRate": 5.8,
+        "deathRate": 8.6,
+        "growthRate": -0.2,
+        "population": 23400000,
+        "populationYearValue": 2024,
+    },
+    "va": {
+        "birthRate": 0.0,
+        "deathRate": 0.0,
+        "growthRate": 0.0,
+        "population": 764,
+        "populationYearValue": 2023,
+    },
+    "gi": {
+        "birthRate": 12.0,
+        "deathRate": 8.0,
+        "growthRate": 0.4,
+        "population": 34000,
+        "populationYearValue": 2024,
+    },
+    "je": {
+        "birthRate": 8.7,
+        "deathRate": 8.7,
+        "growthRate": 0.8,
+        "population": 103000,
+        "populationYearValue": 2023,
+    },
+    "gg": {
+        "birthRate": 8.0,
+        "deathRate": 9.5,
+        "growthRate": 0.1,
+        "population": 64400,
+        "populationYearValue": 2023,
+    },
+    "ck": {
+        "birthRate": 13.0,
+        "deathRate": 7.0,
+        "growthRate": -0.5,
+        "population": 15000,
+        "populationYearValue": 2023,
+    },
+    "ai": {
+        "birthRate": 11.0,
+        "deathRate": 6.0,
+        "growthRate": 0.9,
+        "population": 15900,
+        "populationYearValue": 2024,
+    },
+    "ms": {
+        "birthRate": 13.0,
+        "deathRate": 8.0,
+        "growthRate": 0.0,
+        "population": 4400,
+        "populationYearValue": 2023,
+    },
+    "fk": {
+        "birthRate": 11.0,
+        "deathRate": 8.0,
+        "growthRate": 0.4,
+        "population": 3700,
+        "populationYearValue": 2021,
+    },
+    "nr": {
+        "birthRate": 24.0,
+        "deathRate": 7.0,
+        "growthRate": 0.6,
+        "population": 12500,
+        "populationYearValue": 2023,
+    },
+    "nu": {
+        "birthRate": 11.0,
+        "deathRate": 7.0,
+        "growthRate": 0.0,
+        "population": 1600,
+        "populationYearValue": 2022,
+    },
+    "pm": {
+        "birthRate": 8.0,
+        "deathRate": 9.0,
+        "growthRate": -0.5,
+        "population": 5800,
+        "populationYearValue": 2022,
+    },
+    "pn": {
+        "birthRate": 0.0,
+        "deathRate": 0.0,
+        "growthRate": 0.0,
+        "population": 47,
+        "populationYearValue": 2023,
+    },
+    "sh": {
+        "birthRate": 10.0,
+        "deathRate": 11.0,
+        "growthRate": -0.5,
+        "population": 5600,
+        "populationYearValue": 2023,
+    },
+    "vg": {
+        "birthRate": 11.0,
+        "deathRate": 5.0,
+        "growthRate": 1.0,
+        "population": 31000,
+        "populationYearValue": 2023,
+    },
+    "wf": {
+        "birthRate": 11.0,
+        "deathRate": 6.0,
+        "growthRate": -1.0,
+        "population": 11500,
+        "populationYearValue": 2023,
+    },
+    "bl": {
+        "birthRate": 10.0,
+        "deathRate": 5.0,
+        "growthRate": 0.8,
+        "population": 10900,
+        "populationYearValue": 2021,
     },
 }
 

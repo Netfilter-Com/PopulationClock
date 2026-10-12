@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 NetFilter. All rights reserved.
 //
 
+#import "MainViewController.h"
 #import "TopBarView.h"
 #import "UIColor+NFAppColors.h"
 
@@ -15,6 +16,10 @@
     IBOutlet __weak UISegmentedControl *_modeSegmentedControl;
     IBOutlet __weak UIImageView *_rotateImageView;
     IBOutlet __weak UILabel *_rotateLabel;
+
+    // The bottom toolbar is hidden in landscape, so these two take its place
+    UIButton *_shareButton;
+    UIButton *_aboutButton;
 }
 
 - (void)awakeFromNib {
@@ -32,8 +37,40 @@
     _rotateLabel.minimumScaleFactor = 0.7;
 
     
+    // Share and About buttons, shown in landscape only
+    _shareButton = [self barButtonWithTitle:NSLocalizedString(@"Share", nil) action:@selector(barShareButtonTouched:)];
+    _aboutButton = [self barButtonWithTitle:NSLocalizedString(@"About", nil) action:@selector(barAboutButtonTouched:)];
+    
     // Observe changes to the country selection
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(countrySelectionChanged:) name:CountrySelectionNotification object:nil];
+}
+
+- (UIButton *)barButtonWithTitle:(NSString *)title action:(SEL)action {
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+    [button setTitle:title forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor nf_orangeTextColor] forState:UIControlStateNormal];
+    // Fixed size, like the other toolbar buttons: the bar is artwork
+    button.titleLabel.font = [UIFont systemFontOfSize:15];
+    [button sizeToFit];
+    CGRect frame = button.frame;
+    frame.size.height = 44;
+    frame.size.width += 16;
+    button.frame = frame;
+    [button addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
+    button.hidden = YES;
+    [self addSubview:button];
+    return button;
+}
+
+// The actions live in MainViewController: send them up the responder chain.
+// These handlers must not be named like the actions they send, or the
+// nil-targeted action would find them first and call itself forever
+- (void)barShareButtonTouched:(id)sender {
+    [[UIApplication sharedApplication] sendAction:@selector(ShareApp:) to:nil from:sender forEvent:nil];
+}
+
+- (void)barAboutButtonTouched:(id)sender {
+    [[UIApplication sharedApplication] sendAction:@selector(aboutButtonTouched:) to:nil from:sender forEvent:nil];
 }
 
 - (void)dealloc {
@@ -87,6 +124,18 @@
         // The rotate label and image view are visible
         _rotateLabel.alpha = 1;
         _rotateImageView.alpha = 1;
+        
+        // Share and About go to the left of the rotate hint, right aligned
+        CGFloat right = CGRectGetMinX(_rotateImageView.frame) - 8;
+        CGFloat midY = self.bounds.size.height / 2;
+        for (UIButton *button in @[ _aboutButton, _shareButton ]) {
+            CGRect buttonFrame = button.frame;
+            buttonFrame.origin.x = right - buttonFrame.size.width;
+            buttonFrame.origin.y = midY - buttonFrame.size.height / 2;
+            button.frame = buttonFrame;
+            button.hidden = NO;
+            right = buttonFrame.origin.x;
+        }
     }
     else {
         // Set the background image
@@ -107,9 +156,12 @@
         // Position it
         _titleLabel.center = CGPointMake(self.bounds.size.width * 3 / 4, self.bounds.size.height / 2);
         
-        // The rotate label and image view are hidden
+        // The rotate label and image view are hidden, and so are the buttons
+        // (the bottom toolbar has them in portrait)
         _rotateLabel.alpha = 0;
         _rotateImageView.alpha = 0;
+        _shareButton.hidden = YES;
+        _aboutButton.hidden = YES;
     }
 }
 

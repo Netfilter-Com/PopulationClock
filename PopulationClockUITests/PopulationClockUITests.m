@@ -123,7 +123,9 @@
     XCUIElement *clock = [[app descendantsMatchingType:XCUIElementTypeAny] matchingPredicate:clockPredicate].firstMatch;
     XCTAssertTrue(clock.exists, @"clock has no accessibility label");
     NSString *value = [clock.value description];
-    XCTAssertTrue(value.length > 0 && [value rangeOfString:@"0"].location != NSNotFound, @"clock value is %@", value);
+    // A number, grouped by the locale (the country may be a small one)
+    NSPredicate *number = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"[0-9][0-9,. ]*"];
+    XCTAssertTrue([number evaluateWithObject:value], @"clock value is '%@'", value);
 
     // The arrows have names
     XCTAssertTrue([self elementLabeled:@"Next country" in:app].exists, @"right arrow has no label");

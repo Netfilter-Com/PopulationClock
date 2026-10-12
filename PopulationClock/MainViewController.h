@@ -10,4 +10,9 @@
 #import "ModalDialogViewController.h"
 
 @interface MainViewController : ModalDialogViewController <AboutViewControllerDelegate>
+
+// Also sent from the iPad top bar, through the responder chain
+- (IBAction)ShareApp:(id)sender;
+- (IBAction)aboutButtonTouched:(id)sender;
+
 @end
