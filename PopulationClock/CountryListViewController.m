@@ -411,7 +411,7 @@ static inline UIViewAnimationOptions animationOptionsWithCurve(UIViewAnimationCu
 
 - (void)shareButtonTouched:(id)sender
 {
-    [self nf_presentShareViewControllerAnimated:YES];
+    [self nf_presentShareViewControllerFromSender:sender animated:YES];
 }
 
 - (void)aboutButtonTouched:(id)sender

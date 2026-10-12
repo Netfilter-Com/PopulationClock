@@ -137,6 +137,50 @@
     }
 }
 
+#pragma mark - Share
+
+// The share sheet crashed the app on iPad (popover without a source)
+- (void)checkShareIn:(XCUIApplication *)app tag:(NSString *)tag {
+    if (![self tapButtonIn:app containing:@[ @"Share", @"Compartilhar" ]]) {
+        return;
+    }
+    [NSThread sleepForTimeInterval:2.0];
+    XCTAssertEqual(app.state, XCUIApplicationStateRunningForeground, @"app is not running after Share");
+    [self capture:@"share" tag:tag];
+
+    // Dismiss: Close button on iPhone, tap outside the popover on iPad
+    XCUIElement *close = app.buttons[@"Close"];
+    if (!close.exists) {
+        close = app.buttons[@"Fechar"];
+    }
+    if (close.exists) {
+        [close tap];
+    } else {
+        [[app coordinateWithNormalizedOffset:CGVectorMake(0.02, 0.02)] tap];
+    }
+    [NSThread sleepForTimeInterval:1.0];
+    XCTAssertEqual(app.state, XCUIApplicationStateRunningForeground);
+}
+
+- (void)testShareDoesNotCrash {
+    XCUIApplication *app = [self launchWithLanguage:@"en" contentSize:nil];
+    [NSThread sleepForTimeInterval:3.0];
+    BOOL isPad = [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad;
+    if (!isPad) {
+        // Share is in the List pane's toolbar on iPhone
+        [self tapButtonIn:app containing:@[ @"List" ]];
+    }
+    [self checkShareIn:app tag:(isPad ? @"ipad_portrait" : @"iphone")];
+
+    if (isPad) {
+        // And from the top bar in landscape
+        [XCUIDevice sharedDevice].orientation = UIDeviceOrientationLandscapeLeft;
+        [NSThread sleepForTimeInterval:2.0];
+        [self checkShareIn:app tag:@"ipad_landscape"];
+        [XCUIDevice sharedDevice].orientation = UIDeviceOrientationPortrait;
+    }
+}
+
 #pragma mark - iPad landscape
 
 - (void)testIPadLandscape {

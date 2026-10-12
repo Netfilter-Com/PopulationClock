@@ -90,7 +90,7 @@
 }
 
 - (IBAction)ShareApp:(id)sender {
-    [self nf_presentShareViewControllerAnimated:YES];
+    [self nf_presentShareViewControllerFromSender:sender animated:YES];
 }
 
 - (IBAction)aboutButtonTouched:(id)sender {
