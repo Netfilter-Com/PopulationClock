@@ -7,7 +7,6 @@
 //
 
 #import "DataManager.h"
-#import "InAppPurchaseManager.h"
 #import "MainView.h"
 #import "MainViewController.h"
 #import "MBProgressHUD.h"
@@ -18,7 +17,6 @@
 @implementation MainViewController {
     IBOutlet __weak UIView *_legend;
     IBOutlet __weak UIToolbar *_toolbar;
-    IBOutlet __weak UIBarButtonItem *_removeAdsButton;
     IBOutlet __weak UIView *_dimmedView;
 
     CGPoint _legendOrigin;
@@ -62,12 +60,6 @@
     
     // Load the selected country from the saved state
     [SavedStateManager sharedInstance];
-
-    // There are no more ads to remove, so the purchase is restore-only
-    // now (see InAppPurchaseManager) - never show the "Remove ads" button
-    NSMutableArray *toolbarButtons = [_toolbar.items mutableCopy];
-    [toolbarButtons removeObject:_removeAdsButton];
-    _toolbar.items = toolbarButtons;
 }
 
 - (void)legendPanningGestureRecognized:(UIPanGestureRecognizer *)recognizer {
@@ -105,19 +97,6 @@
 - (void)aboutViewControllerDone:(AboutViewController *)controller {
     // Dismiss the current modal dialog
     [self dismissCurrentModalDialogViewController];
-}
-
-- (IBAction)purchaseButtonTouched:(id)sender {
-    // Show the HUD
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.label.text = NSLocalizedString(@"Contacting the App Store", @"");
-    hud.backgroundView.style = MBProgressHUDBackgroundStyleSolidColor;
-    hud.backgroundView.color = [UIColor colorWithWhite:0 alpha:0.2];
-    
-    // Purchase the option to remove ads
-    [[InAppPurchaseManager sharedInstance] purchaseRemoveAdsWithCallback:^(BOOL purchased) {
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-    }];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {

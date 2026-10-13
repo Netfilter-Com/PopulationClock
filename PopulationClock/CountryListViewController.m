@@ -381,8 +381,6 @@ static inline UIViewAnimationOptions animationOptionsWithCurve(UIViewAnimationCu
 
 - (NSArray *)extraToolbarItemsForCarouselViewController:(NFCarouselViewController *)controller
 {
-    // There are no more ads to remove, so the "Remove ads" purchase is
-    // no longer offered here - see InAppPurchaseManager
     UIBarButtonItem *spacer = [[UIBarButtonItem alloc]
                                initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                target:nil action:nil];

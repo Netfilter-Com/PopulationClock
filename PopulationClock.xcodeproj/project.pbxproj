@@ -618,7 +618,6 @@
 		EDADD8091684DAA1007E8BD5 /* globeVertical.png in Resources */ = {isa = PBXBuildFile; fileRef = EDADD8051684DAA1007E8BD5 /* globeVertical.png */; };
 		EDADD80A1684DAA1007E8BD5 /* globeVertical@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EDADD8061684DAA1007E8BD5 /* globeVertical@2x.png */; };
 		EDF0F5B516CD6DBF001F9262 /* CountryCarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF0F5B416CD6DBE001F9262 /* CountryCarouselView.m */; };
-		EDF8D0821695BF3500FE02B1 /* InAppPurchaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF8D0811695BF3500FE02B1 /* InAppPurchaseManager.m */; };
 		EDFC9D0D16CBC36C00D3B7BE /* colormap@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = EDFC9D0916CBC36C00D3B7BE /* colormap@2x~iphone.png */; };
 		EDFC9D0E16CBC36C00D3B7BE /* colormap~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = EDFC9D0A16CBC36C00D3B7BE /* colormap~iphone.png */; };
 		EDFC9D0F16CBC36C00D3B7BE /* map@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = EDFC9D0B16CBC36C00D3B7BE /* map@2x~iphone.png */; };
@@ -1288,8 +1287,6 @@
 		EDADD8061684DAA1007E8BD5 /* globeVertical@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "globeVertical@2x.png"; sourceTree = "<group>"; };
 		EDF0F5B316CD6DBE001F9262 /* CountryCarouselView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryCarouselView.h; sourceTree = "<group>"; };
 		EDF0F5B416CD6DBE001F9262 /* CountryCarouselView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryCarouselView.m; sourceTree = "<group>"; };
-		EDF8D0801695BF3500FE02B1 /* InAppPurchaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppPurchaseManager.h; sourceTree = "<group>"; };
-		EDF8D0811695BF3500FE02B1 /* InAppPurchaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppPurchaseManager.m; sourceTree = "<group>"; };
 		EDFC9D0916CBC36C00D3B7BE /* colormap@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "colormap@2x~iphone.png"; sourceTree = "<group>"; };
 		EDFC9D0A16CBC36C00D3B7BE /* colormap~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "colormap~iphone.png"; sourceTree = "<group>"; };
 		EDFC9D0B16CBC36C00D3B7BE /* map@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map@2x~iphone.png"; sourceTree = "<group>"; };
@@ -1891,8 +1888,6 @@
 				EDADD7F81684B2B9007E8BD5 /* DataManager.m */,
 				EDADD8001684D3D6007E8BD5 /* globals.h */,
 				EDADD8011684D3E1007E8BD5 /* globals.m */,
-				EDF8D0801695BF3500FE02B1 /* InAppPurchaseManager.h */,
-				EDF8D0811695BF3500FE02B1 /* InAppPurchaseManager.m */,
 				825C8BDB168B4C9F009D357D /* LaunchScreen.storyboard */,
 				EDA0C3BC167BAF1400CBECC4 /* MainStoryboard.storyboard */,
 				ED882AB0A0A0A0A0A0A0A0C1 /* Localizable.strings */,
@@ -2797,7 +2792,6 @@
 				EDADD7F91684B2B9007E8BD5 /* DataManager.m in Sources */,
 				EDADD8021684D3E1007E8BD5 /* globals.m in Sources */,
 				8248F1CE168CC6BC00717BA7 /* AboutViewController.m in Sources */,
-				EDF8D0821695BF3500FE02B1 /* InAppPurchaseManager.m in Sources */,
 				ED0E20AD169719AD005445B7 /* SimulationEngine.m in Sources */,
 				ED7FF18C169B1FD800123037 /* MapLegendView.m in Sources */,
 				ED7FF1B1169B3E1600123037 /* PopulationClockView.m in Sources */,

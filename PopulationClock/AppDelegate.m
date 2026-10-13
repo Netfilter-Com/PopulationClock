@@ -9,7 +9,6 @@
 #import <StoreKit/StoreKit.h>
 
 #import "AppDelegate.h"
-#import "InAppPurchaseManager.h"
 #import "SimulationEngine.h"
 #import "UIColor+NFAppColors.h"
 
@@ -29,9 +28,6 @@
         NSFontAttributeName : [UIFont systemFontOfSize:17]
     };
     [[UIBarButtonItem appearance] setTitleTextAttributes:attrs forState:UIControlStateNormal];
-    
-    // Pre-load the IAP products and become a transaction observer
-    [InAppPurchaseManager sharedInstance];
     
     // Reset the simulation
     [[SimulationEngine sharedInstance] reset];

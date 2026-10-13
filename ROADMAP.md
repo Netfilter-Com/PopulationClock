@@ -44,11 +44,14 @@ Items are marked **verified** when checked against the repo or the app, and
 - [ ] **Alerts, HUD and other system UI** over the light panels in dark mode were not reviewed.
 - [ ] **Dynamic Type limits.** At the largest accessibility size the description panel is capped at 30 px and the list at 30 pt; toolbar buttons, segmented control, legend and flip-clock stay fixed. Revisit if users report it.
 
+## Done after 2.2.0 (goes out in the next release)
+- **Remove Ads purchase removed.** `InAppPurchaseManager`, the hidden toolbar button and its strings are gone; nothing read the purchase flag, so existing purchasers lose nothing. StoreKit stays linked for the review prompt. In App Store Connect the product `REMOVE_ADS_POPCLOCK` can be set to *Remove from Sale* (not required).
+- **Share card:** the share sheet now carries a 1080x1350 image with the flag (or globe), name and live population of the selected country, next to the text.
+- **iPad portrait description** used the landscape template (light text on a light panel).
+
 ## 3.0 — new features
 
-- [ ] **Remove the leftover "Remove Ads" purchase.** Ads are already gone. Check what the user still sees and whether the in-app purchase can be dropped. Existing purchasers must not be broken. *(to verify)*
 - [ ] **Widget / Lock Screen** with the real-time world population.
-- [ ] **Share card:** image with the flag and the population of a country (sharing is text only now).
 - [ ] **Historical series:** population-over-time chart per country, using the data the update script already downloads.
 - [ ] **Living source for country descriptions.** The Factbook text is frozen at January 2026 and is English only. Options considered: an Open Factbook community fork, or Wikipedia (CC BY-SA, needs attribution). Decide with the rest of 3.0.
 - [ ] **Auto Layout / multitasking.** Only if Split View and Stage Manager on iPad are wanted: migrate `MainView` and the info panels, then drop `UIRequiresFullScreen`.
