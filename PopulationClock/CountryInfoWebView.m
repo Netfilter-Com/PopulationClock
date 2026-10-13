@@ -83,6 +83,16 @@
     [self.layer addSublayer:_shadowLayer];
 }
 
+// The web view's own shape is not a reliable signal: in iPad portrait it is
+// 367 pt tall and can be wider than that, which picked the landscape template
+// (light text on the light panel). The parent has the real orientation.
+- (BOOL)isPortraitLayout {
+    CGRect bounds = self.bounds;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad && self.superview)
+        bounds = self.superview.bounds;
+    return bounds.size.height >= bounds.size.width;
+}
+
 - (UIScrollView *)scrollView {
     return _webView.scrollView;
 }
@@ -113,7 +123,7 @@
     if (!_selectedCountry)
         return;
 
-    BOOL isPortrait = self.bounds.size.height >= self.bounds.size.width;
+    BOOL isPortrait = [self isPortraitLayout];
 
     dispatch_async(_backgroundQueue, ^{
         // Load the right template depending on the orientation
@@ -195,7 +205,7 @@
 
     BOOL isIpad = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad;
 
-    BOOL isPortrait = self.bounds.size.height >= self.bounds.size.width;
+    BOOL isPortrait = [self isPortraitLayout];
 
     if (isIpad && !isPortrait) {
         gradient.colors = nil;
@@ -222,7 +232,7 @@
     if (self.bounds.size.width == 0 || self.bounds.size.height == 0)
         return;
 
-    BOOL isPortrait = self.bounds.size.height >= self.bounds.size.width;
+    BOOL isPortrait = [self isPortraitLayout];
 
     if (isPortrait || UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         // Set the shadow path

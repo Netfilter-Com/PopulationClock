@@ -697,8 +697,6 @@
 		ED0108C11680DB350067F88D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		ED0108C31680E3E90067F88D /* debut_light@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "debut_light@2x.png"; sourceTree = "<group>"; };
 		ED0108C41680E3E90067F88D /* debut_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = debut_light.png; sourceTree = "<group>"; };
-		ED0108CF1680F61D0067F88D /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "../Icon-72.png"; sourceTree = "<group>"; };
-		ED0108D11680F6230067F88D /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72@2x.png"; path = "../Icon-72@2x.png"; sourceTree = "<group>"; };
 		ED090B471743F1DD009EB771 /* NFConfigurableTapGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFConfigurableTapGestureRecognizer.h; sourceTree = "<group>"; };
 		ED090B481743F1DD009EB771 /* NFConfigurableTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFConfigurableTapGestureRecognizer.m; sourceTree = "<group>"; };
 		ED0E20A116970AE3005445B7 /* colormap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "colormap@2x.png"; sourceTree = "<group>"; };
@@ -2020,8 +2018,6 @@
 				EDADD8041684DAA1007E8BD5 /* globeHoriz@2x.png */,
 				EDADD8051684DAA1007E8BD5 /* globeVertical.png */,
 				EDADD8061684DAA1007E8BD5 /* globeVertical@2x.png */,
-				ED0108CF1680F61D0067F88D /* Icon-72.png */,
-				ED0108D11680F6230067F88D /* Icon-72@2x.png */,
 				ED7769D816C41D9F00BC486F /* Icon.png */,
 				ED7769DA16C41DA600BC486F /* Icon@2x.png */,
 				ED0108B51680CDD10067F88D /* inativoAtivo.png */,
