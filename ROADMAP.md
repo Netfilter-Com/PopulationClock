@@ -1,8 +1,8 @@
 # Population Clock — Roadmap
 
-**Updated:** 2026-10-12.
+**Updated:** 2026-10-13.
 **Live on the App Store:** 2.1.0 (Antarctica, refreshed flags, larger-text fixes).
-**In App Store review:** 2.2.0 (build 20, commit `78ea911`, submitted 2026-10-12).
+**Approved by App Review:** 2.2.0 (build 20, commit `78ea911`, submitted 2026-10-12, approved 2026-10-13). Release it from App Store Connect if it is set to manual release; it becomes the live version once released.
 
 Items are marked **verified** when checked against the repo or the app, and
 **to verify** when they are a hypothesis that must be confirmed first.
@@ -22,7 +22,7 @@ Items are marked **verified** when checked against the repo or the app, and
 | 9 | Electricity consumption | World Bank (kWh per capita x population), frozen Factbook figure as fallback |
 | 10 | App Store listing language | en-US only for 2.2.0 (a pt-BR listing needs its own screenshots) |
 
-## 2.2.0 — shipped to review
+## 2.2.0 — approved
 
 ### What is in it
 - **pt-BR localization:** interface, statistics, 249 country names, About text (`PopulationClock/pt-BR.lproj`). The iPad storyboard texts are translated at runtime (`UIView+NFLocalization`) because the storyboard strings were not applied at build time.
