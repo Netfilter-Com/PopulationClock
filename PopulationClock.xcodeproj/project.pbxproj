@@ -7,10 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		135E29FD90C87F6205A4125E /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = EDADD7FB1684C9A7007E8BD5 /* data.plist */; };
 		170B0DB79EF86A6E0993E5B2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25AA1E5C755565B2E2BA234E /* Foundation.framework */; };
+		2ACBD4E3F6ACEC56C641EF33 /* PopulationClockWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 896DCF6E42A5872489A91CCD /* PopulationClockWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4B70F04E26CEE5F3B6F5A360 /* PopulationClockUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A6250B4F1E21A76BB7BF81 /* PopulationClockUITests.m */; };
 		5CE000012D9A000100A1B2C3 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE000022D9A000100A1B2C3 /* SceneDelegate.m */; };
+		69A7161AA30F3CB352A48324 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE96931B648B3FD95526D9E1 /* Localizable.strings */; };
 		6D0E41A1BB8A88EB51A8FFB2 /* libPods-PopulationClock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 30DED07AB717E8D7FE43650B /* libPods-PopulationClock.a */; };
+		71DF261DEC104867D5CA4364 /* PopulationClockWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BEAA45B625D24B76B617DB /* PopulationClockWidget.swift */; };
+		7AC8452FDE897E70E3A32D2A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25AA1E5C755565B2E2BA234E /* Foundation.framework */; };
 		8248F1CE168CC6BC00717BA7 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8248F1CD168CC6BC00717BA7 /* AboutViewController.m */; };
 		825C8B8F168B3B53009D357D /* country_flag_bl.png in Resources */ = {isa = PBXBuildFile; fileRef = 825C8B77168B3B52009D357D /* country_flag_bl.png */; };
 		825C8B90168B3B53009D357D /* country_flag_bl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 825C8B78168B3B52009D357D /* country_flag_bl@2x.png */; };
@@ -633,7 +638,28 @@
 			remoteGlobalIDString = EDA0C39F167BAF1400CBECC4;
 			remoteInfo = PopulationClock;
 		};
+		FC8B33DE2802842F8AB5A411 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EDA0C397167BAF1400CBECC4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ABB74319A527AA3CE0410180;
+			remoteInfo = PopulationClockWidget;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B3AB50663505561568DD90AE /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				2ACBD4E3F6ACEC56C641EF33 /* PopulationClockWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		07A6250B4F1E21A76BB7BF81 /* PopulationClockUITests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = PopulationClockUITests.m; sourceTree = "<group>"; };
@@ -678,7 +704,11 @@
 		825C8BDB168B4C9F009D357D /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8281CBD2169CB2E3008035C3 /* Description.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Description.strings; sourceTree = "<group>"; };
 		832487F017E8F59500FE6B17 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		896DCF6E42A5872489A91CCD /* PopulationClockWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; name = PopulationClockWidget.appex; path = PopulationClockWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		93BEAA45B625D24B76B617DB /* PopulationClockWidget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PopulationClockWidget.swift; sourceTree = "<group>"; };
 		9521174D992B9488A5C8C907 /* Pods-PopulationClock.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopulationClock.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopulationClock/Pods-PopulationClock.release.xcconfig"; sourceTree = "<group>"; };
+		AE15A60FA4B276B0BEE6D72F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D4BA7BF5DA7AC4DA699E83B8 /* en */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ED0108A01680AC110067F88D /* rotate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rotate.png; sourceTree = "<group>"; };
 		ED0108A11680AC110067F88D /* rotate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rotate@2x.png"; sourceTree = "<group>"; };
 		ED0108A51680CADD0067F88D /* boxRodapeVert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boxRodapeVert.png; sourceTree = "<group>"; };
@@ -1293,6 +1323,7 @@
 		EDFC9D0C16CBC36C00D3B7BE /* map~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map~iphone.png"; sourceTree = "<group>"; };
 		EDFC9D1116CBC8A800D3B7BE /* MapViewFlagViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewFlagViewController_iPhone.h; sourceTree = "<group>"; };
 		EDFC9D1216CBC8A800D3B7BE /* MapViewFlagViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewFlagViewController_iPhone.m; sourceTree = "<group>"; };
+		FC1DC22D36E038AD0C967B3A /* pt-BR */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1301,6 +1332,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				170B0DB79EF86A6E0993E5B2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B347CFB2D4273C21C3CC6A31 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7AC8452FDE897E70E3A32D2A /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1325,6 +1364,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A41FC01ACC25F02177A0183 /* PopulationClockWidget */ = {
+			isa = PBXGroup;
+			children = (
+				93BEAA45B625D24B76B617DB /* PopulationClockWidget.swift */,
+				AE15A60FA4B276B0BEE6D72F /* Info.plist */,
+				CE96931B648B3FD95526D9E1 /* Localizable.strings */,
+			);
+			name = PopulationClockWidget;
+			path = PopulationClockWidget;
+			sourceTree = "<group>";
+		};
 		516999B51AF4C26E85FCD8E0 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1826,6 +1876,7 @@
 				EDA0C3A1167BAF1400CBECC4 /* Products */,
 				516999B51AF4C26E85FCD8E0 /* Pods */,
 				FC5512F49474F117CC070368 /* PopulationClockUITests */,
+				2A41FC01ACC25F02177A0183 /* PopulationClockWidget */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1834,6 +1885,7 @@
 			children = (
 				EDA0C3A0167BAF1400CBECC4 /* PopulationClock.app */,
 				71008877B238A84E8A855F94 /* PopulationClockUITests.xctest */,
+				896DCF6E42A5872489A91CCD /* PopulationClockWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2082,6 +2134,23 @@
 			productReference = 71008877B238A84E8A855F94 /* PopulationClockUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		ABB74319A527AA3CE0410180 /* PopulationClockWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0360BA089C2F37B76FC3AB0B /* Build configuration list for PBXNativeTarget "PopulationClockWidget" */;
+			buildPhases = (
+				0504C873BE704D631363B9A5 /* Sources */,
+				B347CFB2D4273C21C3CC6A31 /* Frameworks */,
+				A313F59C62FD463C0B81C567 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PopulationClockWidget;
+			productName = PopulationClockWidget;
+			productReference = 896DCF6E42A5872489A91CCD /* PopulationClockWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		EDA0C39F167BAF1400CBECC4 /* PopulationClock */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EDA0C3C4167BAF1400CBECC4 /* Build configuration list for PBXNativeTarget "PopulationClock" */;
@@ -2090,10 +2159,12 @@
 				EDA0C39C167BAF1400CBECC4 /* Sources */,
 				EDA0C39D167BAF1400CBECC4 /* Frameworks */,
 				EDA0C39E167BAF1400CBECC4 /* Resources */,
+				B3AB50663505561568DD90AE /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				FB1B7F16BF01C519A12DD0C9 /* PBXTargetDependency */,
 			);
 			name = PopulationClock;
 			productName = PopulationClock;
@@ -2151,6 +2222,7 @@
 			targets = (
 				EDA0C39F167BAF1400CBECC4 /* PopulationClock */,
 				3F306BACFF39CFF3D2AF958E /* PopulationClockUITests */,
+				ABB74319A527AA3CE0410180 /* PopulationClockWidget */,
 			);
 		};
 /* End PBXProject section */
@@ -2160,6 +2232,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A313F59C62FD463C0B81C567 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				69A7161AA30F3CB352A48324 /* Localizable.strings in Resources */,
+				135E29FD90C87F6205A4125E /* data.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2764,6 +2845,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0504C873BE704D631363B9A5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71DF261DEC104867D5CA4364 /* PopulationClockWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8EEE68F3E5E4C5E95FDF672A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2821,9 +2910,24 @@
 			target = EDA0C39F167BAF1400CBECC4 /* PopulationClock */;
 			targetProxy = 782184B9FEE3DB7372BACEE0 /* PBXContainerItemProxy */;
 		};
+		FB1B7F16BF01C519A12DD0C9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PopulationClockWidget;
+			target = ABB74319A527AA3CE0410180 /* PopulationClockWidget */;
+			targetProxy = FC8B33DE2802842F8AB5A411 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		CE96931B648B3FD95526D9E1 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D4BA7BF5DA7AC4DA699E83B8 /* en */,
+				FC1DC22D36E038AD0C967B3A /* pt-BR */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		ED882AB0A0A0A0A0A0A0A0C1 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -2868,6 +2972,49 @@
 				TEST_TARGET_NAME = PopulationClock;
 			};
 			name = Debug;
+		};
+		B9F628E3B8F0D6CD42BDD907 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 50;
+				DEVELOPMENT_TEAM = PWFMZR3KY6;
+				INFOPLIST_FILE = PopulationClockWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MARKETING_VERSION = 2.2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.netfilter.PopulationClock.Widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BF0307BCF9E51D29781589FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 50;
+				DEVELOPMENT_TEAM = PWFMZR3KY6;
+				INFOPLIST_FILE = PopulationClockWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MARKETING_VERSION = 2.2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.netfilter.PopulationClock.Widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
 		};
 		E499C7A2D842CF733E73263A /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -3027,6 +3174,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0360BA089C2F37B76FC3AB0B /* Build configuration list for PBXNativeTarget "PopulationClockWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF0307BCF9E51D29781589FD /* Release */,
+				B9F628E3B8F0D6CD42BDD907 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		46B0FE3DF50191B0D747A546 /* Build configuration list for PBXNativeTarget "PopulationClockUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -47,11 +47,11 @@ Items are marked **verified** when checked against the repo or the app, and
 ## Done after 2.2.0 (goes out in the next release)
 - **Remove Ads purchase removed.** `InAppPurchaseManager`, the hidden toolbar button and its strings are gone; nothing read the purchase flag, so existing purchasers lose nothing. StoreKit stays linked for the review prompt. In App Store Connect the product `REMOVE_ADS_POPCLOCK` can be set to *Remove from Sale* (not required).
 - **Share card:** the share sheet now carries a 1080x1350 image with the flag (or globe), name and live population of the selected country, next to the text.
+- **Widget / Lock Screen:** new `PopulationClockWidget` extension (WidgetKit, iOS 16+): home screen small/medium and Lock Screen rectangular/inline, showing the world population extrapolated from `data.plist` (one timeline entry every 10 s for an hour). Bundle id `br.com.netfilter.PopulationClock.Widget`. **Not yet verified:** how it looks in the widget gallery and on the Lock Screen, and that Xcode Cloud can create the App ID/profile and applies the build number to the extension (it must match the app's).
 - **iPad portrait description** used the landscape template (light text on a light panel).
 
 ## 3.0 — new features
 
-- [ ] **Widget / Lock Screen** with the real-time world population.
 - [ ] **Historical series:** population-over-time chart per country, using the data the update script already downloads.
 - [ ] **Living source for country descriptions.** The Factbook text is frozen at January 2026 and is English only. Options considered: an Open Factbook community fork, or Wikipedia (CC BY-SA, needs attribution). Decide with the rest of 3.0.
 - [ ] **Auto Layout / multitasking.** Only if Split View and Stage Manager on iPad are wanted: migrate `MainView` and the info panels, then drop `UIRequiresFullScreen`.
