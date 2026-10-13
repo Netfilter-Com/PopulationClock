@@ -44,7 +44,7 @@ Items are marked **verified** when checked against the repo or the app, and
 - [ ] **Alerts, HUD and other system UI** over the light panels in dark mode were not reviewed.
 - [ ] **Dynamic Type limits.** At the largest accessibility size the description panel is capped at 30 px and the list at 30 pt; toolbar buttons, segmented control, legend and flip-clock stay fixed. Revisit if users report it.
 
-## Done after 2.2.0 (goes out in the next release)
+## 2.2.1 — pushed to TestFlight (2026-10-13)
 - **Remove Ads purchase removed.** `InAppPurchaseManager`, the hidden toolbar button and its strings are gone; nothing read the purchase flag, so existing purchasers lose nothing. StoreKit stays linked for the review prompt. In App Store Connect the product `REMOVE_ADS_POPCLOCK` can be set to *Remove from Sale* (not required).
 - **Share card:** the share sheet now carries a 1080x1350 image with the flag (or globe), name and live population of the selected country, next to the text.
 - **Widget / Lock Screen:** new `PopulationClockWidget` extension (WidgetKit, iOS 16+): home screen small/medium and Lock Screen rectangular/inline, showing the world population extrapolated from `data.plist` (one timeline entry every 10 s for an hour). Bundle id `br.com.netfilter.PopulationClock.Widget`. **Not yet verified:** how it looks in the widget gallery and on the Lock Screen, and that Xcode Cloud can create the App ID/profile and applies the build number to the extension (it must match the app's).
