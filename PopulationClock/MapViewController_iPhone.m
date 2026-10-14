@@ -64,7 +64,7 @@
     // Then the flag view controller
     controller = [self.storyboard instantiateViewControllerWithIdentifier:@"mapViewFlagViewController"];
     [toolbarItemContainers addObject:controller];
-    [self nf_fixSize:controller.view];
+    controller.view.translatesAutoresizingMaskIntoConstraints = NO;
     [toolbarItems addObject:[[UIBarButtonItem alloc] initWithCustomView:controller.view]];
     [self addChildViewController:controller];
     

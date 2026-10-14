@@ -9,6 +9,9 @@
 #import "DataManager.h"
 #import "MapViewFlagViewController_iPhone.h"
 
+static const CGFloat kFlagHeight = 30;
+static const CGFloat kMaxWidth = 300;
+
 @interface MapViewFlagViewController_iPhone ()
 
 @property (nonatomic, weak) IBOutlet UILabel *label;
@@ -16,7 +19,13 @@
 
 @end
 
-@implementation MapViewFlagViewController_iPhone
+@implementation MapViewFlagViewController_iPhone {
+    // The country name and the flag in a horizontal stack. The bar sizes this
+    // view by Auto Layout, so it must size itself from its content: a fixed
+    // frame with the flag right-aligned ended up past the screen edge on iOS 27
+    UIView *_flagHolder;
+    NSLayoutConstraint *_flagWidth;
+}
 
 - (void)dealloc {
     // We are no longer observers
@@ -25,6 +34,40 @@
 
 - (void)viewDidLoad
 {
+    // Take the label out of the storyboard's frame layout and into a stack
+    UILabel *label = self.label;
+    [self.flag removeFromSuperview];
+    [label removeFromSuperview];
+    label.translatesAutoresizingMaskIntoConstraints = NO;
+    label.lineBreakMode = NSLineBreakByTruncatingTail;
+    // High compression resistance: the bar asks for the compressed size, and a
+    // low priority collapsed the name to nothing. The width limit below is what
+    // truncates a long name
+    [label setContentCompressionResistancePriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisHorizontal];
+    [label setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
+
+    _flagHolder = [[UIView alloc] init];
+    _flagHolder.translatesAutoresizingMaskIntoConstraints = NO;
+    _flagWidth = [_flagHolder.widthAnchor constraintEqualToConstant:0];
+    _flagWidth.active = YES;
+    [_flagHolder.heightAnchor constraintEqualToConstant:kFlagHeight].active = YES;
+    [_flagHolder setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
+
+    UIStackView *stack = [[UIStackView alloc] initWithArrangedSubviews:@[ label, _flagHolder ]];
+    stack.axis = UILayoutConstraintAxisHorizontal;
+    stack.alignment = UIStackViewAlignmentCenter;
+    stack.spacing = 8;
+    stack.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:stack];
+    [NSLayoutConstraint activateConstraints:@[
+        [stack.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor],
+        [stack.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor],
+        [stack.topAnchor constraintEqualToAnchor:self.view.topAnchor],
+        [stack.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor],
+        [self.view.widthAnchor constraintLessThanOrEqualToConstant:kMaxWidth],
+        [self.view.heightAnchor constraintGreaterThanOrEqualToConstant:44]
+    ]];
+
     // Observe changes to the country selection
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(countrySelectionChanged:) name:CountrySelectionNotification object:nil];
 }
@@ -34,80 +77,42 @@
     // Get the selection
     NSString *selection = notification.userInfo[SelectedCountryKey];
     NSDictionary *info = [DataManager sharedDataManager].countryData[selection];
-    
-    if ([selection isEqualToString:@"world"]) {
-        // Load the image
-        UIImage *image = [UIImage imageNamed:@"globeHoriz"];
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
 
-        // Replace the current flag
-        [self.flag.superview insertSubview:imageView aboveSubview:self.flag];
-        [self.flag removeFromSuperview];
-        self.flag = imageView;
-        
-        // Calculate its new size
-        CGFloat scale = 30 / image.size.height;
-        CGSize newSize = CGSizeMake(floorf(image.size.width * scale), floorf(image.size.height * scale));
-        
-        // Set the frame
-        self.flag.frame = CGRectMake(0, 0, newSize.width, newSize.height);
-        self.flag.backgroundColor = [UIColor clearColor];
+    UIImage *image;
+    BOOL isWorld = [selection isEqualToString:@"world"];
+    if (isWorld)
+        image = [UIImage imageNamed:@"globeHoriz"];
+    else
+        image = [UIImage imageNamed:[NSString stringWithFormat:@"country_flag_%@", selection]];
+    if (!image)
+        return;
+
+    // Calculate its new size, including borders
+    CGFloat scale = kFlagHeight / image.size.height;
+    CGSize newSize = CGSizeMake(floorf(image.size.width * scale), floorf(image.size.height * scale));
+
+    for (UIView *old in [_flagHolder.subviews copy])
+        [old removeFromSuperview];
+
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    if (isWorld) {
+        imageView.frame = CGRectMake(0, 0, newSize.width, newSize.height);
     }
     else {
-        // Load the image
-        NSString *flagName = [NSString stringWithFormat:@"country_flag_%@", selection];
-        UIImage *image = [UIImage imageNamed:flagName];
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-        
-        // Calculate its new size, including borders
-        CGFloat scale = 30 / image.size.height;
-        CGSize newSize = CGSizeMake(floorf(image.size.width * scale), floorf(image.size.height * scale));
-
-        // Create the background view
+        // The flag is centered in a white background, which makes the border
         UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, newSize.width, newSize.height)];
         backgroundView.backgroundColor = [UIColor whiteColor];
-
-        // Replace the current flag
-        [self.flag.superview insertSubview:backgroundView aboveSubview:self.flag];
-        [self.flag removeFromSuperview];
-        self.flag = backgroundView;
-
-        // Calculate the size of the image centered in the background view
-        CGSize innerSize = newSize;
-        innerSize.width -= 4;
-        innerSize.height -= 4;
-
-        // Add the image to the background view
-        imageView.frame = CGRectMake(2, 2, innerSize.width, innerSize.height);
+        imageView.frame = CGRectMake(2, 2, newSize.width - 4, newSize.height - 4);
         [backgroundView addSubview:imageView];
+        imageView = (UIImageView *)backgroundView;
     }
-    
+    [_flagHolder addSubview:imageView];
+    _flagWidth.constant = newSize.width;
+
     // Update the label
     self.label.text = info[@"name"];
-    [self.label sizeToFit];
-    
-    // We'll need to layout the view
+
     [self.view setNeedsLayout];
-}
-
-- (void)viewWillLayoutSubviews
-{
-    CGRect bounds = self.view.bounds;
-
-    // Right-align the flag
-    CGRect frame = self.flag.frame;
-    frame.origin.x = bounds.size.width - frame.size.width;
-    frame.origin.y = (bounds.size.height - frame.size.height) / 2;
-    self.flag.frame = frame;
-    
-    // Align the label to its left, never wider than the room that is left
-    // (a long name in a large text size is truncated, not pushed off the bar)
-    frame = self.label.frame;
-    CGFloat room = MAX(0, self.flag.frame.origin.x - 8);
-    frame.size.width = MIN(frame.size.width, room);
-    frame.origin.x = self.flag.frame.origin.x - frame.size.width - 8;
-    frame.origin.y = (bounds.size.height - frame.size.height) / 2;
-    self.label.frame = frame;
 }
 
 @end
