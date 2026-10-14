@@ -277,6 +277,31 @@
     }
 }
 
+// The map's bottom bar (clock and country name) in iPhone landscape with the
+// largest text size must stay inside the screen
+- (void)iPhoneLandscapeWithLanguage:(NSString *)language contentSize:(NSString *)contentSize tag:(NSString *)tag {
+    if ([UIDevice currentDevice].userInterfaceIdiom != UIUserInterfaceIdiomPhone) {
+        return;
+    }
+    [XCUIDevice sharedDevice].orientation = UIDeviceOrientationLandscapeLeft;
+    XCUIApplication *app = [[XCUIApplication alloc] init];
+    app.launchArguments = @[
+        @"-AppleLanguages", [language isEqualToString:@"pt-BR"] ? @"(pt-BR)" : @"(en)",
+        @"-AppleLocale", [language isEqualToString:@"pt-BR"] ? @"pt_BR" : @"en_US",
+        @"-UIPreferredContentSizeCategoryName", contentSize,
+        // The United States has the longest names in the bar
+        @"-selectedCountryKey", @"us"
+    ];
+    [app launch];
+    [NSThread sleepForTimeInterval:3.0];
+    [self capture:@"01_map_country" tag:tag];
+    [XCUIDevice sharedDevice].orientation = UIDeviceOrientationPortrait;
+}
+
+- (void)testIPhoneLandscapePortugueseLargestSize {
+    [self iPhoneLandscapeWithLanguage:@"pt-BR" contentSize:@"UICTContentSizeCategoryAccessibilityXXXL" tag:@"iphone_land_pt_axxxl"];
+}
+
 - (void)testEnglishDefaultSize {
     [self walkthroughWithLanguage:@"en" contentSize:nil tag:@"en_default"];
 }

@@ -41,6 +41,7 @@ Items are marked **verified** when checked against the repo or the app, and
 - [ ] **Mayotte** has a map polygon and no data because the app has no description text for it (the CIA text is gone with the Factbook). Write one or leave it. It is the only polygon without data left (`check_data.py` lists them); territories with data but no polygon are reachable from the list only.
 - [ ] **Stats panel under the notch in iPhone landscape** was a hypothesis from one screenshot; the iPhone walkthrough shows the panel whole. Close it unless it shows up on a device.
 - [ ] **Remaining flag tones.** Flags were re-rendered from flagcdn.com in 2.1.0. Left on purpose: Antarctica (drawn for the app), Afghanistan (owner's decision), Martinique (official French tricolor).
+- [ ] **iPhone landscape bottom bar on iOS 27 (verify).** The clock and the flag were cut off on iOS 27.0.1 with large text. Fixed by giving the toolbar custom views explicit Auto Layout sizes (clock in a container, flag/name view 300x44, label width capped); not reproducible on the iOS 18.6 simulator, so confirm on the device.
 - [ ] **Alerts, HUD and other system UI** over the light panels in dark mode were not reviewed.
 - [ ] **Dynamic Type limits.** At the largest accessibility size the description panel is capped at 30 px and the list at 30 pt; toolbar buttons, segmented control, legend and flip-clock stay fixed. Revisit if users report it.
 

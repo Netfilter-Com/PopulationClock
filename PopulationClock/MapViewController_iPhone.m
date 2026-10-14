@@ -20,6 +20,15 @@
     BOOL _adjustedMapSize;
 }
 
+// Gives a toolbar custom view the size it has now as Auto Layout constraints,
+// so the bar does not collapse or stretch it
+- (void)nf_fixSize:(UIView *)view
+{
+    view.translatesAutoresizingMaskIntoConstraints = NO;
+    [view.widthAnchor constraintEqualToConstant:view.bounds.size.width].active = YES;
+    [view.heightAnchor constraintEqualToConstant:view.bounds.size.height].active = YES;
+}
+
 - (void)loadView
 {
     [super loadView];
@@ -38,15 +47,24 @@
     NSMutableArray *toolbarItems = [NSMutableArray arrayWithCapacity:3];
     
     // Add the population clock
+    // The bar sizes custom views by their Auto Layout size and ignores a
+    // transform, so the scaled clock goes in a container of the scaled size
     PopulationClockView *populationClockView = [PopulationClockView clock];
+    CGSize clockSize = populationClockView.bounds.size;
+    CGSize scaledSize = CGSizeMake(round(clockSize.width * 0.65), round(clockSize.height * 0.65));
+    UIView *clockContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, scaledSize.width, scaledSize.height)];
+    populationClockView.center = CGPointMake(scaledSize.width / 2, scaledSize.height / 2);
     populationClockView.transform = CGAffineTransformMakeScale(0.65, 0.65);
-    [toolbarItems addObject:[[UIBarButtonItem alloc] initWithCustomView:populationClockView]];
+    [clockContainer addSubview:populationClockView];
+    [self nf_fixSize:clockContainer];
+    [toolbarItems addObject:[[UIBarButtonItem alloc] initWithCustomView:clockContainer]];
     
     [toolbarItems addObject:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil]];
     
     // Then the flag view controller
     controller = [self.storyboard instantiateViewControllerWithIdentifier:@"mapViewFlagViewController"];
     [toolbarItemContainers addObject:controller];
+    [self nf_fixSize:controller.view];
     [toolbarItems addObject:[[UIBarButtonItem alloc] initWithCustomView:controller.view]];
     [self addChildViewController:controller];
     

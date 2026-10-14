@@ -92,16 +92,21 @@
 
 - (void)viewWillLayoutSubviews
 {
+    CGRect bounds = self.view.bounds;
+
     // Right-align the flag
     CGRect frame = self.flag.frame;
-    frame.origin.x = self.view.frame.size.width - frame.size.width;
-    frame.origin.y = (self.view.frame.size.height - frame.size.height) / 2;
+    frame.origin.x = bounds.size.width - frame.size.width;
+    frame.origin.y = (bounds.size.height - frame.size.height) / 2;
     self.flag.frame = frame;
     
-    // Align the label to its right
+    // Align the label to its left, never wider than the room that is left
+    // (a long name in a large text size is truncated, not pushed off the bar)
     frame = self.label.frame;
+    CGFloat room = MAX(0, self.flag.frame.origin.x - 8);
+    frame.size.width = MIN(frame.size.width, room);
     frame.origin.x = self.flag.frame.origin.x - frame.size.width - 8;
-    frame.origin.y = (self.view.frame.size.height - frame.size.height) / 2;
+    frame.origin.y = (bounds.size.height - frame.size.height) / 2;
     self.label.frame = frame;
 }
 
