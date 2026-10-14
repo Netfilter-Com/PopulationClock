@@ -1,20 +1,16 @@
 PODS:
-  - MBProgressHUD (1.2.0)
   - SBTickerView (1.0.0)
 
 DEPENDENCIES:
-  - MBProgressHUD (~> 1.2)
   - SBTickerView
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
-    - MBProgressHUD
     - SBTickerView
 
 SPEC CHECKSUMS:
-  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   SBTickerView: 981ebcf79ae8bde172df46467e08e57c6c386eda
 
-PODFILE CHECKSUM: 3edb53d32ed1b9ddd075d39b1546c9751bba8fe8
+PODFILE CHECKSUM: 09274f596e711ae161a9150228640a4626629001
 
-COCOAPODS: 1.8.3
+COCOAPODS: 1.15.2

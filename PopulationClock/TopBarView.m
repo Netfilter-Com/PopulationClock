@@ -22,12 +22,32 @@
     UIButton *_aboutButton;
 }
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Set the label colors for the segmented control
-    NSDictionary *attrs = @{NSForegroundColorAttributeName : [UIColor nf_orangeTextColor]};
+// The text follows the user's text size up to a cap: the bar is artwork
+static UIFont *ScaledFont(UIFont *font, CGFloat maximumPointSize) {
+    return [[UIFontMetrics metricsForTextStyle:UIFontTextStyleBody] scaledFontForFont:font maximumPointSize:maximumPointSize];
+}
+
+- (void)updateSegmentedControlFont {
+    NSDictionary *attrs = @{
+        NSForegroundColorAttributeName : [UIColor nf_orangeTextColor],
+        NSFontAttributeName : ScaledFont([UIFont systemFontOfSize:13], 19)
+    };
     [_modeSegmentedControl setTitleTextAttributes:attrs forState:UIControlStateNormal];
     [_modeSegmentedControl setTitleTextAttributes:attrs forState:UIControlStateHighlighted];
+}
+
+- (void)contentSizeCategoryChanged:(NSNotification *)notification {
+    [self updateSegmentedControlFont];
+    for (UIButton *button in @[ _shareButton, _aboutButton ]) {
+        [self sizeBarButton:button];
+    }
+    [self setNeedsLayout];
+}
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    // Set the label colors and the font for the segmented control
+    [self updateSegmentedControlFont];
     
     // Style the segmented control
     [_modeSegmentedControl setTintColor:[UIColor nf_orangeTextColor]];
@@ -43,19 +63,23 @@
     
     // Observe changes to the country selection
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(countrySelectionChanged:) name:CountrySelectionNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(contentSizeCategoryChanged:) name:UIContentSizeCategoryDidChangeNotification object:nil];
+}
+
+- (void)sizeBarButton:(UIButton *)button {
+    button.titleLabel.font = ScaledFont([UIFont systemFontOfSize:15], 21);
+    [button sizeToFit];
+    CGRect frame = button.frame;
+    frame.size.height = 44;
+    frame.size.width += 16;
+    button.frame = frame;
 }
 
 - (UIButton *)barButtonWithTitle:(NSString *)title action:(SEL)action {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
     [button setTitle:title forState:UIControlStateNormal];
     [button setTitleColor:[UIColor nf_orangeTextColor] forState:UIControlStateNormal];
-    // Fixed size, like the other toolbar buttons: the bar is artwork
-    button.titleLabel.font = [UIFont systemFontOfSize:15];
-    [button sizeToFit];
-    CGRect frame = button.frame;
-    frame.size.height = 44;
-    frame.size.width += 16;
-    button.frame = frame;
+    [self sizeBarButton:button];
     [button addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
     button.hidden = YES;
     [self addSubview:button];
@@ -131,7 +155,7 @@
         }
         
         // Resize the title label
-        _titleLabel.font = [UIFont boldSystemFontOfSize:24];
+        _titleLabel.font = ScaledFont([UIFont boldSystemFontOfSize:24], 30);
         [_titleLabel sizeToFit];
         
         // It goes centered in the right two-thirds of the bar, unless that
@@ -167,7 +191,7 @@
         _modeSegmentedControl.center = CGPointMake(self.bounds.size.width / 4, self.bounds.size.height / 2);
         
         // Resize the title label
-        _titleLabel.font = [UIFont boldSystemFontOfSize:20];
+        _titleLabel.font = ScaledFont([UIFont boldSystemFontOfSize:20], 26);
         [_titleLabel sizeToFit];
         
         // Position it

@@ -9,7 +9,6 @@
 #import "DataManager.h"
 #import "MainView.h"
 #import "MainViewController.h"
-#import "MBProgressHUD.h"
 #import "SavedStateManager.h"
 #import "UIView+NFLocalization.h"
 #import "UIViewController+NFSharing.h"

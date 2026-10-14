@@ -91,11 +91,11 @@
     [_segmentedControl setWidth:125 forSegmentAtIndex:0];
     [_segmentedControl setWidth:125 forSegmentAtIndex:1];
     
-    // Fixed font size: the segments have a fixed width and must not clip titles
-    // when the user has a larger text size
+    // The font follows the text size up to a cap that keeps the titles inside
+    // the fixed-width segments (they are one short word each)
     NSDictionary *attrs = @{
         NSForegroundColorAttributeName : [UIColor nf_orangeTextColor],
-        NSFontAttributeName : [UIFont systemFontOfSize:13]
+        NSFontAttributeName : [[UIFontMetrics metricsForTextStyle:UIFontTextStyleBody] scaledFontForFont:[UIFont systemFontOfSize:13] maximumPointSize:19]
     };
     [_segmentedControl setTitleTextAttributes:attrs forState:UIControlStateNormal];
     [_segmentedControl setTitleTextAttributes:attrs forState:UIControlStateHighlighted];

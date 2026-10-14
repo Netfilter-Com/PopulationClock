@@ -3,7 +3,6 @@ platform :ios, '15.0'
 source 'https://github.com/CocoaPods/Specs.git'
 
 target 'PopulationClock' do
-pod 'MBProgressHUD', '~> 1.2'
 pod 'SBTickerView'
 
 end

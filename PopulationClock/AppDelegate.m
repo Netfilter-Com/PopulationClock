@@ -25,7 +25,7 @@
     // letting the system font scale would clip the titles.
     NSDictionary *attrs = @{
         NSForegroundColorAttributeName : [UIColor nf_orangeTextColor],
-        NSFontAttributeName : [UIFont systemFontOfSize:17]
+        NSFontAttributeName : [[UIFontMetrics metricsForTextStyle:UIFontTextStyleBody] scaledFontForFont:[UIFont systemFontOfSize:17] maximumPointSize:24]
     };
     [[UIBarButtonItem appearance] setTitleTextAttributes:attrs forState:UIControlStateNormal];
     
@@ -59,6 +59,12 @@
 - (void)requestReviewIfAppropriateInScene:(UIWindowScene *)scene {
     // Only ask once per launch
     if (self.reviewRequestedThisLaunch) {
+        return;
+    }
+
+    // The UI tests pass -NFSkipReviewPrompt YES: the rating dialog would cover
+    // the app once the simulator's launch count passes the threshold
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"NFSkipReviewPrompt"]) {
         return;
     }
     self.reviewRequestedThisLaunch = YES;

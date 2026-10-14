@@ -23,7 +23,7 @@
 
 - (XCUIApplication *)launchWithLanguage:(NSString *)language contentSize:(NSString *)contentSize {
     XCUIApplication *app = [[XCUIApplication alloc] init];
-    NSMutableArray *args = [NSMutableArray array];
+    NSMutableArray *args = [NSMutableArray arrayWithArray:@[ @"-NFSkipReviewPrompt", @"YES" ]];
     if ([language isEqualToString:@"pt-BR"]) {
         [args addObjectsFromArray:@[ @"-AppleLanguages", @"(pt-BR)", @"-AppleLocale", @"pt_BR" ]];
     } else {
@@ -52,17 +52,21 @@
     }
 }
 
-// Taps the first button whose label contains one of the given texts
+// Taps the first hittable button whose label contains one of the given texts.
+// There can be two (the iPad has Share and About in the top bar and in the
+// bottom toolbar), and the first one may be under the home indicator
 - (BOOL)tapButtonIn:(XCUIApplication *)app containing:(NSArray<NSString *> *)texts {
     for (NSString *text in texts) {
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"label CONTAINS[c] %@", text];
-        XCUIElement *button = [app.buttons matchingPredicate:predicate].firstMatch;
-        if (button.exists && button.isHittable) {
-            [button tap];
-            [NSThread sleepForTimeInterval:1.0];
-            return YES;
+        for (XCUIElement *button in [app.buttons matchingPredicate:predicate].allElementsBoundByIndex) {
+            if (button.exists && button.isHittable) {
+                [button tap];
+                [NSThread sleepForTimeInterval:1.0];
+                return YES;
+            }
         }
     }
+    [self capture:@"no_button" tag:[texts componentsJoinedByString:@"_"]];
     XCTFail(@"No button containing any of %@", texts);
     return NO;
 }
@@ -89,7 +93,13 @@
     for (NSString *title in titles) {
         XCUIElement *segment = app.segmentedControls.buttons[title];
         if (segment.exists) {
-            [segment tap];
+            if (segment.isHittable) {
+                [segment tap];
+            } else {
+                // Accessibility cannot scroll a bar to make it visible; tap its center
+                [[app coordinateWithNormalizedOffset:CGVectorMake(0, 0)]
+                    coordinateWithOffset:CGVectorMake(CGRectGetMidX(segment.frame), CGRectGetMidY(segment.frame))].tap;
+            }
             [NSThread sleepForTimeInterval:1.0];
             return;
         }
@@ -286,6 +296,7 @@
     [XCUIDevice sharedDevice].orientation = UIDeviceOrientationLandscapeLeft;
     XCUIApplication *app = [[XCUIApplication alloc] init];
     app.launchArguments = @[
+        @"-NFSkipReviewPrompt", @"YES",
         @"-AppleLanguages", [language isEqualToString:@"pt-BR"] ? @"(pt-BR)" : @"(en)",
         @"-AppleLocale", [language isEqualToString:@"pt-BR"] ? @"pt_BR" : @"en_US",
         @"-UIPreferredContentSizeCategoryName", contentSize,

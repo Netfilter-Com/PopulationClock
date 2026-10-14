@@ -41,14 +41,16 @@ Items are marked **verified** when checked against the repo or the app, and
 - [ ] **Stats panel under the notch in iPhone landscape** was a hypothesis from one screenshot; the iPhone walkthrough shows the panel whole. Close it unless it shows up on a device.
 - [ ] **Remaining flag tones.** Flags were re-rendered from flagcdn.com in 2.1.0. Left on purpose: Antarctica (drawn for the app), Afghanistan (owner's decision), Martinique (official French tricolor).
 - [ ] **iPhone landscape bottom bar on iOS 27 (verify).** The clock and the flag were cut off on iOS 27.0.1 with large text. Fixed by giving the toolbar custom views explicit Auto Layout sizes (clock in a container, flag/name view 300x44, label width capped); not reproducible on the iOS 18.6 simulator, so confirm on the device.
-- [ ] **Alerts, HUD and other system UI** over the light panels in dark mode were not reviewed.
-- [ ] **Dynamic Type limits.** At the largest accessibility size the description panel is capped at 30 px and the list at 30 pt; toolbar buttons, segmented control, legend and flip-clock stay fixed. Revisit if users report it.
+- [ ] **Dynamic Type limits.** Scaled with caps: description panel (30 px), list (30 pt), top-bar buttons (21 pt) and title (30/26 pt), segmented controls (19 pt), bar buttons (24 pt). Left fixed on purpose because they are artwork: the legend and the flip-clock digits. Revisit if users report it.
 
 ## 2.2.1 — in App Review (submitted 2026-10-13)
 - **Remove Ads purchase removed.** `InAppPurchaseManager`, the hidden toolbar button and its strings are gone; nothing read the purchase flag, so existing purchasers lose nothing. StoreKit stays linked for the review prompt. In App Store Connect the product `REMOVE_ADS_POPCLOCK` can be set to *Remove from Sale* (not required).
 - **Share card:** the share sheet now carries a 1080x1350 image with the flag (or globe), name and live population of the selected country, next to the text.
 - **Widget / Lock Screen:** new `PopulationClockWidget` extension (WidgetKit, iOS 16+): home screen small/medium and Lock Screen rectangular/inline, showing the world population extrapolated from `data.plist` (one timeline entry every 10 s for an hour). Bundle id `br.com.netfilter.PopulationClock.Widget`. **Not yet verified:** how it looks in the widget gallery and on the Lock Screen, and that Xcode Cloud can create the App ID/profile and applies the build number to the extension (it must match the app's).
 - **Mayotte** is part of France on the map, like French Guiana (2-3 px, no data of its own): tapping it selects France.
+- **Dynamic Type** now also covers the iPad top bar (buttons, title, segmented control), the iPhone info segmented control and the bar buttons, with caps.
+- **MBProgressHUD removed** (its only use was the purchase HUD). The app forces the dark style, so system alerts and the share sheet are already dark; the only remaining system prompt is the App Store rating dialog.
+- **UI tests:** `-NFSkipReviewPrompt YES` keeps the rating dialog from covering the app (it made the iPad Share/Mundo checks fail once the simulator's launch count passed the threshold); button taps pick the first *hittable* match.
 - **iPad portrait description** used the landscape template (light text on a light panel).
 
 ## 3.0 — new features
